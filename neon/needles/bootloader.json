@@ -1,0 +1,16 @@
+{
+  "area": [
+    {
+      "xpos": 0,
+      "type": "match",
+      "width": 548,
+      "height": 264,
+      "ypos": 0
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "bootloader",
+    "ENV-DISTRI-opensuse"
+  ]
+}
