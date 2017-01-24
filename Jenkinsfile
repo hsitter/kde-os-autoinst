@@ -2,7 +2,7 @@ env.DIST = 'xenial'
 env.TYPE = 'user'
 env.PWD_BIND = '/workspace'
 
-cleanNode('master') {
+cleanNode('do-gamma-amd64') {
   ws('/tmp/kde-os-autoinst') {
     stage('clone') {
       git 'https://github.com/apachelogger/kde-os-autoinst'
