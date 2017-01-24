@@ -47,7 +47,13 @@ class JUnit
       self.name = File.basename(test_file).match(/result-(.+)\.json/)[1]
       self.package = name
       self.report_path = "junit/#{name}.xml"
+      casify(data)
+    end
+
+    def casify(data)
       data.fetch('details').each do |detail|
+        # Skip unknown results.
+        next if detail.fetch('result') == 'unk'
         add_case(Case.new(detail))
       end
       add_case(meta_case(data))
