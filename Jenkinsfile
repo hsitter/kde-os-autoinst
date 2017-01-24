@@ -13,7 +13,6 @@ cleanNode('master') {
 
 def cleanNode(label = null, body) {
   node(label) {
-    deleteDir()
     try {
       wrap([$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']) {
         wrap([$class: 'TimestamperBuildWrapper']) {
