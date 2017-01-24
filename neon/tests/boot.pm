@@ -22,17 +22,17 @@ use testapi;
 
 sub run {
     # wait for bootloader to appear
-    assert_screen 'bootloader', 10;
+    assert_screen 'bootloader', 30;
 
 #     # press enter to boot right away
 #     send_key "ret";
 
     # wait for the desktop to appear
-    assert_screen 'desktop', 60;
-        x11_start_program 'kwrite';
+    assert_screen 'desktop', 180;
 
-     assert_and_click "installer-icon";
-#     assert_screen "installer-welcome", 10;
+    # Installer
+    assert_and_click "installer-icon";
+    assert_screen "installer-welcome", 30;
 }
 
 sub test_flags {
