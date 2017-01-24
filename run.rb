@@ -43,7 +43,8 @@ config = {
   DISTRI: 'debian',
   CASEDIR: '/workspace/neon',
   ISO: '/workspace/neon.iso',
-  PRODUCTDIR: '/workspace/neon'
+  PRODUCTDIR: '/workspace/neon',
+  QEMUVGA: 'cirrus'
 }
 
 # Neon builders don't do KVM, disable it if the module is not loaded.
