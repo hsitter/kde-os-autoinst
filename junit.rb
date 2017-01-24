@@ -63,9 +63,13 @@ class JUnit
 
   def self.from_openqa(testresults_dir)
     Dir.mkdir('junit') unless Dir.exist?('junit')
+    ran = false
     Dir.glob("#{testresults_dir}/result-*.json").each do |test_file|
+      ran = true
       suite = Suite.new(test_file)
       suite.write_report_file
     end
+    return if ran
+    raise "Could not find a single test file: #{testresults_dir}/result-*.json!"
   end
 end
