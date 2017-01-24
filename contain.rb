@@ -27,9 +27,16 @@ DIST = ENV.fetch('DIST')
 JOB_NAME = ENV.fetch('JOB_NAME')
 PWD_BIND = ENV.fetch('PWD_BIND', '/workspace')
 
+dev_kvm = {
+  PathOnHost: '/dev/kvm',
+  PathInContainer: '/dev/kvm',
+  CgroupPermissions: 'mrw'
+}
+
 c = CI::Containment.new(JOB_NAME,
                         image: CI::PangeaImage.new(:ubuntu, DIST),
                         binds: ["#{Dir.pwd}:#{PWD_BIND}"],
                         privileged: false)
-status_code = c.run(Cmd: ARGV, WorkingDir: PWD_BIND, Devices: %w(/dev/kvm))
+status_code = c.run(Cmd: ARGV, WorkingDir: PWD_BIND,
+                    HostConfig: { Devices: [dev_kvm] })
 exit status_code
