@@ -44,7 +44,13 @@ Dir.chdir('os-autoinst') do
   system('apt install --no-install-recommends -y carton') || raise
   ## builddeps
   system('apt install --no-install-recommends -y libxml2-dev libssh2-1-dev libdbus-1-dev') || raise
-  system('cpanm --installdeps -S --notest .')
+  unless system('cpanm --installdeps -S --notest .')
+    Dir.glob("#{Dir.home}/.cpanm/work/*/build.log").each do |log|
+      5.times { puts }
+      puts "----------------- #{log} -----------------"
+      puts File.read(log)
+    end
+  end
 end
 
 # VM runner and run.rb helpers.
