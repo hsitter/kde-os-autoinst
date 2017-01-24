@@ -44,7 +44,8 @@ config = {
   CASEDIR: '/workspace/neon',
   ISO: '/workspace/neon.iso',
   PRODUCTDIR: '/workspace/neon',
-  QEMUVGA: 'cirrus'
+  QEMUVGA: 'cirrus',
+  TESTDEBUG: true
 }
 
 # Neon builders don't do KVM, disable it if the module is not loaded.
