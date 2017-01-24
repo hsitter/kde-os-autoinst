@@ -52,4 +52,5 @@ config = {
 config[:QEMU_NO_KVM] = true unless system('lsmod | grep -q kvm_intel')
 
 File.write('vars.json', JSON.generate(config))
-system('../os-autoinst/isotovideo', '-d') || raise
+system({ 'QEMU_AUDIO_DRV' => 'none' },
+       '../os-autoinst/isotovideo', '-d') || raise
