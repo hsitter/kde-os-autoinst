@@ -3,11 +3,13 @@ env.TYPE = 'user'
 env.PWD_BIND = '/workspace'
 
 cleanNode('master') {
-  stage('clone') {
-    git 'https://github.com/apachelogger/kde-os-autoinst'
-  }
-  stage('run') {
-    sh './contain.rb /workspace/bootstrap.rb'
+  ws('/tmp/kde-os-autoinst') {
+    stage('clone') {
+      git 'https://github.com/apachelogger/kde-os-autoinst'
+    }
+    stage('run') {
+      sh './contain.rb /workspace/bootstrap.rb'
+    }
   }
 }
 
