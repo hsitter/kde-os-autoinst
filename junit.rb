@@ -19,6 +19,7 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
+require 'fileutils'
 require 'json'
 require 'jenkins_junit_builder'
 
@@ -68,7 +69,8 @@ class JUnit
   end
 
   def self.from_openqa(testresults_dir)
-    Dir.mkdir('junit') unless Dir.exist?('junit')
+    FileUtils.rm_rf('junit') if Dir.exist?('junit')
+    Dir.mkdir('junit')
     ran = false
     Dir.glob("#{testresults_dir}/result-*.json").each do |test_file|
       ran = true
