@@ -23,6 +23,7 @@ def cleanNode(label = null, body) {
     } finally {
       sh 'tar -cf wok.tar wok'
       archiveArtifacts 'wok.tar'
+      sh './contain.rb chown -R jenkins .'
       // step([$class: 'WsCleanup', cleanWhenFailure: true])
     }
   }
