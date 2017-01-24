@@ -22,8 +22,8 @@
 require 'fileutils'
 require 'json'
 
-ISO_URL = 'http://files.kde.org/neon/images/neon-devedition-gitunstable/current/neon-devedition-gitunstable-current.iso.zsync'.freeze
-SIG_URL = 'http://files.kde.org/neon/images/neon-devedition-gitunstable/current/neon-devedition-gitunstable-current.iso.sig'.freeze
+ISO_URL = 'http://files.kde.org/neon/images/neon-useredition/current/neon-useredition-current.iso.zsync'.freeze
+SIG_URL = 'http://files.kde.org/neon/images/neon-useredition/current/neon-useredition-current.iso.sig'.freeze
 GPG_KEY = '348C 8651 2066 33FD 983A 8FC4 DEAC EA00 075E 1D76'.freeze
 
 system('zsync', '-q', '-o', 'neon.iso', ISO_URL) || raise
