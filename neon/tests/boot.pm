@@ -28,7 +28,7 @@ sub run {
 #     send_key "ret";
 
     # wait for the desktop to appear
-    assert_screen 'desktop', 180;
+    assert_screen 'desktop', 600;
 
     # Installer
     assert_and_click "installer-icon";
