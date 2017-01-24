@@ -58,4 +58,5 @@ File.write('live_log', '')
 system({ 'QEMU_AUDIO_DRV' => 'none' },
        '../os-autoinst/isotovideo', '-d') || raise
 
+Dir.chdir('..')
 JUnit.from_openqa('wok/testresults')
