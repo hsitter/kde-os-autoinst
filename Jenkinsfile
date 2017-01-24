@@ -21,7 +21,9 @@ def cleanNode(label = null, body) {
         }
       }
     } finally {
-      step([$class: 'WsCleanup', cleanWhenFailure: true])
+      sh 'tar -cf wok.tar wok'
+      archiveArtifacts 'wok.tar'
+      // step([$class: 'WsCleanup', cleanWhenFailure: true])
     }
   }
 }
