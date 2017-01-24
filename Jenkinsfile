@@ -7,7 +7,7 @@ cleanNode('master') {
     git 'https://github.com/apachelogger/kde-os-autoinst'
   }
   stage('run') {
-    sh '~/tooling/kci/contain.rb /workspace/bootstrap.rb'
+    sh './contain.rb /workspace/bootstrap.rb'
   }
 }
 
