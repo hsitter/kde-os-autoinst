@@ -54,7 +54,7 @@ Dir.chdir('os-autoinst') do
 end
 
 # VM runner and run.rb helpers.
-system('apt install -y qemu zsync')
+system('apt install -y kvm qemu zsync') || raise
 
 exec('./run.rb;')
 
