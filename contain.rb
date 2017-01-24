@@ -30,6 +30,6 @@ PWD_BIND = ENV.fetch('PWD_BIND', '/workspace')
 c = CI::Containment.new(JOB_NAME,
                         image: CI::PangeaImage.new(:ubuntu, DIST),
                         binds: ["#{Dir.pwd}:#{PWD_BIND}"],
-                        privileged: true)
-status_code = c.run(Cmd: ARGV, WorkingDir: PWD_BIND)
+                        privileged: false)
+status_code = c.run(Cmd: ARGV, WorkingDir: PWD_BIND, Devices: %w(/dev/kvm))
 exit status_code
