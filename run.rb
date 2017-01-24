@@ -46,5 +46,8 @@ config = {
   PRODUCTDIR: '/workspace/neon'
 }
 
+# Neon builders don't do KVM, disable it if the module is not loaded.
+config[:QEMU_NO_KVM] = true unless system('lsmod | grep -q kvm_intel')
+
 File.write('vars.json', JSON.generate(config))
 system('../os-autoinst/isotovideo') || raise
