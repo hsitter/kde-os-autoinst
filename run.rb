@@ -22,6 +22,8 @@
 require 'fileutils'
 require 'json'
 
+require_relative 'junit'
+
 ISO_URL = 'http://files.kde.org/neon/images/neon-useredition/current/neon-useredition-current.iso.zsync'.freeze
 SIG_URL = 'http://files.kde.org/neon/images/neon-useredition/current/neon-useredition-current.iso.sig'.freeze
 GPG_KEY = '348C 8651 2066 33FD 983A 8FC4 DEAC EA00 075E 1D76'.freeze
@@ -55,3 +57,5 @@ File.write('vars.json', JSON.generate(config))
 File.write('live_log', '')
 system({ 'QEMU_AUDIO_DRV' => 'none' },
        '../os-autoinst/isotovideo', '-d') || raise
+
+JUnit.from_openqa('wok/testresults')
