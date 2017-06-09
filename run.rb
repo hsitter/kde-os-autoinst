@@ -32,7 +32,7 @@ system('sudo apt-get -y install git devscripts autotools-dev libcurl4-openssl-de
 system('git clone https://github.com/AppImage/zsync-curl.git') || system('git pull --rebase', chdir: 'zsync-curl') || raise
 system('./zsync-curl/build.sh') || raise
 
-system('/usr/local/bin/zsync-curl', '-q', '-o', 'neon.iso', ISO_URL) || raise
+system('/usr/local/bin/zsync_curl', '-q', '-o', 'neon.iso', ISO_URL) || raise
 system('wget', '-q', '-O', 'neon.iso.sig', SIG_URL) || raise
 system('gpg2', '--recv-key', GPG_KEY) || raise
 system('gpg2', '--verify', 'neon.iso.sig') || raise
