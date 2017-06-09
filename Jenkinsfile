@@ -32,6 +32,7 @@ def cleanNode(label = null, body) {
           body()
         }
       }
+    } finally {
       // step([$class: 'WsCleanup', cleanWhenFailure: true])
     }
   }
