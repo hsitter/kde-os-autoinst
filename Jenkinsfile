@@ -12,6 +12,7 @@ cleanNode('master') {
         sh './contain.rb /workspace/bootstrap.rb'
       }
     } finally {
+      junit 'junit/*'
       sh 'tar -cf wok.tar wok'
       archiveArtifacts 'wok.tar'
       sh './contain.rb chown -R jenkins .'
