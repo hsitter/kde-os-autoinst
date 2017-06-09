@@ -29,7 +29,7 @@ SIG_URL = 'http://files.kde.org/neon/images/neon-useredition/current/neon-usered
 GPG_KEY = '348C 8651 2066 33FD 983A 8FC4 DEAC EA00 075E 1D76'.freeze
 
 system('sudo apt-get -y install git devscripts autotools-dev libcurl4-openssl-dev') || raise
-system('git clone https://github.com/AppImage/zsync-curl.git') || raise
+system('git clone https://github.com/AppImage/zsync-curl.git') || system('git pull --rebase', chdir: 'zsync-curl') || raise
 system('./zsync-curl/build.sh') || raise
 
 system('/usr/local/bin/zsync-curl', '-q', '-o', 'neon.iso', ISO_URL) || raise
