@@ -34,6 +34,8 @@ sub run {
     assert_and_click "installer-icon";
     assert_screen "installer-welcome", 30;
     assert_and_click "installer-next";
+    assert_screen "installer-prepare", 8;
+    assert_and_click "installer-next";
     assert_screen "installer-welcome", 8;
 }
 
