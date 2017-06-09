@@ -58,6 +58,22 @@ config = {
 # Neon builders don't do KVM, disable it if the module is not loaded.
 config[:QEMU_NO_KVM] = true unless system('lsmod | grep -q kvm_intel')
 
+require 'webrick'
+s = WEBrick::HTTPServer.new(DocumentRoot: '.', Port: 0)
+shutdown = proc { s.shutdown }
+siglist = %w[TERM QUIT]
+siglist.concat(%w[HUP INT]) if STDIN.tty?
+siglist &= Signal.list.keys
+siglist.each do |sig|
+  Signal.trap(sig, shutdown)
+end
+Thread.start do
+  s.start
+end
+
+warn "Live data @ http://build.neon.kde.org:#{s.config.fetch(:Port)}.\n" \
+  'Disappears on exit.'
+
 File.write('vars.json', JSON.generate(config))
 File.write('live_log', '')
 system({ 'QEMU_AUDIO_DRV' => 'none' },
