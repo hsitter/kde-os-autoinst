@@ -1,6 +1,6 @@
 #!/bin/sh
 
 apt update
-apt install -y ruby sudo
+apt install -y ruby sudo ruby-dev
 
-exec ./axiom.rb
+exec ./bootstrap.rb
