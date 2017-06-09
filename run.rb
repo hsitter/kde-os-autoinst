@@ -60,14 +60,18 @@ config[:QEMU_NO_KVM] = true unless system('lsmod | grep -q kvm_intel')
 
 require 'webrick'
 s = WEBrick::HTTPServer.new(DocumentRoot: '.', Port: 0)
-shutdown = proc { s.shutdown }
-siglist = %w[TERM QUIT]
-siglist.concat(%w[HUP INT]) if STDIN.tty?
-siglist &= Signal.list.keys
-siglist.each do |sig|
-  Signal.trap(sig, shutdown)
-end
-Thread.start do
+Thread.new do
+  shutdown = proc do
+    warn 'shutting down httpserver'
+    s.shutdown
+  end
+  siglist = %w[TERM QUIT]
+  siglist.concat(%w[HUP INT]) if STDIN.tty?
+  siglist &= Signal.list.keys
+  siglist.each do |sig|
+    Signal.trap(sig, shutdown)
+  end
+  warn 'starting server'
   s.start
 end
 
