@@ -36,6 +36,8 @@ sub run {
     assert_and_click "installer-next";
     assert_screen "installer-prepare", 8;
     assert_and_click "installer-next";
+    assert_screen "installer-disk", 8;
+    assert_and_click "installer-next";
     assert_screen "installer-welcome", 8;
 }
 
