@@ -47,6 +47,7 @@ config = {
   CDMODEL: 'virtio-scsi-pci',
   DESKTOP: 'kde',
   DISTRI: 'debian',
+  PRJDIR: '/workspace',
   CASEDIR: '/workspace/neon',
   ISO: '/workspace/neon.iso',
   PRODUCTDIR: '/workspace/neon',
