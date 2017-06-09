@@ -25,6 +25,8 @@ deps = %w(libtheora-dev libopencv-dev libfftw3-dev libsndfile1-dev pkg-config
 
 system("apt install --no-install-recommends -y #{deps.join(' ')}") || raise
 
+system('gem install jenkins_junit_builder') || raise
+
 unless File.exist?('os-autoinst')
   system('git clone https://github.com/os-autoinst/os-autoinst.git') || raise
 end
