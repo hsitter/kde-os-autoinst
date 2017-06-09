@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "width": 104,
+      "height": 43,
+      "xpos": 809,
+      "ypos": 514,
+      "match": 90
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-next",
+    "ENV-DISTRI-neon"
+  ]
+}
