@@ -37,7 +37,10 @@ end
 #   system('git clone --depth 1 https://github.com/os-autoinst/os-autoinst-needles-opensuse.git opensuse-needles') || raise
 # end
 
+perldir = nil
 Dir.chdir('os-autoinst') do
+  perldir = "#{Dir.pwd}/perl5"
+
   system('autoreconf -f -i') || raise
   system('./configure') || raise
   system('make') || raise
@@ -46,14 +49,16 @@ Dir.chdir('os-autoinst') do
   system('apt install --no-install-recommends -y carton') || raise
   ## builddeps
   system('apt install --no-install-recommends -y libxml2-dev libssh2-1-dev libdbus-1-dev') || raise
-  unless system('cpanm --installdeps -S --notest .')
+  unless system("cpanm --installdeps --no-sudo --local-lib-contained #{perldir} --notest .")
     Dir.glob("#{Dir.home}/.cpanm/work/*/build.log").each do |log|
       5.times { puts }
       puts "----------------- #{log} -----------------"
       puts File.read(log)
     end
+    raise 'capnm install failed'
   end
 end
+ENV['PERL5LIB'] = "#{perldir}/lib/perl5/"
 
 # VM runner and run.rb helpers.
 system('apt install -y kvm qemu zsync') || raise
