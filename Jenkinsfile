@@ -14,7 +14,7 @@ cleanNode('master') {
     } finally {
       junit 'junit/*'
       sh 'rm -f wok.tar wok.tar.xz'
-      sh 'tar -cfJ wok.tar.xz wok'
+      sh 'tar cfJ wok.tar.xz wok'
       archiveArtifacts 'wok.tar.xz, wok/testresults/*.png, wok/testresults/*.json'
       sh './contain.rb chown -R jenkins .'
     }
