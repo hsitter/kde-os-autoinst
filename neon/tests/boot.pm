@@ -63,7 +63,10 @@ sub run {
     assert_screen "installer-user-complete", 8;
     assert_and_click "installer-next";
 
-    assert_screen "installer-welcome", 180;
+    assert_screen "installer-show", 8;
+
+    # Let install finish.
+    assert_screen "installer-welcome", 360;
 }
 
 sub test_flags {
