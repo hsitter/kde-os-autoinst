@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 0,
+      "ypos": 0,
+      "width": 914,
+      "height": 308,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-user-complete",
+    "ENV-DISTRI-neon"
+  ]
+}
