@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "xpos": 0,
+      "type": "match",
+      "width": 914,
+      "height": 561,
+      "ypos": 0,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-disk-confirm",
+    "ENV-DISTRI-neon"
+  ]
+}
