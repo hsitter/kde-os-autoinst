@@ -42,6 +42,8 @@ sub run {
     assert_and_click "installer-disk-confirm-continue";
     assert_screen "installer-timezone", 8;
     assert_and_click "installer-next";
+    assert_screen "installer-keyboard", 8;
+    assert_and_click "installer-next";
     assert_screen "installer-welcome", 8;
 }
 
