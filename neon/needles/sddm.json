@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 91,
+      "ypos": 211,
+      "width": 862,
+      "height": 477,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "sddm",
+    "ENV-DISTRI-neon"
+  ]
+}

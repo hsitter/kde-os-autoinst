@@ -75,7 +75,7 @@ sub run {
     reset_consoles;
 
     # Eventually we should end up in sddm
-    assert_screen "desktop", 180;
+    assert_screen "sddm", 180;
 }
 
 sub test_flags {
