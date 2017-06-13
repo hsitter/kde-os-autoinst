@@ -1,0 +1,14 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 0,
+      "ypos": 324,
+      "width": 162,
+      "height": 45
+    }
+  ],
+  "tags": [
+    "tty-logged-in"
+  ]
+}

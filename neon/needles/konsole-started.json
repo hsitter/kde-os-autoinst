@@ -1,0 +1,18 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 0,
+      "ypos": 34,
+      "width": 562,
+      "height": 134,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "konsole",
+    "konsole-started",
+    "ENV-DISTRI-neon"
+  ]
+}

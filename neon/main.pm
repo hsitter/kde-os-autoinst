@@ -30,7 +30,8 @@ BEGIN {
     unshift @INC, dirname(__FILE__) . '/../../lib';
 }
 
-# init_main();
+$testapi::username = 'neon';
+$testapi::password = '';
 
 my $distri = testapi::get_var("CASEDIR") . '/lib/distribution_neon.pm';
 require $distri;
