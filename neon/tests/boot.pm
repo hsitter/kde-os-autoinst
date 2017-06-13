@@ -83,6 +83,20 @@ sub test_flags {
     return { important => 1 };
 }
 
-1;
+sub post_fail_hook {
+    my ($self) = shift;
+    $self->SUPER::post_fail_hook;
 
-# vim: set sw=4 et:
+    select_console('x11');
+    ensure_installed 'curl';
+
+    select_console('log-console');
+
+    # Uploads end up in wok/ulogs/
+    assert_script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
+    upload_logs '/tmp/journal.txt';
+    assert_script_sudo 'tar cfJ /tmp/installer.tar.xz /var/log/installer';
+    upload_logs '/var/log/installer.tar.xz';
+}
+
+1;
