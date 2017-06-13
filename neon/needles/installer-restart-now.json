@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 541,
+      "ypos": 389,
+      "width": 90,
+      "height": 31,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-restart-now",
+    "ENV-DISTRI-neon"
+  ]
+}

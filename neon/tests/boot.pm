@@ -65,8 +65,14 @@ sub run {
 
     assert_screen "installer-show", 8;
 
-    # Let install finish.
-    assert_screen "installer-welcome", 360;
+    # Let install finish and restart
+    assert_screen "installer-restart", 640;
+    assert_and_click "installer-restart-now";
+
+    reset_consoles;
+
+    # Eventually we should end up in sddm
+    assert_screen "desktop", 180;
 }
 
 sub test_flags {
