@@ -27,6 +27,8 @@ sub run {
     # wait for the desktop to appear
     assert_screen 'desktop', 180;
 
+    assert_screen "installer-welcome", 2;
+
     # Installer
     assert_and_click "installer-icon";
     assert_screen "installer-welcome", 30;
