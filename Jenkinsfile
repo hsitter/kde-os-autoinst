@@ -12,8 +12,8 @@ cleanNode('master') {
         sh './contain.rb /workspace/bootstrap.rb'
       }
     } finally {
-      junit 'junit/*'
       archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*'
+      junit 'junit/*'
       // sh 'rm -f wok.tar wok.tar.xz'
       // sh 'tar cfJ wok.tar.xz wok'
       // archiveArtifacts 'wok.tar.xz'
