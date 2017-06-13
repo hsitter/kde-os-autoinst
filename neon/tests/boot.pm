@@ -101,7 +101,7 @@ sub post_fail_hook {
     assert_script_sudo 'ls -lah /tmp/';
     wait_idle;
     assert_script_sudo "chown $testapi::username /tmp/installer.tar.xz";
-    upload_logs '/var/log/installer.tar.xz';
+    upload_logs '/tmp/installer.tar.xz';
 }
 
 1;
