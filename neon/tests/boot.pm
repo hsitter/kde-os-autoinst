@@ -98,6 +98,8 @@ sub post_fail_hook {
     assert_script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
     upload_logs '/tmp/journal.txt';
     assert_script_sudo 'tar cfJ /tmp/installer.tar.xz /var/log/installer';
+    assert_script_sudo 'ls -lah /tmp/';
+    wait_idle;
     assert_script_sudo "chown $testapi::username /tmp/installer.tar.xz";
     upload_logs '/var/log/installer.tar.xz';
 }
