@@ -14,6 +14,7 @@ cleanNode('master') {
     } finally {
       archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*'
       sh 'ls -lahR wok/ulogs/'
+      sh 'ls -lahR wok/testresults/'
       junit 'junit/*'
       // sh 'rm -f wok.tar wok.tar.xz'
       // sh 'tar cfJ wok.tar.xz wok'
