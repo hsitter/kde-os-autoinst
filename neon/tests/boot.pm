@@ -69,6 +69,9 @@ sub run {
     assert_screen "installer-restart", 640;
     assert_and_click "installer-restart-now";
 
+    assert_screen "live-remove-medium", 60;
+    send_key "ret";
+
     reset_consoles;
 
     # Eventually we should end up in sddm

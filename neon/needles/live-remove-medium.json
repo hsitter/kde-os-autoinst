@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 194,
+      "ypos": 561,
+      "width": 598,
+      "height": 116,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "live-remove-medium",
+    "ENV-DISTRI-neon"
+  ]
+}
