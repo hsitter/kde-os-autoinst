@@ -19,9 +19,9 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
-deps = %w(libtheora-dev libopencv-dev libfftw3-dev libsndfile1-dev pkg-config
+deps = %w[libtheora-dev libopencv-dev libfftw3-dev libsndfile1-dev pkg-config
           libtool autoconf automake build-essential
-          git)
+          git]
 
 system("apt install --no-install-recommends -y #{deps.join(' ')}") || raise
 
