@@ -33,36 +33,36 @@ sub run {
     assert_and_click "installer-icon";
     assert_screen "installer-welcome", 30;
     assert_and_click "installer-next";
-    assert_screen "installer-prepare", 8;
+    assert_screen "installer-prepare", 16;
     assert_and_click "installer-next";
-    assert_screen "installer-disk", 8;
+    assert_screen "installer-disk", 16;
     assert_and_click "installer-install-now";
-    assert_screen "installer-disk-confirm", 8;
+    assert_screen "installer-disk-confirm", 16;
     assert_and_click "installer-disk-confirm-continue";
 
     # Timezone has 75% fuzzyness as timezone is geoip'd so its fairly divergent.
     # Also, starting here only the top section of the window gets matched as
     # the bottom part with the buttons now has a progressbar and status
     # text which is non-deterministic.
-    assert_screen "installer-timezone", 8;
+    assert_screen "installer-timezone", 16;
     assert_and_click "installer-next";
-    assert_screen "installer-keyboard", 8;
+    assert_screen "installer-keyboard", 16;
     assert_and_click "installer-next";
 
-    assert_screen "installer-user", 8;
+    assert_screen "installer-user", 16;
     type_string "user";
     # user in user field, name field (needle doesn't include hostname in match)
-    assert_screen "installer-user-user", 8;
+    assert_screen "installer-user-user", 16;
     send_key "tab", 1; # username field
     send_key "tab", 1; # 1st password field
     type_string "password";
     send_key "tab", 1; # 2nd password field
     type_string "password";
     # all fields filled (not matching hostname field)
-    assert_screen "installer-user-complete", 8;
+    assert_screen "installer-user-complete", 16;
     assert_and_click "installer-next";
 
-    assert_screen "installer-show", 8;
+    assert_screen "installer-show", 16;
 
     # Let install finish and restart
     assert_screen "installer-restart", 640;
