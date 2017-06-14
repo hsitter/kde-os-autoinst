@@ -19,6 +19,10 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
+require_relative '../lib/paths'
+
+Dir.chdir(File.dirname(__dir__)) # go into working dir
+
 deps = %w[libtheora-dev libopencv-dev libfftw3-dev libsndfile1-dev pkg-config
           libtool autoconf automake build-essential
           git]
@@ -37,10 +41,7 @@ end
 #   system('git clone --depth 1 https://github.com/os-autoinst/os-autoinst-needles-opensuse.git opensuse-needles') || raise
 # end
 
-perldir = nil
 Dir.chdir('os-autoinst') do
-  perldir = "#{Dir.pwd}/perl5"
-
   system('autoreconf -f -i') || raise
   system('./configure') || raise
   system('make') || raise
@@ -49,7 +50,7 @@ Dir.chdir('os-autoinst') do
   system('apt install --no-install-recommends -y carton') || raise
   ## builddeps
   system('apt install --no-install-recommends -y libxml2-dev libssh2-1-dev libdbus-1-dev') || raise
-  unless system("cpanm --installdeps --no-sudo --local-lib-contained #{perldir} --notest .")
+  unless system("cpanm --installdeps --no-sudo --local-lib-contained #{PERL5DIR} --notest .")
     Dir.glob("#{Dir.home}/.cpanm/work/*/build.log").each do |log|
       5.times { puts }
       puts "----------------- #{log} -----------------"
@@ -58,16 +59,9 @@ Dir.chdir('os-autoinst') do
     raise 'capnm install failed'
   end
 end
-ENV['PERL5LIB'] = "#{perldir}/lib/perl5/"
 
 # VM runner and run.rb helpers.
-system('apt install -y kvm qemu zsync') || raise
+system('apt install -y kvm qemu zsync kmod') || raise
 
 system('bin/sync.rb') || raise
-exec('./run.rb;')
-
-## testi
-exit
-system('apt install --y qemu')
-# system('carton install') || raise/
-# system('carton exec yolo') || raise
+exec('bin/run.rb')

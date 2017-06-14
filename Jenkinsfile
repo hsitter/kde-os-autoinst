@@ -9,7 +9,7 @@ cleanNode('master') {
         git 'https://github.com/apachelogger/kde-os-autoinst'
       }
       stage('run') {
-        sh './contain.rb /workspace/bootstrap.rb'
+        sh './contain.rb /workspace/bin/bootstrap.rb'
       }
     } finally {
       archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv'

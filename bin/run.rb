@@ -22,7 +22,10 @@
 require 'fileutils'
 require 'json'
 
-require_relative 'lib/junit'
+require_relative '../lib/junit'
+require_relative '../lib/paths'
+
+ENV['PERL5LIB'] = PERL5LIB
 
 # not a typo 鑊!
 FileUtils.rm_r('wok') if File.exist?('wok')
@@ -45,8 +48,17 @@ config = {
   PRODUCTDIR: '/workspace/neon',
   QEMUVGA: 'cirrus',
   TESTDEBUG: true,
+  MAKETESTSNAPSHOTS: false,
   QEMUCPUS: cpus
 }
+
+if Dir.exist?('../raid')
+  config[:BOOT_HDD_IMAGE] = true
+  config[:KEEPHDDS] = true
+  # FIXME: should probably be mv when JOB_NAME is set to be faster in a CI
+  #   context
+  FileUtils.cp_r('../raid', '.', verbose: true)
+end
 
 # Neon builders don't do KVM, disable it if the module is not loaded.
 config[:QEMU_NO_KVM] = true unless system('lsmod | grep -q kvm_intel')
