@@ -25,7 +25,7 @@ sub run {
     assert_screen 'bootloader', 30;
 
     # wait for the desktop to appear
-    assert_screen 'desktop', 180;
+    assert_screen 'live-desktop', 180;
 
     wait_idle; # Make sure system has settled down a bit.
 
@@ -77,7 +77,7 @@ sub run {
     reset_consoles;
 
     # Eventually we should end up in sddm
-    assert_screen "sddm", 180;
+    assert_screen 'sddm', 180;
 }
 
 sub test_flags {
