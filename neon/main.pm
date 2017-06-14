@@ -33,17 +33,15 @@ my $dist = testapi::get_var("CASEDIR") . '/lib/distribution_neon.pm';
 require $dist;
 testapi::set_distribution(distribution_neon->new());
 
-sub load_tests_to_run {
+if (testapi::get_var("INSTALLATION")) {
+    autotest::loadtest "tests/install_ubiquity.pm";
+} elsif (testapi::get_var("TESTS_TO_RUN")) {
     for my $testpath (testapi::get_var("TESTS_TO_RUN")) {
-        testapi::diag "loading $testpath"
         autotest::loadtest $testpath;
     }
-}
-
-if (testapi::check_var("INSTALLATION")) {
-    autotest::loadtest "tests/install_ubiquity.pm";
 } else {
-    load_tests_to_run();
+    testapi::diag 'ERROR FAILURE BAD ERROR no clue what to run!';
+    exit 1;
 }
 
 1;
