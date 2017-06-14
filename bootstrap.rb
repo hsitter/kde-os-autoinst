@@ -63,6 +63,7 @@ ENV['PERL5LIB'] = "#{perldir}/lib/perl5/"
 # VM runner and run.rb helpers.
 system('apt install -y kvm qemu zsync') || raise
 
+system('bin/sync.rb') || raise
 exec('./run.rb;')
 
 ## testi

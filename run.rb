@@ -24,19 +24,6 @@ require 'json'
 
 require_relative 'junit'
 
-ISO_URL = 'http://files.kde.org/neon/images/neon-useredition/current/neon-useredition-current.iso.zsync'.freeze
-SIG_URL = 'http://files.kde.org/neon/images/neon-useredition/current/neon-useredition-current.iso.sig'.freeze
-GPG_KEY = '348C 8651 2066 33FD 983A 8FC4 DEAC EA00 075E 1D76'.freeze
-
-system('sudo apt-get -y install git devscripts autotools-dev libcurl4-openssl-dev') || raise
-system('git clone https://github.com/AppImage/zsync-curl.git') unless File.exist?('zsync-curl')
-system('./zsync-curl/build.sh') || raise
-
-system('/usr/local/bin/zsync_curl', '-q', '-o', 'neon.iso', ISO_URL) || raise
-system('wget', '-q', '-O', 'neon.iso.sig', SIG_URL) || raise
-system('gpg2', '--recv-key', GPG_KEY) || raise
-system('gpg2', '--verify', 'neon.iso.sig') || raise
-
 # not a typo 鑊!
 FileUtils.rm_r('wok') if File.exist?('wok')
 Dir.mkdir('wok')
