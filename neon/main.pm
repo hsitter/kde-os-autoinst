@@ -26,14 +26,14 @@ BEGIN {
     unshift @INC, dirname(__FILE__) . '/../../lib';
 }
 
-$testapi::username = 'neon';
-$testapi::password = '';
+$testapi::username = 'user';
+$testapi::password = 'password';
 
 my $dist = testapi::get_var("CASEDIR") . '/lib/distribution_neon.pm';
 require $dist;
 testapi::set_distribution(distribution_neon->new());
 
-autotest::loadtest "tests/install_ubiquity.pm";
-# autotest::loadtest "tests/plasma_folder.pm";
+# autotest::loadtest "tests/install_ubiquity.pm";
+autotest::loadtest "tests/plasma_folder.pm";
 
 1;

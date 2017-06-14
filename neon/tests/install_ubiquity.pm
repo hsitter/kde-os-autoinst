@@ -21,12 +21,17 @@ use strict;
 use testapi;
 
 sub run {
+    # Divert installation data to live data.
+    my $user = $testapi::username;
+    my $password = $testapi::password;
+    $testapi::username = 'neon';
+    $testapi::password = '';
+
     # wait for bootloader to appear
     assert_screen 'bootloader', 30;
 
     # wait for the desktop to appear
     assert_screen 'live-desktop', 180;
-
     wait_idle; # Make sure system has settled down a bit.
 
     # Installer
@@ -53,14 +58,14 @@ sub run {
     assert_and_click "installer-next";
 
     assert_screen "installer-user", 16;
-    type_string "user";
+    type_string $user;
     # user in user field, name field (needle doesn't include hostname in match)
     assert_screen "installer-user-user", 16;
     send_key "tab", 1; # username field
     send_key "tab", 1; # 1st password field
-    type_string "password";
+    type_string $password;
     send_key "tab", 1; # 2nd password field
-    type_string "password";
+    type_string $password;
     # all fields filled (not matching hostname field)
     assert_screen "installer-user-complete", 16;
     assert_and_click "installer-next";
@@ -78,6 +83,10 @@ sub run {
 
     # Eventually we should end up in sddm
     assert_screen 'sddm', 180;
+
+    # Set instalation data.
+    $testapi::username = $user;
+    $testapi::password = $password;
 }
 
 sub test_flags {
