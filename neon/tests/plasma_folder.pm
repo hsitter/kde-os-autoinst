@@ -16,30 +16,29 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# use testapi qw/check_var get_var set_var/;
-# use lockapi;
-# use needle;
-
+use base "basetest";
 use strict;
-use warnings;
 use testapi;
-use autotest;
-use File::Basename;
 
-BEGIN {
-    unshift @INC, dirname(__FILE__) . '/../../lib';
+sub run {
+    # wait for bootloader to appear
+    assert_screen 'bootloader', 16;
+
+    # Eventually we should end up in sddm
+    assert_screen "sddm", 16;
+
+    # wait for the desktop to appear
+    assert_screen 'desktop', 16;
+
+    wait_idle; # Make sure system has settled down a bit.
 }
 
-$testapi::username = 'neon';
-$testapi::password = '';
-
-my $distri = testapi::get_var("CASEDIR") . '/lib/distribution_neon.pm';
-require $distri;
-testapi::set_distribution(distribution_neon->new());
-
-autotest::loadtest "tests/install_ubiquity.pm";
-autotest::loadtest "tests/plasma_folder.pm";
+sub test_flags {
+    # without anything - rollback to 'lastgood' snapshot if failed
+    # 'fatal' - whole test suite is in danger if this fails
+    # 'milestone' - after this test succeeds, update 'lastgood'
+    # 'important' - if this fails, set the overall state to 'fail'
+    return { important => 1 };
+}
 
 1;
-
-# vim: set sw=4 et:
