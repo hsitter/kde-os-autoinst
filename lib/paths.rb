@@ -18,5 +18,5 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
-PERL5DIR = "#{File.dirname(__dir__)}/perl5".freeze
+PERL5DIR = File.absolute_path("#{File.dirname(__dir__)}/perl5")
 PERL5LIB = "#{PERL5DIR}/lib/perl5/".freeze
