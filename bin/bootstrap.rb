@@ -50,6 +50,7 @@ Dir.chdir('os-autoinst') do
   system('apt install --no-install-recommends -y carton') || raise
   ## builddeps
   system('apt install --no-install-recommends -y libxml2-dev libssh2-1-dev libdbus-1-dev') || raise
+  warn("cpanm --installdeps --no-sudo --local-lib-contained #{PERL5DIR} --notest .")
   unless system("cpanm --installdeps --no-sudo --local-lib-contained #{PERL5DIR} --notest .")
     Dir.glob("#{Dir.home}/.cpanm/work/*/build.log").each do |log|
       5.times { puts }
