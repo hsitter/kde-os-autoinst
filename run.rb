@@ -42,6 +42,11 @@ FileUtils.rm_r('wok') if File.exist?('wok')
 Dir.mkdir('wok')
 Dir.chdir('wok')
 
+cpus = `nproc`.strip.to_i
+# Cloud scaled node, use all cores, else only half of them to not impair
+# other functionality on the node.
+cpus = (cpus / 2.0).ceil unless File.exist?('/tooling/is_scaling_node')
+
 config = {
   BACKEND: 'qemu',
   CDMODEL: 'virtio-scsi-pci',
@@ -52,7 +57,8 @@ config = {
   ISO: '/workspace/neon.iso',
   PRODUCTDIR: '/workspace/neon',
   QEMUVGA: 'cirrus',
-  TESTDEBUG: true
+  TESTDEBUG: true,
+  QEMUCPUS: cpus
 }
 
 # Neon builders don't do KVM, disable it if the module is not loaded.
