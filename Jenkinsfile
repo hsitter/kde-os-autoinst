@@ -12,7 +12,7 @@ cleanNode('master') {
         sh './contain.rb /workspace/bootstrap.rb'
       }
     } finally {
-      archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*'
+      archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv'
       sh 'ls -lahR wok/ulogs/'
       sh 'ls -lahR wok/testresults/'
       junit 'junit/*'
