@@ -16,10 +16,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# use testapi qw/check_var get_var set_var/;
-# use lockapi;
-# use needle;
-
 use strict;
 use warnings;
 use testapi;
@@ -33,13 +29,11 @@ BEGIN {
 $testapi::username = 'neon';
 $testapi::password = '';
 
-my $distri = testapi::get_var("CASEDIR") . '/lib/distribution_neon.pm';
-require $distri;
+my $dist = testapi::get_var("CASEDIR") . '/lib/distribution_neon.pm';
+require $dist;
 testapi::set_distribution(distribution_neon->new());
 
 autotest::loadtest "tests/install_ubiquity.pm";
-autotest::loadtest "tests/plasma_folder.pm";
+# autotest::loadtest "tests/plasma_folder.pm";
 
 1;
-
-# vim: set sw=4 et:
