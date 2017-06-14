@@ -35,6 +35,7 @@ testapi::set_distribution(distribution_neon->new());
 
 sub load_tests_to_run {
     for my $testpath (testapi::get_var("TESTS_TO_RUN")) {
+        autotest::diag "loading $testpath"
         autotest::loadtest $testpath;
     }
 }
