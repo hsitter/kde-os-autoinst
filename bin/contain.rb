@@ -60,6 +60,10 @@ c = CI::Containment.new(JOB_NAME,
                         image: CI::PangeaImage.new(:ubuntu, DIST),
                         binds: ["#{Dir.pwd}:#{PWD_BIND}"],
                         privileged: false)
+env = []
+env << 'INSTALLATION=1' if ENV.include?('INSTALLATION')
+env << "TESTS_TO_RUN=#{ENV['TESTS_TO_RUN']}" if ENV['TESTS_TO_RUN']
 status_code = c.run(Cmd: ARGV, WorkingDir: PWD_BIND,
+                    Env: env,
                     HostConfig: { Devices: [dev_kvm] })
 exit status_code

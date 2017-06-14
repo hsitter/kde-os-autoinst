@@ -33,7 +33,12 @@ my $dist = testapi::get_var("CASEDIR") . '/lib/distribution_neon.pm';
 require $dist;
 testapi::set_distribution(distribution_neon->new());
 
-autotest::loadtest "tests/install_ubiquity.pm";
-# autotest::loadtest "tests/plasma_folder.pm";
+if testapi::check_var("INSTALLATION") {
+    autotest::loadtest "tests/install_ubiquity.pm";
+} else {
+    for my $test (testapi::get_var("TESTS_TO_RUN")) {
+        autotest::loadtest $test;
+    }
+}
 
 1;

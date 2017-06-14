@@ -8,12 +8,20 @@ cleanNode('master') {
       stage('clone') {
         git 'https://github.com/apachelogger/kde-os-autoinst'
       }
-      stage('run') {
-        sh 'bin/contain.rb /workspace/bin/bootstrap.rb'
+      stage('installation') {
+        sh 'INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
+      }
+      stage('plasma_folder') {
+        // hack: move raid into main dir form where our tooling will import it
+        // to run the tests
+        sh 'cp -rv wok/raid raid'
+        sh 'TESTS_TO_RUN=tests/plasma_folder.pm bin/contain.rb /workspace/bin/bootstrap.rb'
       }
     } finally {
       archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv'
       junit 'junit/*'
+      // hack: undo hack from plasma_folder
+      sh 'rm -rv raid || true'
       // sh 'rm -f wok.tar wok.tar.xz'
       // sh 'tar cfJ wok.tar.xz wok'
       // archiveArtifacts 'wok.tar.xz'

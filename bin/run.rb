@@ -53,6 +53,9 @@ config = {
   QEMUCPUS: cpus
 }
 
+config[:TESTS_TO_RUN] = ENV['TESTS_TO_RUN'] if ENV['TESTS_TO_RUN']
+config[:INSTALLATION] = ENV['INSTALLATION'] if ENV['INSTALLATION']
+
 if Dir.exist?('../raid')
   config[:BOOT_HDD_IMAGE] = true
   config[:KEEPHDDS] = true
