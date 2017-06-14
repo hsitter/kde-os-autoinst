@@ -37,7 +37,7 @@ my $distri = testapi::get_var("CASEDIR") . '/lib/distribution_neon.pm';
 require $distri;
 testapi::set_distribution(distribution_neon->new());
 
-autotest::loadtest "tests/boot.pm";
+autotest::loadtest "tests/install_ubiquity.pm";
 
 1;
 
