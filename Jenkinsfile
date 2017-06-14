@@ -9,7 +9,7 @@ cleanNode('master') {
         git 'https://github.com/apachelogger/kde-os-autoinst'
       }
       stage('run') {
-        sh './contain.rb /workspace/bin/bootstrap.rb'
+        sh 'bin/contain.rb /workspace/bin/bootstrap.rb'
       }
     } finally {
       archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv'
@@ -17,7 +17,7 @@ cleanNode('master') {
       // sh 'rm -f wok.tar wok.tar.xz'
       // sh 'tar cfJ wok.tar.xz wok'
       // archiveArtifacts 'wok.tar.xz'
-      sh './contain.rb chown -R jenkins .'
+      sh 'bin/contain.rb chown -R jenkins .'
     }
   }
 }
