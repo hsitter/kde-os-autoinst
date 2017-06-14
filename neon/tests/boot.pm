@@ -44,7 +44,10 @@ sub run {
     # Also, starting here only the top section of the window gets matched as
     # the bottom part with the buttons now has a progressbar and status
     # text which is non-deterministic.
-    assert_screen "installer-timezone", 16;
+    # NB: we give way more leeway on the new needle appearing as disk IO can
+    #   cause quite a bit of slowdown and ubiquity's transition policy is
+    #   fairly weird when moving away from the disk page.
+    assert_screen "installer-timezone", 60;
     assert_and_click "installer-next";
     assert_screen "installer-keyboard", 16;
     assert_and_click "installer-next";
