@@ -27,7 +27,7 @@ sub run {
     # wait for the desktop to appear
     assert_screen 'desktop', 180;
 
-    assert_screen "installer-welcome", 16;
+    wait_idle; # Make sure system has settled down a bit.
 
     # Installer
     assert_and_click "installer-icon";
@@ -89,18 +89,15 @@ sub post_fail_hook {
     my ($self) = shift;
     $self->SUPER::post_fail_hook;
 
-    select_console('x11');
+    select_console 'x11';
     ensure_installed 'curl';
 
-    select_console('log-console');
+    select_console 'log-console';
 
     # Uploads end up in wok/ulogs/
     assert_script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
     upload_logs '/tmp/journal.txt';
     assert_script_sudo 'tar cfJ /tmp/installer.tar.xz /var/log/installer';
-    assert_script_sudo 'ls -lah /tmp/';
-    wait_idle;
-    assert_script_sudo "chown $testapi::username /tmp/installer.tar.xz";
     upload_logs '/tmp/installer.tar.xz';
 }
 
