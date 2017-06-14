@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 161,
+      "ypos": 54,
+      "width": 480,
+      "height": 84,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "grub",
+    "ENV-DISTRI-neon"
+  ]
+}

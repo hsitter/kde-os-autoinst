@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 28,
+      "ypos": 28,
+      "width": 53,
+      "height": 39,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "home-icon",
+    "ENV-DISTRI-neon"
+  ]
+}

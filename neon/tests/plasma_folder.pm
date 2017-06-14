@@ -21,16 +21,22 @@ use strict;
 use testapi;
 
 sub run {
-    # wait for bootloader to appear
-    assert_screen 'bootloader', 16;
+    assert_screen "grub", 30;
+    send_key 'ret'; # start first entry
 
     # Eventually we should end up in sddm
-    assert_screen "sddm", 16;
+    assert_screen "sddm", 60;
+
+    type_password $testapi::password;
+    send_key 'ret';
 
     # wait for the desktop to appear
-    assert_screen 'desktop', 16;
-
+    # This must be lower than 30! 30 seconds would indicate a dbus timeout
+    assert_screen 'folder-desktop', 20;
     wait_idle; # Make sure system has settled down a bit.
+
+    assert_and_click "home-icon";
+    wait_idle;
 }
 
 sub test_flags {

@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 0,
+      "ypos": 0,
+      "width": 888,
+      "height": 768,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "folder-desktop",
+    "ENV-DISTRI-neon"
+  ]
+}
