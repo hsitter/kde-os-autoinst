@@ -29,8 +29,12 @@ require_relative '../lib/paths'
 ENV['PERL5LIB'] = PERL5LIB
 
 # not a typo 鑊!
-FileUtils.rm_r('wok') if File.exist?('wok')
-Dir.mkdir('wok')
+# FIXME: hack while we run everything in the same job we need to only clean the
+#   wok on the initial installation test. otherwise we lose data.
+if ENV['INSTALLATION']
+  FileUtils.rm_r('wok') if File.exist?('wok')
+  Dir.mkdir('wok')
+end
 Dir.chdir('wok')
 
 # Cloud scaled node, use all cores, else only half of them to not impair
