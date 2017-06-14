@@ -22,7 +22,7 @@
 require 'fileutils'
 require 'json'
 
-require_relative 'junit'
+require_relative 'lib/junit'
 
 # not a typo 鑊!
 FileUtils.rm_r('wok') if File.exist?('wok')
