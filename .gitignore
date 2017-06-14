@@ -1,0 +1,11 @@
+/opensuse*/
+/wok/
+/work/
+/local/
+/perl5/
+/raid/
+/os-autoinst/
+/.vagrant/
+/*.iso
+/*.iso.zs-old
+/*.sig
