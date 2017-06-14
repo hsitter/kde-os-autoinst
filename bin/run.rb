@@ -19,6 +19,7 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
+require 'etc'
 require 'fileutils'
 require 'json'
 
@@ -32,9 +33,9 @@ FileUtils.rm_r('wok') if File.exist?('wok')
 Dir.mkdir('wok')
 Dir.chdir('wok')
 
-cpus = `nproc`.strip.to_i
 # Cloud scaled node, use all cores, else only half of them to not impair
 # other functionality on the node.
+cpus = Etc.nprocessors
 cpus = (cpus / 2.0).ceil unless File.exist?('/tooling/is_scaling_node')
 
 config = {
