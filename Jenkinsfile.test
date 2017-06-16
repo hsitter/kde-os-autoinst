@@ -2,6 +2,24 @@ env.DIST = 'xenial'
 env.TYPE = 'user'
 env.PWD_BIND = '/workspace'
 
+// def in_container(body) {
+//   container_id = sh(script: "bin/container_start.rb", returnStdout: true).trim()
+//   try {
+//     def contain = { args ->
+//       env = args['env'] ? args['env'] : ''
+//       cmd = args['cmd']
+//       sh "echo '$env bin/contain.rb $cmd'"
+//     }
+//     body(contain)
+//   } finally {
+//     sh "bin/container_murder.rb"
+//   }
+// }
+//
+//   in_container { contain ->
+//     contain(cmd: "xxx")
+//   }
+
 cleanNode('os-autoinst') {
   try {
     stage('tree[wget]') {
