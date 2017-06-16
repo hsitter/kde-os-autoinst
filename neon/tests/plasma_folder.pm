@@ -25,7 +25,7 @@ sub run {
     send_key 'ret'; # start first entry
 
     # Eventually we should end up in sddm
-    assert_screen "sddm", 60;
+    assert_screen "sddm", 120;
 
     type_password $testapi::password;
     send_key 'ret';
