@@ -69,6 +69,9 @@ end
 # Neon builders don't do KVM, disable it if the module is not loaded.
 config[:QEMU_NO_KVM] = true unless system('lsmod | grep -q kvm_intel')
 
+warn "Going to use #{cpus} Cores"
+warn "Going to use KVM: #{config.include?(:QEMU_NO_KVM)}"
+
 File.write('vars.json', JSON.generate(config))
 File.write('live_log', '')
 system({ 'QEMU_AUDIO_DRV' => 'none' },

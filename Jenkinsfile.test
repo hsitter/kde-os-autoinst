@@ -22,6 +22,7 @@ env.PWD_BIND = '/workspace'
 
 cleanNode('os-autoinst') {
   try {
+    sh 'ifconfig'
     stage('tree[wget]') {
       sh "wget -q http://metadata.neon.kde.org/os-autoinst/${env.TYPE}.tar"
       sh "wget -q http://metadata.neon.kde.org/os-autoinst/${env.TYPE}.tar.sig"
@@ -44,7 +45,7 @@ cleanNode('os-autoinst') {
       sh 'TESTS_TO_RUN=tests/plasma_folder.pm bin/contain.rb /workspace/bin/bootstrap.rb'
     }
   } finally {
-    archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv'
+    archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv, wok/vars.json'
     junit 'junit/*'
     sh 'bin/contain.rb chown -R jenkins . || true'
   }
