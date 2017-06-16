@@ -60,14 +60,10 @@ config[:TESTS_TO_RUN] = ENV['TESTS_TO_RUN'] if ENV['TESTS_TO_RUN']
 if ENV['INSTALLATION']
   config[:INSTALLATION] = ENV['INSTALLATION']
   config[:ISO] = '/workspace/neon.iso'
-end
-
-if Dir.exist?('../raid')
+else
   config[:BOOT_HDD_IMAGE] = true
   config[:KEEPHDDS] = true
-  # FIXME: should probably be mv when JOB_NAME is set to be faster in a CI
-  #   context
-  FileUtils.cp_r('../raid', '.', verbose: true)
+  # Re-use existing raid/, comes frm install test.
 end
 
 # Neon builders don't do KVM, disable it if the module is not loaded.
