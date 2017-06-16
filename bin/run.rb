@@ -49,7 +49,6 @@ config = {
   DISTRI: 'debian',
   PRJDIR: '/workspace',
   CASEDIR: '/workspace/neon',
-  ISO: '/workspace/neon.iso',
   PRODUCTDIR: '/workspace/neon',
   QEMUVGA: 'cirrus',
   TESTDEBUG: true,
@@ -58,7 +57,10 @@ config = {
 }
 
 config[:TESTS_TO_RUN] = ENV['TESTS_TO_RUN'] if ENV['TESTS_TO_RUN']
-config[:INSTALLATION] = ENV['INSTALLATION'] if ENV['INSTALLATION']
+if ENV['INSTALLATION']
+  config[:INSTALLATION] = ENV['INSTALLATION']
+  config[:ISO] = '/workspace/neon.iso'
+end
 
 if Dir.exist?('../raid')
   config[:BOOT_HDD_IMAGE] = true
