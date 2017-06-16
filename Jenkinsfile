@@ -11,17 +11,16 @@ cleanNode('master') {
       stage('installation') {
         sh 'INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
       }
-      stage('plasma_folder') {
-        // hack: move raid into main dir form where our tooling will import it
-        // to run the tests
-        sh 'cp -rv wok/raid raid'
-        sh 'TESTS_TO_RUN=tests/plasma_folder.pm bin/contain.rb /workspace/bin/bootstrap.rb'
+      stage('archive-raid') {
+        tar = "/var/www/metadata/os-autoinst/${env.TYPE}.tar"
+        sh "tar --exclude=*.iso --exclude=*.iso.* --exclude=*socket --exclude=wok/video.ogv --exclude=wok/ulogs --exclude=wok/testresults -cf ${tar}.new ."
+        sh "gpg2 --armor --detach-sign -o ${tar}.new.sig ${tar}.new"
+        sh "mv -v ${tar}.new ${tar}"
+        sh "mv -v ${tar}.new.sig ${tar}.sig"
       }
     } finally {
       archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv'
       junit 'junit/*'
-      // hack: undo hack from plasma_folder
-      sh 'rm -rv raid || true'
       // sh 'rm -f wok.tar wok.tar.xz'
       // sh 'tar cfJ wok.tar.xz wok'
       // archiveArtifacts 'wok.tar.xz'

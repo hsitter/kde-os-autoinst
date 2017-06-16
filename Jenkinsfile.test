@@ -1,0 +1,46 @@
+env.DIST = 'xenial'
+env.TYPE = 'user'
+env.PWD_BIND = '/workspace'
+
+cleanNode('os-autoinst') {
+  try {
+    stage('tree-wget') {
+      sh 'wget -q http://metadata.neon.kde.org/os-autoinst/${TYPE}.tar'
+      sh 'wget -q http://metadata.neon.kde.org/os-autoinst/${TYPE}.tar.sig'
+    }
+    stage('tree-verify') {
+      sh 'gpg2 --recv-keys "348C 8651 2066 33FD 983A  8FC4 DEAC EA00 075E 1D76"'
+      sh 'gpg2 --verify ${TYPE}.tar.sig'
+    }
+    stage('tree-untar') {
+        sh 'tar -xvf ${TYPE}.tar'
+      sh 'ls -lah'
+    }
+    stage('test-plasma_folder') {
+      sh 'TESTS_TO_RUN=tests/plasma_folder.pm bin/contain.rb /workspace/bin/bootstrap.rb'
+    }
+  } finally {
+    archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv'
+    junit 'junit/*'
+    sh 'bin/contain.rb chown -R jenkins .'
+  }
+}
+
+def cleanNode(label = null, body) {
+  node(label) {
+    try {
+// Supremely bugged causing excessive slowdown in jenkins. not sure why.
+// <org.jenkinsci.plugins.livescreenshot.LiveScreenshotBuildWrapper plugin="livescreenshot@1.4.5">
+// <fullscreenFilename>screenshot.png</fullscreenFilename>
+// <thumbnailFilename>screenshot-thumb.png</thumbnailFilename>
+// </org.jenkinsci.plugins.livescreenshot.LiveScreenshotBuildWrapper>
+      wrap([$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']) {
+        wrap([$class: 'TimestamperBuildWrapper']) {
+          body()
+        }
+      }
+    } finally {
+      cleanWs()
+    }
+  }
+}
