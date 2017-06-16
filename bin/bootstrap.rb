@@ -64,5 +64,5 @@ end
 # VM runner and run.rb helpers.
 system('apt install -y kvm qemu zsync kmod') || raise
 
-system('bin/sync.rb') || raise
+system('bin/sync.rb') || raise if ENV['INSTALLATION']
 exec('bin/run.rb')
