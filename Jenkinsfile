@@ -8,6 +8,12 @@ cleanNode('master') {
       stage('clone') {
         git 'https://github.com/apachelogger/kde-os-autoinst'
       }
+      stage('iso-handover') {
+          if (params.ISO) {
+            echo 'Picking up ISO from trigger job.'
+            sh "cp -v ${params.ISO} incoming.iso"
+        }
+      }
       stage('installation') {
         sh 'INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
       }
