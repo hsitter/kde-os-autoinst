@@ -23,6 +23,11 @@ ISO_URL = 'http://files.kde.org/neon/images/neon-useredition/current/neon-usered
 SIG_URL = 'http://files.kde.org/neon/images/neon-useredition/current/neon-useredition-current.iso.sig'.freeze
 GPG_KEY = '348C 8651 2066 33FD 983A 8FC4 DEAC EA00 075E 1D76'.freeze
 
+if File.exist?('incoming.iso')
+  FileUtils.mv('incoming.iso', 'neon.iso', verbose: true)
+  exit 0
+end
+
 system('sudo apt-get -y install git devscripts autotools-dev libcurl4-openssl-dev') || raise
 system('git clone https://github.com/AppImage/zsync-curl.git') unless File.exist?('zsync-curl')
 system('./zsync-curl/build.sh') || raise
