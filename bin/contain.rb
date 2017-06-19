@@ -33,29 +33,6 @@ dev_kvm = {
   CgroupPermissions: 'mrw'
 }
 
-if ARGV.any? { |x| x.include?('bootstrap') } # Start a live data server
-  require 'webrick'
-  s = WEBrick::HTTPServer.new(DocumentRoot: '.', Port: 0,
-                              BindAddress: '0.0.0.0')
-  Thread.new do
-    shutdown = proc do
-      warn 'shutting down httpserver'
-      s.shutdown
-    end
-    siglist = %w[TERM QUIT]
-    siglist.concat(%w[HUP INT]) if STDIN.tty?
-    siglist &= Signal.list.keys
-    siglist.each do |sig|
-      Signal.trap(sig, shutdown)
-    end
-    warn 'starting server'
-    s.start
-  end
-
-  warn "Live data @ http://build.neon.kde.org:#{s.config.fetch(:Port)}.\n" \
-    'Disappears on exit.'
-end
-
 c = CI::Containment.new(JOB_NAME,
                         image: CI::PangeaImage.new(:ubuntu, DIST),
                         binds: ["#{Dir.pwd}:#{PWD_BIND}"],
