@@ -62,7 +62,7 @@ Dir.chdir('os-autoinst') do
 end
 
 # VM runner and run.rb helpers.
-system('apt install -y kvm qemu zsync kmod') || raise
+system('apt install -y kvm qemu kmod') || raise
 
 system('bin/sync.rb') || raise if ENV['INSTALLATION']
 exec('bin/run.rb')
