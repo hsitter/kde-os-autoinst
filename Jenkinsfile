@@ -14,7 +14,7 @@ cleanNode('master') {
             sh "cp -v ${params.ISO} incoming.iso"
         }
       }
-      stage('installation') {
+      stage('test_installation') {
         sh 'INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
       }
       stage('archive-raid') {
