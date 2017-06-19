@@ -31,8 +31,11 @@ sub run {
     send_key 'ret';
 
     # wait for the desktop to appear
-    # This must be lower than 30! 30 seconds would indicate a dbus timeout
-    assert_screen 'folder-desktop', 20;
+    # Technically we'd want to make sure the desktop appears in under 30s but
+    # since we can't make sure that is in fact the baseline we can't really do
+    # that :/
+    # >30s would be indicative of a dbus timeout.
+    assert_screen 'folder-desktop', 120;
     wait_idle; # Make sure system has settled down a bit.
 
     assert_and_click "home-icon";
