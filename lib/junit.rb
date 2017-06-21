@@ -72,7 +72,7 @@ class JUnit
         # See Case ctor for why there are two properties here.
         next unless detail['needle'] || detail['needles']
         c = Case.new(detail)
-        c.name = format('%03d_%s', @cases.size, c)
+        c.name = format('%03d_%s', @cases.size, c.name)
         add_case(c)
       end
       add_case(meta_case(data))
