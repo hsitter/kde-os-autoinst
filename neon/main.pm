@@ -34,7 +34,11 @@ require $dist;
 testapi::set_distribution(distribution_neon->new());
 
 if (testapi::get_var("INSTALLATION")) {
-    autotest::loadtest "tests/install_ubiquity.pm";
+    my %test = (
+        'devedition-gitunstable' => "tests/install_calamares.pm",
+        '' => "tests/install_ubiquity.pm"
+    );
+    autotest::loadtest ($test{$ENV{TYPE}} || $test{''})
 } elsif (testapi::get_var("TESTS_TO_RUN")) {
     for my $testpath (testapi::get_var("TESTS_TO_RUN")) {
         autotest::loadtest $testpath;

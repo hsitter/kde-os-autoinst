@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 295,
+      "ypos": 141,
+      "width": 640,
+      "height": 476,
+      "match": 75
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-timezone",
+    "ENV-DISTRI-neon"
+  ]
+}

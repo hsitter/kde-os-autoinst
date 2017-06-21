@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 300,
+      "ypos": 186,
+      "width": 533,
+      "height": 44,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-erase",
+    "ENV-DISTRI-neon"
+  ]
+}

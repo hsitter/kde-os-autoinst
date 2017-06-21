@@ -1,5 +1,5 @@
 env.DIST = 'xenial'
-env.TYPE = 'user'
+env.TYPE = params.TYPE
 env.PWD_BIND = '/workspace'
 
 cleanNode('master') {
