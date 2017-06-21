@@ -45,10 +45,13 @@ class JUnit
       # Not entirely sure how to best handle this.
       self.name = detail.fetch('tags').fetch(0)
       self.result = RESULT_MAP.fetch(detail.fetch('result'))
-      return unless BUILD_URL
-      screenshot = detail.fetch('screenshot')
-      system_out.message = "#{BUILD_URL}/artifact/wok/testresults/#{screenshot}"
       system_err.message = JSON.pretty_generate(detail)
+      return unless BUILD_URL
+      system_out.message = ''
+      [detail['screenshot'], detail['text']].compact.each do |artifact|
+        system_out.message +=
+          "#{BUILD_URL}/artifact/wok/testresults/#{artifact}\n"
+      end
     end
   end
 
@@ -67,10 +70,9 @@ class JUnit
       data.fetch('details').each do |detail|
         # Skip unknown results.
         next if detail.fetch('result') == 'unk'
-        # Discard bits that aren't needles.
-        # TYY waiting for example is also logged, but we don't care particlarly.
-        # See Case ctor for why there are two properties here.
-        next unless detail['needle'] || detail['needles']
+        # Discard bits that aren't related to a needle tag.
+        # FIXME: text items can have a title but no tags. should fall back?
+        next unless detail['tags']
         c = Case.new(detail)
         c.name = format('%03d_%s', @cases.size, c.name)
         add_case(c)
