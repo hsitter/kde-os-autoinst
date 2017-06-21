@@ -47,10 +47,8 @@ class JUnit
       self.result = RESULT_MAP.fetch(detail.fetch('result'))
       system_err.message = JSON.pretty_generate(detail)
       return unless BUILD_URL
-      system_out.message = ''
       [detail['screenshot'], detail['text']].compact.each do |artifact|
-        system_out.message <<
-          "#{BUILD_URL}/artifact/wok/testresults/#{artifact}\n"
+        system_out << "#{BUILD_URL}/artifact/wok/testresults/#{artifact}\n"
       end
     end
   end
