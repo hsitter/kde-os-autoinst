@@ -24,6 +24,8 @@ require 'jenkins_junit_builder'
 
 # JUnit converter.
 class JUnit
+  BUILD_URL = ENV.fetch('BUILD_URL', nil)
+
   # Case wrapper
   class Case < JenkinsJunitBuilder::Case
     RESULT_MAP = {
@@ -36,6 +38,10 @@ class JUnit
       super()
       self.name = detail.fetch('tags')[0] || raise
       self.result = RESULT_MAP.fetch(detail.fetch('result'))
+      return unless BUILD_URL
+      screenshot = detail.fetch('screenshot')
+      system_out.message = "#{BUILD_URL}/artifact/wok/testresults/#{screenshot}"
+      system_err.message = "#{BUILD_URL}/artifact/wok/testresults/#{screenshot}"
     end
   end
 

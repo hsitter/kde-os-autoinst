@@ -40,6 +40,7 @@ c = CI::Containment.new(JOB_NAME,
 env = []
 env << 'INSTALLATION=1' if ENV.include?('INSTALLATION')
 env << "TESTS_TO_RUN=#{ENV['TESTS_TO_RUN']}" if ENV['TESTS_TO_RUN']
+env << "BUILD_URL=#{ENV.fetch('BUILD_URL')}"
 status_code = c.run(Cmd: ARGV, WorkingDir: PWD_BIND,
                     Env: env,
                     HostConfig: { Devices: [dev_kvm] })
