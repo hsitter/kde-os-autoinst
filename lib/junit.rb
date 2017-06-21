@@ -36,7 +36,7 @@ class JUnit
 
     def initialize(detail)
       super()
-      self.name = detail.fetch('tags')[0] || raise
+      self.name = detail.fetch('needle')
       self.result = RESULT_MAP.fetch(detail.fetch('result'))
       return unless BUILD_URL
       screenshot = detail.fetch('screenshot')
@@ -60,6 +60,9 @@ class JUnit
       data.fetch('details').each do |detail|
         # Skip unknown results.
         next if detail.fetch('result') == 'unk'
+        # Discard bits that aren't needles.
+        # TYY waiting for example is also logged, but we don't care particlarly.
+        next unless detail['needle']
         add_case(Case.new(detail))
       end
       add_case(meta_case(data))
