@@ -44,6 +44,9 @@ cleanNode('os-autoinst') {
       sh 'git branch --set-upstream-to=origin/master master'
       sh 'git pull'
     }
+    stage('rake-test') {
+      sh 'rake test'
+    }
     stage('test-plasma_folder') {
       sh 'TESTS_TO_RUN=tests/plasma_folder.pm bin/contain.rb /workspace/bin/bootstrap.rb'
     }

@@ -8,6 +8,9 @@ cleanNode('master') {
       stage('clone') {
         git 'https://github.com/apachelogger/kde-os-autoinst'
       }
+      stage('rake-test') {
+        sh 'rake test'
+      }
       stage('iso-handover') {
           if (params.ISO) {
             echo 'Picking up ISO from trigger job.'
