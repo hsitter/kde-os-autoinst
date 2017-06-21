@@ -36,12 +36,19 @@ class JUnit
 
     def initialize(detail)
       super()
-      self.name = detail.fetch('needle')
+      # FIXME: we are fetching the tags here because we have no way to either
+      # iterate on the tags or the needles right now. Also, the needle format
+      # is somewhat inconsistent.
+      # Sometimes it is a flat with needle being a property of the detail
+      # and other times it is a needles array with multiple needles that have
+      # a name property.
+      # Not entirely sure how to best handle this.
+      self.name = detail.fetch('tags').fetch(0)
       self.result = RESULT_MAP.fetch(detail.fetch('result'))
       return unless BUILD_URL
       screenshot = detail.fetch('screenshot')
       system_out.message = "#{BUILD_URL}/artifact/wok/testresults/#{screenshot}"
-      system_err.message = "#{BUILD_URL}/artifact/wok/testresults/#{screenshot}"
+      system_err.message = JSON.pretty_generate(detail)
     end
   end
 
@@ -62,8 +69,11 @@ class JUnit
         next if detail.fetch('result') == 'unk'
         # Discard bits that aren't needles.
         # TYY waiting for example is also logged, but we don't care particlarly.
-        next unless detail['needle']
-        add_case(Case.new(detail))
+        # See Case ctor for why there are two properties here.
+        next unless detail['needle'] || detail['needles']
+        c = Case.new(detail)
+        c.name = format('%03d_%s', @cases.size, c)
+        add_case(c)
       end
       add_case(meta_case(data))
     end
