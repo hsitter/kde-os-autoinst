@@ -49,7 +49,7 @@ class JUnit
       return unless BUILD_URL
       system_out.message = ''
       [detail['screenshot'], detail['text']].compact.each do |artifact|
-        system_out.message +=
+        system_out.message <<
           "#{BUILD_URL}/artifact/wok/testresults/#{artifact}\n"
       end
     end
