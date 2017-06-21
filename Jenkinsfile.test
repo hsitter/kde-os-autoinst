@@ -3,22 +3,25 @@ env.TYPE = 'user'
 env.PWD_BIND = '/workspace'
 
 // def in_container(body) {
-//   container_id = sh(script: "bin/container_start.rb", returnStdout: true).trim()
+//   container_id = sh(script: "docker create -v ${pwd}:/workspace ubuntu:xenial /bin/bash -c 'while true; do sleep infinity; done'", returnStdout: true).trim()
+//   sh "echo $container_id"
+//   sh "docker start $container_id"
 //   try {
 //     def contain = { args ->
-//       env = args['env'] ? args['env'] : ''
+//       params = args['env'] ? "-e ${args['env']}" : ''
 //       cmd = args['cmd']
-//       sh "echo '$env bin/contain.rb $cmd'"
+//       sh "echo \"docker exec $params $container_id $cmd\""
+//       sh "docker exec $params $container_id $cmd"
 //     }
 //     body(contain)
 //   } finally {
-//     sh "bin/container_murder.rb"
+//     sh "docker kill $container_id"
+//     sh "docker rm $container_id"
 //   }
 // }
-//
 //   in_container { contain ->
 //     contain(cmd: "xxx")
-//   }
+  }
 
 cleanNode('os-autoinst') {
   try {
