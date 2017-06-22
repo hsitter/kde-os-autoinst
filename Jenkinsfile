@@ -18,7 +18,9 @@ cleanNode('master') {
         }
       }
       stage('test_installation') {
-        sh 'INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
+        wrap([$class: 'LiveScreenshotBuildWrapper', fullscreenFilename: 'wok/qemuscreenshot/last.png']) {
+          sh 'INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
+        }
       }
       stage('archive-raid') {
         tar = "/var/www/metadata/os-autoinst/${env.TYPE}.tar"
