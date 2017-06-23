@@ -1,8 +1,18 @@
 env.DIST = 'xenial'
-env.TYPE = params.TYPE
 env.PWD_BIND = '/workspace'
 
-if (params.TYPE) {
+if (env.TYPE == null) {
+  if (params.TYPE != null) {
+    env.TYPE = params.TYPE
+  } else {
+    type = inferType()
+    if (type != null) {
+      env.TYPE = type
+    }
+  }
+}
+
+if (env.TYPE == null) {
   error 'TYPE param not set. Cannot run install test without a type.'
 }
 
@@ -53,4 +63,18 @@ def cleanNode(label = null, body) {
       // step([$class: 'WsCleanup', cleanWhenFailure: true])
     }
   }
+}
+
+// When not called from an ISO build we'll want to infer the type from our own name.
+def inferType() {
+  if (!env.JOB_NAME) {
+    return null
+  }
+  String[] types = ["useredition", "devedition-gitunstable", "devedition-gitstable"]
+  for (type in types) {
+    if (env.JOB_NAME.contains(type)) {
+      return type
+    }
+  }
+  return null
 }
