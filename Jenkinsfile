@@ -2,6 +2,10 @@ env.DIST = 'xenial'
 env.TYPE = params.TYPE
 env.PWD_BIND = '/workspace'
 
+if (params.TYPE) {
+  error 'TYPE param not set. Cannot run install test without a type.'
+}
+
 cleanNode('master') {
   ws('/tmp/kde-os-autoinst') {
     try {
