@@ -32,9 +32,6 @@ cleanNode('master') {
     } finally {
       archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv'
       junit 'junit/*'
-      // sh 'rm -f wok.tar wok.tar.xz'
-      // sh 'tar cfJ wok.tar.xz wok'
-      // archiveArtifacts 'wok.tar.xz'
       sh 'bin/contain.rb chown -R jenkins .'
     }
   }
@@ -43,11 +40,6 @@ cleanNode('master') {
 def cleanNode(label = null, body) {
   node(label) {
     try {
-// Supremely bugged causing excessive slowdown in jenkins. not sure why.
-// <org.jenkinsci.plugins.livescreenshot.LiveScreenshotBuildWrapper plugin="livescreenshot@1.4.5">
-// <fullscreenFilename>screenshot.png</fullscreenFilename>
-// <thumbnailFilename>screenshot-thumb.png</thumbnailFilename>
-// </org.jenkinsci.plugins.livescreenshot.LiveScreenshotBuildWrapper>
       wrap([$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']) {
         wrap([$class: 'TimestamperBuildWrapper']) {
           body()
