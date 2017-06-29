@@ -39,4 +39,10 @@ class JUnitTest < Minitest::Test
     FileUtils.cp_r("#{datadir}/result-install_calamares.json", '.')
     JUnit.from_openqa(Dir.pwd)
   end
+
+  def test_from_openqa_failure
+    # Purely doing coverage testing to avoid syntax errors.
+    FileUtils.cp_r("#{datadir}/result-install_calamares_failure.json", '.')
+    JUnit.from_openqa(Dir.pwd)
+  end
 end

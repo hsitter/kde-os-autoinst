@@ -34,6 +34,8 @@ class JUnit
       # => JenkinsJunitBuilder::Case::RESULT_SKIPPED
     }.freeze
 
+    EXPECTATION_URL = 'https://raw.githubusercontent.com/apachelogger/kde-os-autoinst/master'.freeze
+
     def initialize(detail)
       super()
       # FIXME: we are fetching the tags here because we have no way to either
@@ -48,8 +50,45 @@ class JUnit
       system_err.message = JSON.pretty_generate(detail)
       return unless BUILD_URL
       [detail['screenshot'], detail['text']].compact.each do |artifact|
-        system_out << "#{BUILD_URL}/artifact/wok/testresults/#{artifact}\n"
+        system_out << "#{artifact_info(artifact, detail)}\n\n"
       end
+    end
+
+    def artifact_info(artifact, detail)
+      case result
+      when JenkinsJunitBuilder::Case::RESULT_PASSED
+        return artifact_info_passed(artifact, detail)
+      when JenkinsJunitBuilder::Case::RESULT_FAILURE
+        return artifact_info_failure(artifact, detail)
+      end
+      raise
+    rescue KeyError => e
+      # A detail raised a keyerror. Rescue it with a default message.
+      warn e
+      artifact_url(artifact)
+    end
+
+    def artifact_url(artifact)
+      "#{BUILD_URL}/artifact/wok/testresults/#{artifact}"
+    end
+
+    def artifact_info_passed(artifact, detail)
+      <<-EOF
+#{artifact_url(artifact)}
+matched:
+#{EXPECTATION_URL}/#{detail.fetch('json').sub('.json', '.png')}
+      EOF
+    end
+
+    def artifact_info_failure(artifact, detail)
+      expected_urls = detail.fetch('needles').each do |needle|
+        "#{EXPECTATION_URL}/#{needle.fetch('json').sub('.json', '.png')}"
+      end
+      <<-EOF
+#{artifact_url(artifact)}
+expected any of:
+#{expected_urls.join("\n")}
+      EOF
     end
   end
 

@@ -1,0 +1,392 @@
+{
+   "details" : [
+      {
+         "screenshot" : "install_calamares-1.png",
+         "result" : "ok",
+         "json" : "neon/needles/bootloader.json",
+         "needle" : "bootloader",
+         "area" : [
+            {
+               "y" : 0,
+               "result" : "ok",
+               "h" : "264",
+               "x" : 0,
+               "similarity" : 100,
+               "w" : "548"
+            }
+         ],
+         "tags" : [
+            "bootloader"
+         ],
+         "frametime" : [
+            "0.71",
+            "0.75"
+         ],
+         "properties" : []
+      },
+      {
+         "screenshot" : "install_calamares-2.png",
+         "result" : "ok",
+         "json" : "neon/needles/live-desktop.json",
+         "area" : [
+            {
+               "similarity" : 97,
+               "w" : "888",
+               "h" : "768",
+               "x" : 0,
+               "result" : "ok",
+               "y" : 0
+            }
+         ],
+         "needle" : "live-desktop",
+         "tags" : [
+            "live-desktop"
+         ],
+         "frametime" : [
+            "8.04",
+            "8.08"
+         ],
+         "properties" : []
+      },
+      {
+         "screenshot" : "install_calamares-3.png",
+         "properties" : [],
+         "frametime" : [
+            "9.96",
+            "10.00"
+         ],
+         "tags" : [
+            "tty6-selected"
+         ],
+         "needle" : "tty6-selected",
+         "area" : [
+            {
+               "result" : "ok",
+               "y" : 15,
+               "w" : "38",
+               "similarity" : 100,
+               "h" : "22",
+               "x" : 253
+            },
+            {
+               "x" : 0,
+               "h" : "24",
+               "similarity" : 100,
+               "w" : "166",
+               "result" : "ok",
+               "y" : 31
+            }
+         ],
+         "json" : "neon/needles/tty6-selected.json",
+         "result" : "ok"
+      },
+      {
+         "json" : "neon/needles/tty-password.json",
+         "result" : "ok",
+         "area" : [
+            {
+               "x" : 0,
+               "h" : "21",
+               "w" : "122",
+               "similarity" : 100,
+               "y" : 49,
+               "result" : "ok"
+            }
+         ],
+         "needle" : "tty-password",
+         "frametime" : [
+            "10.04",
+            "10.08"
+         ],
+         "tags" : [
+            "tty-password"
+         ],
+         "properties" : [],
+         "screenshot" : "install_calamares-4.png"
+      },
+      {
+         "screenshot" : "install_calamares-5.png",
+         "properties" : [],
+         "frametime" : [
+            "10.38",
+            "10.42"
+         ],
+         "tags" : [
+            "tty-logged-in"
+         ],
+         "needle" : "tty-logged-in",
+         "area" : [
+            {
+               "w" : "162",
+               "similarity" : 100,
+               "h" : "45",
+               "x" : 0,
+               "result" : "ok",
+               "y" : 308
+            }
+         ],
+         "result" : "ok",
+         "json" : "neon/needles/tty-logged-in.json"
+      },
+      {
+         "frametime" : [
+            "10.75",
+            "10.79"
+         ],
+         "tags" : [
+            "sudo-passwordprompt"
+         ],
+         "screenshot" : "install_calamares-6.png",
+         "result" : "unk"
+      },
+      {
+         "frametime" : [
+            "10.88",
+            "10.92"
+         ],
+         "result" : "unk",
+         "screenshot" : "install_calamares-8.png"
+      },
+      {
+         "result" : "ok",
+         "title" : "wait_serial",
+         "text" : "install_calamares-9.txt"
+      },
+      {
+         "frametime" : [
+            "11.79",
+            "11.83"
+         ],
+         "result" : "unk",
+         "screenshot" : "install_calamares-11.png"
+      },
+      {
+         "text" : "install_calamares-12.txt",
+         "title" : "wait_serial",
+         "result" : "ok"
+      },
+      {
+         "frametime" : [
+            "13.04",
+            "13.08"
+         ],
+         "result" : "unk",
+         "screenshot" : "install_calamares-14.png"
+      },
+      {
+         "title" : "wait_serial",
+         "text" : "install_calamares-15.txt",
+         "result" : "ok"
+      },
+      {
+         "screenshot" : "install_calamares-16.png",
+         "frametime" : [
+            "13.21",
+            "13.25"
+         ],
+         "tags" : [
+            "live-desktop"
+         ],
+         "properties" : [],
+         "result" : "ok",
+         "json" : "neon/needles/live-desktop.json",
+         "needle" : "live-desktop",
+         "area" : [
+            {
+               "y" : 0,
+               "result" : "ok",
+               "similarity" : 97,
+               "w" : "888",
+               "x" : 0,
+               "h" : "768"
+            }
+         ]
+      },
+      {
+         "tags" : [
+            "calamares-installer-icon"
+         ],
+         "frametime" : [
+            "13.67",
+            "13.71"
+         ],
+         "properties" : [],
+         "result" : "ok",
+         "json" : "neon/needles/install_calamares/calamares-installer-icon.json",
+         "needle" : "calamares-installer-icon",
+         "area" : [
+            {
+               "y" : 0,
+               "result" : "ok",
+               "x" : 0,
+               "h" : "128",
+               "w" : "128",
+               "similarity" : 100
+            }
+         ],
+         "screenshot" : "install_calamares-17.png"
+      },
+      {
+         "tags" : [
+            "calamares-installer-welcome"
+         ],
+         "frametime" : [
+            "14.08",
+            "14.12"
+         ],
+         "result" : "unk",
+         "screenshot" : "install_calamares-18.png",
+         "needles" : [
+            {
+               "area" : [
+                  {
+                     "y" : 301,
+                     "result" : "fail",
+                     "h" : "467",
+                     "x" : 0,
+                     "w" : "1024",
+                     "similarity" : 0
+                  }
+               ],
+               "name" : "calamares-installer-welcome",
+               "json" : "neon/needles/install_calamares/calamares-installer-welcome.json",
+               "error" : 1
+            }
+         ]
+      },
+      {
+         "screenshot" : "install_calamares-19.png",
+         "result" : "unk",
+         "needles" : [
+            {
+               "error" : 1,
+               "name" : "calamares-installer-welcome",
+               "area" : [
+                  {
+                     "y" : 136,
+                     "result" : "fail",
+                     "x" : 0,
+                     "h" : "467",
+                     "w" : "1024",
+                     "similarity" : 0
+                  }
+               ],
+               "json" : "neon/needles/install_calamares/calamares-installer-welcome.json"
+            }
+         ],
+         "frametime" : [
+            "14.50",
+            "14.54"
+         ],
+         "tags" : [
+            "calamares-installer-welcome"
+         ]
+      },
+      {
+         "screenshot" : "install_calamares-20.png",
+         "result" : "fail",
+         "needles" : [
+            {
+               "error" : 1,
+               "json" : "neon/needles/install_calamares/calamares-installer-welcome.json",
+               "name" : "calamares-installer-welcome",
+               "area" : [
+                  {
+                     "y" : 136,
+                     "result" : "fail",
+                     "w" : "1024",
+                     "similarity" : 0,
+                     "h" : "467",
+                     "x" : 0
+                  }
+               ]
+            }
+         ],
+         "frametime" : [
+            "16.21",
+            "16.25"
+         ],
+         "tags" : [
+            "calamares-installer-welcome"
+         ]
+      },
+      {
+         "frametime" : [
+            "16.92",
+            "16.96"
+         ],
+         "result" : "unk",
+         "screenshot" : "install_calamares-22.png"
+      },
+      {
+         "title" : "wait_serial",
+         "text" : "install_calamares-23.txt",
+         "result" : "ok"
+      },
+      {
+         "frametime" : [
+            "17.33",
+            "17.38"
+         ],
+         "result" : "unk",
+         "screenshot" : "install_calamares-25.png"
+      },
+      {
+         "text" : "install_calamares-26.txt",
+         "title" : "wait_serial",
+         "result" : "ok"
+      },
+      {
+         "frametime" : [
+            "17.67",
+            "17.71"
+         ],
+         "result" : "unk",
+         "screenshot" : "install_calamares-28.png"
+      },
+      {
+         "text" : "install_calamares-29.txt",
+         "title" : "wait_serial",
+         "result" : "ok"
+      },
+      {
+         "screenshot" : "install_calamares-31.png",
+         "result" : "unk",
+         "frametime" : [
+            "18.29",
+            "18.33"
+         ]
+      },
+      {
+         "result" : "ok",
+         "text" : "install_calamares-32.txt",
+         "title" : "wait_serial"
+      },
+      {
+         "tags" : [
+            "sudo-passwordprompt"
+         ],
+         "frametime" : [
+            "18.71",
+            "18.75"
+         ],
+         "result" : "unk",
+         "screenshot" : "install_calamares-33.png"
+      },
+      {
+         "result" : "unk",
+         "screenshot" : "install_calamares-35.png",
+         "frametime" : [
+            "18.83",
+            "18.88"
+         ]
+      },
+      {
+         "title" : "wait_serial",
+         "text" : "install_calamares-36.txt",
+         "result" : "ok"
+      }
+   ],
+   "result" : "fail",
+   "dents" : 0
+}
