@@ -81,7 +81,7 @@ matched:
     end
 
     def artifact_info_failure(artifact, detail)
-      expected_urls = detail.fetch('needles').each do |needle|
+      expected_urls = detail.fetch('needles').collect do |needle|
         "#{EXPECTATION_URL}/#{needle.fetch('json').sub('.json', '.png')}"
       end
       <<-EOF
