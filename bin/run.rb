@@ -56,7 +56,7 @@ config = {
   QEMUCPUS: cpus
 }
 
-config[:TESTS_TO_RUN] = ENV['TESTS_TO_RUN'] if ENV['TESTS_TO_RUN']
+config[:TESTS_TO_RUN] = ENV['TESTS_TO_RUN'].split(':') if ENV['TESTS_TO_RUN']
 if ENV['INSTALLATION']
   config[:INSTALLATION] = ENV['INSTALLATION']
   config[:ISO] = '/workspace/neon.iso'
