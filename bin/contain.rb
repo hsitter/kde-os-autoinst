@@ -33,7 +33,7 @@ dev_kvm = {
   CgroupPermissions: 'mrw'
 }
 
-c = CI::Containment.new(JOB_NAME.gsub('/','-'),
+c = CI::Containment.new(JOB_NAME.gsub('%2F', '/').gsub('/','-'),
                         image: CI::PangeaImage.new(:ubuntu, DIST),
                         binds: ["#{Dir.pwd}:#{PWD_BIND}"],
                         privileged: false)
