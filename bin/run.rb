@@ -51,7 +51,7 @@ config = {
   CASEDIR: '/workspace/neon',
   PRODUCTDIR: '/workspace/neon',
   QEMUVGA: 'cirrus',
-  TESTDEBUG: true,
+  TESTDEBUG: false,
   MAKETESTSNAPSHOTS: false,
   QEMUCPUS: cpus
 }
