@@ -40,7 +40,8 @@ if (testapi::get_var("INSTALLATION")) {
     );
     autotest::loadtest ($test{$ENV{TYPE}} || $test{''})
 } elsif (testapi::get_var("TESTS_TO_RUN")) {
-    for my $testpath (testapi::get_var("TESTS_TO_RUN")) {
+    my $testpaths = testapi::get_var("TESTS_TO_RUN");
+    for my $testpath (@$testpaths) {
         autotest::loadtest $testpath;
     }
 } else {
