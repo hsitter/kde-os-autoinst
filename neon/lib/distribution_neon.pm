@@ -56,6 +56,15 @@ sub init_consoles {
     return;
 }
 
+sub script_sudo($$) {
+    my $self = shift;
+    # Clear the TTY first, otherwise we may needle match a previous sudo
+    # password query and get confused. Clearing first make sure the TTY is empty
+    # and we'll either get a new password query or none (still in cache).
+    type_string "clear\n";
+    return $self->SUPER::script_sudo(@_);
+}
+
 sub activate_console {
     my ($self, $console) = @_;
 
