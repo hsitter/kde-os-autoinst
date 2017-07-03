@@ -27,7 +27,7 @@ SIG_URL = "http://files.kde.org/neon/images/neon-#{TYPE}/current/neon-#{TYPE}-cu
 GPG_KEY = '348C 8651 2066 33FD 983A 8FC4 DEAC EA00 075E 1D76'.freeze
 
 if File.exist?('incoming.iso')
-  warn "Using incoming #{TYPE} ISO"
+  warn "Using incoming.iso for #{TYPE}"
   FileUtils.mv('incoming.iso', 'neon.iso', verbose: true)
   exit 0
 end
