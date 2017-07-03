@@ -16,6 +16,12 @@ if (env.TYPE == null) {
   error 'TYPE param not set. Cannot run install test without a type.'
 }
 
+properties([
+  pipelineTriggers([upstream(threshold: 'UNSTABLE',
+                             upstreamProjects: "iso_neon_xenial_${TYPE}_amd64")]),
+  pipelineTriggers([cron('0 H(9-22) * * *')])
+])
+
 fancyNode('master') {
   try {
     stage('clone') {
