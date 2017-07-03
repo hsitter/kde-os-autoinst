@@ -142,6 +142,11 @@ ApplicationWindow {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
+            // Not sure why but auto-calc isn't working even though the view only has one child
+            // so it should be working according to the documentation.
+            contentWidth: imageItem.width
+            contentHeight: imageItem.height
+
             Item {
                 id: imageItem
                 // Scrollview doesn't care about scales, so to actually represent the scaled image we
