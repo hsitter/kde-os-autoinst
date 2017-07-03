@@ -29,6 +29,7 @@ Rectangle {
     property ObjectModel model
     property string type: "match"
     property double match: 95
+    property bool clickArea: false
 
     // This is the hard limit offset, we'll coerce the rect inside a given
     // maxX and maxY with this offset. As a result this is effectively the
@@ -102,7 +103,7 @@ Rectangle {
     Rectangle {
         id: fill
         anchors.fill: parent
-        color: "steelblue"
+        color:  clickArea ? "yellow" : "steelblue"
         opacity: 0.6
     }
 
@@ -166,6 +167,11 @@ Rectangle {
         }
 
         MenuItem {
+            text: "mark as click target"
+            onTriggered: { model.setClickArea(rect) }
+        }
+
+        MenuItem {
             text: "delete"
             onTriggered: { model.removeObject(rect) }
         }
@@ -184,6 +190,8 @@ Rectangle {
         acceptedButtons: Qt.LeftButton | Qt.RightButton
         onPressed: {
             if (mouse.button == Qt.RightButton) {
+                contextMenuComponent.x = mouse.x
+                contextMenuComponent.y = mouse.y
                 contextMenuComponent.open()
                 return;
             }

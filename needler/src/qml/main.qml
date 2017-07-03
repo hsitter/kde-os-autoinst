@@ -143,6 +143,7 @@ ApplicationWindow {
             Layout.fillHeight: true
 
             Item {
+                id: imageItem
                 // Scrollview doesn't care about scales, so to actually represent the scaled image we
                 // need to explicitly tell the view the dimensions
                 width: image.width * image.scale
@@ -264,6 +265,10 @@ ApplicationWindow {
                                         console.debug("area " + a.area[i])
                                         var select = selector.createObject()
                                         select.fromObject(a.area[i])
+
+                                        if (i == a.area.length - 1) { // last
+                                            select.clickArea = true
+                                        }
                                         selectorModel.append(select)
                                     }
 
@@ -277,8 +282,20 @@ ApplicationWindow {
                         function toJSON() {
                             var areas = []
                             console.debug("model count " + selectorModel.count)
+                            var last = null
                             for (var i = 0; i < selectorModel.count; ++i) {
-                                areas.push(selectorModel.get(i).toObject())
+                                var selector = selectorModel.get(i)
+                                if (selector.clickArea) {
+                                    // openqa clicks the last area in the area array, so we'll
+                                    // remember the intended click area and push it onto the array
+                                    // once all others are in.
+                                    last = selector.toObject()
+                                    continue
+                                }
+                                areas.push(selector.toObject())
+                            }
+                            if (last !== null) {
+                                areas.push(last)
                             }
                             var needle = {
                                 area: areas,
@@ -295,6 +312,19 @@ ApplicationWindow {
                                 if (selectorModel.get(i) === obj) {
                                     selectorModel.remove(i)
                                     return
+                                }
+                            }
+                        }
+
+                        // Sets all but the passed selector as not clickable and the passed one
+                        // as clickable.
+                        function setClickArea(obj) {
+                            for (var i = 0; i < selectorModel.count; ++i) {
+                                var item = selectorModel.get(i)
+                                if (item === obj) {
+                                    item.clickArea = true
+                                } else {
+                                    item.clickArea = false
                                 }
                             }
                         }
