@@ -186,6 +186,7 @@ Rectangle {
         drag.minimumX: image.x
         drag.maximumY: image.y + image.height - rect.height
         drag.minimumY: image.y
+        preventStealing: true
 
         acceptedButtons: Qt.LeftButton | Qt.RightButton
         onPressed: {
