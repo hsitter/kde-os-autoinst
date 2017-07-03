@@ -111,7 +111,7 @@ ApplicationWindow {
             Text { text: "Properties"; color: palette.text }
             TextArea {
                 placeholderText: "..."
-                wrapMode: TextEdit.Wrap
+//                wrapMode: TextEdit.Wrap
                 text: selectorModel.properties
                 // FIXME: these are binding loops
                 // would need async timer or something
@@ -120,7 +120,7 @@ ApplicationWindow {
             Text { text: "Tags"; color: palette.text }
             TextArea {
                 placeholderText: "..."
-                wrapMode: TextEdit.Wrap
+//                wrapMode: TextEdit.Wrap
                 text: selectorModel.tags.join(',')
                 onTextChanged: { selectorModel.tags = text.split(',') }
             }
