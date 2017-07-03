@@ -34,6 +34,7 @@ Item {
             anchors.fill: parent
             drag.target: parent
             drag.axis: Drag.YAxis
+            preventStealing: true // Scrollviews are a bitch
             onMouseYChanged: {
                 if (!drag.active) {
                     return
@@ -56,6 +57,7 @@ Item {
             anchors.fill: parent
             drag.target: parent
             drag.axis: Drag.XAxis
+            preventStealing: true
             onMouseXChanged: {
                 if (!drag.active) {
                     return
@@ -77,6 +79,7 @@ Item {
             anchors.fill: parent
             drag.target: parent
             drag.axis: Drag.YAxis
+            preventStealing: true
             onMouseYChanged: {
                 if (!drag.active) {
                     return
@@ -98,6 +101,7 @@ Item {
             anchors.fill: parent
             drag.target: parent
             drag.axis: Drag.XAxis
+            preventStealing: true
             onMouseXChanged: {
                 if (!drag.active) {
                     return
