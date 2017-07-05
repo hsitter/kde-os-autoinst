@@ -32,6 +32,7 @@ unless File.exist?('os-autoinst')
 end
 
 Dir.chdir('os-autoinst') do
+  system('git pull --rebase') || raise
   system('autoreconf -f -i') || raise
   system('./configure') || raise
   system('make') || raise
