@@ -26,6 +26,12 @@ require 'json'
 require_relative '../lib/junit'
 require_relative '../lib/paths'
 
+ISOTOVIDEO = if File.exist?('/opt/os-autoinst/isotovideo')
+               '/opt/os-autoinst/isotovideo'
+             else
+               File.expand_path('../os-autoinst/isotovideo')
+             end
+
 ENV['PERL5LIB'] = PERL5LIB
 
 # not a typo 鑊!
@@ -74,8 +80,7 @@ warn "Going to use KVM: #{!config.include?(:QEMU_NO_KVM)}"
 
 File.write('vars.json', JSON.generate(config))
 File.write('live_log', '')
-system({ 'QEMU_AUDIO_DRV' => 'none' },
-       '../os-autoinst/isotovideo', '-d') || raise
+system({ 'QEMU_AUDIO_DRV' => 'none' }, ISOTOVIDEO, '-d') || raise
 
 Dir.chdir('..')
 JUnit.from_openqa('wok/testresults')
