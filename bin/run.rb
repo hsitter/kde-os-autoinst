@@ -77,6 +77,7 @@ config[:QEMU_NO_KVM] = true unless system('lsmod | grep -q kvm_intel')
 
 warn "Going to use #{cpus} Cores"
 warn "Going to use KVM: #{!config.include?(:QEMU_NO_KVM)}"
+warn "Running from #{ISOTOVIDEO}"
 
 File.write('vars.json', JSON.generate(config))
 File.write('live_log', '')
