@@ -21,10 +21,12 @@
 
 Dir.chdir(File.dirname(__dir__)) # go into working dir
 
-require_relative 'install.rb'
-
-# Only needed when bootstrapped from ubuntu.
-system('gem install jenkins_junit_builder') || raise
+unless File.exist?('/opt/os-autoinst')
+  # Install into working tree. I am not sure why though. FIXME: install to opt
+  require_relative 'install.rb'
+  # Only needed when bootstrapped from ubuntu.
+  system('gem install jenkins_junit_builder') || raise
+end
 
 system('bin/sync.rb') || raise if ENV['INSTALLATION']
 exec('bin/run.rb')

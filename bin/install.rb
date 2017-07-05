@@ -19,13 +19,26 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
+require 'mkmf' # for find_executable
+
 build_deps = %w[libtheora-dev libopencv-dev libfftw3-dev libsndfile1-dev
                 pkg-config libtool autoconf automake build-essential
                 libxml2-dev libssh2-1-dev libdbus-1-dev carton]
 runtime_deps = %w[kvm qemu kmod git]
-deps = build_deps + runtime_deps
+zsync_build_deps = %w[devscripts autotools-dev libcurl4-openssl-dev]
+deps = build_deps + runtime_deps + zsync_build_deps
 
 system("apt install --no-install-recommends -y #{deps.join(' ')}") || raise
+
+unless find_executable('zsync_curl')
+  puts 'installing zsync_curl'
+  if File.exist?('zsync-curl')
+    system('git pull --rebase', chdir: 'zsync-curl')
+  else
+    system('git clone https://github.com/AppImage/zsync-curl.git') || raise
+  end
+  system('./zsync-curl/build.sh') || raise
+end
 
 unless File.exist?('os-autoinst')
   system('git clone https://github.com/os-autoinst/os-autoinst.git') || raise

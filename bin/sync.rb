@@ -32,12 +32,8 @@ if File.exist?('incoming.iso')
   exit 0
 end
 
-system('sudo apt-get -y install git devscripts autotools-dev libcurl4-openssl-dev') || raise
-system('git clone https://github.com/AppImage/zsync-curl.git') unless File.exist?('zsync-curl')
-system('./zsync-curl/build.sh') || raise
-
 warn ISO_URL
-system('/usr/local/bin/zsync_curl', '-q', '-o', 'neon.iso', ISO_URL) || raise
+system('zsync_curl', '-q', '-o', 'neon.iso', ISO_URL) || raise
 system('wget', '-q', '-O', 'neon.iso.sig', SIG_URL) || raise
 system('gpg2', '--recv-key', GPG_KEY) || raise
 system('gpg2', '--verify', 'neon.iso.sig') || raise
