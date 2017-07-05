@@ -19,12 +19,31 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
-Dir.chdir(File.dirname(__dir__)) # go into working dir
+build_deps = %w[libtheora-dev libopencv-dev libfftw3-dev libsndfile1-dev
+                pkg-config libtool autoconf automake build-essential
+                libxml2-dev libssh2-1-dev libdbus-1-dev carton]
+runtime_deps = %w[kvm qemu kmod git]
+deps = build_deps + runtime_deps
 
-require_relative 'install.rb'
+system("apt install --no-install-recommends -y #{deps.join(' ')}") || raise
 
-# Only needed when bootstrapped from ubuntu.
-system('gem install jenkins_junit_builder') || raise
+unless File.exist?('os-autoinst')
+  system('git clone https://github.com/os-autoinst/os-autoinst.git') || raise
+end
 
-system('bin/sync.rb') || raise if ENV['INSTALLATION']
-exec('bin/run.rb')
+Dir.chdir('os-autoinst') do
+  system('autoreconf -f -i') || raise
+  system('./configure') || raise
+  system('make') || raise
+
+  ## builddeps
+  warn('cpanm --installdeps --no-sudo  --notest .')
+  unless system('cpanm --installdeps --no-sudo  --notest .')
+    Dir.glob("#{Dir.home}/.cpanm/work/*/build.log").each do |log|
+      5.times { puts }
+      puts "----------------- #{log} -----------------"
+      puts File.read(log)
+    end
+    raise 'capnm install failed'
+  end
+end
