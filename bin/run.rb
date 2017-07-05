@@ -29,7 +29,7 @@ require_relative '../lib/paths'
 ISOTOVIDEO = if File.exist?('/opt/os-autoinst/isotovideo')
                '/opt/os-autoinst/isotovideo'
              else
-               File.expand_path('../os-autoinst/isotovideo')
+               File.expand_path('os-autoinst/isotovideo')
              end
 
 ENV['PERL5LIB'] = PERL5LIB
