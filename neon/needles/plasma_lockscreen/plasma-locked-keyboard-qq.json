@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 43,
+      "match": 95,
+      "type": "match",
+      "width": 316,
+      "xpos": 352,
+      "ypos": 370
+    },
+    {
+      "height": 64,
+      "match": 95,
+      "type": "match",
+      "width": 255,
+      "xpos": 43,
+      "ypos": 436
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "plasma-locked-keyboard-qq",
+    "ENV-DISTRI-neon"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "height": 164,
+      "match": 95,
+      "type": "match",
+      "width": 307,
+      "xpos": 363,
+      "ypos": 227
+    },
+    {
+      "height": 28,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 479,
+      "ypos": 657
+    },
+    {
+      "height": 54,
+      "match": 95,
+      "type": "match",
+      "width": 314,
+      "xpos": 356,
+      "ypos": 404
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "plasma-locked-switch",
+    "ENV-DISTRI-neon"
+  ]
+}

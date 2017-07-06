@@ -1,0 +1,18 @@
+{
+  "area": [
+    {
+      "height": 39,
+      "match": 95,
+      "type": "match",
+      "width": 152,
+      "xpos": 0,
+      "ypos": 728
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "plasma-locked-keyboard-icon-inactive",
+    "plasma-locked-keyboard-icon",
+    "ENV-DISTRI-neon"
+  ]
+}

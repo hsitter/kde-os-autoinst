@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "height": 36,
+      "match": 80,
+      "type": "match",
+      "width": 310.5,
+      "xpos": 356,
+      "ypos": 412
+    },
+    {
+      "height": 36.66666666666663,
+      "match": 95,
+      "type": "match",
+      "width": 296.33333333333337,
+      "xpos": 365.6666666666667,
+      "ypos": 448.8888888888889
+    },
+    {
+      "height": 94,
+      "match": 95,
+      "type": "match",
+      "width": 101,
+      "xpos": 456,
+      "ypos": 595
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "plasma-locked",
+    "ENV-DISTRI-neon"
+  ]
+}
