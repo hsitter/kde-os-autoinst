@@ -36,8 +36,9 @@ ApplicationWindow {
     function withoutExtension(str)
     {
         var str = new String(str) // Make sure its a stringy.
-        if(str.lastIndexOf(".") != -1)
+        if (str.lastIndexOf(".") != -1) {
             str = str.substring(0, str.lastIndexOf("."));
+        }
         return str;
     }
 
@@ -198,8 +199,6 @@ ApplicationWindow {
 
                     Menu {
                         id: imageContextMenu
-//                        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
-
 
                         MenuItem {
                             text: "add"
