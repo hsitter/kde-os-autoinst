@@ -69,7 +69,12 @@ if ENV['INSTALLATION']
 else
   config[:BOOT_HDD_IMAGE] = true
   config[:KEEPHDDS] = true
-  # Re-use existing raid/, comes frm install test.
+  # Re-use existing raid/, comes from install test.
+  if File.exist?('../raid')
+    warn 'Importing existing ../raid'
+    FileUtils.rm_r('raid')
+    FileUtils.cp_r('../raid', '.')
+  end
 end
 
 # Neon builders don't do KVM, disable it if the module is not loaded.
