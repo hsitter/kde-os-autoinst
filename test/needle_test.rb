@@ -32,10 +32,9 @@ class NeedleTest < Minitest::Test
   end
 
   Dir.glob("#{NEEDLE_DIR}/**/*.json").each do |json|
-    basename = File.basename(json)
     base = File.basename(json, '.json')
 
-    define_method("test_has_png_#{basename}") do
+    define_method("test_has_png_#{json}") do
       dir = File.dirname(json)
       png = "#{dir}/#{base}.png"
       assert_path_exist(png, "needle #{base} has no png [#{png}]")
@@ -44,17 +43,16 @@ class NeedleTest < Minitest::Test
     # NB: technically a basename of the tag is also qualifying. for now
     #   we have no reason to use this though so this assertion should hold
     #   until we find a use for more generic tagging.
-    define_method("test_has_tag_#{basename}") do
+    define_method("test_has_tag_#{json}") do
       data = JSON.parse(File.read(json))
       assert_includes data.fetch('tags'), base
     end
   end
 
   Dir.glob("#{NEEDLE_DIR}/**/*.png").each do |png|
-    basename = File.basename(png)
     base = File.basename(png, '.png')
 
-    define_method("test_has_json_#{basename}") do
+    define_method("test_has_json_#{png}") do
       dir = File.dirname(png)
       json = "#{dir}/#{base}.json"
       assert_path_exist(json, "needle #{base} has no json [#{json}]")
