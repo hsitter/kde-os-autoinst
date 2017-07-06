@@ -59,7 +59,10 @@ config = {
   QEMUVGA: 'cirrus',
   TESTDEBUG: false,
   MAKETESTSNAPSHOTS: false,
-  QEMUCPUS: cpus
+  QEMUCPUS: cpus,
+  # The video is fairly useless gimicky stuff. Also theora... if I wanted a
+  # pixelated slideshow I'd use a more efficient pixelation algorithm.
+  NOVIDEO: true
 }
 
 config[:TESTS_TO_RUN] = ENV['TESTS_TO_RUN'].split(':') if ENV['TESTS_TO_RUN']
