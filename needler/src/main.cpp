@@ -34,7 +34,7 @@ class Application : public QObject
 public slots:
     QUrl fileArgument()
     {
-        return QUrl::fromLocalFile(QCoreApplication::arguments().at(1));
+        return QUrl::fromLocalFile(QCoreApplication::arguments().value(1, QString()));
     }
 
     bool copy(const QUrl &origin, const QUrl &target)
