@@ -27,8 +27,8 @@ cleanNode('os-autoinst') {
   try {
     sh 'ifconfig'
     stage('tree[wget]') {
-      sh "wget -q http://metadata.neon.kde.org/os-autoinst/${env.TYPE}.tar"
-      sh "wget -q http://metadata.neon.kde.org/os-autoinst/${env.TYPE}.tar.sig"
+      sh "wget -q https://metadata.neon.kde.org/os-autoinst/${env.TYPE}.tar"
+      sh "wget -q https://metadata.neon.kde.org/os-autoinst/${env.TYPE}.tar.sig"
     }
     parallel(
       "tree[verify]": {
