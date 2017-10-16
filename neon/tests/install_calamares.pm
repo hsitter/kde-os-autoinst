@@ -34,15 +34,6 @@ sub run {
     assert_screen 'live-desktop', 180;
     wait_idle; # Make sure system has settled down a bit.
 
-    # Update the live system so we have an up to date calamares.
-    select_console 'log-console';
-    assert_script_run 'sudo apt-get update';
-    assert_script_run 'sudo apt-get -y install calamares libkpmcore5 kpmcore';
-    select_console 'x11';
-
-    assert_screen 'live-desktop', 180;
-    wait_idle; # Make sure system has settled down a bit.
-
     # Installer
     assert_and_click "calamares-installer-icon";
 
