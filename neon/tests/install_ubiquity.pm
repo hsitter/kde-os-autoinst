@@ -33,9 +33,6 @@ sub run {
     assert_screen 'live-desktop', 180;
 
     sleep 60;
-    send_key "ctrl-esc";
-    assert_screen 'sddm', 180;
-
 
     # Installer
     assert_and_click "installer-icon";
