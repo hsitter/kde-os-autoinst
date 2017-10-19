@@ -60,6 +60,7 @@ config = {
   TESTDEBUG: false,
   MAKETESTSNAPSHOTS: false,
   QEMUCPUS: cpus,
+  QEMURAM: 2048,
   # The video is fairly useless gimicky stuff. Also theora... if I wanted a
   # pixelated slideshow I'd use a more efficient pixelation algorithm.
   NOVIDEO: true
