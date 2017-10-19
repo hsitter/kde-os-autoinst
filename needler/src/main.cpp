@@ -27,6 +27,7 @@
 #include <KIO/CopyJob>
 
 #include <QDebug>
+#include <QDir>
 
 class Application : public QObject
 {
@@ -34,7 +35,8 @@ class Application : public QObject
 public slots:
     QUrl fileArgument()
     {
-        return QUrl::fromLocalFile(QCoreApplication::arguments().value(1, QString()));
+        return QUrl::fromUserInput(QCoreApplication::arguments().value(1, QString()),
+                                   QDir::currentPath());
     }
 
     bool copy(const QUrl &origin, const QUrl &target)
