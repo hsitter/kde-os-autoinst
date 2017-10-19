@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterSingletonType<Application>("privateneedler", 1, 0, "Application",
-                                          [](QQmlEngine *, QJSEngine *) ->  QObject * { return new Application; });
+                                          [](QQmlEngine *, QJSEngine *) -> QObject * { return new Application; });
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
