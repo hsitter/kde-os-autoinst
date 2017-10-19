@@ -101,9 +101,6 @@ sub post_fail_hook {
     my ($self) = shift;
     $self->SUPER::post_fail_hook;
 
-    testapi::x11_start_program('ksysguard');
-    assert_screen 'sddm', 180;
-
     select_console 'x11';
     ensure_installed 'curl';
 
