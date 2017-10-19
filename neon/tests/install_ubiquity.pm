@@ -32,9 +32,11 @@ sub run {
     # wait for the desktop to appear
     assert_screen 'live-desktop', 180;
 
+    sleep 16;
+
     # Installer
     assert_and_click "installer-icon";
-    assert_screen "installer-welcome", 30;
+    assert_screen "installer-welcome", 60;
     assert_and_click "installer-next";
     assert_screen "installer-prepare", 16;
     assert_and_click "installer-next";
