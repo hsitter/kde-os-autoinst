@@ -33,8 +33,7 @@ sub run {
     assert_screen 'live-desktop', 180;
 
     sleep 60;
-
-    testapi::x11_start_program('ksysguard');
+    send_key "ctrl-esc";
     assert_screen 'sddm', 180;
 
 
