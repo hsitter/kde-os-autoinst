@@ -34,6 +34,10 @@ sub run {
 
     sleep 60;
 
+    testapi::x11_start_program('ksysguard');
+    assert_screen 'sddm', 180;
+
+
     # Installer
     assert_and_click "installer-icon";
     assert_screen "installer-welcome", 60;
