@@ -32,7 +32,7 @@ sub run {
     # wait for the desktop to appear
     assert_screen 'live-desktop', 180;
 
-    sleep 16;
+    sleep 60;
 
     # Installer
     assert_and_click "installer-icon";
