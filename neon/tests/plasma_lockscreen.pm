@@ -48,7 +48,6 @@ sub run {
     # that :/
     # >30s would be indicative of a dbus timeout.
     assert_screen 'folder-desktop', 120;
-    wait_idle; # Make sure system has settled down a bit.
 
     lock_screen;
 

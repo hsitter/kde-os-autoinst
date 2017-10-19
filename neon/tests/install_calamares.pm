@@ -32,7 +32,6 @@ sub run {
 
     # wait for the desktop to appear
     assert_screen 'live-desktop', 180;
-    wait_idle; # Make sure system has settled down a bit.
 
     # Installer
     assert_and_click "calamares-installer-icon";

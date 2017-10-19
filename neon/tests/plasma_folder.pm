@@ -36,10 +36,8 @@ sub run {
     # that :/
     # >30s would be indicative of a dbus timeout.
     assert_screen 'folder-desktop', 120;
-    wait_idle; # Make sure system has settled down a bit.
 
     assert_and_click "home-icon";
-    wait_idle;
 }
 
 sub test_flags {
