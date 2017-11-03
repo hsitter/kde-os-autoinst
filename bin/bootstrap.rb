@@ -21,7 +21,7 @@
 
 Dir.chdir(File.dirname(__dir__)) # go into working dir
 
-unless File.exist?('/opt/os-autoinst')
+if ENV.fetch('NODE_NAME', '') == 'master' || !File.exist?('/opt/os-autoinst')
   # Install into working tree. I am not sure why though. FIXME: install to opt
   require_relative 'install.rb'
   # Only needed when bootstrapped from ubuntu.
