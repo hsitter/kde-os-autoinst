@@ -21,11 +21,14 @@
 
 Dir.chdir(File.dirname(__dir__)) # go into working dir
 
-if ENV.fetch('NODE_NAME', '') == 'master' || !File.exist?('/opt/os-autoinst')
+if !File.exist?('/opt/os-autoinst')
   # Install into working tree. I am not sure why though. FIXME: install to opt
   require_relative 'install.rb'
   # Only needed when bootstrapped from ubuntu.
   system('gem install jenkins_junit_builder') || raise
+elsif ENV.fetch('NODE_NAME', '') == 'master'
+  # Make sure master has the latest version in there.
+  Dir.chdir('/opt') { system("#{__dir__}/install.rb") || raise }
 end
 
 system('bin/sync.rb') || raise if ENV['INSTALLATION']
