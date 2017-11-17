@@ -70,7 +70,7 @@ sub run {
     assert_screen "installer-user-complete", 16;
     assert_and_click "installer-next";
 
-    assert_screen "installer-show", 16;
+    assert_screen "installer-show", 10;
 
     # Let install finish and restart
     assert_screen "installer-restart", 640;
