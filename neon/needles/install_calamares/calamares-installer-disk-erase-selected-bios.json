@@ -1,0 +1,18 @@
+{
+  "area": [
+    {
+      "height": 470,
+      "match": 95,
+      "type": "match",
+      "width": 671,
+      "xpos": 179,
+      "ypos": 140
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-erase-selected",
+    "calamares-installer-disk-erase-selected-bios",
+    "ENV-DISTRI-neon"
+  ]
+}

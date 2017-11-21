@@ -1,7 +1,15 @@
 {
   "area": [
     {
-      "height": 448,
+      "height": 55,
+      "match": 95,
+      "type": "match",
+      "width": 421,
+      "xpos": 174,
+      "ypos": 352
+    },
+    {
+      "height": 211,
       "match": 95,
       "type": "match",
       "width": 668,

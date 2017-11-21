@@ -26,13 +26,11 @@ sub run {
     $testapi::username = 'neon';
     $testapi::password = '';
 
-    # wait for bootloader to appear
-    assert_screen 'bootloader', 30;
-
     # wait for the desktop to appear
-    assert_screen 'live-desktop', 180;
+    assert_screen 'live-desktop', 360;
 
-    sleep 60;
+    wait_still_screen;
+    wait_idle;
 
     # Installer
     assert_and_click "installer-icon";
