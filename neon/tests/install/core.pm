@@ -21,6 +21,11 @@ use testapi;
 
 # Core test to run for all install cases. Asserts common stuff.
 sub run {
+    my $user = $testapi::username;
+    my $password = $testapi::password;
+    $testapi::username = 'neon';
+    $testapi::password = '';
+
     wait_still_screen;
 
     # We better be at the desktop now.
@@ -37,8 +42,10 @@ sub run {
 
     select_console 'x11';
 
+    # Leave system as we have found it.
     assert_screen 'live-desktop';
-    # Leave system where we found it.
+    $testapi::username = $user;
+    $testapi::password = $password;
 }
 
 sub test_flags {
