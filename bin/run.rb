@@ -68,6 +68,9 @@ config = {
   NOVIDEO: true
 }
 
+# Switch to bios mode when requested.
+config.delete(:UEFI) if ENV['BIOS']
+
 config[:TESTS_TO_RUN] = ENV['TESTS_TO_RUN'].split(':') if ENV['TESTS_TO_RUN']
 if ENV['INSTALLATION']
   config[:INSTALLATION] = ENV['INSTALLATION']
