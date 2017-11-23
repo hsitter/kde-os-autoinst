@@ -189,4 +189,4 @@ Once all your assertions are backed up by a needle the test should be passing
 as a whole and be good for production.
 
 Make sure you give suitably high timeouts. In particular for installation tests
-performance can be fluctuating substantially.
+performance can be fluctuating.
