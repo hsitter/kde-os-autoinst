@@ -38,6 +38,7 @@ if (testapi::get_var("INSTALLATION")) {
         '' => "tests/install_ubiquity.pm"
     );
     autotest::loadtest('tests/install/bootloader.pm');
+    autotest::loadtest('tests/install/core.pm');
     autotest::loadtest($test{$ENV{TYPE}} || $test{''});
 } elsif (testapi::get_var("TESTS_TO_RUN")) {
     my $testpaths = testapi::get_var("TESTS_TO_RUN");
