@@ -35,9 +35,11 @@ sub run {
     # since we can't make sure that is in fact the baseline we can't really do
     # that :/
     # >30s would be indicative of a dbus timeout.
-    assert_screen 'folder-desktop', 120;
+    assert_screen 'folder-desktop', 30;
 
     assert_and_click "home-icon";
+    send_key 'alt-f4';
+    assert_screen 'folder-desktop', 8;
 }
 
 sub test_flags {
@@ -46,6 +48,15 @@ sub test_flags {
     # 'milestone' - after this test succeeds, update 'lastgood'
     # 'important' - if this fails, set the overall state to 'fail'
     return { important => 1 };
+}
+
+sub post_fail_hook {
+    my ($self) = shift;
+    # $self->SUPER::post_fail_hook;
+
+    select_console 'log-console';
+
+    upload_logs "/home/$testapi::password/.xsession-errors";
 }
 
 1;

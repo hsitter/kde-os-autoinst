@@ -33,21 +33,21 @@ sub lock_screen {
 }
 
 sub run {
-    assert_screen "grub", 30;
-    send_key 'ret'; # start first entry
-
-    # Eventually we should end up in sddm
-    assert_screen "sddm", 120;
-
-    type_password $testapi::password;
-    send_key 'ret';
-
-    # wait for the desktop to appear
-    # Technically we'd want to make sure the desktop appears in under 30s but
-    # since we can't make sure that is in fact the baseline we can't really do
-    # that :/
-    # >30s would be indicative of a dbus timeout.
-    assert_screen 'folder-desktop', 120;
+    # assert_screen "grub", 30;
+    # send_key 'ret'; # start first entry
+    #
+    # # Eventually we should end up in sddm
+    # assert_screen "sddm", 120;
+    #
+    # type_password $testapi::password;
+    # send_key 'ret';
+    #
+    # # wait for the desktop to appear
+    # # Technically we'd want to make sure the desktop appears in under 30s but
+    # # since we can't make sure that is in fact the baseline we can't really do
+    # # that :/
+    # # >30s would be indicative of a dbus timeout.
+    # assert_screen 'folder-desktop', 120;
 
     lock_screen;
 
@@ -75,8 +75,17 @@ sub run {
     assert_and_click 'plasma-locked-switch-icon';
     assert_and_click 'plasma-locked-switch';
     assert_screen 'sddm';
-    select_console 'x11'; # ugh, sddm has no way to get us back...
+    type_password $testapi::password;
+    send_key 'ret';
+    # ugh, sddm has no way to get us back, start a new session?
+    wait_still_screen;
+    assert_and_click 'kickoff', undef, 60; # 60 seconds since we don't assert desktop
+    assert_and_click 'kickoff-leave';
+    assert_and_click 'kickoff-leave-logout';
+    assert_and_click 'ksmserver-logout';
+    wait_still_screen;
 
+    # we are back in our regular session, unlock and be happy
     # done
 }
 
