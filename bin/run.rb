@@ -34,6 +34,10 @@ ISOTOVIDEO = if File.exist?('/opt/os-autoinst/isotovideo')
 
 ENV['PERL5LIB'] = PERL5LIB
 
+# os-autoinst internally hosts a mojo server to shove assets between host and
+# guest, this controls the debuggyness there.
+# MOJO_LOG_LEVEL=debug
+
 # not a typo 鑊!
 # FIXME: hack while we run everything in the same job we need to only clean the
 #   wok on the initial installation test. otherwise we lose data.
