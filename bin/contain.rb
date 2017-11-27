@@ -32,8 +32,10 @@ dev_kvm = {
   PathInContainer: '/dev/kvm',
   CgroupPermissions: 'mrw'
 }
+devices = []
+devices << dev_kvm if File.exist?(dev_kvm[:PathOnHost])
 
-c = CI::Containment.new(JOB_NAME.gsub('%2F', '/').gsub('/','-'),
+c = CI::Containment.new(JOB_NAME.gsub('%2F', '/').tr('/', '-'),
                         image: CI::PangeaImage.new(:ubuntu, DIST),
                         binds: ["#{Dir.pwd}:#{PWD_BIND}"],
                         privileged: false)
@@ -44,5 +46,5 @@ env << "BUILD_URL=#{ENV.fetch('BUILD_URL')}"
 env << "NODE_NAME=#{ENV.fetch('NODE_NAME')}"
 status_code = c.run(Cmd: ARGV, WorkingDir: PWD_BIND,
                     Env: env,
-                    HostConfig: { Devices: [dev_kvm] })
+                    HostConfig: { Devices: devices })
 exit status_code
