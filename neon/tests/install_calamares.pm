@@ -107,10 +107,11 @@ sub post_fail_hook {
     select_console 'log-console';
 
     # Uploads end up in wok/ulogs/
-    assert_script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
+    upload_logs '/home/neon/.cache/Calamares/Calamares.log';
+    upload_logs '/home/neon/.xsession-errors';
+
+    git  'journalctl --no-pager -b 0 > /tmp/journal.txt';
     upload_logs '/tmp/journal.txt';
-    assert_script_sudo 'tar cfJ /tmp/installer.tar.xz /var/log/installer';
-    upload_logs '/tmp/installer.tar.xz';
 }
 
 1;
