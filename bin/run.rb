@@ -84,10 +84,12 @@ else
   config[:BOOT_HDD_IMAGE] = true
   config[:KEEPHDDS] = true
   # Re-use existing raid/, comes from install test.
-  if File.exist?('../raid')
-    warn 'Importing existing ../raid'
-    FileUtils.rm_r('raid')
-    FileUtils.cp_r('../raid', '.')
+  existing_raid = File.realpath('../raid')
+  if File.exist?(existing_raid)
+    warn "Overlyaing existing #{existing_raid}"
+    FileUtils.rm_r('raid') if File.exist?('raid')
+    FileUtils.mkpath('raid')
+    system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 10G") || raise
   end
 end
 
