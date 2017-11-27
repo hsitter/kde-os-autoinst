@@ -33,7 +33,7 @@ if File.exist?('incoming.iso')
 end
 
 warn ISO_URL
-system('zsync_curl', '-q', '-o', 'neon.iso', ISO_URL) || raise
+system('zsync_curl', '-o', 'neon.iso', ISO_URL) || raise
 system('wget', '-q', '-O', 'neon.iso.sig', SIG_URL) || raise
 system('gpg2', '--recv-key', GPG_KEY) || raise
 system('gpg2', '--verify', 'neon.iso.sig') || raise
