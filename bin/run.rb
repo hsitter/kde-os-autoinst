@@ -91,6 +91,8 @@ else
     FileUtils.mkpath('raid')
     system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 10G") || raise
   end
+  config[:QEMU_DISABLE_SNAPSHOTS] = true
+  config[:MAKETESTSNAPSHOTS] = false
 end
 
 # Neon builders don't do KVM, disable it if the module is not loaded.
