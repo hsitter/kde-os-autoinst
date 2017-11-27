@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 504,
+      "match": 95,
+      "type": "match",
+      "width": 567,
+      "xpos": 185,
+      "ypos": 25
+    },
+    {
+      "height": 329,
+      "match": 95,
+      "type": "match",
+      "width": 182,
+      "xpos": 0,
+      "ypos": 29
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "dolphin",
+    "ENV-DISTRI-neon"
+  ]
+}
