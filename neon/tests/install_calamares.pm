@@ -106,10 +106,6 @@ sub post_fail_hook {
 
     select_console 'log-console';
 
-    # Older versions do not come with curl pre installed.
-    assert_script_run 'sudo apt-get update';
-    assert_script_run 'sudo apt-get install curl';
-
     # Uploads end up in wok/ulogs/
     assert_script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
     upload_logs '/tmp/journal.txt';

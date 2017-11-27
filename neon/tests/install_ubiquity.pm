@@ -98,9 +98,6 @@ sub post_fail_hook {
     my ($self) = shift;
     $self->SUPER::post_fail_hook;
 
-    select_console 'x11';
-    ensure_installed 'curl';
-
     select_console 'log-console';
 
     # Uploads end up in wok/ulogs/
