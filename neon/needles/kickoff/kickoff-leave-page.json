@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "height": 112,
+      "match": 95,
+      "type": "match",
+      "width": 96,
+      "xpos": 379,
+      "ypos": 599
+    },
+    {
+      "height": 154,
+      "match": 95,
+      "type": "match",
+      "width": 233,
+      "xpos": 10,
+      "ypos": 203
+    },
+    {
+      "height": 158,
+      "match": 95,
+      "type": "match",
+      "width": 227,
+      "xpos": 13,
+      "ypos": 364
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kickoff-leave-page",
+    "ENV-DISTRI-neon"
+  ]
+}

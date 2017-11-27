@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "height": 33,
+      "match": 95,
+      "type": "match",
+      "width": 108.33333333333337,
+      "xpos": 421,
+      "ypos": 525
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "ksmserver-shutdown",
+    "ENV-DISTRI-neon"
+  ]
+}

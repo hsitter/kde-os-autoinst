@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "height": 46,
+      "match": 95,
+      "type": "match",
+      "width": 190,
+      "xpos": 37,
+      "ypos": 473
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kickoff-leave-shutdown",
+    "ENV-DISTRI-neon"
+  ]
+}

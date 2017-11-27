@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "height": 127,
+      "match": 95,
+      "type": "match",
+      "width": 465,
+      "xpos": 6,
+      "ypos": 599
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kickoff-popup",
+    "ENV-DISTRI-neon"
+  ]
+}
