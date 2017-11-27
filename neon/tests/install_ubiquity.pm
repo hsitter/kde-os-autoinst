@@ -30,7 +30,6 @@ sub run {
     assert_screen 'live-desktop', 360;
 
     wait_still_screen;
-    wait_idle;
 
     # Installer
     assert_and_click "installer-icon";
