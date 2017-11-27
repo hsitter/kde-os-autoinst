@@ -28,12 +28,54 @@ sub run {
     $testapi::password = '';
 
     # wait for the desktop to appear
-    assert_screen 'live-desktop', 360;
+    # assert_screen 'live-desktop', 360;
 
     wait_still_screen;
 
+        # select_console 'log-console';
+        # # assert_script_run 'sudo apt purge -y snapd';
+        # #
+        # script_run 'sudo touch /etc/apt/apt.conf.d/proxy; sudo chown neon /etc/apt/apt.conf.d/proxy';
+        # script_run 'echo "Acquire::http { Proxy \"http://10.0.2.2:3142\"; };" > /etc/apt/apt.conf.d/proxy';
+        # script_run 'sudo touch /etc/apt/apt.conf.d/proxy; sudo chown root /etc/apt/apt.conf.d/proxy';
+        #
+        # assert_script_run 'sudo apt update';
+        # assert_script_run ' sudo DEBIAN_FRONTEND=noninteractive  apt -y dist-upgrade', 36000;
+        # assert_script_run ' sudo DEBIAN_FRONTEND=noninteractive  apt -y install kdevelop kmail', 36000;
+        #
+        # # assert_script_run 'sudo apt -y install git cmake build-essential';
+        # # assert_script_run 'sudo apt-get build-dep -y kdeclarative';
+        # # assert_script_run 'git clone https://anongit.kde.org/kdeclarative.git';
+        # # assert_script_run 'cd kdeclarative';
+        # # assert_script_run 'git checkout e2795e9472333d5e8b2ce70017ca705474ebe3d2~';
+        # # assert_script_run 'mkdir build; cd build';
+        # # assert_script_run 'cmake .. -DKDE_INSTALL_USE_QT_SYS_PATHS=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug -DPHONON_BUILD_PHONON4QT5=ON -DBUILD_TESTING=OFF';
+        # # assert_script_run 'make -j5 && sudo make install';
+        #
+        # # assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
+        # # assert_script_run 'ruby enable_qdebug.rb', 16;
+        # #
+        # # assert_script_run ' sudo systemctl restart sddm', 36000;
+        # select_console 'x11';
+        # # wait_still_screen;
+
+    # assert_screen_change {
+    #     testapi::x11_start_program('kdevelop');
+    #     send_key 'alt-f4';
+    # };
+    #
+    # assert_screen_change {
+    #     testapi::x11_start_program('kmail');
+    #     send_key 'alt-f4';
+    # };
+
+    # testapi::x11_start_program('calamares');
+    # send_key_until_needlematch "calamares-installer-welcome", 'ret', 30, 30;
+    # assert_screen('konsole');
+    # script_run 'sudo /usr/bin/calamares';
+
     # Installer
-    assert_and_click "calamares-installer-icon";
+    assert_and_click 'calamares-installer-icon', undef, 8;
 
     assert_screen "calamares-installer-welcome", 30;
     assert_and_click "calamares-installer-next";
@@ -98,7 +140,7 @@ sub test_flags {
 
 sub post_fail_hook {
     my ($self) = shift;
-    $self->SUPER::post_fail_hook;
+    # $self->SUPER::post_fail_hook;
 
     select_console 'log-console';
 
@@ -106,7 +148,7 @@ sub post_fail_hook {
     upload_logs '/home/neon/.cache/Calamares/Calamares.log';
     upload_logs '/home/neon/.xsession-errors';
 
-    git  'journalctl --no-pager -b 0 > /tmp/journal.txt';
+    assert_script_sudo 'journalctl --no-pager -b 0 > /tmp/journal.txt';
     upload_logs '/tmp/journal.txt';
 }
 
