@@ -60,11 +60,11 @@ sub run {
     assert_screen "calamares-installer-user", 16;
     type_string $user;
     assert_screen "calamares-installer-user-user", 16;
-    send_key "tab", 1; # username field
-    send_key "tab", 1; # hostname field
-    send_key "tab", 1; # 1st password field
+    send_key "tab"; # username field
+    send_key "tab"; # hostname field
+    send_key "tab"; # 1st password field
     type_string $password;
-    send_key "tab", 1; # 2nd password field
+    send_key "tab"; # 2nd password field
     type_string $password;
     # all fields filled (not matching hostname field)
     assert_screen "calamares-installer-user-complete", 16;
