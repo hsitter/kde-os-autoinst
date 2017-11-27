@@ -69,7 +69,8 @@ config = {
   UEFI: 1,
   # The video is fairly useless gimicky stuff. Also theora... if I wanted a
   # pixelated slideshow I'd use a more efficient pixelation algorithm.
-  NOVIDEO: true
+  NOVIDEO: true,
+  QEMU_COMPRESS_QCOW2: true
 }
 
 # Switch to bios mode when requested.
