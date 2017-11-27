@@ -19,7 +19,6 @@ sub x11_start_program($$$) {
     type_string $program;
     wait_still_screen;
     send_key "ret";
-    wait_still_screen;
 }
 
 sub ensure_installed {
