@@ -72,7 +72,7 @@ sub run {
     assert_screen "calamares-installer-show", 16;
 
     # Let install finish and restart
-    assert_screen "calamares-installer-restart", 640;
+    assert_screen "calamares-installer-restart", 1200;
     assert_and_click "calamares-installer-restart-now";
 
     assert_screen "live-remove-medium", 60;
