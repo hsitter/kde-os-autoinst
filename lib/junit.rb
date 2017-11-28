@@ -45,13 +45,23 @@ class JUnit
       # and other times it is a needles array with multiple needles that have
       # a name property.
       # Not entirely sure how to best handle this.
-      self.name = detail.fetch('tags').fetch(0)
+      self.name = find_name_of(detail)
       self.result = RESULT_MAP.fetch(detail.fetch('result'))
       system_err.message = JSON.pretty_generate(detail)
       return unless BUILD_URL
       [detail['screenshot'], detail['text']].compact.each do |artifact|
         system_out << "#{artifact_info(artifact, detail)}\n\n"
       end
+    end
+
+    def find_name_of(detail)
+      tags = detail.fetch('tags')
+      return tags.fetch(0) unless tags.empty?
+      # Certain tests can produce an empty list of tags (e.g. if no needle
+      # was set or the needle wasn't found). To deal with those we'll set a
+      # classname and use the screenshot or text as name.
+      self.classname = 'notags'
+      detail.fetch('screenshot') { detail.fetch('text') }
     end
 
     def artifact_info(artifact, detail)
