@@ -27,7 +27,7 @@ if !File.exist?('/opt/os-autoinst')
   # Only needed when bootstrapped from ubuntu.
   system('gem install jenkins_junit_builder') || raise
 elsif ENV.fetch('NODE_NAME', '') == 'master' ||
-      ENV.fetch('NODE_NAME', '').include?('os-autoinst')
+      ENV.fetch('NODE_NAME', '').include?('autoinst')
   # Make sure master has the latest version in there.
   Dir.chdir('/opt') { system("#{__dir__}/install.rb") || raise }
 end
