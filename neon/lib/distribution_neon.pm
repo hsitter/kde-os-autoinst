@@ -29,7 +29,6 @@ sub ensure_installed {
     testapi::x11_start_program('konsole');
     assert_screen('konsole');
     testapi::assert_script_sudo("chown $testapi::username /dev/$testapi::serialdev");
-    my $retries = 5;    # arbitrary
 
     # make sure packagekit service is available
     testapi::assert_script_sudo('systemctl is-active -q packagekit || (systemctl unmask -q packagekit ; systemctl start -q packagekit)');
@@ -37,8 +36,14 @@ sub ensure_installed {
 "for i in {1..$retries} ; do pkcon -y install $pkglist && break ; done ; RET=\$?; echo \"\n  pkcon finished\n\"; echo \"pkcon-\${RET}-\" > /dev/$testapi::serialdev",
         0
     );
-    wait_serial('pkcon-0-', 27) || die "pkcon install did not succeed";
-    send_key("alt-f4");    # close xterm
+
+    if (check_screen('polkit', $args{timeout})) {
+        type_password;
+        send_key('ret', 1);
+    }
+
+    wait_serial('pkcon-0-', $args{timeout}) || die "pkcon failed";
+    send_key('alt-f4');
 }
 
 
