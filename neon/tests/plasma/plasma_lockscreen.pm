@@ -87,6 +87,12 @@ sub run {
 
     # we are back in our regular session, unlock and be happy
     # done
+    record_soft_failure 'kscreenlocker comes back with vkbd bug 387270';
+    assert_and_click 'plasma-locked-keyboard-icon-active';
+
+    type_password $testapi::password;
+    send_key 'ret';
+    assert_screen 'folder-desktop', 60;
 }
 
 sub test_flags {
