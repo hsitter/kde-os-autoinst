@@ -1,0 +1,24 @@
+{
+  "area": [
+    {
+      "height": 25,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 340,
+      "ypos": 269
+    },
+    {
+      "height": 21,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 652,
+      "ypos": 244
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kblocks"
+  ]
+}
