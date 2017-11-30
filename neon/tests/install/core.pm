@@ -43,7 +43,7 @@ sub run {
     select_console 'x11';
 
     # Leave system as we have found it.
-    assert_screen 'live-desktop';
+    assert_screen 'live-desktop', 5 * 60;
     $testapi::username = $user;
     $testapi::password = $password;
 }
