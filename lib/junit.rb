@@ -25,6 +25,9 @@ require 'jenkins_junit_builder'
 # JUnit converter.
 class JUnit
   BUILD_URL = ENV.fetch('BUILD_URL', nil)
+  REV = Dir.chdir(File.realpath("#{__dir__}/../")) do
+    `git rev-parse HEAD`.strip
+  end
 
   # Case wrapper
   class Case < JenkinsJunitBuilder::Case
@@ -34,7 +37,11 @@ class JUnit
       # => JenkinsJunitBuilder::Case::RESULT_SKIPPED
     }.freeze
 
-    EXPECTATION_URL = 'https://raw.githubusercontent.com/apachelogger/kde-os-autoinst/master'.freeze
+    REPO = 'apachelogger/kde-os-autoinst'.freeze
+    EXPECTATION_URL =
+      format('https://raw.githubusercontent.com/%s/%s',
+             REPO,
+             REV && !REV.empty? ? REV : 'master').freeze
 
     def initialize(detail)
       super()
