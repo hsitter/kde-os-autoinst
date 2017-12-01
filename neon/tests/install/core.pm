@@ -48,6 +48,15 @@ sub run {
     $testapi::password = $password;
 }
 
+sub post_fail_hook {
+    select_console 'log-console';
+
+    # Uploads end up in wok/ulogs/
+    upload_logs '/home/neon/.xsession-errors';
+    script_sudo 'journalctl --no-pager -b 0 > /tmp/journal.txt';
+    upload_logs '/tmp/journal.txt';
+}
+
 sub test_flags {
     # without anything - rollback to 'lastgood' snapshot if failed
     # 'fatal' - whole test suite is in danger if this fails
