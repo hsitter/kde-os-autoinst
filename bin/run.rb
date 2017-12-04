@@ -34,6 +34,11 @@ ISOTOVIDEO = if File.exist?('/opt/os-autoinst/isotovideo')
 
 ENV['PERL5LIB'] = PERL5LIB
 
+puts 'kvm-ok?'
+system 'kvm-ok'
+
+puts File.read('/proc/cpuinfo')
+
 # os-autoinst internally hosts a mojo server to shove assets between host and
 # guest, this controls the debuggyness there.
 # MOJO_LOG_LEVEL=debug
