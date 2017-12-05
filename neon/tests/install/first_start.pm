@@ -40,8 +40,7 @@ sub run {
 
     assert_script_sudo 'sync';
 
-    assert_script_sudo 'shutdown now';
-
+    script_sudo 'shutdown now';
     assert_shutdown;
 }
 
