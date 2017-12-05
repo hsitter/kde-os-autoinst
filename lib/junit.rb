@@ -111,13 +111,26 @@ expected any of:
 
   # Suite wrapper
   class Suite < JenkinsJunitBuilder::Suite
-    def initialize(test_file)
+    BAD_RESULTS = [JenkinsJunitBuilder::Case::RESULT_FAILURE,
+                   JenkinsJunitBuilder::Case::RESULT_ERROR].freeze
+
+    def initialize(test_file, name:)
       super()
+      @failed = false
       data = JSON.parse(File.read(test_file))
-      self.name = File.basename(test_file).match(/result-(.+)\.json/)[1]
+      self.name = name
       self.package = name
       self.report_path = "junit/#{name}.xml"
       casify(data)
+    end
+
+    def failed?
+      @failed
+    end
+
+    def add_case(c)
+      @failed ||= BAD_RESULTS.include?(c.result)
+      super
     end
 
     def casify(data)
@@ -142,16 +155,45 @@ expected any of:
     end
   end
 
-  def self.from_openqa(testresults_dir)
+  attr_reader :testresults_dir
+
+  def initialize(testresults_dir)
+    @testresults_dir = testresults_dir
+    @failed = false
     FileUtils.rm_rf('junit') if Dir.exist?('junit')
     Dir.mkdir('junit')
-    ran = false
-    Dir.glob("#{testresults_dir}/result-*.json").each do |test_file|
-      ran = true
-      suite = Suite.new(test_file)
+  end
+
+  def failed?
+    @failed
+  end
+
+  def tests
+    @tests ||= begin
+      tests_order_file = "#{testresults_dir}/test_order.json"
+      unless File.exist?(tests_order_file)
+        raise "No tests run; can't find #{tests_order_file}"
+      end
+      JSON.parse(File.read(tests_order_file))
+    end
+  end
+
+  def write_all
+    if tests.empty?
+      raise "No tests run; order array is empty in #{tests_order_file}"
+    end
+    tests.each_with_index do |test_h, i|
+      name = test_h.fetch('name')
+      test_file = "#{testresults_dir}/result-#{name}.json"
+      suite = Suite.new(test_file, name: format('%03d_%s', i, name))
+      @failed ||= suite.failed?
       suite.write_report_file
     end
-    return if ran
-    raise "Could not find a single test file: #{testresults_dir}/result-*.json!"
+  end
+
+  def self.from_openqa(testresults_dir)
+    unit = new(testresults_dir)
+    unit.write_all
+    raise 'It seems some tests have not quite passed' if unit.failed?
   end
 end
