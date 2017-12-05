@@ -85,14 +85,6 @@ sub run {
     $testapi::password = $password;
 }
 
-sub test_flags {
-    # without anything - rollback to 'lastgood' snapshot if failed
-    # 'fatal' - whole test suite is in danger if this fails
-    # 'milestone' - after this test succeeds, update 'lastgood'
-    # 'important' - if this fails, set the overall state to 'fail'
-    return { important => 1 };
-}
-
 sub post_fail_hook {
     my ($self) = shift;
     # $self->SUPER::post_fail_hook;
@@ -105,6 +97,14 @@ sub post_fail_hook {
 
     assert_script_sudo 'journalctl --no-pager -b 0 > /tmp/journal.txt';
     upload_logs '/tmp/journal.txt';
+}
+
+sub test_flags {
+    # without anything - rollback to 'lastgood' snapshot if failed
+    # 'fatal' - whole test suite is in danger if this fails
+    # 'milestone' - after this test succeeds, update 'lastgood'
+    # 'important' - if this fails, set the overall state to 'fail'
+    return { important => 1, fatal => 1 };
 }
 
 1;
