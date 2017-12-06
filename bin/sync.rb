@@ -22,8 +22,9 @@
 require 'fileutils'
 
 TYPE = ENV.fetch('TYPE')
-ISO_URL = "http://files.kde.org/neon/images/neon-#{TYPE}/current/neon-#{TYPE}-current.iso.zsync".freeze
-SIG_URL = "http://files.kde.org/neon/images/neon-#{TYPE}/current/neon-#{TYPE}-current.iso.sig".freeze
+ISO_URL = "http://files.kde.org/neon/images/neon-#{TYPE}/current/neon-#{TYPE}-current.iso".freeze
+ZSYNC_URL = "#{ISO_URL}.zsync".freeze
+SIG_URL = "#{ISO_URL}.sig".freeze
 GPG_KEY = '348C 8651 2066 33FD 983A 8FC4 DEAC EA00 075E 1D76'.freeze
 
 if File.exist?('incoming.iso')
@@ -45,7 +46,7 @@ if ENV['NODE_NAME'] # probably jenkins use, download from mirror
   system('wget', '-O', 'neon.iso',
          ISO_URL.gsub('files.kde.org', 'files.kde.mirror.pangea.pub')) || raise
 else # probably not
-  system('zsync_curl', '-o', 'neon.iso', ISO_URL) || raise
+  system('zsync_curl', '-o', 'neon.iso', ZSYNC_URL) || raise
 end
 system('wget', '-q', '-O', 'neon.iso.sig', SIG_URL) || raise
 system('gpg2', '--recv-key', GPG_KEY) || raise
