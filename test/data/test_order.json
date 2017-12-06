@@ -1,0 +1,8 @@
+[
+   {
+      "script" : "tests/install_calamares.pm",
+      "category" : "install",
+      "flags" : {},
+      "name" : "install_calamares"
+   }
+]
