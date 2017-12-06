@@ -33,7 +33,20 @@ if File.exist?('incoming.iso')
 end
 
 warn ISO_URL
-system('zsync_curl', '-o', 'neon.iso', ISO_URL) || raise
+if ENV['NODE_NAME'] # probably jenkins use, download from mirror
+  # zsync_curl has severe performance problems from curl. It uses the same code
+  # the original zsync but replaces the custom http with curl, the problem is
+  # that the has 0 threading, so if only one block needs downloading it has
+  # curl overhead + DNS overhead + SSL overhead + checksum single core calc.
+  # All in all zsync_curl often performs vastly worse than downloading the
+  # entire ISO would.
+  # TODO: with this in place we can also drop stashing and unstashing of
+  #   ISOs from master.
+  system('wget', '-O', 'neon.iso',
+         ISO_URL.gsub('files.kde.org', 'files.kde.mirror.pangea.pub')) || raise
+else # probably not
+  system('zsync_curl', '-o', 'neon.iso', ISO_URL) || raise
+end
 system('wget', '-q', '-O', 'neon.iso.sig', SIG_URL) || raise
 system('gpg2', '--recv-key', GPG_KEY) || raise
 system('gpg2', '--verify', 'neon.iso.sig') || raise
