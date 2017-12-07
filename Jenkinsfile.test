@@ -23,23 +23,16 @@ env.PWD_BIND = '/workspace'
 //     contain(cmd: "xxx")
   }
 
-cleanNode('os-autoinst') {
+cleanNode('master') {
   try {
     sh 'ifconfig'
-    stage('tree[wget]') {
-      sh "wget -q https://metadata.neon.kde.org/os-autoinst/${env.TYPE}.tar"
-      sh "wget -q https://metadata.neon.kde.org/os-autoinst/${env.TYPE}.tar.sig"
+    // TODO: Ideally we'd not sync tars but dirs via rsync, the tar overhead
+    //   isn't particularly worth it.
+    //   Also transfering the entire working tree seems fairly daft.
+    stage('download & untar') {
+      sh "curl https://metadata.neon.kde.org/os-autoinst/${env.TYPE}.tar | tar xvf"
+      sh 'ls -lah'
     }
-    parallel(
-      "tree[verify]": {
-        sh 'gpg2 --recv-keys "348C 8651 2066 33FD 983A  8FC4 DEAC EA00 075E 1D76"'
-        sh 'gpg2 --verify ${TYPE}.tar.sig'
-      },
-      "tree[untar]": {
-        sh 'tar -xf ${TYPE}.tar'
-        sh 'ls -lah'
-      }
-    )
     stage('pull') {
       sh 'git branch --set-upstream-to=origin/master master'
       sh 'git pull'
