@@ -44,9 +44,7 @@ fancyNode('master') {
     stage('archive-raid') {
       tar = "/var/www/metadata/os-autoinst/${env.TYPE}.tar"
       sh "tar --exclude=*.iso --exclude=*.iso.* --exclude=*socket --exclude=wok/video.ogv --exclude=wok/ulogs --exclude=wok/testresults -cf ${tar}.new ."
-      sh "gpg2 --armor --detach-sign -o ${tar}.new.sig ${tar}.new"
       sh "mv -v ${tar}.new ${tar}"
-      sh "mv -v ${tar}.new.sig ${tar}.sig"
     }
   } finally {
     archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv'
