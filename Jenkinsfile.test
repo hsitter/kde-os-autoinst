@@ -40,8 +40,8 @@ cleanNode('master') {
     stage('rake-test') {
       sh 'rake test'
     }
-    stage('test-plasma_folder') {
-      sh 'TESTS_TO_RUN=tests/plasma_folder.pm bin/contain.rb /workspace/bin/bootstrap.rb'
+    stage('test-plasma') {
+      sh 'PLASMA_DESKTOP=1 bin/contain.rb /workspace/bin/bootstrap.rb'
     }
   } finally {
     archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv, wok/vars.json'
