@@ -82,14 +82,6 @@ sub run {
     $testapi::password = $password;
 }
 
-sub test_flags {
-    # without anything - rollback to 'lastgood' snapshot if failed
-    # 'fatal' - whole test suite is in danger if this fails
-    # 'milestone' - after this test succeeds, update 'lastgood'
-    # 'important' - if this fails, set the overall state to 'fail'
-    return { important => 1 };
-}
-
 sub post_fail_hook {
     my ($self) = shift;
     $self->SUPER::post_fail_hook;
@@ -101,6 +93,14 @@ sub post_fail_hook {
     upload_logs '/tmp/journal.txt';
     assert_script_sudo 'tar cfJ /tmp/installer.tar.xz /var/log/installer';
     upload_logs '/tmp/installer.tar.xz';
+}
+
+sub test_flags {
+    # without anything - rollback to 'lastgood' snapshot if failed
+    # 'fatal' - whole test suite is in danger if this fails
+    # 'milestone' - after this test succeeds, update 'lastgood'
+    # 'important' - if this fails, set the overall state to 'fail'
+    return { important => 1, fatal => 1 };
 }
 
 1;
