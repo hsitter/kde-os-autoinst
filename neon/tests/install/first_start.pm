@@ -21,7 +21,7 @@ use testapi;
 
 # Core test to run for all install cases. Asserts common stuff.
 sub run {
-    assert_screen "grub", 30;
+    assert_screen "grub", 60;
     send_key 'ret'; # start first entry
 
     # Eventually we should end up in sddm
