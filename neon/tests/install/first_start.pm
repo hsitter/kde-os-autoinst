@@ -24,7 +24,8 @@ sub run {
     # Unstable has a grub while user does not. Until we figure out why
     # we make no assertions about it. In either case there should be
     # a timeout anyway.
-    record_soft_failure('not asserting no grub or grub');
+    # https://bugs.kde.org/show_bug.cgi?id=387827
+    record_soft_failure('not asserting no grub or grub https://bugs.kde.org/show_bug.cgi?id=387827');
     # assert_screen "grub", 60;
     # send_key 'ret'; # start first entry
 
@@ -32,10 +33,6 @@ sub run {
     assert_screen "sddm", 60 * 5;
 
     select_console 'log-console';
-
-    upload_logs '/var/log/dpkg.log';
-    upload_logs '/var/log/apt/history.log';
-    upload_logs '/var/log/apt/term.log';
 
     assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
     assert_script_run 'ruby enable_qdebug.rb', 16;
