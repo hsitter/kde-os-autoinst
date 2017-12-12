@@ -75,6 +75,9 @@ sub run {
     assert_screen "calamares-installer-restart", 1200;
 
     select_console 'log-console';
+    assert_script_sudo 'apt update';
+    assert_script_sudo 'apt install -y tree';
+    script_sudo 'tree /home/neon/';
     upload_logs '/home/neon/.cache/Calamares/Calamares.log';
     upload_logs '/home/neon/.xsession-errors';
     upload_logs '/var/log/dpkg.log';
