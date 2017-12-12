@@ -33,6 +33,10 @@ sub run {
 
     select_console 'log-console';
 
+    upload_logs '/var/log/dpkg.log';
+    upload_logs '/var/log/apt/history.log';
+    upload_logs '/var/log/apt/term.log';
+
     assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
     assert_script_run 'ruby enable_qdebug.rb', 16;
 
