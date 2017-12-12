@@ -31,6 +31,13 @@ sub run {
 
     wait_still_screen;
 
+    select_console 'log-console';
+    {
+        assert_script_run 'wget ' . data_url('geoip_service.rb'),  16;
+        script_sudo 'systemd-run ruby `pwd`/geoip_service.rb', 16;
+    }
+    select_console 'x11';
+
     # Installer
     assert_and_click "installer-icon";
     assert_screen "installer-welcome", 60;
