@@ -77,12 +77,14 @@ sub run {
     select_console 'log-console';
     assert_script_sudo 'apt update';
     assert_script_sudo 'apt install -y tree';
-    script_sudo 'tree /home/neon/';
-    upload_logs '/home/neon/.cache/Calamares/Calamares.log';
-    upload_logs '/home/neon/.xsession-errors';
     upload_logs '/var/log/dpkg.log';
     upload_logs '/var/log/apt/history.log';
     upload_logs '/var/log/apt/term.log';
+    script_sudo 'tree -R /home/neon/.cache';
+    script_sudo 'tree -R /home/neon/.cache &> /tmp/tree.log';
+    upload_logs '/tmp/tree.log'
+    upload_logs '/home/neon/.cache/Calamares/Calamares.log';
+    upload_logs '/home/neon/.xsession-errors';
     select_console 'x11';
 
     assert_and_click "calamares-installer-restart-now";
