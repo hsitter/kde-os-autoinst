@@ -30,8 +30,19 @@ cd /workspace
 TYPE=devedition-gitunstable bin/bootstrap_from_ubuntu.sh
 ```
 
-Note that this will probably fail because bootstrap will attempt to run tests
+Note that this will fail because bootstrap will attempt to run tests
 which we haven't specified.
+bootstrap internally invokes run.rb (see below) to run the tests. So you can
+also bootstrap and run at the same time by setting env INSTALLATION=1 or
+whichever test needs running.
+
+Bootstrap also runs sync.rb which makes sure you have a recent ISO.
+
+# Sync
+
+To get or update the ISO run `TYPE=devedition-gitunstable bin/sync.rb`.
+This is automatically done by bootstrap.rb while run.rb does not (performance
+reasons and what not).
 
 # Testerino
 
