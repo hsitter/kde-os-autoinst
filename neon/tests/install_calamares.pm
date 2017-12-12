@@ -83,7 +83,7 @@ sub run {
     script_sudo 'tree -R /home/neon/.cache';
     script_sudo 'tree -R /home/neon/.cache &> /tmp/tree.log';
     upload_logs '/tmp/tree.log';
-    upload_logs '/home/neon/.cache/Calamares/Calamares.log';
+    upload_logs '/home/neon/.cache/Calamares/calamares/Calamares.log';
     upload_logs '/home/neon/.xsession-errors';
     select_console 'x11';
 
@@ -106,7 +106,7 @@ sub post_fail_hook {
     select_console 'log-console';
 
     # Uploads end up in wok/ulogs/
-    upload_logs '/home/neon/.cache/Calamares/Calamares.log';
+    upload_logs '/home/neon/.cache/Calamares/calamares/Calamares.log';
     upload_logs '/home/neon/.xsession-errors';
 
     assert_script_sudo 'journalctl --no-pager -b 0 > /tmp/journal.txt';
