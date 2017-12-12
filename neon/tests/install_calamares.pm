@@ -82,7 +82,7 @@ sub run {
     upload_logs '/var/log/apt/term.log';
     script_sudo 'tree -R /home/neon/.cache';
     script_sudo 'tree -R /home/neon/.cache &> /tmp/tree.log';
-    upload_logs '/tmp/tree.log'
+    upload_logs '/tmp/tree.log';
     upload_logs '/home/neon/.cache/Calamares/Calamares.log';
     upload_logs '/home/neon/.xsession-errors';
     select_console 'x11';
