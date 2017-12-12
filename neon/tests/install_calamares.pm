@@ -73,6 +73,15 @@ sub run {
 
     # Let install finish and restart
     assert_screen "calamares-installer-restart", 1200;
+
+    select_console 'log-console';
+    upload_logs '/home/neon/.cache/Calamares/Calamares.log';
+    upload_logs '/home/neon/.xsession-errors';
+    upload_logs '/var/log/dpkg.log';
+    upload_logs '/var/log/apt/history.log';
+    upload_logs '/var/log/apt/term.log';
+    select_console 'x11';
+
     assert_and_click "calamares-installer-restart-now";
 
     assert_screen "live-remove-medium", 60;
