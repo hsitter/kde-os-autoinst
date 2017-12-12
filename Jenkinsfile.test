@@ -21,16 +21,16 @@ env.PWD_BIND = '/workspace'
 // }
 //   in_container { contain ->
 //     contain(cmd: "xxx")
-  }
+// }
 
 cleanNode('master') {
   try {
-    sh 'ifconfig'
     // TODO: Ideally we'd not sync tars but dirs via rsync, the tar overhead
     //   isn't particularly worth it.
     //   Also transfering the entire working tree seems fairly daft.
     stage('download & untar') {
-      sh "curl https://metadata.neon.kde.org/os-autoinst/${env.TYPE}.tar | tar xvf"
+      sh "curl https://metadata.neon.kde.org/os-autoinst/${env.TYPE}edition.tar | tar xv"
+      sh 'mv -v wok/raid .'
       sh 'ls -lah'
     }
     stage('pull') {
