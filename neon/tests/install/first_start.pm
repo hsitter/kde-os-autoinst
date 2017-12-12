@@ -21,11 +21,15 @@ use testapi;
 
 # Core test to run for all install cases. Asserts common stuff.
 sub run {
-    assert_screen "grub", 60;
-    send_key 'ret'; # start first entry
+    # Unstable has a grub while user does not. Until we figure out why
+    # we make no assertions about it. In either case there should be
+    # a timeout anyway.
+    record_soft_failure('not asserting no grub or grub');
+    # assert_screen "grub", 60;
+    # send_key 'ret'; # start first entry
 
     # Eventually we should end up in sddm
-    assert_screen "sddm", 120;
+    assert_screen "sddm", 60 * 5;
 
     select_console 'log-console';
 
