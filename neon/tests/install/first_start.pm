@@ -30,7 +30,13 @@ sub run {
     # send_key 'ret'; # start first entry
 
     # Eventually we should end up in sddm
-    assert_screen "sddm", 60 * 5;
+     # NB: this is 10m because we do not also wait for grub, so this timeout
+     #   entails: shutdown of the live session + uefi reinit +
+     #            grub (possibly with) + actual boot + start of sddm.
+     #   with tests running on drax presently this can easily exceed 5m
+     #   (which would be my otherwise preferred value) as drax may be busy
+     #   doing other things as well that slow the test down.
+    assert_screen 'sddm', 60 * 10;
 
     select_console 'log-console';
 
