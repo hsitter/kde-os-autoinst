@@ -49,9 +49,24 @@ sub run {
     script_sudo 'systemctl disable --now snapd.snap-repair.timer';
     script_sudo 'systemctl disable --now snapd.service';
 
-    assert_script_sudo 'sync';
+    # Testing grub is a bit tricky because we first need to make sure it is
+    # visible. To do that we'll run a fairly broad unhide script
+    assert_script_run 'wget ' . data_url('grub_toggle_hide.rb'),  16;
+    assert_script_sudo 'ruby grub_toggle_hide.rb', 16;
 
-    script_sudo 'shutdown now';
+    script_sudo 'reboot';
+    reset_consoles;
+
+    # Now grub ought to be appearing.
+    assert_screen "grub", 60;
+    send_key 'ret'; # start first entry
+
+    # Once we are on sddm, hide grub again to speed up regular boots.
+    assert_screen 'sddm', 60 * 10;
+    select_console 'log-console';
+    assert_script_sudo 'ruby grub_toggle_hide.rb', 16;
+
+    script_sudo 'shutdown';
     assert_shutdown;
 }
 
