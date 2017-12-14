@@ -48,8 +48,12 @@ class JUnit
     def initialize(detail)
       super()
       @detail = detail
-      self.result = RESULT_MAP.fetch(detail.result)
+      self.result = translate_result(detail.result)
       system_err.message = JSON.pretty_generate(detail.data)
+    end
+
+    def translate_result(r)
+      RESULT_MAP.fetch(detail.result)
     end
 
     def artifact_url(artifact)
@@ -62,8 +66,28 @@ class JUnit
       super
       self.name = detail.title
       system_out << artifact_url(detail.text)
-      return unless detail.title.downcase == 'soft failure'
-      self.result = JenkinsJunitBuilder::Case::RESULT_SKIPPED
+    end
+  end
+
+  class SoftFailureDetailCase < Case
+    def initialize(detail)
+      # Soft failures are difficult in that their result field is in fact
+      # a screenshot blob. We always mark them skipped and do our best
+      # to give useful data.
+      super
+      self.name = detail.title
+      system_out << <<-STDOUT
+We recorded a soft failure, this isn't a failed assertion but rather
+indicates that something is (temporarily) wrong with the expecations.
+This event was programtically created, check the code of the test case.
+#{artifact_url(detail.text)}
+#{artifact_url(detail.result.screenshot)}
+STDOUT
+    end
+
+    # always mark skipped
+    def translate_result(_r)
+      JenkinsJunitBuilder::Case::RESULT_SKIPPED
     end
   end
 

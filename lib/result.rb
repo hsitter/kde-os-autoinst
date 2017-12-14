@@ -63,6 +63,14 @@ module OSAutoInst
       def can_represent_approximately?(data_blob)
         (data_blob.keys.sort - attributes.sort).empty?
       end
+
+      def need?(_data)
+        false
+      end
+
+      def want?(_data)
+        true
+      end
     end
 
     def initialize(data)
@@ -75,13 +83,20 @@ module OSAutoInst
   end
 
   class Detail < DetailRepresentation
-    # :ok or :fail or :unknown
+    # :ok or :fail or :unknown or :skip
     detail_attr :result
 
     def initialize(*)
       super
       results = { 'unk' => :unknown, 'ok' => :ok, 'fail' => :fail }
-      @result = results.fetch(result) { raise "Couldn't map result #{result}" }
+      @result = results.fetch(result) do
+        result.is_a?(Hash)
+        begin
+          @result = DetailFactory.new(result).factorize
+        rescue
+          raise "Couldn't map result #{result}"
+        end
+      end
     end
   end
 
@@ -101,6 +116,21 @@ module OSAutoInst
     detail_attr :title
     # received textual output
     detail_attr :text
+  end
+
+  # Soft failures are text details with rubbish result...
+  class SoftFailureDetail < TextDetail
+    # Result gets automatically represented correctly as it is a Hash.
+    # This class is only here so we can easily render this type of failure
+    # differently when converting to junit.
+
+    def self.need?(data)
+      data[:result] && data[:result].is_a?(Hash)
+    end
+
+    def self.want?(data)
+      data[:result] && data[:result].is_a?(Hash)
+    end
   end
 
   class NeedleDetail < Detail
@@ -187,6 +217,34 @@ module OSAutoInst
       end.compact
     end
 
+    # If multiple classes can represent the same data set we essentially
+    # X-OR them. We ask all of them if they want the data. If >1 wants it
+    # we ask if they need the data.
+    # This allows a class to override all other classes by needing data it
+    # absolutely knows how to handle while also being able to not want data
+    # which it knows other classes can handle better.
+    # Notably both TextDetail and SoftFailureDetail can handle textish blobs
+    # BUT only SoftFailureDetail knows how to differentiate a soft failure blob
+    # from a regular text blob. As such both can technically represent a
+    # textis blob but SoftFailureDetail only wants soft failure blobs.
+    def who_needs_the_data
+      @representations = @representations.select { |x| x.need?(data) }
+      case @representations.size
+      when 0 then return
+      when 1 then return @representations[0]
+      else raise "to many klasses need the data #{@representations} #{data}"
+      end
+    end
+
+    def who_wants_the_data
+      @representations = @representations.select { |x| x.want?(data) }
+      case @representations.size
+      when 0 then raise "no classes wanted our data #{data}"
+      when 1 then return @representations[0]
+      end
+      who_needs_the_data
+    end
+
     class NoPerfectMatchError < RuntimeError; end
 
     def best_klass
@@ -195,7 +253,7 @@ module OSAutoInst
         raise NoPerfectMatchError unless @representations == @approximations
         raise "no representation for #{data}"
       when 1 then @representations[0]
-      else raise "to many klasses match this #{@representations}"
+      else who_wants_the_data
       end
     rescue NoPerfectMatchError
       @representations = @approximations
