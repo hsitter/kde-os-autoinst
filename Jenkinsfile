@@ -47,7 +47,7 @@ fancyNode('master') {
       sh "mv -v ${tar}.new ${tar}"
     }
   } finally {
-    archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv'
+    archiveArtifacts 'wok/testresults/*, wok/ulogs/*, wok/video.ogv'
     junit 'junit/*'
     sh 'bin/contain.rb chown -R jenkins .'
   }
