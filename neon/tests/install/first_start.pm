@@ -54,7 +54,7 @@ sub run {
     assert_script_run 'wget ' . data_url('grub_toggle_hide.rb'),  16;
     assert_script_sudo 'ruby grub_toggle_hide.rb', 16;
 
-    script_sudo 'reboot';
+    script_sudo 'reboot', 0;
     reset_consoles;
 
     # Now grub ought to be appearing.
