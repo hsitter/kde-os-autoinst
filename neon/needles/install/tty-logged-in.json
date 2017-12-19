@@ -1,14 +1,16 @@
 {
   "area": [
     {
+      "height": 33,
+      "match": 95,
       "type": "match",
-      "xpos": 0,
-      "ypos": 324,
       "width": 162,
-      "height": 45
+      "xpos": 0,
+      "ypos": 336
     }
   ],
   "tags": [
-    "tty-logged-in"
+    "tty-logged-in",
+    "log-console"
   ]
 }

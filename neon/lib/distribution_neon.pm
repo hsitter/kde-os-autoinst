@@ -88,4 +88,15 @@ sub activate_console {
     return;
 }
 
+# Make sure consoles are ready and in a well known state. This prevents
+# switching between consoles quickly from ending up on a console which isn't
+# yet ready for use (e.g. typing on TTY before ready and losing chars).
+sub console_selected {
+    my ($self, $console, %args) = @_;
+    # FIXME: should make sure the session is unlocked
+    # Do not wait on X11 specifically. Desktop state is wildely divergent.
+    return if $console eq 'x11';
+    assert_screen($console, no_wait => 1);
+}
+
 1;

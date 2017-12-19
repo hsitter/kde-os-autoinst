@@ -18,6 +18,7 @@
     }
   ],
   "tags": [
-    "tty-logged-in"
+    "tty-logged-in",
+    "log-console"
   ]
 }
