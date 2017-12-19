@@ -213,10 +213,16 @@ but expected any of:
     tests.each_with_index do |test_h, i|
       name = test_h.fetch('name')
       test_file = "#{testresults_dir}/result-#{name}.json"
+      assert_test_file(name, test_file)
       suite = Suite.new(test_file, name: format('%03d_%s', i, name))
       @failed ||= suite.failed?
       suite.write_report_file
     end
+  end
+
+  def assert_test_file(name, file)
+    return if File.exist?(file)
+    raise "Test '#{name}' has a missing json file; it probably failed entirely"
   end
 
   def self.from_openqa(testresults_dir)
