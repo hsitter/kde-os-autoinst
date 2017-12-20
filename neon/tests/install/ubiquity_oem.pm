@@ -144,7 +144,7 @@ sub run {
     assert_screen "oem-config-user-complete", 16;
     assert_and_click "installer-next";
 
-    assert_screen "installer-show", 10;
+    assert_screen "oem-config-show", 10;
 
     # Set final installation data.
     $testapi::username = $user;

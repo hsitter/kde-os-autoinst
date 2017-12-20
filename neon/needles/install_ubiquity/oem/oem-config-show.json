@@ -1,0 +1,24 @@
+{
+  "area": [
+    {
+      "height": 251,
+      "match": 95,
+      "type": "match",
+      "width": 427,
+      "xpos": 39,
+      "ypos": 132
+    },
+    {
+      "height": 479,
+      "match": 95,
+      "type": "match",
+      "width": 756,
+      "xpos": 188,
+      "ypos": 151
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "oem-config-show"
+  ]
+}
