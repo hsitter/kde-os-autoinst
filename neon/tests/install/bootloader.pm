@@ -26,7 +26,11 @@ sub run() {
     # When it is grub we need to hit enter to proceed.
     assert_screen 'bootloader', 60;
     if (match_has_tag('live-bootloader-uefi')) {
-        send_key 'ret';
+      if (testapi::get_var("INSTALLATION_OEM")) {
+          send_key 'down';
+          assert_screen('live-bootloader-uefi-oem');
+      }
+      send_key 'ret';
     }
 }
 

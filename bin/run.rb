@@ -86,6 +86,7 @@ config[:TESTS_TO_RUN] = ENV['TESTS_TO_RUN'].split(':') if ENV['TESTS_TO_RUN']
 config[:PLASMA_DESKTOP]  = ENV['PLASMA_DESKTOP']
 if ENV['INSTALLATION']
   config[:INSTALLATION] = ENV['INSTALLATION']
+  config[:INSTALLATION_OEM] = ENV['INSTALLATION_OEM']
   config[:ISO] = '/workspace/neon.iso'
 else
   config[:BOOT_HDD_IMAGE] = true
