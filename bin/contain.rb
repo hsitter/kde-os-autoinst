@@ -39,12 +39,22 @@ c = CI::Containment.new(JOB_NAME.gsub('%2F', '/').tr('/', '-'),
                         image: CI::PangeaImage.new(:ubuntu, DIST),
                         binds: ["#{Dir.pwd}:#{PWD_BIND}"],
                         privileged: false)
-env = []
-env << 'INSTALLATION=1' if ENV.include?('INSTALLATION')
-env << "TESTS_TO_RUN=#{ENV['TESTS_TO_RUN']}" if ENV['TESTS_TO_RUN']
-env << "BUILD_URL=#{ENV.fetch('BUILD_URL')}"
-env << "NODE_NAME=#{ENV.fetch('NODE_NAME')}"
-env << "PLASMA_DESKTOP=#{ENV.fetch('PLASMA_DESKTOP')}" if ENV['PLASMA_DESKTOP']
+
+# Whitelist
+ENV_VARS = %w[
+  BUILD_URL
+  INSTALLATION
+  INSTALLATION_OEM
+  NODE_NAME
+  PLASMA_DESKTOP
+  TESTS_TO_RUN
+].freeze
+env = {}
+ENV_VARS.each { |x| env[x] = ENV[x] }
+# Also all OPENQA_ vars are forwarded
+ENV.each { |k, v| env[k] = v if k.start_with?('OPENQA_') }
+env = env.map { |k, v| [k, v].join('=') if v }.compact
+
 status_code = c.run(Cmd: ARGV, WorkingDir: PWD_BIND,
                     Env: env,
                     HostConfig: { Devices: devices })
