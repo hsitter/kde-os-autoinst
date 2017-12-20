@@ -23,12 +23,19 @@
 
 require 'webrick'
 
-server = WEBrick::HTTPServer.new(Port: 0)
-unless system('debconf-set',
+# Use a static port so for oem sessions we can set this in the prepare part
+# as the config part immediately goes into oem-config which locks debconf.
+server = WEBrick::HTTPServer.new(Port: 6729)
+
+stamp = '/etc/geoip_overridden'
+unless File.exist?(stamp) ||
+       system('debconf-set',
               'tzsetup/geoip_server',
               "http://localhost:#{server.config[:Port]}")
   raise 'failed to override geoip server via debconf'
 end
+# Once overridden we don't need to override again.
+File.write(stamp, '')
 
 server.mount_proc '/' do |_req, res|
   res.body = <<-XML
