@@ -94,8 +94,13 @@ sub activate_console {
 sub console_selected {
     my ($self, $console, %args) = @_;
     # FIXME: should make sure the session is unlocked
-    # Do not wait on X11 specifically. Desktop state is wildely divergent.
-    return if $console eq 'x11';
+    if ($console eq 'x11') {
+        # Do not wait on X11 specifically. Desktop state is wildely divergent.
+        # Instead wait screen. Which is a bit shit. But meh.
+        # We could maybe needle the panel specifically?
+        wait_still_screen;
+        return;
+    }
     assert_screen($console, no_wait => 1);
 }
 
