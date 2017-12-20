@@ -37,7 +37,7 @@ sub ensure_installed {
         0
     );
 
-    if (check_screen('polkit', $args{timeout})) {
+    if (check_screen('polkit-install', $args{timeout})) {
         type_password;
         send_key('ret', 1);
     }
