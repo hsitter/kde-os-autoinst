@@ -1,0 +1,16 @@
+{
+  "area": [
+    {
+      "height": 118,
+      "match": 95,
+      "type": "match",
+      "width": 389,
+      "xpos": 309,
+      "ypos": 257
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "oem-prepare-reboot"
+  ]
+}

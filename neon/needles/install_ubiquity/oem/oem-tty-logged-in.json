@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 20,
+      "match": 90,
+      "type": "match",
+      "width": 26,
+      "xpos": 293,
+      "ypos": 336
+    },
+    {
+      "height": 20,
+      "match": 90,
+      "type": "match",
+      "width": 38,
+      "xpos": 0,
+      "ypos": 336
+    }
+  ],
+  "tags": [
+    "oem-tty-logged-in",
+    "tty-logged-in",
+    "log-console"
+  ]
+}

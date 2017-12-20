@@ -1,0 +1,24 @@
+{
+  "area": [
+    {
+      "height": 64,
+      "match": 95,
+      "type": "match",
+      "width": 107,
+      "xpos": 38,
+      "ypos": 241
+    },
+    {
+      "height": 435,
+      "match": 95,
+      "type": "match",
+      "width": 814,
+      "xpos": 182,
+      "ypos": 131
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "oem-config-keyboard"
+  ]
+}

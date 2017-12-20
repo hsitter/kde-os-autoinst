@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "height": 39,
+      "match": 95,
+      "type": "match",
+      "width": 148,
+      "xpos": 196,
+      "ypos": 147
+    },
+    {
+      "height": 32,
+      "match": 95,
+      "type": "match",
+      "width": 221,
+      "xpos": 197,
+      "ypos": 189
+    },
+    {
+      "height": 70,
+      "match": 95,
+      "type": "match",
+      "width": 388,
+      "xpos": 200,
+      "ypos": 46
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "live-bootloader-uefi-oem",
+    "ENV-DISTRI-neon"
+  ]
+}

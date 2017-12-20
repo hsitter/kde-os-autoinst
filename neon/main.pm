@@ -41,7 +41,11 @@ if (testapi::get_var("INSTALLATION")) {
     );
     autotest::loadtest('tests/install/bootloader.pm');
     autotest::loadtest('tests/install/core.pm');
-    autotest::loadtest($test{$ENV{TYPE}} || $test{''});
+    if (testapi::get_var("INSTALLATION_OEM")) {
+        autotest::loadtest('tests/install/ubiquity_oem.pm');
+    } else {
+        autotest::loadtest($test{$ENV{TYPE}} || $test{''});
+    }
     autotest::loadtest('tests/install/first_start.pm');
 } elsif (testapi::get_var("TESTS_TO_RUN")) {
     my $testpaths = testapi::get_var("TESTS_TO_RUN");
