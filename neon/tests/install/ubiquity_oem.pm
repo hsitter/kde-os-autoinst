@@ -29,6 +29,15 @@ sub run {
     # wait for the desktop to appear
     assert_screen 'live-desktop', 360;
 
+    # The oem installation itself also a tz selection, its different from the
+    # oem-config though (which we'll intercept below, separately).
+    select_console 'log-console';
+    {
+        assert_script_run 'wget ' . data_url('geoip_service.rb'),  16;
+        script_sudo 'systemd-run ruby `pwd`/geoip_service.rb', 16;
+    }
+    select_console 'x11';
+
     # Installer
     assert_and_click "installer-icon";
     assert_screen "oem-installer-welcome", 60;
