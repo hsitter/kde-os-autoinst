@@ -27,6 +27,8 @@ BEGIN {
 
 $testapi::username = 'user';
 $testapi::password = 'password';
+testapi::set_var('OEM_USERNAME', 'oem');
+testapi::set_var('OEM_PASSWORD', 'oem');
 
 my $dist = testapi::get_var("CASEDIR") . '/lib/distribution_neon.pm';
 require $dist;
