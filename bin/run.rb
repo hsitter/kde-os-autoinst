@@ -70,6 +70,7 @@ config = {
   MAKETESTSNAPSHOTS: false,
   QEMUCPUS: cpus,
   QEMURAM: 2048,
+  HDDSIZEGB_1: '20', # G is appended by os-autoinst
   UEFI_BIOS: '/usr/share/OVMF/OVMF_CODE.fd',
   UEFI: 1,
   # The video is fairly useless gimicky stuff. Also theora... if I wanted a
