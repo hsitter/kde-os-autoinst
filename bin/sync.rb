@@ -63,10 +63,12 @@ if ENV['NODE_NAME'] # probably jenkins use, download from mirror
   #   ISOs from master.
   system('wget', '-q', '-O', 'neon.iso',
          ISO_URL.gsub('files.kde.org', 'files.kde.mirror.pangea.pub')) || raise
+  system('wget', '-q', '-O', 'neon.iso.sig',
+         SIG_URL.gsub('files.kde.org', 'files.kde.mirror.pangea.pub')) || raise
 else # probably not
   system('zsync_curl', '-o', 'neon.iso', ZSYNC_URL) || raise
+  system('wget', '-q', '-O', 'neon.iso.sig', SIG_URL) || raise
 end
-system('wget', '-q', '-O', 'neon.iso.sig', SIG_URL) || raise
 # Retry this a bit, gpg servers may not always answer in time.
 retry_it(times: 4, sleep: 1) { system('gpg2', '--recv-key', GPG_KEY) || raise }
 system('gpg2', '--verify', 'neon.iso.sig') || raise
