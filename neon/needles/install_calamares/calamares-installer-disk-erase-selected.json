@@ -12,7 +12,7 @@
       "height": 52,
       "match": 95,
       "type": "match",
-      "width": 287,
+      "width": 284,
       "xpos": 179,
       "ypos": 547
     },
@@ -25,12 +25,28 @@
       "ypos": 601
     },
     {
-      "height": 221,
+      "height": 90,
+      "match": 95,
+      "type": "match",
+      "width": 350,
+      "xpos": 183,
+      "ypos": 149
+    },
+    {
+      "height": 39,
+      "match": 95,
+      "type": "match",
+      "width": 162,
+      "xpos": 597,
+      "ypos": 145
+    },
+    {
+      "height": 181,
       "match": 95,
       "type": "match",
       "width": 671,
       "xpos": 179,
-      "ypos": 140
+      "ypos": 180
     }
   ],
   "properties": [],
