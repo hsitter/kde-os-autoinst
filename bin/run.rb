@@ -97,7 +97,7 @@ else
     warn "Overlyaing existing #{existing_raid}"
     FileUtils.rm_r('raid') if File.exist?('raid')
     FileUtils.mkpath('raid')
-    system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 10G") || raise
+    system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 20G") || raise
   end
   config[:QEMU_DISABLE_SNAPSHOTS] = true
   config[:MAKETESTSNAPSHOTS] = false
