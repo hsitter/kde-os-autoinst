@@ -56,7 +56,7 @@ sub post_fail_hook {
 
     select_console 'log-console';
 
-    upload_logs "/home/$testapi::password/.xsession-errors";
+    upload_logs "/home/$testapi::username/.xsession-errors";
 }
 
 1;
