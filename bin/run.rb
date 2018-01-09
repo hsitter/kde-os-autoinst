@@ -36,6 +36,7 @@ ENV['PERL5LIB'] = PERL5LIB
 
 puts 'kvm-ok?'
 system 'kvm-ok'
+system 'ls -lah /dev/kvm'
 
 puts File.read('/proc/cpuinfo')
 
