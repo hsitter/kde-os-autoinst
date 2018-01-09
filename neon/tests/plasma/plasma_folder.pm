@@ -38,6 +38,8 @@ sub run {
     assert_screen 'folder-desktop', 30;
 
     assert_and_click "home-icon";
+
+    assert_screen 'dolphin', 10;
     send_key 'alt-f4';
     assert_screen 'folder-desktop', 8;
 }
