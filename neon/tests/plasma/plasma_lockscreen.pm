@@ -33,21 +33,13 @@ sub lock_screen {
 }
 
 sub run {
-    # assert_screen "grub", 30;
-    # send_key 'ret'; # start first entry
-    #
-    # # Eventually we should end up in sddm
-    # assert_screen "sddm", 120;
-    #
-    # type_password $testapi::password;
-    # send_key 'ret';
-    #
-    # # wait for the desktop to appear
-    # # Technically we'd want to make sure the desktop appears in under 30s but
-    # # since we can't make sure that is in fact the baseline we can't really do
-    # # that :/
-    # # >30s would be indicative of a dbus timeout.
-    # assert_screen 'folder-desktop', 120;
+    # Before we start the lock screen test make sure we aren't logged in on
+    # our terminal.
+    # Otherwise the tty6 session would show up in the switch and make results
+    # unreliable.
+    select_console 'log-console';
+    script_run 'exit';
+    select_console 'x11';
 
     lock_screen;
 
