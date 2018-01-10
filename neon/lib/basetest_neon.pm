@@ -1,4 +1,4 @@
-# Copyright (C) 2017 Harald Sitter <sitter@kde.org>
+# Copyright (C) 2017-2018 Harald Sitter <sitter@kde.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -42,11 +42,17 @@ sub maybe_login {
 sub boot {
     my ($self, $args) = @_;
 
-    assert_screen 'grub';
-    send_key 'ret'; # start first entry
-
-    # Eventually we should end up in sddm
-    assert_screen 'sddm', 120;
+    # Grub in user edition is broken as of Jan 2018 and doesn't match our needle
+    # because it is shittyly themed. As we do not entirely care about this in
+    # application tests we'll simply ignore it by checking for either grub or
+    # sddm. Due to auto time out we'll eventually end up at sddm even if
+    # we do not explicitly hit 'ret'.
+    assert_screen [qw(grub sddm)], 60 * 3;
+    if (match_has_tag('grub')) {
+        send_key 'ret';
+        assert_screen 'sddm', 60 * 2;
+    }
+    # else sddm, nothing to do
 
     select_console 'log-console';
     # Should probably be put in a script that globs all snapd*timer
