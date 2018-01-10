@@ -93,7 +93,7 @@ else
   # Re-use existing raid/, comes from install test.
   existing_raid = File.realpath('../raid')
   if File.exist?(existing_raid)
-    warn "Overlyaing existing #{existing_raid}"
+    warn "Overlaying existing #{existing_raid}"
     FileUtils.rm_r('raid') if File.exist?('raid')
     FileUtils.mkpath('raid')
     system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 20G") || raise
