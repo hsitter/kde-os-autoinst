@@ -38,7 +38,7 @@ sub run {
     # Otherwise the tty6 session would show up in the switch and make results
     # unreliable.
     select_console 'log-console';
-    script_run 'exit';
+    script_run 'exit', 0;
     select_console 'x11';
 
     lock_screen;
