@@ -38,8 +38,6 @@ puts 'kvm-ok?'
 system 'kvm-ok'
 system 'ls -lah /dev/kvm'
 
-puts File.read('/proc/cpuinfo')
-
 # os-autoinst internally hosts a mojo server to shove assets between host and
 # guest, this controls the debuggyness there.
 # MOJO_LOG_LEVEL=debug
