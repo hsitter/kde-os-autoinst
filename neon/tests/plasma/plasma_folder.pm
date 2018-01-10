@@ -1,4 +1,4 @@
-# Copyright (C) 2016-2017 Harald Sitter <sitter@kde.org>
+# Copyright (C) 2016-2018 Harald Sitter <sitter@kde.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -16,19 +16,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-use base "basetest";
+use base "basetest_neon";
 use strict;
 use testapi;
 
 sub run {
-    assert_screen "grub", 30;
-    send_key 'ret'; # start first entry
-
-    # Eventually we should end up in sddm
-    assert_screen "sddm", 120;
-
-    type_password $testapi::password;
-    send_key 'ret';
+    my ($self) = @_;
+    $self->boot;
+    # We are now logged in...
 
     # wait for the desktop to appear
     # Technically we'd want to make sure the desktop appears in under 30s but
