@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 #
-# Copyright (C) 2017 Harald Sitter <sitter@kde.org>
+# Copyright (C) 2017-2018 Harald Sitter <sitter@kde.org>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -24,9 +24,13 @@ require 'jenkins_junit_builder'
 
 module OSAutoInst
   module DetailAttributes
+    def detail_attributes
+      @detail_attributes ||= []
+    end
+
     def attributes
       @attrs ||= begin
-        attrs = @detail_attributes || []
+        attrs = detail_attributes.dup
         attrs += ancestors.collect do |klass|
           next if klass == self || !klass.respond_to?(:attributes)
           klass.attributes
@@ -36,7 +40,7 @@ module OSAutoInst
     end
 
     def detail_attr(sym)
-      (@detail_attributes ||= []) << sym
+      detail_attributes << sym
       attr_reader_real sym
     end
 
@@ -141,6 +145,7 @@ module OSAutoInst
     detail_attr :tags # tags searched for
 
     def initialize(*)
+      @needles = nil # make sure @needles is initialized to avoid warnings
       super
       return unless @needles
       @needles = @needles.collect { |x| DetailFactory.new(x).factorize }
