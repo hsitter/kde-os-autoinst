@@ -42,9 +42,7 @@ fancyNode('master') {
       }
     }
     stage('archive-raid') {
-      tar = "/var/www/metadata/os-autoinst/${env.TYPE}.tar"
-      sh "tar --exclude=*.iso --exclude=*.iso.* --exclude=*socket --exclude=wok/video.ogv --exclude=wok/ulogs --exclude=wok/testresults -cf ${tar}.new ."
-      sh "mv -v ${tar}.new ${tar}"
+      sh 'bin/archive.rb'
     }
   } finally {
     archiveArtifacts 'wok/testresults/*, wok/ulogs/*, wok/video.ogv'
