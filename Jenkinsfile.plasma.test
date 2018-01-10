@@ -32,7 +32,7 @@ fancyNode('openqa') {
       sh 'rake test'
     }
     stage('raid-pickup') {
-      sh "rsync -a --info=progress2 /srv/os-autoinst/${env.TYPE}/wok/raid ."
+      sh "rsync -avh --info=progress2 /srv/os-autoinst/${env.TYPE}/wok/raid ."
     }
     stage('test-plasma') {
       wrap([$class: 'LiveScreenshotBuildWrapper', fullscreenFilename: 'wok/qemuscreenshot/last.png']) {
