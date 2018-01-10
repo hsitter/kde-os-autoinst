@@ -43,7 +43,7 @@ sub run {
     # Make sure this system is bootable throughout all use cases by ensuring
     # our loader is used as fallback loader in EFI\boot\bootx64.efi
     assert_script_run 'wget ' . data_url('uefi_boot.rb'),  16;
-    assert_script_sudo './uefi_boot.rb', 16;
+    assert_script_sudo 'ruby uefi_boot.rb', 16;
 
     assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
     assert_script_run 'ruby enable_qdebug.rb', 16;
