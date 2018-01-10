@@ -47,8 +47,8 @@ system 'ls -lah /dev/kvm'
 #   wok on the initial installation test. otherwise we lose data.
 if ENV['INSTALLATION']
   FileUtils.rm_r('wok') if File.exist?('wok')
-  Dir.mkdir('wok')
 end
+Dir.mkdir('wok') unless File.exist?('wok')
 Dir.chdir('wok')
 
 # Cloud scaled node, use all cores, else only half of them to not impair
