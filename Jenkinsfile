@@ -22,7 +22,7 @@ properties([
   pipelineTriggers([cron('0 H(9-22) * * *')])
 ])
 
-fancyNode('master') {
+fancyNode('openqa') {
   try {
     stage('clone') {
       git 'https://github.com/apachelogger/kde-os-autoinst'
