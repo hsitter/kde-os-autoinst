@@ -17,6 +17,10 @@ if (env.TYPE == null) {
   error 'TYPE param not set. Cannot run install test without a type.'
 }
 
+if (env.TESTS_TO_RUN == null) {
+  error 'TESTS_TO_RUN param not set. Cannot run nothing.'
+}
+
 fancyNode('openqa') {
   try {
     stage('clone') {
@@ -27,7 +31,7 @@ fancyNode('openqa') {
     }
     stage('test') {
       wrap([$class: 'LiveScreenshotBuildWrapper', fullscreenFilename: 'wok/qemuscreenshot/last.png']) {
-        sh 'TESTS_TO_RUN="tests/snap/kblocks.pm" bin/contain.rb /workspace/bin/bootstrap.rb'
+        sh 'bin/contain.rb /workspace/bin/bootstrap.rb'
       }
     }
     stage('encode-gif') {
