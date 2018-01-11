@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 #
-# Copyright (C) 2014-2017 Harald Sitter <sitter@kde.org>
+# Copyright (C) 2014-2018 Harald Sitter <sitter@kde.org>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -43,7 +43,22 @@ if File.exist?(os_auto_inst_dir)
   binds << format('%s:%s:ro', os_auto_inst_dir, os_auto_inst_dir)
   # rubocop:enable Style/FormatStringToken
 end
-warn "binding #{binds}"
+
+# Wrokaround tooling deployment broken making read-only unsupported.
+# http://mobile.neon.pangea.pub:8080/view/mgmt/job/mgmt_tooling_progenitor/
+# http://mobile.neon.pangea.pub:8080/view/mgmt/job/mgmt_tooling_test/
+module CI
+  # Monkey patch.
+  class DirectBindingArray
+    def self.volume_specification_check(str)
+      # path or path:path. both fine.
+      return if str.count(':') <= 1
+      # path:path:ro is also fine (NB: above also implies path:ro)
+      return if str.count(':') == 2 && str.split(':')[-1] == 'ro'
+      raise ExcessColonError, 'Invalid docker volume notation'
+    end
+  end
+end
 
 c = CI::Containment.new(JOB_NAME.gsub('%2F', '/').tr('/', '-'),
                         image: CI::PangeaImage.new(:ubuntu, DIST),
