@@ -40,7 +40,12 @@ sub run {
     send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 2);
 
     assert_screen_change { x11_start_program('kontact'); };
-    send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 2);
+    # apparently you can't close the kontact account wizard with alt-f4. wtf.
+    # send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 2);
+    send_key 'alt-ctrl-esc';
+    # TODO: should assert_screen on the kill icon
+    mouse_set(256, 34);
+    mouse_click('left');
 }
 
 1;
