@@ -55,16 +55,8 @@ sub boot {
     # else sddm, nothing to do
 
     select_console 'log-console';
-    # Should probably be put in a script that globs all snapd*timer
-    script_sudo 'systemctl disable --now snapd.refresh.timer';
-    script_sudo 'systemctl disable --now snapd.refresh.service';
-    script_sudo 'systemctl disable --now snapd.snap-repair.timer';
-    script_sudo 'systemctl disable --now snapd.service';
-
-    script_sudo "touch /etc/apt/apt.conf.d/proxy; sudo chown $testapi::username /etc/apt/apt.conf.d/proxy";
-    script_run 'echo "Acquire::http { Proxy \"http://10.0.2.2:3142\"; };" > /etc/apt/apt.conf.d/proxy';
-    script_sudo 'touch /etc/apt/apt.conf.d/proxy; sudo chown root /etc/apt/apt.conf.d/proxy';
-
+    assert_script_run 'wget ' . data_url('basetest_setup.rb'),  60;
+    assert_script_sudo 'ruby basetest_setup.rb', 60;
     select_console 'x11';
 
     type_password $testapi::password;
