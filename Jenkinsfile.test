@@ -24,7 +24,7 @@ if (env.TESTS_TO_RUN == null) {
 fancyNode('openqa') {
   try {
     stage('clone') {
-      git 'https://github.com/apachelogger/kde-os-autoinst'
+      checkout scm
     }
     stage('rake-test') {
       sh 'rake test'
