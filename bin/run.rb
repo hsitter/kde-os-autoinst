@@ -91,10 +91,7 @@ else
   config[:BOOT_HDD_IMAGE] = true
   config[:KEEPHDDS] = true
   # Re-use existing raid/, comes from install test.
-  system 'ls -lah /srv/'
-  system 'ls -lah /srv/os-autoinst'
-  system "ls -lah /srv/os-autoinst/#{ENV.fetch('TYPE')}"
-  os_auto_inst_dir = "/srv/os-autoinst/#{ENV.fetch('TYPE')}/raid"
+  os_auto_inst_dir = "/srv/os-autoinst/#{ENV.fetch('TYPE')}/wok/raid"
   FileUtils.ln_s(os_auto_inst_dir, '../raid') if File.exist?(os_auto_inst_dir)
   existing_raid = File.realpath('../raid')
   if File.exist?(existing_raid)
