@@ -31,9 +31,6 @@ fancyNode('openqa') {
     stage('rake-test') {
       sh 'rake test'
     }
-    stage('raid-pickup') {
-      sh "rsync -avh --info=progress2 /srv/os-autoinst/${env.TYPE}/wok/raid ."
-    }
     stage('test-plasma') {
       wrap([$class: 'LiveScreenshotBuildWrapper', fullscreenFilename: 'wok/qemuscreenshot/last.png']) {
         sh 'PLASMA_DESKTOP=1 bin/contain.rb /workspace/bin/bootstrap.rb'
@@ -43,6 +40,7 @@ fancyNode('openqa') {
     archiveArtifacts 'wok/testresults/*, wok/ulogs/*, wok/video.ogv'
     junit 'junit/*'
     sh 'bin/contain.rb chown -R jenkins .'
+    cleanWs()
   }
 }
 

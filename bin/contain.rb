@@ -35,9 +35,18 @@ dev_kvm = {
 devices = []
 devices << dev_kvm if File.exist?(dev_kvm[:PathOnHost])
 
+binds = ["#{Dir.pwd}:#{PWD_BIND}"]
+os_auto_inst_dir = '/srv/os-autoinst'
+if File.exist?(os_auto_inst_dir)
+  # Read-only bind our base disks if they exist.
+  # rubocop:disable Style/FormatStringToken
+  binds << format('%s:%s:ro', os_auto_inst_dir, os_auto_inst_dir)
+  # rubocop:enable Style/FormatStringToken
+end
+
 c = CI::Containment.new(JOB_NAME.gsub('%2F', '/').tr('/', '-'),
                         image: CI::PangeaImage.new(:ubuntu, DIST),
-                        binds: ["#{Dir.pwd}:#{PWD_BIND}"],
+                        binds: binds,
                         privileged: false)
 
 # Whitelist
