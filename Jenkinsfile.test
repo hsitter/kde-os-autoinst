@@ -53,17 +53,21 @@ def fancyNode(label = null, body) {
   }
 }
 
-def finally_chown(body)
-  sh 'bin/contain.rb chown -R jenkins .'
-end
+def finally_chown(body) {
+  try {
+    body()
+  } finally {
+    sh 'bin/contain.rb chown -R jenkins .'
+  }
+}
 
-def finally_cleanup(body)
+def finally_cleanup(body) {
   try {
     body()
   } finally {
     cleanWs()
   }
-end
+}
 
 // When not called from an ISO build we'll want to infer the type from our own name.
 def inferType() {
