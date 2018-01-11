@@ -1,70 +1,63 @@
 env.DIST = 'xenial'
-env.TYPE = 'user'
 env.PWD_BIND = '/workspace'
+env.TYPE = 'useredition' // FIXME: hardcoded for now
 
-// def in_container(body) {
-//   container_id = sh(script: "docker create -v ${pwd}:/workspace ubuntu:xenial /bin/bash -c 'while true; do sleep infinity; done'", returnStdout: true).trim()
-//   sh "echo $container_id"
-//   sh "docker start $container_id"
-//   try {
-//     def contain = { args ->
-//       params = args['env'] ? "-e ${args['env']}" : ''
-//       cmd = args['cmd']
-//       sh "echo \"docker exec $params $container_id $cmd\""
-//       sh "docker exec $params $container_id $cmd"
-//     }
-//     body(contain)
-//   } finally {
-//     sh "docker kill $container_id"
-//     sh "docker rm $container_id"
-//   }
-// }
-//   in_container { contain ->
-//     contain(cmd: "xxx")
-// }
-
-cleanNode('master') {
-  try {
-    // TODO: Ideally we'd not sync tars but dirs via rsync, the tar overhead
-    //   isn't particularly worth it.
-    //   Also transfering the entire working tree seems fairly daft.
-    stage('download & untar') {
-      sh "curl https://metadata.neon.kde.org/os-autoinst/${env.TYPE}edition.tar | tar xv"
-      sh 'mv -v wok/raid .'
-      sh 'ls -lah'
+if (env.TYPE == null) {
+  if (params.TYPE != null) {
+    env.TYPE = params.TYPE
+  } else {
+    type = inferType()
+    if (type != null) {
+      env.TYPE = type
     }
-    stage('pull') {
-      sh 'git branch --set-upstream-to=origin/master master'
-      sh 'git pull'
+  }
+}
+
+if (env.TYPE == null) {
+  error 'TYPE param not set. Cannot run install test without a type.'
+}
+
+fancyNode('openqa') {
+  try {
+    stage('clone') {
+      git 'https://github.com/apachelogger/kde-os-autoinst'
     }
     stage('rake-test') {
       sh 'rake test'
     }
-    stage('test-plasma') {
-      sh 'PLASMA_DESKTOP=1 bin/contain.rb /workspace/bin/bootstrap.rb'
+    stage('test') {
+      wrap([$class: 'LiveScreenshotBuildWrapper', fullscreenFilename: 'wok/qemuscreenshot/last.png']) {
+        sh 'TESTS_TO_RUN="tests/snap/kblocks.pm" bin/contain.rb /workspace/bin/bootstrap.rb'
+      }
     }
   } finally {
-    archiveArtifacts 'wok/testresults/*.png, wok/testresults/*.json, wok/ulogs/*, wok/video.ogv, wok/vars.json'
+    archiveArtifacts 'wok/testresults/*, wok/ulogs/*, wok/video.ogv'
     junit 'junit/*'
-    sh 'bin/contain.rb chown -R jenkins . || true'
+    sh 'bin/contain.rb chown -R jenkins .'
+    cleanWs()
   }
 }
 
-def cleanNode(label = null, body) {
+def fancyNode(label = null, body) {
   node(label) {
-    try {
-// Supremely bugged causing excessive slowdown in jenkins. not sure why.
-// <org.jenkinsci.plugins.livescreenshot.LiveScreenshotBuildWrapper plugin="livescreenshot@1.4.5">
-// <fullscreenFilename>screenshot.png</fullscreenFilename>
-// <thumbnailFilename>screenshot-thumb.png</thumbnailFilename>
-// </org.jenkinsci.plugins.livescreenshot.LiveScreenshotBuildWrapper>
-      wrap([$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']) {
-        wrap([$class: 'TimestamperBuildWrapper']) {
-          body()
-        }
+    wrap([$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']) {
+      wrap([$class: 'TimestamperBuildWrapper']) {
+        body()
       }
-    } finally {
-      cleanWs()
     }
   }
+}
+
+// When not called from an ISO build we'll want to infer the type from our own name.
+def inferType() {
+  if (!env.JOB_NAME) {
+    return null
+  }
+  String[] types = ["useredition", "devedition-gitunstable", "devedition-gitstable"]
+  for (type in types) {
+    if (env.JOB_NAME.contains(type)) {
+      return type
+    }
+  }
+  return null
 }
