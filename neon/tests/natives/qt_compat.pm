@@ -34,13 +34,13 @@ sub run {
     assert_screen 'folder-desktop', 30;
 
     assert_screen_change { x11_start_program('kdevelop'); };
-    send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 30);
+    send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 2);
 
     assert_screen_change { x11_start_program('skrooge'); };
-    send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 30);
+    send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 2);
 
     assert_screen_change { x11_start_program('kontact'); };
-    send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 30);
+    send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 2);
 }
 
 1;
