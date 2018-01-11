@@ -13,24 +13,24 @@
       "match": 95,
       "type": "match",
       "width": 64,
-      "xpos": 652,
-      "ypos": 244
+      "xpos": 651,
+      "ypos": 239
     },
     {
-      "height": 29,
+      "height": 22,
       "match": 95,
       "type": "match",
-      "width": 109,
-      "xpos": 899,
-      "ypos": 698
+      "width": 79,
+      "xpos": 906,
+      "ypos": 701
     },
     {
       "height": 29,
       "match": 95,
       "type": "match",
       "width": 118,
-      "xpos": 351,
-      "ypos": 302
+      "xpos": 348,
+      "ypos": 298
     }
   ],
   "properties": [],
