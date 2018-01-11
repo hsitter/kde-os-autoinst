@@ -22,7 +22,7 @@ use testapi;
 
 sub run {
     my ($self) = @_;
-    $self->wait_boot;
+    $self->boot;
 
     select_console 'log-console';
     assert_script_run 'wget ' . data_url('qt_compat_install.rb'),  16;
