@@ -31,14 +31,24 @@ sub run {
                        60 * 30;
     select_console 'x11';
 
+    assert_screen 'folder-desktop', 30;
+
     assert_screen_change { x11_start_program('kdevelop'); };
     assert_screen_change { send_key 'alt-f4'; }
 
+    assert_screen 'folder-desktop', 30;
+
     assert_screen_change { x11_start_program('skrooge'); };
-    assert_screen_change { send_key 'alt-f4'; }
+    # multiple windows...
+    assert_screen_change { send_key 'alt-f4'; send_key 'alt-f4'; }
+
+    assert_screen 'folder-desktop', 30;
 
     assert_screen_change { x11_start_program('kontact'); };
-    assert_screen_change { send_key 'alt-f4'; }
+    # multiple windows...
+    assert_screen_change { send_key 'alt-f4'; send_key 'alt-f4'; }
+
+    assert_screen 'folder-desktop', 30;
 }
 
 1;
