@@ -72,9 +72,6 @@ config = {
   HDDSIZEGB_1: '20', # G is appended by os-autoinst
   UEFI_BIOS: '/usr/share/OVMF/OVMF_CODE.fd',
   UEFI: 1,
-  # The video is fairly useless gimicky stuff. Also theora... if I wanted a
-  # pixelated slideshow I'd use a more efficient pixelation algorithm.
-  NOVIDEO: true,
   QEMU_COMPRESS_QCOW2: true
 }
 
