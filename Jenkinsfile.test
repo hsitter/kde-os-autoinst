@@ -30,6 +30,9 @@ fancyNode('openqa') {
         sh 'TESTS_TO_RUN="tests/snap/kblocks.pm" bin/contain.rb /workspace/bin/bootstrap.rb'
       }
     }
+    stage('encode-gif') {
+      sh 'bin/contain.rb /workspace/bin/encode-gif.rb'
+    }
   } finally {
     archiveArtifacts 'wok/testresults/*, wok/ulogs/*, wok/video.*'
     junit 'junit/*'
