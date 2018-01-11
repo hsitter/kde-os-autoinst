@@ -26,6 +26,8 @@
 
 puts "#{$0}: Installing Qt compatibility check packages..."
 
+ENV['DEBIAN_FRONTEND'] = 'noninteractive'
+
 system('apt update') || raise
 system('apt dist-upgrade -y') || raise
 system('apt', 'install', '-y', *ARGV) || raise
