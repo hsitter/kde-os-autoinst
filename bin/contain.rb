@@ -43,6 +43,7 @@ if File.exist?(os_auto_inst_dir)
   binds << format('%s:%s:ro', os_auto_inst_dir, os_auto_inst_dir)
   # rubocop:enable Style/FormatStringToken
 end
+warn "binding #{binds}"
 
 c = CI::Containment.new(JOB_NAME.gsub('%2F', '/').tr('/', '-'),
                         image: CI::PangeaImage.new(:ubuntu, DIST),
