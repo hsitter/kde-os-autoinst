@@ -38,10 +38,8 @@ fancyNode('openqa') {
       sh 'bin/contain.rb /workspace/bin/encode-gif.rb'
     }
   } finally {
-    archiveArtifacts 'wok/testresults/*, wok/ulogs/*, wok/video.*'
+    archiveArtifacts allowEmptyArchive: true, artifacts: 'wok/testresults/*, wok/ulogs/*, wok/video.*'
     junit 'junit/*'
-    sh 'bin/contain.rb chown -R jenkins .'
-    cleanWs()
   }
 }
 
@@ -49,11 +47,23 @@ def fancyNode(label = null, body) {
   node(label) {
     wrap([$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']) {
       wrap([$class: 'TimestamperBuildWrapper']) {
-        body()
+        finally_cleanup { finally_chown { body() } }
       }
     }
   }
 }
+
+def finally_chown(body)
+  sh 'bin/contain.rb chown -R jenkins .'
+end
+
+def finally_cleanup(body)
+  try {
+    body()
+  } finally {
+    cleanWs()
+  }
+end
 
 // When not called from an ISO build we'll want to infer the type from our own name.
 def inferType() {
