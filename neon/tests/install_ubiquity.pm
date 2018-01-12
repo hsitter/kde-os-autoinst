@@ -80,7 +80,18 @@ sub run {
     assert_and_click "installer-restart-now";
 
     assert_screen "live-remove-medium", 60;
-    send_key "ret";
+    # The message actually comes up before input is read, make sure to send rets
+    # until the system reboots or we've waited a bit of time. We'll then
+    # continue and would fail on the first start test if the system in fact
+    # never rebooted.
+    $counter = 20;
+    while (check_screen('live-remove-medium', 1)) {
+        if (!$counter--) {
+            last;
+        }
+        send_key 'ret';
+        sleep 1;
+    }
 
     reset_consoles;
 
