@@ -26,8 +26,6 @@ sub run {
     $testapi::username = 'neon';
     $testapi::password = '';
 
-    wait_still_screen;
-
     # We better be at the desktop now.
     assert_screen 'live-desktop', 360;
 
