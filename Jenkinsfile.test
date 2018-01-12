@@ -34,9 +34,6 @@ fancyNode('openqa') {
         sh 'bin/contain.rb /workspace/bin/bootstrap.rb'
       }
     }
-    stage('encode-gif') {
-      sh 'bin/contain.rb /workspace/bin/encode-gif.rb'
-    }
   } finally {
     archiveArtifacts allowEmptyArchive: true, artifacts: 'wok/testresults/*, wok/ulogs/*, wok/video.*'
     junit 'junit/*'
