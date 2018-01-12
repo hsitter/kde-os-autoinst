@@ -64,7 +64,7 @@ config = {
   PRJDIR: '/workspace',
   CASEDIR: '/workspace/neon',
   PRODUCTDIR: '/workspace/neon',
-  QEMUVGA: 'virtio',
+  QEMUVGA: 'cirrus',
   TESTDEBUG: false,
   MAKETESTSNAPSHOTS: false,
   QEMUCPUS: cpus,
