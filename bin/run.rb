@@ -75,6 +75,12 @@ config = {
   QEMU_COMPRESS_QCOW2: true
 }
 
+# The 16.04 ovmf doesn't work with virtio/virgil3d VGA and fails to init the
+# display. Use a binary copy of the bionic build
+# ovmf_0~20171205.a9212288-1_all.deb
+bionic_ovmf = File.expand_path("#{__dir__}/../OVMF/OVMF_CODE.fd")
+config[:UEFI_BIOS] = bionic_ovmf if File.exist?(bionic_ovmf)
+
 # Switch to bios mode when requested.
 config.delete(:UEFI) if ENV['BIOS']
 
