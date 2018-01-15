@@ -146,6 +146,13 @@ sub run {
 
     assert_screen "oem-config-show", 10;
 
+    # Once config is done we are expected to end up on sddm.
+    assert_screen 'sddm', 60 * 10;
+    # NB: oem-config closes all sessions, so for all intents and purposes
+    # it is like the system was restarted and we need to reset our console
+    # states.
+    reset_consoles;
+
     # Set final installation data.
     $testapi::username = $user;
     $testapi::password = $password;
