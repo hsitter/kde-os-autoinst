@@ -109,7 +109,7 @@ sub run {
     send_key 'ret', 1;
 
     select_console 'log-console';
-    script_sudo 'reboot';
+    script_sudo 'reboot', 0;
     reset_consoles;
 
     # OEM configuration.
