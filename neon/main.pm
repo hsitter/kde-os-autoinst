@@ -1,4 +1,4 @@
-# Copyright (C) 2016-2017 Harald Sitter <sitter@kde.org>
+# Copyright (C) 2016-2018 Harald Sitter <sitter@kde.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -29,6 +29,11 @@ $testapi::username = 'user';
 $testapi::password = 'password';
 testapi::set_var('OEM_USERNAME', 'oem');
 testapi::set_var('OEM_PASSWORD', 'oem');
+
+# Special var to check if run in the cloud. This enables tests to only run
+# certain set up bits when run in the cloud rather than a local docker
+# container.
+testapi::set_var('OPENQA_IN_CLOUD', defined $ENV{'NODE_NAME'});
 
 my $dist = testapi::get_var("CASEDIR") . '/lib/distribution_neon.pm';
 require $dist;

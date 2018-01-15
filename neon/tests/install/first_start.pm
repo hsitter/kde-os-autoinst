@@ -51,11 +51,13 @@ sub run {
     assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
     assert_script_run 'ruby enable_qdebug.rb', 16;
 
-    # Should probably be put in a script that globs all snapd*timer
-    script_sudo 'systemctl disable --now snapd.refresh.timer';
-    script_sudo 'systemctl disable --now snapd.refresh.service';
-    script_sudo 'systemctl disable --now snapd.snap-repair.timer';
-    script_sudo 'systemctl disable --now snapd.service';
+    assert_script_run 'wget ' . data_url('snapd_disable.rb'),  16;
+    assert_script_sudo 'ruby snapd_disable.rb', 16;
+
+    if (testapi::get_var('OPENQA_IN_CLOUD')) {
+        assert_script_run 'wget ' . data_url('apt_mirror.rb'),  16;
+        assert_script_sudo 'ruby apt_mirror.rb', 16;
+    }
 
     # Testing grub is a bit tricky because we first need to make sure it is
     # visible. To do that we'll run a fairly broad unhide script
