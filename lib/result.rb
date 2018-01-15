@@ -102,6 +102,38 @@ module OSAutoInst
         end
       end
     end
+
+    # Returns the ultimate result. Result may be another detail (e.g.
+    # a screenshot). This method loops into results until it reaches a type
+    # that no longer has a result method (i.e. hopefully one of the well-known
+    # symbols).
+    def deep_result
+      ret = result
+      loop do
+        break unless ret.respond_to?(:result)
+        ret = ret.result
+      end
+      ret
+    end
+
+    def coerce_result(r)
+      # FIXME: probably should make sure only unknown gets coerced
+      @result = r
+    end
+
+    # Whether or not this detail is equal to another detail in terms of its
+    # functional properties. e.g. details with a tag can be the same if the
+    # tags are the same.
+    # This does not assert equallity (different results can still be the same
+    # detail).
+    # Sameness is used to determine chains of details with unknown results
+    # and finalize their result to whatever was the final result. Namely
+    # Needle matches can have multiple "unknown" result details which
+    # essentially means a screenshot was taken and compared, but didn't match
+    # and there is still time for another screenshot to match.
+    def same?(_other)
+      false
+    end
   end
 
   # A screenshot which was taken but didn't match a needle.
@@ -149,6 +181,14 @@ module OSAutoInst
       super
       return unless @needles
       @needles = @needles.collect { |x| DetailFactory.new(x).factorize }
+    end
+
+    # Needle types can appear in chains that have sameness. Make sure we are
+    # same enough to previous potentially unknown needles.
+    def same?(other)
+      return false unless other.is_a?(self.class)
+      # If the tags are the same and the needles are the same. Or so I think.
+      tags.sort == other.tags.sort
     end
   end
 
@@ -280,6 +320,38 @@ module OSAutoInst
     # The actual assertions
     attr_reader :details
 
+    # Edit all details to sort out chain failures.
+    # openqa records results not necessarily assertions. To meet a screen
+    # assertion for 'grub' it may take multiple screenshots which may get
+    # recorded as unknown. The last of them may be fail if no match was found
+    # and the time ran out. In these cases we do however want to make the
+    # entire chain of unknown preceeding details fail as well. Otherwise its
+    # hard to find out where things started to fail.
+    # This requires that details that can appear in a fail chain implement
+    # the {same?} method to check if they qualify as the same check as
+    # another detail. This way we can build chains of sameish checks and let
+    # them all fail or succeed as needed.
+    def chain_fail
+      running_array = []
+      @details.each do |detail|
+        # If the detail is not compatible with the unknown details in the chain
+        # the chain was broken for unknown reasons and we cannot finalize the
+        # results of the unknown details.
+        running_array = [] unless detail.same?(running_array[0])
+        # Get the deep result. We'll make assertions on its typyness.
+        result = detail.deep_result
+        if %i[ok fail].include?(result)
+          # Finalize.
+          running_array.each { |x| x.coerce_result(detail.result) }
+          running_array = []
+          next
+        end
+        # Otherwise the detail is one more in the chain of unknown.
+        raise unless result == :unknown # assert
+        running_array << detail
+      end
+    end
+
     def initialize(path)
       data = JSON.parse(File.read(path), symbolize_names: true)
       @dents = data.delete(:dents)
@@ -291,6 +363,7 @@ module OSAutoInst
                 end
       @details = data.delete(:details)
       @details = @details.collect { |x| DetailFactory.new(x).factorize }
+      chain_fail
       raise unless data.keys.empty?
     end
   end
