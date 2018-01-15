@@ -43,4 +43,4 @@ puts "#{$0}: ... running a simultation before the real deal ..."
 system('apt dist-upgrade -y -s 2>&1 | tee /tmp/simulation.txt') || raise
 
 puts "#{$0}: ... and for real now ..."
-system('apt dist-upgrade') || raise
+system('apt dist-upgrade -y') || raise
