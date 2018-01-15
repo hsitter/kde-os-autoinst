@@ -25,6 +25,9 @@ sub run {
     # we make no assertions about it. In either case there should be
     # a timeout anyway.
     # https://bugs.kde.org/show_bug.cgi?id=387827
+    # NB: this test is also run after ubiquity_oem which currently ends at sddm,
+    #   should we wish to assert grub here the oem test needs adjustments to
+    #   assert sddm and reboot before ending.
     record_soft_failure('not asserting no grub or grub https://bugs.kde.org/show_bug.cgi?id=387827');
     # assert_screen "grub", 60;
     # send_key 'ret'; # start first entry
