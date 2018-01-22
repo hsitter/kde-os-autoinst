@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "height": 30.33333333333337,
+      "match": 95,
+      "type": "match",
+      "width": 179,
+      "xpos": 142.33333333333337,
+      "ypos": 737.6666666666666
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "sddm-choose-session",
+    "ENV-DISTRI-neon"
+  ]
+}

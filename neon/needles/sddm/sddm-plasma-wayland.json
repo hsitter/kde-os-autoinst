@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "height": 15,
+      "match": 95,
+      "type": "match",
+      "width": 182.66666666666669,
+      "xpos": 142.66666666666669,
+      "ypos": 747
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "sddm-plasma-wayland",
+    "ENV-DISTRI-neon"
+  ]
+}
