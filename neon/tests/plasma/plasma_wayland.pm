@@ -37,8 +37,7 @@ sub run {
     assert_and_click 'sddm-choose-session';
     assert_and_click 'sddm-plasma-wayland';
     
-    type_password $testapi::password;
-    send_key 'ret';
+    $self->login;
    
    assert_screen 'folder-desktop', 60;
     
