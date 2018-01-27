@@ -35,6 +35,11 @@ unless File.exist?('/boot/efi')
   exit
 end
 
+if File.exist?('/boot/efi/EFI/boot/bootx64.efi')
+  warn "#{$0} system already has bootx64 in place."
+  exit
+end
+
 FileUtils.cp_r('/boot/efi/EFI/neon',
                '/boot/efi/EFI/boot',
                verbose: true)
