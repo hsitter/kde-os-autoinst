@@ -25,7 +25,9 @@ sub run {
     wait_still_screen;
     send_key 'ret';
     
-    assert_screen 'plasma-phone-start', 30;
+    assert_screen 'plasma-mobile-start', 30;
+    assert_and_click 'plasma-mobile-app';
+    assert_screen 'plasma-mobile-dialer', 300;
     
 }
 
