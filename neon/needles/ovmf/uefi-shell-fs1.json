@@ -1,0 +1,16 @@
+{
+  "area": [
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 54,
+      "xpos": 77,
+      "ypos": 518
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "uefi-shell-fs1"
+  ]
+}

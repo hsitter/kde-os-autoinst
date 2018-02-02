@@ -21,6 +21,28 @@ use strict;
 use testapi;
 
 sub run() {
+    if (get_var('SECUREBOOT')) {
+        # Enable scureboot first. When in secureboot mode we expect a second
+        # ISO to be attached for uefi fs1 where we can run a efi program to
+        # enroll the default keys to enable secureboot.
+        # In the core.pm we'll then assert that secureboot is on.
+        # In first_start.pm we'll further assert that secureboot is still on.
+        send_key_until_needlematch 'ovmf', 'f12';
+        send_key_until_needlematch 'ovmf-select-bootmgr', 'down';
+        send_key 'ret';
+        send_key_until_needlematch 'ovmf-bootmgr-shell', 'up'; # up is faster
+        send_key 'ret';
+        assert_screen 'uefi-shell', 30;
+        type_string 'fs1:';
+        send_key 'ret';
+        assert_screen 'uefi-shell-fs1';
+        type_string 'EnrollDefaultKeys.efi';
+        send_key 'ret';
+        type_string 'reset';
+        send_key 'ret';
+        reset_consoles;
+    }
+
     # Wait for installation bootloader. This is either isolinux for BIOS or
     # GRUB for UEFI.
     # When it is grub we need to hit enter to proceed.

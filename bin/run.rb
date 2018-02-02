@@ -90,6 +90,14 @@ if ENV['INSTALLATION']
   config[:INSTALLATION] = ENV['INSTALLATION']
   config[:INSTALLATION_OEM] = ENV['INSTALLATION_OEM']
   config[:ISO] = '/workspace/neon.iso'
+
+  if ENV['OPENQA_SECUREBOOT']
+    # https://fedoraproject.org/wiki/Using_UEFI_with_QEMU#Testing_Secureboot_in_a_VM
+    # https://rpmfind.net/linux/rpm2html/search.php?query=edk2-ovmf
+    secureboot = File.expand_path("#{__dir__}/../OVMF/SecureBoot.iso")
+    config[:ISO_1] = secureboot
+    config[:SECUREBOOT] = true
+  end
 else
   config[:BOOT_HDD_IMAGE] = true
   config[:KEEPHDDS] = true

@@ -39,6 +39,23 @@ my $dist = testapi::get_var("CASEDIR") . '/lib/distribution_neon.pm';
 require $dist;
 testapi::set_distribution(distribution_neon->new());
 
+sub unregister_needle_tags {
+    my ($tag) = @_;
+    my @a = @{needle::tags($tag)};
+    for my $n (@a) { $n->unregister($tag); }
+}
+
+sub cleanup_needles {
+    if (!testapi::get_var('SECUREBOOT')) {
+        unregister_needle_tags('ENV-SECUREBOOT');
+    } else {
+        unregister_needle_tags('ENV-NO-SECUREBOOT');
+    }
+}
+
+$needle::cleanuphandler = \&cleanup_needles;
+
+
 if (testapi::get_var("INSTALLATION")) {
     my %test = (
         'devedition-gitunstable' => "tests/install_calamares.pm",

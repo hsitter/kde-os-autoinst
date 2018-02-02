@@ -54,9 +54,15 @@ sub run {
     assert_script_run 'wget ' . data_url('snapd_disable.rb'),  16;
     assert_script_sudo 'ruby snapd_disable.rb', 16;
 
-    if (testapi::get_var('OPENQA_IN_CLOUD')) {
+    if (get_var('OPENQA_IN_CLOUD')) {
         assert_script_run 'wget ' . data_url('apt_mirror.rb'),  16;
         assert_script_sudo 'ruby apt_mirror.rb', 16;
+    }
+
+    if (get_var('SECUREBOOT')) {
+        assert_script_sudo 'apt install -y mokutil', 60;
+        assert_script_sudo 'mokutil --sb-state', 16;
+        assert_screen 'mokutil-sb-on';
     }
 
     # Testing grub is a bit tricky because we first need to make sure it is

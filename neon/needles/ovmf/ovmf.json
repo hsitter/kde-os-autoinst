@@ -1,17 +1,16 @@
 {
   "area": [
     {
-      "height": 561,
+      "height": 214,
       "match": 95,
       "type": "match",
-      "width": 914,
+      "width": 436,
       "xpos": 0,
-      "ypos": 0
+      "ypos": 95
     }
   ],
   "properties": [],
   "tags": [
-    "installer-prepare",
-    "ENV-NO-SECUREBOOT"
+    "ovmf"
   ]
 }

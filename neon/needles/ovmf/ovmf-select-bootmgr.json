@@ -1,17 +1,16 @@
 {
   "area": [
     {
-      "height": 561,
+      "height": 20.400000000000034,
       "match": 95,
       "type": "match",
-      "width": 914,
+      "width": 163,
       "xpos": 0,
-      "ypos": 0
+      "ypos": 172.79999999999998
     }
   ],
   "properties": [],
   "tags": [
-    "installer-prepare",
-    "ENV-NO-SECUREBOOT"
+    "ovmf-select-bootmgr"
   ]
 }

@@ -12,6 +12,6 @@
   "properties": [],
   "tags": [
     "installer-prepare",
-    "ENV-NO-SECUREBOOT"
+    "ENV-SECUREBOOT"
   ]
 }

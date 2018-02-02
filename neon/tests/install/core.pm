@@ -30,14 +30,20 @@ sub run {
     assert_screen 'live-desktop', 360;
 
     select_console 'log-console';
+    {
+        assert_script_run 'wget ' . data_url('permissions_check.rb'),  16;
+        assert_script_run 'ruby permissions_check.rb', 16;
 
-    assert_script_run 'wget ' . data_url('permissions_check.rb'),  16;
-    assert_script_run 'ruby permissions_check.rb', 16;
+        if (get_var('SECUREBOOT')) {
+            assert_script_sudo 'apt install -y mokutil', 60;
+            assert_script_sudo 'mokutil --sb-state', 16;
+            assert_screen 'mokutil-sb-on';
+        }
 
-    # TODO: maybe control via env var?
-    # assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
-    # assert_script_run 'ruby enable_qdebug.rb', 16;
-
+        # TODO: maybe control via env var?
+        # assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
+        # assert_script_run 'ruby enable_qdebug.rb', 16;
+    }
     select_console 'x11';
 
     # Leave system as we have found it.

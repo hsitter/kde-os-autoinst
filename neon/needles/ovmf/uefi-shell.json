@@ -1,0 +1,24 @@
+{
+  "area": [
+    {
+      "height": 24,
+      "match": 95,
+      "type": "match",
+      "width": 184,
+      "xpos": 73,
+      "ypos": 56
+    },
+    {
+      "height": 27,
+      "match": 95,
+      "type": "match",
+      "width": 76,
+      "xpos": 76,
+      "ypos": 518
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "uefi-shell"
+  ]
+}

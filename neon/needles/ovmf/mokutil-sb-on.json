@@ -1,17 +1,16 @@
 {
   "area": [
     {
-      "height": 561,
+      "height": 16.363636363636367,
       "match": 95,
       "type": "match",
-      "width": 914,
+      "width": 177.33333333333337,
       "xpos": 0,
-      "ypos": 0
+      "ypos": 16.545454545454543
     }
   ],
   "properties": [],
   "tags": [
-    "installer-prepare",
-    "ENV-NO-SECUREBOOT"
+    "mokutil-sb-on"
   ]
 }
