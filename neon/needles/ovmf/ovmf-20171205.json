@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "height": 194,
+      "match": 95,
+      "type": "match",
+      "width": 436,
+      "xpos": 0,
+      "ypos": 115
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "ovmf-20171205",
+    "ovmf"
+  ]
+}
