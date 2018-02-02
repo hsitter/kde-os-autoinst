@@ -27,7 +27,7 @@ sub run() {
         # enroll the default keys to enable secureboot.
         # In the core.pm we'll then assert that secureboot is on.
         # In first_start.pm we'll further assert that secureboot is still on.
-        send_key_until_needlematch 'ovmf', 'f12';
+        send_key_until_needlematch 'ovmf', 'f2';
         send_key_until_needlematch 'ovmf-select-bootmgr', 'down';
         send_key 'ret';
         send_key_until_needlematch 'ovmf-bootmgr-shell', 'up'; # up is faster
