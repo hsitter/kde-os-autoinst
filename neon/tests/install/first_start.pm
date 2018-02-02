@@ -76,7 +76,7 @@ sub run {
     select_console 'log-console';
     assert_script_sudo 'ruby grub_toggle_hide.rb', 16;
 
-    script_sudo 'shutdown';
+    script_sudo 'shutdown now', 0;
     assert_shutdown;
 }
 
