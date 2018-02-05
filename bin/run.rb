@@ -116,11 +116,9 @@ unless system('lsmod | grep -q kvm_intel')
 end
 
 if ENV['PLASMA_MOBILE']
-    config[:ISO] = '/workspace/neon-pm.iso'
-    config[:BOOT_HDD_IMAGE] = false
-    config[:KEEPHDDS] = false
-    config[:QEMU_DISABLE_SNAPSHOTS] = false
-    config[:MAKETESTSNAPSHOTS] = false
+  config[:ISO] = '/workspace/neon-pm.iso'
+  config[:BOOT_HDD_IMAGE] = false
+  config[:KEEPHDDS] = false
 end
 
 warn "Going to use #{cpus} Cores"
