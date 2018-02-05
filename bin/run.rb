@@ -75,6 +75,8 @@ config = {
   QEMU_COMPRESS_QCOW2: true
 }
 
+ENV.each { |k, v| config[k.to_sym] = v if k.start_with?('OPENQA_') }
+
 # The 16.04 ovmf doesn't work with virtio/virgil3d VGA and fails to init the
 # display. Use a binary copy of the bionic build
 # ovmf_0~20171205.a9212288-1_all.deb
