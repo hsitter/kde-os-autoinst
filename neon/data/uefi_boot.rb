@@ -35,14 +35,16 @@ unless File.exist?('/boot/efi')
   exit
 end
 
-if File.exist?('/boot/efi/EFI/boot/bootx64.efi')
-  warn "#{$0} system already has bootx64 in place."
-  exit
+if File.exist?('/boot/efi/EFI/boot')
+  FileUtils.rm_r('/boot/efi/EFI/boot', verbose: true)
 end
 
 FileUtils.cp_r('/boot/efi/EFI/neon',
                '/boot/efi/EFI/boot',
                verbose: true)
-FileUtils.cp_r('/boot/efi/EFI/boot/grubx64.efi',
+
+origin = '/boot/efi/EFI/boot/shimx64.efi'
+origin = '/boot/efi/EFI/boot/grubx64.efi' unless File.exist?(origin)
+FileUtils.cp_r(origin,
                '/boot/efi/EFI/boot/bootx64.efi',
                verbose: true)
