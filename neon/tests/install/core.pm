@@ -40,6 +40,17 @@ sub run {
             assert_screen 'mokutil-sb-on';
         }
 
+        if (get_var('OPENQA_APT_UPGRADE')) {
+            assert_script_sudo 'apt update',  2 * 60;
+            my $pkgs = get_var('OPENQA_APT_UPGRADE');
+            if ($pkgs eq "") {
+                $pkgs = "dist-upgrade";
+            } else {
+                $pkgs = "install " . $pkgs;
+            }
+            assert_script_sudo 'DEBIAN_FRONTEND=noninteractive apt -y ' . $pkgs, 30 * 60;
+        }
+
         # TODO: maybe control via env var?
         # assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
         # assert_script_run 'ruby enable_qdebug.rb', 16;
