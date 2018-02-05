@@ -89,6 +89,7 @@ sub run {
         if (!$counter--) {
             last;
         }
+        eject_cd;
         send_key 'ret';
         sleep 1;
     }

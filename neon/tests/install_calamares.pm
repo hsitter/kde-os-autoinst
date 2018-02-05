@@ -76,6 +76,7 @@ sub run {
     assert_and_click "calamares-installer-restart-now";
 
     assert_screen "live-remove-medium", 60;
+    eject_cd;
     send_key "ret";
 
     reset_consoles;
