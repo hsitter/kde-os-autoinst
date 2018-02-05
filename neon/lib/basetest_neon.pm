@@ -55,8 +55,10 @@ sub boot {
     # else sddm, nothing to do
 
     select_console 'log-console';
-    assert_script_run 'wget ' . data_url('basetest_setup.rb'),  60;
-    assert_script_sudo 'ruby basetest_setup.rb', 60;
+    {
+        assert_script_run 'wget ' . data_url('basetest_setup.rb'),  60;
+        assert_script_sudo 'ruby basetest_setup.rb', 60;
+    }
     select_console 'x11';
 
     type_password $testapi::password;
