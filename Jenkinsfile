@@ -41,8 +41,10 @@ fancyNode('openqa') {
         sh 'INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
       }
     }
-    stage('archive-raid') {
-      sh 'bin/archive.rb'
+    if (env.ARCHIVE) {
+      stage('archive-raid') {
+        sh 'bin/archive.rb'
+      }
     }
   } finally {
     archiveArtifacts 'wok/testresults/*, wok/ulogs/*, wok/video.*'
