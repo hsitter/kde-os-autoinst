@@ -35,6 +35,12 @@ sub run {
     {
         assert_script_run 'wget ' . data_url('geoip_service.rb'),  16;
         script_sudo 'systemd-run ruby `pwd`/geoip_service.rb', 16;
+
+        # Disable networking during installation to ensure network-less
+        # installation works as expected.
+        if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
+            assert_script_sudo 'nmcli networking off';
+        }
     }
     select_console 'x11';
 
@@ -106,6 +112,9 @@ sub post_fail_hook {
     $self->SUPER::post_fail_hook;
 
     select_console 'log-console';
+
+    # Make sure networking is on (we disable it during installation).
+    assert_script_sudo 'nmcli networking on';
 
     # Uploads end up in wok/ulogs/
     assert_script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
