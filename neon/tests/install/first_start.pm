@@ -21,25 +21,20 @@ use testapi;
 
 # Core test to run for all install cases. Asserts common stuff.
 sub run {
-    # Unstable has a grub while user does not. Until we figure out why
-    # we make no assertions about it. In either case there should be
-    # a timeout anyway.
-    # https://bugs.kde.org/show_bug.cgi?id=387827
-    # NB: this test is also run after ubiquity_oem which currently ends at sddm,
-    #   should we wish to assert grub here the oem test needs adjustments to
-    #   assert sddm and reboot before ending.
-    record_soft_failure('not asserting no grub or grub https://bugs.kde.org/show_bug.cgi?id=387827');
-    # assert_screen "grub", 60;
-    # send_key 'ret'; # start first entry
-
     # Eventually we should end up in sddm
-     # NB: this is 10m because we do not also wait for grub, so this timeout
-     #   entails: shutdown of the live session + uefi reinit +
-     #            grub (possibly with) + actual boot + start of sddm.
-     #   with tests running on drax presently this can easily exceed 5m
-     #   (which would be my otherwise preferred value) as drax may be busy
-     #   doing other things as well that slow the test down.
-    assert_screen 'sddm', 60 * 10;
+    # If we find grub instead we'll throw a tantrum. With only one OS installed
+    # grub should be hidden by default unless the previous shutdown wasn't clean
+    # none of which should be the case on first start!
+    # NB: this is 10m because we do not also wait for grub, so this timeout
+    #   entails: shutdown of the live session + uefi reinit +
+    #            grub (possibly with) + actual boot + start of sddm.
+    #   with tests running on drax presently this can easily exceed 5m
+    #   (which would be my otherwise preferred value) as drax may be busy
+    #   doing other things as well that slow the test down.
+    assert_screen ['sddm', 'grub'], 60 * 10;
+    if (match_has_tag('grub')) {
+        die 'Grub should not be visible by defualt but was detected';
+    }
 
     select_console 'log-console';
 
