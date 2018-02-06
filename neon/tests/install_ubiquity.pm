@@ -44,6 +44,10 @@ sub run {
     }
     select_console 'x11';
 
+    if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
+        assert_screen 'plasma-nm-offline';
+    }
+
     # Installer
     assert_and_click "installer-icon";
     assert_screen "installer-welcome", 60;

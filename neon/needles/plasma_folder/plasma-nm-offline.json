@@ -1,0 +1,32 @@
+{
+  "area": [
+    {
+      "height": 33,
+      "match": 95,
+      "type": "match",
+      "width": 39,
+      "xpos": 0,
+      "ypos": 734
+    },
+    {
+      "height": 31,
+      "match": 95,
+      "type": "match",
+      "width": 28,
+      "xpos": 994,
+      "ypos": 735
+    },
+    {
+      "height": 30,
+      "match": 95,
+      "type": "match",
+      "width": 28,
+      "xpos": 785,
+      "ypos": 736
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "plasma-nm-offline"
+  ]
+}
