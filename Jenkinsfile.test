@@ -1,6 +1,5 @@
 env.DIST = 'xenial'
 env.PWD_BIND = '/workspace'
-env.TYPE = 'useredition' // FIXME: hardcoded for now
 
 if (env.TYPE == null) {
   if (params.TYPE != null) {
