@@ -51,7 +51,7 @@
   ],
   "properties": [],
   "tags": [
-    "calamares-installer-offline",
+    "calamares-installer-welcome-offline",
     "calamares-installer-welcome",
     "ENV-OFFLINE"
   ]
