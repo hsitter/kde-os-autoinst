@@ -51,6 +51,11 @@ sub cleanup_needles {
     } else {
         unregister_needle_tags('ENV-NO-SECUREBOOT');
     }
+    if (testapi::get_var('UEFI')) {
+        unregister_needle_tags('ENV-BIOS');
+    } else { # BIOS mode
+        unregister_needle_tags('ENV-UEFI');
+    }
 }
 
 $needle::cleanuphandler = \&cleanup_needles;

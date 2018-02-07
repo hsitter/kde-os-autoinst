@@ -1,17 +1,18 @@
 {
   "area": [
     {
-      "height": 84,
+      "height": 76,
       "match": 95,
       "type": "match",
       "width": 480,
-      "xpos": 161,
-      "ypos": 54
+      "xpos": 74,
+      "ypos": 0
     }
   ],
   "properties": [],
   "tags": [
+    "grub-800-600",
     "grub",
-    "ENV-UEFI"
+    "ENV-BIOS"
   ]
 }
