@@ -79,8 +79,14 @@ sub run {
 
     # we are back in our regular session, unlock and be happy
     # done
-    record_soft_failure 'kscreenlocker comes back with vkbd bug 387270';
-    assert_and_click 'plasma-locked-keyboard-icon-active';
+
+    unless (get_var("QEMUVGA") eq 'qxl') {
+        # This is confirmed to not be a problem on qxl. Should we switch to
+        # other VGAs in the future we'll know if they are exhibiting the
+        # problem too as we only skip qxl.
+        record_soft_failure 'kscreenlocker comes back with vkbd bug 387270';
+        assert_and_click 'plasma-locked-keyboard-icon-active';
+    }
 
     type_password $testapi::password;
     send_key 'ret';
