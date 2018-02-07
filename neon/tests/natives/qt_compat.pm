@@ -27,11 +27,14 @@ sub run {
     select_console 'log-console';
     assert_script_run 'wget ' . data_url('qt_compat_install.rb'),  16;
     assert_script_sudo 'ruby qt_compat_install.rb '.
-                       'kdevelop skrooge kontact',
+                       'kdevelop skrooge kontact plasma-discover',
                        60 * 30;
     select_console 'x11';
 
     assert_screen 'folder-desktop', 30;
+
+    assert_screen_change { x11_start_program('discover'); };
+    send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 2);
 
     assert_screen_change { x11_start_program('kdevelop'); };
     send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 2);
