@@ -24,23 +24,30 @@ sub run {
 
     my ($self) = @_;
     $self->boot;
-    
+
+    select_console 'log-console';
+    {
+        assert_script_sudo 'apt update';
+        assert_script_sudo 'apt install -y plasma-wayland-desktop';
+    }
+    select_console 'x11';
+
     assert_and_click 'kickoff', undef, 60; # 60 seconds since we don't assert desktop
     assert_and_click 'kickoff-leave';
     assert_and_click 'kickoff-leave-logout';
-    
+
     assert_and_click 'ksmserver-logout';
     wait_still_screen;
-    
+
     assert_screen "sddm", 60;
-  
+
     assert_and_click 'sddm-choose-session';
     assert_and_click 'sddm-plasma-wayland';
-    
+
     $self->login;
-   
+
    assert_screen 'folder-desktop', 60;
-    
+
 }
 
 sub test_flags {
@@ -52,15 +59,15 @@ sub test_flags {
 }
 
 sub post_fail_hook {
-    
+
     my ($self) = shift;
     # $self->SUPER::post_fail_hook;
-    
+
     select_console 'log-console';
 
     # Uploads end up in wok/ulogs/
     assert_script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
-     
+
     upload_logs '/tmp/journal.txt';
     upload_logs '/home/$USER/.local/share/sddm/wayland-session.log';
 }
