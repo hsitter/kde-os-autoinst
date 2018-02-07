@@ -56,6 +56,9 @@ sub cleanup_needles {
     } else { # BIOS mode
         unregister_needle_tags('ENV-UEFI');
     }
+    unless (testapi::get_var('OPENQA_INSTALLATION_OFFLINE')) {
+        unregister_needle_tags('ENV-OFFLINE');
+    }
 }
 
 $needle::cleanuphandler = \&cleanup_needles;
