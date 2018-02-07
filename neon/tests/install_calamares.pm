@@ -29,6 +29,20 @@ sub run {
 
     wait_still_screen;
 
+    select_console 'log-console';
+    {
+        # Disable networking during installation to ensure network-less
+        # installation works as expected.
+        if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
+            assert_script_sudo 'nmcli networking off';
+        }
+    }
+    select_console 'x11';
+
+    if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
+        assert_screen 'plasma-nm-offline';
+    }
+
     # Installer
     assert_and_click 'calamares-installer-icon';
 
@@ -91,6 +105,9 @@ sub post_fail_hook {
     # $self->SUPER::post_fail_hook;
 
     select_console 'log-console';
+
+    # Make sure networking is on (we disable it during installation).
+    assert_script_sudo 'nmcli networking on';
 
     # Uploads end up in wok/ulogs/
     upload_logs '/home/neon/.cache/Calamares/calamares/Calamares.log';
