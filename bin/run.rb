@@ -84,7 +84,7 @@ bionic_ovmf = File.expand_path("#{__dir__}/../OVMF/OVMF_CODE.fd")
 config[:UEFI_BIOS] = bionic_ovmf if File.exist?(bionic_ovmf)
 
 # Switch to bios mode when requested.
-config.delete(:UEFI) if ENV['BIOS']
+config.delete(:UEFI) if ENV['OPENQA_BIOS']
 
 config[:TESTS_TO_RUN] = ENV['TESTS_TO_RUN'].split(':') if ENV['TESTS_TO_RUN']
 config[:PLASMA_DESKTOP]  = ENV['PLASMA_DESKTOP']
