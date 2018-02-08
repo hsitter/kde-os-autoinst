@@ -1,0 +1,40 @@
+{
+  "area": [
+    {
+      "height": 25,
+      "match": 95,
+      "type": "match",
+      "width": 74,
+      "xpos": 678,
+      "ypos": 39
+    },
+    {
+      "height": 22,
+      "match": 95,
+      "type": "match",
+      "width": 127,
+      "xpos": 885,
+      "ypos": 40
+    },
+    {
+      "height": 25,
+      "match": 95,
+      "type": "match",
+      "width": 17,
+      "xpos": 596,
+      "ypos": 64
+    },
+    {
+      "height": 32,
+      "match": 95,
+      "type": "match",
+      "width": 143,
+      "xpos": 735,
+      "ypos": 1
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "ubuntu-upgrade"
+  ]
+}

@@ -45,6 +45,8 @@ sub run {
 
     assert_screen 'ubuntu-upgrade';
 
+    assert_screen 'ubuntu-upgrade-finished', 60 * 5;
+
     reset_consoles;
     $self->boot;
 }
