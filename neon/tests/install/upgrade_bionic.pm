@@ -36,6 +36,8 @@ sub run {
     type_password $testapi::password;
     send_key 'ret';
 
+    assert_screen 'ubuntu-upgrade-fetcher';
+
     reset_consoles;
     $self->boot;
 }
