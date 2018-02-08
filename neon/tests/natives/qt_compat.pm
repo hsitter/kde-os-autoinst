@@ -81,6 +81,7 @@ sub run {
     send_key_while_needlematch('breeze-close', 'alt-f4', 20, 2);
 
     x11_start_program('kontact');
+    assert_screen 'breeze-close';
     # apparently you can't close the kontact account wizard with alt-f4. wtf.
     # https://bugs.kde.org/show_bug.cgi?id=388815
     # instead we xkill it. We'll then continue closing as per usual.
