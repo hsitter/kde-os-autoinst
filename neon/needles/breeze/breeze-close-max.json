@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 12,
+      "match": 95,
+      "type": "match",
+      "width": 69,
+      "xpos": 944,
+      "ypos": 7.1000000000000085
+    },
+    {
+      "height": 25.142857142857157,
+      "match": 95,
+      "type": "match",
+      "width": 30.317460317461155,
+      "xpos": 993.6825396825388,
+      "ypos": 0
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "breeze-close-max",
+    "breeze-close"
+  ]
+}
