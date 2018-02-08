@@ -22,6 +22,25 @@ use base 'basetest';
 use testapi;
 use strict;
 
+sub post_fail_hook {
+    if (check_screen('drkonqi-notification')) {
+        assert_and_click('drkonqi-notification');
+        record_soft_failure 'not implemented drkonqi opening';
+    }
+
+    select_console 'log-console';
+
+    # The next uploads are largely failok since we want to get as many logs
+    # as possible evne if some are missing.
+
+    upload_logs '~/.cache/xsession-errors', failok => 1;
+
+    script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
+    upload_logs '/tmp/journal.txt', failok => 1;
+
+    return 1;
+}
+
 sub login {
     my ($self) = @_;
     # Short wait, we should be close to sddm if we this gets called.
