@@ -64,7 +64,7 @@ config = {
   PRJDIR: '/workspace',
   CASEDIR: '/workspace/neon',
   PRODUCTDIR: '/workspace/neon',
-  QEMUVGA: 'qxl',
+  QEMUVGA: 'std',
   TESTDEBUG: false,
   MAKETESTSNAPSHOTS: false,
   QEMUCPUS: cpus,
