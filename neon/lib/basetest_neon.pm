@@ -23,7 +23,7 @@ use testapi;
 use strict;
 
 sub post_fail_hook {
-    if (check_screen('drkonqi-notification')) {
+    if (check_screen('drkonqi-notification', 4)) {
         assert_and_click('drkonqi-notification');
         record_soft_failure 'not implemented drkonqi opening';
     }
