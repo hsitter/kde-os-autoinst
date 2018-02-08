@@ -121,6 +121,7 @@ matched:
     end
 
     def error_needles_info
+      return no_needles_info if detail.needles.empty?
       expected_urls = detail.needles.collect do |needle|
         "#{EXPECTATION_URL}/#{needle.json.sub('.json', '.png')}"
       end
@@ -129,6 +130,14 @@ To satisfy a test for the tags '#{detail.tags}' we checked the screen and found
 #{artifact_url(detail.screenshot)}
 but expected any of:
 #{expected_urls.join("\n")}
+      STDOUT
+    end
+
+    def no_needles_info
+      <<-STDOUT
+We wanted to test for tags '#{detail.tags}' but found no needles to back these
+tags. Chances are there is no needle, or the tags are misspelled.
+(Other options apply but are less likely obviously.)
       STDOUT
     end
   end

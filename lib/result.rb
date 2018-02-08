@@ -283,13 +283,33 @@ module OSAutoInst
       end
     end
 
+    # Check who wants the data.
+    # If there are multiple, check who needs the data.
+    # If no one needs the data use the least shitty approximation to who wants
+    # the data.
+    #
+    # If no one needs the data we'll assume they can all handle the data
+    # (as they wanted it) but are indifferent as to which gets it, so we'll
+    # simply use the tighest approximation. i.e. the one with less attributes.
+    # (an approximate match has a superset of attributes in the blob, so
+    # the smallest super set becomes the best match).
+    # e.g. {tags:,foo:} approximates to classes {tags:,foo:,bar:} and
+    #   {tags:,foo:,bar:,foobar:}. the former class is the match with less
+    #   presumed functional overhead though.
     def who_wants_the_data
       @representations = @representations.select { |x| x.want?(data) }
+      weighted_by_attributes = @representations.sort do |x, y|
+        x.attributes.size <=> y.attributes.size
+      end
       case @representations.size
       when 0 then raise "no classes wanted our data #{data}"
       when 1 then return @representations[0]
       end
-      who_needs_the_data
+      need = who_needs_the_data
+      return need if need
+      approximation = weighted_by_attributes.fetch(0)
+      warn "No class needed so we'll approximat with #{approximation} - #{data}"
+      approximation
     end
 
     class NoPerfectMatchError < RuntimeError; end
