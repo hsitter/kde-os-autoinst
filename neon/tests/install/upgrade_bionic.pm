@@ -30,7 +30,11 @@ sub run {
     }
     select_console 'x11';
 
-    x11_start_program 'kubuntu-devel-release-upgrade';
+    # x11_start_program 'kubuntu-devel-release-upgrade';
+    x11_start_program 'konsole';
+    assert_screen 'konsole';
+    type_string 'kubuntu-devel-release-upgrade';
+    send_key 'ret';
 
     assert_screen 'kdesudo';
     type_password $testapi::password;
