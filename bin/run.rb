@@ -73,7 +73,7 @@ config = {
   #   3d accel on debian/ubuntu. needs passing of options to actually enable
   #   accel -display sdl,gl=on`
   #   https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=813658
-  QEMUVGA: 'qxl',
+  QEMUVGA: 'cirrus',
   TESTDEBUG: false,
   MAKETESTSNAPSHOTS: false,
   QEMUCPUS: cpus,
