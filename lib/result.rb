@@ -308,6 +308,9 @@ module OSAutoInst
     def factorize
       find_klasses
       best_klass.new(data)
+    rescue NoMethodError => e
+      warn "Failed to find class for #{data}"
+      raise e
     end
   end
 
