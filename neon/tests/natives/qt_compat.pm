@@ -35,6 +35,24 @@ sub send_key_while_needlematch {
     }
 }
 
+sub xkill_while_needlematch {
+    my ($tag, $counter, $timeout) = @_;
+
+    $counter //= 20;
+    $timeout //= 1;
+    while (check_screen($tag, $timeout)) {
+        send_key 'alt-ctrl-esc';
+        mouse_set(32, 32);
+        # TODO: should assert_screen on the kill icon
+        assert_and_click($tag);
+        if (!$counter--) {
+            if (check_screen($tag, $timeout)) {
+                die "Wanted to get rid of match for " . $tag . " but timed out";
+            }
+        }
+    }
+}
+
 sub run {
     my ($self) = @_;
     $self->boot;
@@ -66,11 +84,8 @@ sub run {
     # apparently you can't close the kontact account wizard with alt-f4. wtf.
     # https://bugs.kde.org/show_bug.cgi?id=388815
     # instead we xkill it. We'll then continue closing as per usual.
-    send_key 'alt-ctrl-esc';
-    # TODO: should assert_screen on the kill icon
-    mouse_set(256, 34);
-    mouse_click('left');
-    assert_screen 'breeze-close';
+    xkill_while_needlematch('breeze-close', 20, 2);
+    assert_and_click 'breeze-close';
     send_key_while_needlematch('breeze-close', 'alt-f4', 20, 2);
 
     # If all went fine we should match our desktop again!
