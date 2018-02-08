@@ -138,6 +138,8 @@ but expected any of:
 We wanted to test for tags '#{detail.tags}' but found no needles to back these
 tags. Chances are there is no needle, or the tags are misspelled.
 (Other options apply but are less likely obviously.)
+
+#{artifact_url(detail.screenshot)}
       STDOUT
     end
   end
