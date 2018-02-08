@@ -32,6 +32,10 @@ sub run {
 
     x11_start_program 'kubuntu-devel-release-upgrade';
 
+    assert_screen 'kdesudo';
+    type_password $testapi::password;
+    send_key 'ret';
+
     reset_consoles;
     $self->boot;
 }
