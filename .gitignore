@@ -7,6 +7,9 @@
 /raid/
 /os-autoinst/
 /.vagrant/
+/wip/
+/junit/
+/.tags*
 /*.iso
 /*.iso.zs-old
 /*.sig
