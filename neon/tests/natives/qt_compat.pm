@@ -20,6 +20,21 @@ use base "basetest_neon";
 use strict;
 use testapi;
 
+sub send_key_while_needlematch {
+    my ($tag, $key, $counter, $timeout) = @_;
+
+    $counter //= 20;
+    $timeout //= 1;
+    while (check_screen($tag, $timeout)) {
+        send_key $key;
+        if (!$counter--) {
+            if (check_screen($tag, $timeout)) {
+                die "Wanted to get rid of match for " . $tag . " but timed out";
+            }
+        }
+    }
+}
+
 sub run {
     my ($self) = @_;
     $self->boot;
@@ -32,23 +47,34 @@ sub run {
     select_console 'x11';
 
     assert_screen 'folder-desktop', 30;
+    # In case we have any lingering windows for whatever weird reason:
+    send_key_while_needlematch('breeze-close', 'alt-f4', 20, 2);
 
-    assert_screen_change { x11_start_program('discover'); };
-    send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 2);
+    x11_start_program 'discover' ;
+    assert_screen 'breeze-close';
+    send_key_while_needlematch('breeze-close', 'alt-f4', 20, 2);
 
-    assert_screen_change { x11_start_program('kdevelop'); };
-    send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 2);
+    x11_start_program 'kdevelop';
+    assert_screen 'breeze-close';
+    send_key_while_needlematch('breeze-close', 'alt-f4', 20, 2);
 
-    assert_screen_change { x11_start_program('skrooge'); };
-    send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 2);
+    x11_start_program('skrooge');
+    assert_screen 'breeze-close';
+    send_key_while_needlematch('breeze-close', 'alt-f4', 20, 2);
 
-    assert_screen_change { x11_start_program('kontact'); };
+    x11_start_program('kontact');
     # apparently you can't close the kontact account wizard with alt-f4. wtf.
-    # send_key_until_needlematch('folder-desktop', 'alt-f4', 20, 2);
+    # https://bugs.kde.org/show_bug.cgi?id=388815
+    # instead we xkill it. We'll then continue closing as per usual.
     send_key 'alt-ctrl-esc';
     # TODO: should assert_screen on the kill icon
     mouse_set(256, 34);
     mouse_click('left');
+    assert_screen 'breeze-close';
+    send_key_while_needlematch('breeze-close', 'alt-f4', 20, 2);
+
+    # If all went fine we should match our desktop again!
+    assert_screen 'folder-desktop', 30;
 }
 
 1;
