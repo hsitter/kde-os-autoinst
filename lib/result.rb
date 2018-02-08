@@ -177,7 +177,9 @@ module OSAutoInst
     detail_attr :tags # tags searched for
 
     def initialize(*)
-      @needles = nil # make sure @needles is initialized to avoid warnings
+      # Init to avoid problems with representing approximate blobs.
+      @needles = []
+      @tags = []
       super
       return unless @needles
       @needles = @needles.collect { |x| DetailFactory.new(x).factorize }
