@@ -64,6 +64,15 @@ config = {
   PRJDIR: '/workspace',
   CASEDIR: '/workspace/neon',
   PRODUCTDIR: '/workspace/neon',
+  # cirrus: old std, doesn't do wayland
+  # qxl: used for spice as well. as special guest driver. works with wayland.
+  #   doesn't clear/redraw screen on VT switch properly,
+  #   causing rendering artifacts prevent screen matches
+  # std: new standard. has 800x600 resolution for some reason
+  # virtio/virgil: broke uefi display init somehow. not actually built with
+  #   3d accel on debian/ubuntu. needs passing of options to actually enable
+  #   accel -display sdl,gl=on`
+  #   https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=813658
   QEMUVGA: 'qxl',
   TESTDEBUG: false,
   MAKETESTSNAPSHOTS: false,
