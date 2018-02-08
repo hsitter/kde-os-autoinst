@@ -85,8 +85,6 @@ sub run {
     # https://bugs.kde.org/show_bug.cgi?id=388815
     # instead we xkill it. We'll then continue closing as per usual.
     xkill_while_needlematch('breeze-close', 20, 2);
-    assert_and_click 'breeze-close';
-    send_key_while_needlematch('breeze-close', 'alt-f4', 20, 2);
 
     # If all went fine we should match our desktop again!
     assert_screen 'folder-desktop', 30;
