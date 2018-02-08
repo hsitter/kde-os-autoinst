@@ -33,7 +33,9 @@ sub post_fail_hook {
     # The next uploads are largely failok since we want to get as many logs
     # as possible evne if some are missing.
 
+    upload_logs '/home/'.$testapi::username.'/.cache/sddm/xsession-errors', failok => 1;
     upload_logs '/home/'.$testapi::username.'/.cache/xsession-errors', failok => 1;
+    upload_logs '/home/'.$testapi::username.'/.xsession-errors', failok => 1;
 
     script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
     upload_logs '/tmp/journal.txt', failok => 1;
