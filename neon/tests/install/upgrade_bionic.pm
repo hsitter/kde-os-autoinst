@@ -41,6 +41,7 @@ sub run {
     send_key 'ret';
 
     assert_screen 'ubuntu-upgrade-fetcher-notes';
+    assert_and_click 'ubuntu-upgrade-fetcher-notes';
 
     assert_screen 'ubuntu-upgrade';
 
