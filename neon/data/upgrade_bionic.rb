@@ -28,6 +28,20 @@ puts "#{$0}: Upgrading to bionic via apt..."
 
 ENV['DEBIAN_FRONTEND'] = 'noninteractive'
 
+system('apt update') || raise
+system('apt install -y ubuntu-release-upgrader-qt') || raise
+
+File.write('/etc/update-manager/meta-release', <<-META_RELEASE)
+[METARELEASE]
+URI = http://metadata.neon.kde.org/changelogs/meta-release
+URI_LTS = http://metadata.neon.kde.org/changelogs/meta-release-lts
+URI_UNSTABLE_POSTFIX = -development
+URI_PROPOSED_POSTFIX = -proposed
+META_RELEASE
+
+# This test is currently on UE, switch to unstable as bionic only has unstable
+# builds.
+
 sources = Dir.glob('/etc/apt/sources.list.d/*') << '/etc/apt/sources.list'
 sources.each do |source|
   data = File.read(source)
@@ -37,10 +51,21 @@ sources.each do |source|
   File.write(source, data)
 end
 
-system('apt update') || raise
-
-puts "#{$0}: ... running a simultation before the real deal ..."
-system('apt dist-upgrade -y -s 2>&1 | tee /tmp/simulation.txt') || raise
-
-puts "#{$0}: ... and for real now ..."
-system('apt dist-upgrade -y') || raise
+# NB: this is dist-upgrade only code which doesn't work QQ
+#
+# sources = Dir.glob('/etc/apt/sources.list.d/*') << '/etc/apt/sources.list'
+# sources.each do |source|
+#   data = File.read(source)
+#   data = data.gsub('xenial', 'bionic')
+#   data = data.gsub('/user', '/dev/unstable')
+#   data = data.gsub('/release', '/dev/unstable')
+#   File.write(source, data)
+# end
+#
+# system('apt update') || raise
+#
+# puts "#{$0}: ... running a simultation before the real deal ..."
+# system('apt dist-upgrade -y -s 2>&1 | tee /tmp/simulation.txt') || raise
+#
+# puts "#{$0}: ... and for real now ..."
+# system('apt dist-upgrade -y') || raise

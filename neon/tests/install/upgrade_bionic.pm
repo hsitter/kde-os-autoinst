@@ -27,10 +27,12 @@ sub run {
     {
         assert_script_run 'wget ' . data_url('upgrade_bionic.rb'),  16;
         assert_script_sudo 'ruby upgrade_bionic.rb', 60 * 60;
-        script_sudo 'reboot', 0;
     }
-    reset_consoles;
+    select_console 'x11';
 
+    x11_start_program 'kubuntu-devel-release-upgrade';
+
+    reset_consoles;
     $self->boot;
 }
 
