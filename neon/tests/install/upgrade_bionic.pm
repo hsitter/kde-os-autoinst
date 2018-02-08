@@ -40,7 +40,9 @@ sub run {
     type_password $testapi::password;
     send_key 'ret';
 
-    assert_screen 'ubuntu-upgrade-fetcher';
+    assert_screen 'ubuntu-upgrade-fetcher-notes';
+
+    assert_screen 'ubuntu-upgrade';
 
     reset_consoles;
     $self->boot;

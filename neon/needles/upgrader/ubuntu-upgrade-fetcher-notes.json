@@ -1,0 +1,32 @@
+{
+  "area": [
+    {
+      "height": 25,
+      "match": 95,
+      "type": "match",
+      "width": 183,
+      "xpos": 383,
+      "ypos": 61
+    },
+    {
+      "height": 61,
+      "match": 95,
+      "type": "match",
+      "width": 137,
+      "xpos": 181,
+      "ypos": 62
+    },
+    {
+      "height": 32,
+      "match": 95,
+      "type": "match",
+      "width": 92,
+      "xpos": 638,
+      "ypos": 526
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "ubuntu-upgrade-fetcher-notes"
+  ]
+}
