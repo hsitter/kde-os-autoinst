@@ -19,6 +19,16 @@
 use base "basetest_neon";
 use testapi;
 
+sub kscreenlocker_disable {
+    x11_start_program 'kcmshell5 screenlocker' ;
+    assert_screen 'kcm-screenlocker';
+    if (match_has_tag 'kcm-screenlocker-enabled') {
+        assert_and_click 'kcm-screenlocker-disable';
+    }
+    assert_screen 'kcm-screenlocker-disabled';
+    assert_and_click 'kcm-ok';
+}
+
 sub run {
     my ($self) = @_;
     $self->boot;
@@ -29,6 +39,9 @@ sub run {
         assert_script_sudo 'ruby upgrade_bionic.rb', 60 * 60;
     }
     select_console 'x11';
+
+    # Disable screen locker, this is gonna take a while.
+    kscreenlocker_disable;
 
     # x11_start_program 'kubuntu-devel-release-upgrade';
     x11_start_program 'konsole';
