@@ -59,10 +59,9 @@ sub run {
     assert_screen 'ubuntu-upgrade';
     # ... preparation happens ...
     assert_and_click 'ubuntu-upgrade-start', 'left', 60 * 5;
-
     assert_and_click 'ubuntu-upgrade-remove', 'left', 60 * 15;
 
-    assert_screen 'ubuntu-upgrade-finished', 60 * 5;
+    assert_and_click 'ubuntu-upgrade-restart', 'left', 60 * 5;
 
     reset_consoles;
     $self->boot;
@@ -80,11 +79,6 @@ sub post_fail_hook {
     upload_logs '/var/log/dpkg.log';
     upload_logs '/var/log/apt/term.log';
     upload_logs '/var/log/apt/history.log';
-
-    # dist-upgrade simulation from upgrade_bionic.rb
-    upload_logs '/tmp/simulation.txt';
-    # real
-    upload_logs '/tmp/upgrade.txt';
 }
 
 sub test_flags {

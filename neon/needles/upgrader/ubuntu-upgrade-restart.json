@@ -1,0 +1,24 @@
+{
+  "area": [
+    {
+      "height": 37,
+      "match": 95,
+      "type": "match",
+      "width": 337,
+      "xpos": 626,
+      "ypos": 102
+    },
+    {
+      "height": 43,
+      "match": 95,
+      "type": "match",
+      "width": 120,
+      "xpos": 756,
+      "ypos": 171
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "ubuntu-upgrade-restart"
+  ]
+}
