@@ -58,7 +58,7 @@ sub run {
 
     assert_screen 'ubuntu-upgrade';
     # ... preparation happens ...
-    assert_and_click 'ubuntu-upgrade-start', 60 * 5;
+    assert_and_click 'ubuntu-upgrade-start', 'left', 60 * 5;
 
     assert_screen 'ubuntu-upgrade-finished', 60 * 15;
 
