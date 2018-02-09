@@ -60,7 +60,9 @@ sub run {
     # ... preparation happens ...
     assert_and_click 'ubuntu-upgrade-start', 'left', 60 * 5;
 
-    assert_screen 'ubuntu-upgrade-finished', 60 * 15;
+    assert_and_click 'ubuntu-upgrade-remove', 'left', 60 * 15;
+
+    assert_screen 'ubuntu-upgrade-finished', 60 * 5;
 
     reset_consoles;
     $self->boot;

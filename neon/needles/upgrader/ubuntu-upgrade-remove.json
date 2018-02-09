@@ -1,0 +1,32 @@
+{
+  "area": [
+    {
+      "height": 25,
+      "match": 95,
+      "type": "match",
+      "width": 215,
+      "xpos": 674,
+      "ypos": 73
+    },
+    {
+      "height": 25,
+      "match": 95,
+      "type": "match",
+      "width": 17,
+      "xpos": 596,
+      "ypos": 64
+    },
+    {
+      "height": 37,
+      "match": 95,
+      "type": "match",
+      "width": 88,
+      "xpos": 710,
+      "ypos": 209
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "ubuntu-upgrade-start"
+  ]
+}
