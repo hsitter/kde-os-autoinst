@@ -106,10 +106,19 @@ ApplicationWindow {
         Selector { model: selectorModel }
     }
 
+    FontMetrics {
+        id: fontMetrics
+    }
+
     RowLayout {
         anchors.fill: parent
+
         ColumnLayout {
-            Text { text: "Properties"; color: palette.text }
+            Layout.margins: fontMetrics.height / 4
+
+            // TODO: I do not know how properties work, they maybe should be
+            //   presented like tags - sitter
+            Label { text: "Properties" }
             TextArea {
                 placeholderText: "..."
 //                wrapMode: TextEdit.Wrap
@@ -118,13 +127,40 @@ ApplicationWindow {
                 // would need async timer or something
                 onTextChanged: { selectorModel.properties = text.split(',') }
             }
-            Text { text: "Tags"; color: palette.text }
-            TextArea {
-                placeholderText: "..."
-//                wrapMode: TextEdit.Wrap
-                text: selectorModel.tags.join(',')
-                onTextChanged: { selectorModel.tags = text.split(',') }
+
+            Label { text: "Tags" }
+            TextField {
+                Layout.fillWidth: true
+                placeholderText: "Add New Tag..."
+                selectByMouse: true
+                onAccepted: {
+                    // FIXME: should probably move to model var[] doesn't propagate
+                    // push or slice to the view for reloading
+                    selectorModel.tags.push(text)
+                    selectorModel.tags = selectorModel.tags // Reassign to trigger reload
+                    clear()
+                }
             }
+            ListView {
+                Layout.preferredHeight: contentHeight
+                Layout.fillWidth: true
+
+                clip: true
+                model: selectorModel.tags
+                ScrollBar.vertical: ScrollBar { }
+
+                delegate: Tag {
+                    text: modelData
+                    width: ListView.view.width
+                    onRemove: {
+                        selectorModel.tags.splice(index, 1)
+                        selectorModel.tags = selectorModel.tags // Reassign to trigger reload
+                    }
+                }
+            }
+
+            Item { Layout.fillHeight: true }
+
             RowLayout {
                 Button {
                     text: "Save"
