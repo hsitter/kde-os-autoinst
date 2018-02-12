@@ -1,0 +1,36 @@
+       {
+         "needles" : [
+            {
+               "json" : "neon/needles/dolphin.json",
+               "error" : 1,
+               "area" : [
+                  {
+                     "w" : "567",
+                     "result" : "fail",
+                     "y" : 264,
+                     "h" : "504",
+                     "x" : 457,
+                     "similarity" : 0
+                  },
+                  {
+                     "similarity" : 0,
+                     "y" : 439,
+                     "x" : 781,
+                     "h" : "329",
+                     "w" : "182",
+                     "result" : "fail"
+                  }
+               ],
+               "name" : "dolphin"
+            }
+         ],
+         "frametime" : [
+            "0.79",
+            "0.83"
+         ],
+         "tags" : [
+            "dolphin"
+         ],
+         "screenshot" : "bootloader-3.png",
+         "result" : "fail"
+      }

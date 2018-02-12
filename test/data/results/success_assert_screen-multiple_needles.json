@@ -1,0 +1,59 @@
+    {
+      "frametime": [
+        "14.54",
+        "14.58"
+      ],
+      "area": [
+        {
+          "w": "36",
+          "y": 15,
+          "h": "22",
+          "result": "ok",
+          "similarity": 100,
+          "x": 277
+        },
+        {
+          "w": 51.4655870445343,
+          "y": 31,
+          "result": "ok",
+          "h": 19.7894736842105,
+          "similarity": 100,
+          "x": 61
+        }
+      ],
+      "screenshot": "first_start-3.png",
+      "tags": [
+        "tty6-selected"
+      ],
+      "properties": [
+
+      ],
+      "needles": [
+        {
+          "area": [
+            {
+              "similarity": 0,
+              "x": 173,
+              "y": 15,
+              "w": "38",
+              "result": "fail",
+              "h": "22"
+            },
+            {
+              "y": 31,
+              "w": "166",
+              "h": "24",
+              "result": "fail",
+              "similarity": 58,
+              "x": 24
+            }
+          ],
+          "name": "tty6-selected",
+          "error": 0.585109734625404,
+          "json": "neon/needles/install/tty6-selected.json"
+        }
+      ],
+      "needle": "tty6-selected",
+      "json": "neon/needles/tty6-selected.json",
+      "result": "ok"
+    }

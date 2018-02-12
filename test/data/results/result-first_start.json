@@ -1,0 +1,643 @@
+{
+  "dents": 0,
+  "details": [
+    {
+      "area": [
+        {
+          "x": 161,
+          "similarity": 100,
+          "result": "ok",
+          "h": "84",
+          "w": "480",
+          "y": 54
+        }
+      ],
+      "frametime": [
+        "13.71",
+        "13.75"
+      ],
+      "screenshot": "first_start-1.png",
+      "properties": [
+
+      ],
+      "tags": [
+        "grub"
+      ],
+      "needles": [
+        {
+          "area": [
+            {
+              "y": 54,
+              "w": "480",
+              "h": "84",
+              "result": "ok",
+              "similarity": 100,
+              "x": 161
+            }
+          ],
+          "name": "grub",
+          "error": 0,
+          "json": "neon/needles/plasma_folder/grub.json"
+        }
+      ],
+      "json": "neon/needles/grub.json",
+      "needle": "grub",
+      "result": "ok"
+    },
+    {
+      "needle": "sddm",
+      "json": "neon/needles/sddm.json",
+      "screenshot": "first_start-2.png",
+      "area": [
+        {
+          "y": 211,
+          "w": "862",
+          "h": "477",
+          "result": "ok",
+          "similarity": 100,
+          "x": 91
+        }
+      ],
+      "frametime": [
+        "14.25",
+        "14.29"
+      ],
+      "properties": [
+
+      ],
+      "tags": [
+        "sddm"
+      ],
+      "result": "ok"
+    },
+    {
+      "frametime": [
+        "14.54",
+        "14.58"
+      ],
+      "area": [
+        {
+          "w": "36",
+          "y": 15,
+          "h": "22",
+          "result": "ok",
+          "similarity": 100,
+          "x": 277
+        },
+        {
+          "w": 51.4655870445343,
+          "y": 31,
+          "result": "ok",
+          "h": 19.7894736842105,
+          "similarity": 100,
+          "x": 61
+        }
+      ],
+      "screenshot": "first_start-3.png",
+      "tags": [
+        "tty6-selected"
+      ],
+      "properties": [
+
+      ],
+      "needles": [
+        {
+          "area": [
+            {
+              "similarity": 0,
+              "x": 173,
+              "y": 15,
+              "w": "38",
+              "result": "fail",
+              "h": "22"
+            },
+            {
+              "y": 31,
+              "w": "166",
+              "h": "24",
+              "result": "fail",
+              "similarity": 58,
+              "x": 24
+            }
+          ],
+          "name": "tty6-selected",
+          "error": 0.585109734625404,
+          "json": "neon/needles/install/tty6-selected.json"
+        }
+      ],
+      "needle": "tty6-selected",
+      "json": "neon/needles/tty6-selected.json",
+      "result": "ok"
+    },
+    {
+      "tags": [
+        "tty-password"
+      ],
+      "properties": [
+
+      ],
+      "area": [
+        {
+          "similarity": 100,
+          "x": 0,
+          "w": "122",
+          "y": 48,
+          "h": "21",
+          "result": "ok"
+        }
+      ],
+      "frametime": [
+        "14.62",
+        "14.67"
+      ],
+      "screenshot": "first_start-4.png",
+      "needles": [
+        {
+          "json": "neon/needles/install/tty-password.json",
+          "area": [
+            {
+              "x": 0,
+              "similarity": 68,
+              "h": "21",
+              "result": "fail",
+              "w": "122",
+              "y": 49
+            }
+          ],
+          "name": "tty-password",
+          "error": 0.101733714019658
+        }
+      ],
+      "json": "neon/needles/tty-password.json",
+      "needle": "tty-password",
+      "result": "ok"
+    },
+    {
+      "tags": [
+        "tty-logged-in"
+      ],
+      "properties": [
+
+      ],
+      "screenshot": "first_start-5.png",
+      "frametime": [
+        "14.83",
+        "14.88"
+      ],
+      "area": [
+        {
+          "y": 321,
+          "w": "125",
+          "result": "ok",
+          "h": 28.8,
+          "similarity": 100,
+          "x": 0
+        }
+      ],
+      "needle": "tty-logged-in",
+      "json": "neon/needles/tty-logged-in.json",
+      "needles": [
+        {
+          "area": [
+            {
+              "y": 308,
+              "w": "162",
+              "h": "45",
+              "result": "fail",
+              "similarity": 72,
+              "x": 24
+            }
+          ],
+          "error": 0.0741705958827742,
+          "name": "tty-logged-in",
+          "json": "neon/needles/install/tty-logged-in.json"
+        }
+      ],
+      "result": "ok"
+    },
+    {
+      "result": "ok",
+      "screenshot": "first_start-6.png",
+      "frametime": [
+        "15.12",
+        "15.17"
+      ],
+      "area": [
+        {
+          "similarity": 100,
+          "x": 0,
+          "w": 157.428571428571,
+          "y": 16,
+          "h": 18.2857142857143,
+          "result": "ok"
+        }
+      ],
+      "tags": [
+        "sudo-passwordprompt"
+      ],
+      "properties": [
+
+      ],
+      "json": "neon/needles/tty-sudo-passwordprompt.json",
+      "needle": "tty-sudo-passwordprompt",
+      "needles": [
+        {
+          "area": [
+            {
+              "x": 2,
+              "similarity": 0,
+              "result": "fail",
+              "h": 18.2857142857143,
+              "w": 139.230769230769,
+              "y": 18
+            }
+          ],
+          "name": "konsole-sudo-passwordprompt",
+          "error": 1,
+          "json": "neon/needles/konsole-sudo-passwordprompt.json"
+        }
+      ]
+    },
+    {
+      "result": "unk",
+      "screenshot": "first_start-8.png",
+      "frametime": [
+        "15.33",
+        "15.38"
+      ]
+    },
+    {
+      "text": "first_start-9.txt",
+      "result": "ok",
+      "title": "wait_serial"
+    },
+    {
+      "screenshot": "first_start-11.png",
+      "frametime": [
+        "15.71",
+        "15.75"
+      ],
+      "result": "unk"
+    },
+    {
+      "title": "wait_serial",
+      "result": "ok",
+      "text": "first_start-12.txt"
+    },
+    {
+      "frametime": [
+        "15.96",
+        "16.00"
+      ],
+      "screenshot": "first_start-14.png",
+      "result": "unk"
+    },
+    {
+      "title": "wait_serial",
+      "result": "ok",
+      "text": "first_start-15.txt"
+    },
+    {
+      "result": "unk",
+      "tags": [
+        "sudo-passwordprompt"
+      ],
+      "screenshot": "first_start-16.png",
+      "frametime": [
+        "16.38",
+        "16.42"
+      ],
+      "needles": [
+        {
+          "name": "konsole-sudo-passwordprompt",
+          "error": 1,
+          "area": [
+            {
+              "y": 17,
+              "w": 139.230769230769,
+              "h": 18.2857142857143,
+              "result": "fail",
+              "similarity": 0,
+              "x": 511
+            }
+          ],
+          "json": "neon/needles/konsole-sudo-passwordprompt.json"
+        },
+        {
+          "area": [
+            {
+              "y": 0,
+              "w": 157.428571428571,
+              "h": 18.2857142857143,
+              "result": "fail",
+              "similarity": 0,
+              "x": 120
+            }
+          ],
+          "name": "tty-sudo-passwordprompt",
+          "error": 1,
+          "json": "neon/needles/tty-sudo-passwordprompt.json"
+        }
+      ]
+    },
+    {
+      "screenshot": "first_start-18.png",
+      "frametime": [
+        "16.50",
+        "16.54"
+      ],
+      "result": "unk"
+    },
+    {
+      "text": "first_start-19.txt",
+      "title": "wait_serial",
+      "result": "ok"
+    },
+    {
+      "needles": [
+        {
+          "area": [
+            {
+              "w": 139.230769230769,
+              "y": 1,
+              "result": "fail",
+              "h": 18.2857142857143,
+              "similarity": 0,
+              "x": 358
+            }
+          ],
+          "name": "konsole-sudo-passwordprompt",
+          "error": 1,
+          "json": "neon/needles/konsole-sudo-passwordprompt.json"
+        },
+        {
+          "json": "neon/needles/tty-sudo-passwordprompt.json",
+          "area": [
+            {
+              "h": 18.2857142857143,
+              "result": "fail",
+              "y": 0,
+              "w": 157.428571428571,
+              "x": 120,
+              "similarity": 0
+            }
+          ],
+          "name": "tty-sudo-passwordprompt",
+          "error": 1
+        }
+      ],
+      "result": "unk",
+      "tags": [
+        "sudo-passwordprompt"
+      ],
+      "screenshot": "first_start-20.png",
+      "frametime": [
+        "16.92",
+        "16.96"
+      ]
+    },
+    {
+      "result": "unk",
+      "screenshot": "first_start-22.png",
+      "frametime": [
+        "17.00",
+        "17.04"
+      ]
+    },
+    {
+      "result": "ok",
+      "title": "wait_serial",
+      "text": "first_start-23.txt"
+    },
+    {
+      "screenshot": "first_start-24.png",
+      "frametime": [
+        "17.46",
+        "17.50"
+      ],
+      "result": "unk",
+      "tags": [
+        "sudo-passwordprompt"
+      ],
+      "needles": [
+        {
+          "json": "neon/needles/konsole-sudo-passwordprompt.json",
+          "area": [
+            {
+              "x": 383,
+              "similarity": 0,
+              "result": "fail",
+              "h": 18.2857142857143,
+              "y": 18,
+              "w": 139.230769230769
+            }
+          ],
+          "error": 1,
+          "name": "konsole-sudo-passwordprompt"
+        },
+        {
+          "json": "neon/needles/tty-sudo-passwordprompt.json",
+          "name": "tty-sudo-passwordprompt",
+          "error": 1,
+          "area": [
+            {
+              "result": "fail",
+              "h": 18.2857142857143,
+              "y": 0,
+              "w": 157.428571428571,
+              "x": 120,
+              "similarity": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "frametime": [
+        "17.54",
+        "17.58"
+      ],
+      "screenshot": "first_start-26.png",
+      "result": "unk"
+    },
+    {
+      "text": "first_start-27.txt",
+      "title": "wait_serial",
+      "result": "ok"
+    },
+    {
+      "needles": [
+        {
+          "json": "neon/needles/konsole-sudo-passwordprompt.json",
+          "error": 1,
+          "name": "konsole-sudo-passwordprompt",
+          "area": [
+            {
+              "h": 18.2857142857143,
+              "result": "fail",
+              "w": 139.230769230769,
+              "y": 18,
+              "x": 478,
+              "similarity": 0
+            }
+          ]
+        },
+        {
+          "area": [
+            {
+              "h": 18.2857142857143,
+              "result": "fail",
+              "w": 157.428571428571,
+              "y": 0,
+              "x": 352,
+              "similarity": 0
+            }
+          ],
+          "name": "tty-sudo-passwordprompt",
+          "error": 1,
+          "json": "neon/needles/tty-sudo-passwordprompt.json"
+        }
+      ],
+      "frametime": [
+        "17.96",
+        "18.00"
+      ],
+      "screenshot": "first_start-28.png",
+      "result": "unk",
+      "tags": [
+        "sudo-passwordprompt"
+      ]
+    },
+    {
+      "result": "unk",
+      "frametime": [
+        "18.04",
+        "18.08"
+      ],
+      "screenshot": "first_start-30.png"
+    },
+    {
+      "text": "first_start-31.txt",
+      "result": "ok",
+      "title": "wait_serial"
+    },
+    {
+      "needles": [
+        {
+          "area": [
+            {
+              "y": 2,
+              "w": 139.230769230769,
+              "result": "fail",
+              "h": 18.2857142857143,
+              "similarity": 0,
+              "x": 117
+            }
+          ],
+          "name": "konsole-sudo-passwordprompt",
+          "error": 1,
+          "json": "neon/needles/konsole-sudo-passwordprompt.json"
+        },
+        {
+          "area": [
+            {
+              "similarity": 0,
+              "x": 120,
+              "y": 0,
+              "w": 157.428571428571,
+              "h": 18.2857142857143,
+              "result": "fail"
+            }
+          ],
+          "name": "tty-sudo-passwordprompt",
+          "error": 1,
+          "json": "neon/needles/tty-sudo-passwordprompt.json"
+        }
+      ],
+      "frametime": [
+        "18.42",
+        "18.46"
+      ],
+      "screenshot": "first_start-32.png",
+      "tags": [
+        "sudo-passwordprompt"
+      ],
+      "result": "unk"
+    },
+    {
+      "result": "unk",
+      "screenshot": "first_start-34.png",
+      "frametime": [
+        "18.50",
+        "18.54"
+      ]
+    },
+    {
+      "text": "first_start-35.txt",
+      "result": "ok",
+      "title": "wait_serial"
+    },
+    {
+      "needles": [
+        {
+          "json": "neon/needles/konsole-sudo-passwordprompt.json",
+          "area": [
+            {
+              "h": 18.2857142857143,
+              "result": "fail",
+              "w": 139.230769230769,
+              "y": 73,
+              "x": 0,
+              "similarity": 0
+            }
+          ],
+          "name": "konsole-sudo-passwordprompt",
+          "error": 1
+        },
+        {
+          "json": "neon/needles/tty-sudo-passwordprompt.json",
+          "error": 1,
+          "name": "tty-sudo-passwordprompt",
+          "area": [
+            {
+              "x": 0,
+              "similarity": 0,
+              "h": 18.2857142857143,
+              "result": "fail",
+              "y": 208,
+              "w": 157.428571428571
+            }
+          ]
+        }
+      ],
+      "result": "unk",
+      "tags": [
+        "sudo-passwordprompt"
+      ],
+      "frametime": [
+        "18.88",
+        "18.92"
+      ],
+      "screenshot": "first_start-36.png"
+    },
+    {
+      "result": "unk",
+      "frametime": [
+        "26.50",
+        "26.54"
+      ],
+      "screenshot": "first_start-38.png"
+    },
+    {
+      "title": "wait_serial",
+      "result": "fail",
+      "text": "first_start-39.txt"
+    },
+    {
+      "result": "fail",
+      "title": "Failed",
+      "text": "first_start-40.txt"
+    }
+  ],
+  "result": "fail"
+}

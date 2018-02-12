@@ -1,0 +1,43 @@
+    {
+      "needles": [
+        {
+          "area": [
+            {
+              "w": 139.230769230769,
+              "y": 1,
+              "result": "fail",
+              "h": 18.2857142857143,
+              "similarity": 0,
+              "x": 358
+            }
+          ],
+          "name": "konsole-sudo-passwordprompt",
+          "error": 1,
+          "json": "neon/needles/konsole-sudo-passwordprompt.json"
+        },
+        {
+          "json": "neon/needles/tty-sudo-passwordprompt.json",
+          "area": [
+            {
+              "h": 18.2857142857143,
+              "result": "fail",
+              "y": 0,
+              "w": 157.428571428571,
+              "x": 120,
+              "similarity": 0
+            }
+          ],
+          "name": "tty-sudo-passwordprompt",
+          "error": 1
+        }
+      ],
+      "result": "unk",
+      "tags": [
+        "sudo-passwordprompt"
+      ],
+      "screenshot": "first_start-20.png",
+      "frametime": [
+        "16.92",
+        "16.96"
+      ]
+    }

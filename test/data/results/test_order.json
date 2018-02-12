@@ -1,0 +1,32 @@
+[
+   {
+      "script" : "tests/install/bootloader.pm",
+      "category" : "install",
+      "flags" : {},
+      "name" : "bootloader"
+   },
+   {
+      "script" : "tests/install/core.pm",
+      "category" : "install",
+      "flags" : {
+         "fatal" : 1
+      },
+      "name" : "core"
+   },
+   {
+      "category" : "tests",
+      "script" : "tests/install_calamares.pm",
+      "name" : "install_calamares",
+      "flags" : {
+         "important" : 1
+      }
+   },
+   {
+      "category" : "install",
+      "script" : "tests/install/first_start.pm",
+      "name" : "first_start",
+      "flags" : {
+         "milestone" : 1
+      }
+   }
+]

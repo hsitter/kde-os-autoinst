@@ -1,0 +1,63 @@
+{
+   "result" : "ok",
+   "dents" : 0,
+   "details" : [
+      {
+         "json" : "neon/needles/live/bootloader.json",
+         "needle" : "bootloader",
+         "needles" : [
+            {
+               "json" : "neon/needles/live/live-bootloader-uefi.json",
+               "area" : [
+                  {
+                     "w" : "148",
+                     "y" : 142,
+                     "h" : "39",
+                     "result" : "fail",
+                     "similarity" : 0,
+                     "x" : 130
+                  },
+                  {
+                     "w" : "221",
+                     "y" : 126,
+                     "result" : "fail",
+                     "h" : "32",
+                     "similarity" : 0,
+                     "x" : 266
+                  },
+                  {
+                     "w" : "388",
+                     "y" : 46,
+                     "h" : "70",
+                     "result" : "fail",
+                     "similarity" : 1,
+                     "x" : 251
+                  }
+               ],
+               "name" : "live-bootloader-uefi",
+               "error" : 0.9895038948333
+            }
+         ],
+         "properties" : [],
+         "tags" : [
+            "bootloader"
+         ],
+         "screenshot" : "bootloader-1.png",
+         "area" : [
+            {
+               "similarity" : 100,
+               "x" : 0,
+               "w" : "548",
+               "y" : 0,
+               "result" : "ok",
+               "h" : "264"
+            }
+         ],
+         "frametime" : [
+            "0.54",
+            "0.58"
+         ],
+         "result" : "ok"
+      }
+   ]
+}

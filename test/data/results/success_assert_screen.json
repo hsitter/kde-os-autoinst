@@ -1,0 +1,26 @@
+    {
+      "needle": "sddm",
+      "json": "neon/needles/sddm.json",
+      "screenshot": "first_start-2.png",
+      "area": [
+        {
+          "y": 211,
+          "w": "862",
+          "h": "477",
+          "result": "ok",
+          "similarity": 100,
+          "x": 91
+        }
+      ],
+      "frametime": [
+        "14.25",
+        "14.29"
+      ],
+      "properties": [
+
+      ],
+      "tags": [
+        "sddm"
+      ],
+      "result": "ok"
+    }

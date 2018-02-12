@@ -1,0 +1,381 @@
+{
+   "dents" : 0,
+   "details" : [
+      {
+         "result" : "unk",
+         "frametime" : [
+            "3.08",
+            "3.12"
+         ],
+         "screenshot" : "core-2.png"
+      },
+      {
+         "needles" : [
+            {
+               "area" : [
+                  {
+                     "h" : "33",
+                     "result" : "ok",
+                     "w" : "719",
+                     "y" : 735,
+                     "x" : 0,
+                     "similarity" : 100
+                  },
+                  {
+                     "similarity" : 97,
+                     "x" : 796,
+                     "y" : 735,
+                     "w" : "28",
+                     "result" : "ok",
+                     "h" : "33"
+                  },
+                  {
+                     "similarity" : 100,
+                     "x" : 105,
+                     "y" : 1,
+                     "w" : "919",
+                     "h" : "725",
+                     "result" : "ok"
+                  }
+               ],
+               "error" : 0.000146779986690768,
+               "name" : "live-desktop-useredition",
+               "json" : "neon/needles/live/live-desktop-useredition.json"
+            }
+         ],
+         "json" : "neon/needles/live/live-desktop-devedition-gitunstable.json",
+         "needle" : "live-desktop-devedition-gitunstable",
+         "properties" : [],
+         "tags" : [
+            "live-desktop"
+         ],
+         "area" : [
+            {
+               "result" : "ok",
+               "h" : "33",
+               "y" : 735,
+               "w" : "719",
+               "x" : 0,
+               "similarity" : 100
+            },
+            {
+               "y" : 735,
+               "w" : "28",
+               "h" : "33",
+               "result" : "ok",
+               "similarity" : 100,
+               "x" : 796
+            },
+            {
+               "w" : "919",
+               "y" : 1,
+               "result" : "ok",
+               "h" : "725",
+               "similarity" : 100,
+               "x" : 105
+            }
+         ],
+         "frametime" : [
+            "3.08",
+            "3.12"
+         ],
+         "screenshot" : "core-3.png",
+         "result" : "ok"
+      },
+      {
+         "tags" : [
+            "tty6-selected"
+         ],
+         "properties" : [],
+         "screenshot" : "core-4.png",
+         "area" : [
+            {
+               "x" : 253,
+               "similarity" : 93,
+               "h" : "22",
+               "result" : "ok",
+               "y" : 15,
+               "w" : "36"
+            },
+            {
+               "result" : "ok",
+               "h" : 19.7894736842105,
+               "w" : 51.4655870445343,
+               "y" : 31,
+               "x" : 37,
+               "similarity" : 93
+            }
+         ],
+         "frametime" : [
+            "3.21",
+            "3.25"
+         ],
+         "json" : "neon/needles/tty6-selected.json",
+         "needle" : "tty6-selected",
+         "needles" : [
+            {
+               "area" : [
+                  {
+                     "h" : "22",
+                     "result" : "fail",
+                     "w" : "38",
+                     "y" : 15,
+                     "x" : 173,
+                     "similarity" : 0
+                  },
+                  {
+                     "y" : 31,
+                     "w" : "166",
+                     "h" : "24",
+                     "result" : "ok",
+                     "similarity" : 100,
+                     "x" : 0
+                  }
+               ],
+               "error" : 0.5,
+               "name" : "tty6-selected",
+               "json" : "neon/needles/install/tty6-selected.json"
+            }
+         ],
+         "result" : "ok"
+      },
+      {
+         "needle" : "tty-password",
+         "json" : "neon/needles/install/tty-password.json",
+         "needles" : [
+            {
+               "json" : "neon/needles/tty-password.json",
+               "name" : "tty-password",
+               "error" : 0.111344055568708,
+               "area" : [
+                  {
+                     "similarity" : 66,
+                     "x" : 0,
+                     "w" : "122",
+                     "y" : 48,
+                     "result" : "fail",
+                     "h" : "21"
+                  }
+               ]
+            }
+         ],
+         "tags" : [
+            "tty-password"
+         ],
+         "properties" : [],
+         "screenshot" : "core-5.png",
+         "frametime" : [
+            "3.38",
+            "3.42"
+         ],
+         "area" : [
+            {
+               "similarity" : 100,
+               "x" : 0,
+               "w" : "122",
+               "y" : 49,
+               "result" : "ok",
+               "h" : "21"
+            }
+         ],
+         "result" : "ok"
+      },
+      {
+         "result" : "ok",
+         "properties" : [],
+         "tags" : [
+            "tty-logged-in"
+         ],
+         "screenshot" : "core-6.png",
+         "frametime" : [
+            "3.54",
+            "3.58"
+         ],
+         "area" : [
+            {
+               "h" : "45",
+               "result" : "ok",
+               "y" : 308,
+               "w" : "162",
+               "x" : 0,
+               "similarity" : 100
+            }
+         ],
+         "json" : "neon/needles/install/tty-logged-in.json",
+         "needle" : "tty-logged-in",
+         "needles" : [
+            {
+               "name" : "tty-logged-in",
+               "error" : 1,
+               "area" : [
+                  {
+                     "x" : 0,
+                     "similarity" : 0,
+                     "h" : 28.8,
+                     "result" : "fail",
+                     "w" : "125",
+                     "y" : 321
+                  }
+               ],
+               "json" : "neon/needles/tty-logged-in.json"
+            }
+         ]
+      },
+      {
+         "needles" : [
+            {
+               "json" : "neon/needles/konsole-sudo-passwordprompt.json",
+               "area" : [
+                  {
+                     "x" : 142,
+                     "similarity" : 0,
+                     "h" : 18.2857142857143,
+                     "result" : "fail",
+                     "w" : 139.230769230769,
+                     "y" : 1
+                  }
+               ],
+               "name" : "konsole-sudo-passwordprompt",
+               "error" : 1
+            },
+            {
+               "json" : "neon/needles/tty-sudo-passwordprompt.json",
+               "name" : "tty-sudo-passwordprompt",
+               "error" : 1,
+               "area" : [
+                  {
+                     "h" : 18.2857142857143,
+                     "result" : "fail",
+                     "w" : 157.428571428571,
+                     "y" : 0,
+                     "x" : 104,
+                     "similarity" : 0
+                  }
+               ]
+            }
+         ],
+         "tags" : [
+            "sudo-passwordprompt"
+         ],
+         "result" : "unk",
+         "frametime" : [
+            "3.92",
+            "3.96"
+         ],
+         "screenshot" : "core-7.png"
+      },
+      {
+         "result" : "unk",
+         "screenshot" : "core-9.png",
+         "frametime" : [
+            "4.04",
+            "4.08"
+         ]
+      },
+      {
+         "text" : "core-10.txt",
+         "result" : "ok",
+         "title" : "wait_serial"
+      },
+      {
+         "result" : "unk",
+         "frametime" : [
+            "4.38",
+            "4.42"
+         ],
+         "screenshot" : "core-12.png"
+      },
+      {
+         "text" : "core-13.txt",
+         "title" : "wait_serial",
+         "result" : "ok"
+      },
+      {
+         "result" : "unk",
+         "screenshot" : "core-15.png",
+         "frametime" : [
+            "4.67",
+            "4.71"
+         ]
+      },
+      {
+         "result" : "ok",
+         "title" : "wait_serial",
+         "text" : "core-16.txt"
+      },
+      {
+         "frametime" : [
+            "4.75",
+            "4.79"
+         ],
+         "area" : [
+            {
+               "result" : "ok",
+               "h" : "33",
+               "w" : "719",
+               "y" : 735,
+               "x" : 0,
+               "similarity" : 100
+            },
+            {
+               "result" : "ok",
+               "h" : "33",
+               "y" : 735,
+               "w" : "28",
+               "x" : 796,
+               "similarity" : 100
+            },
+            {
+               "x" : 105,
+               "similarity" : 100,
+               "result" : "ok",
+               "h" : "725",
+               "y" : 1,
+               "w" : "919"
+            }
+         ],
+         "screenshot" : "core-17.png",
+         "properties" : [],
+         "tags" : [
+            "live-desktop"
+         ],
+         "needles" : [
+            {
+               "area" : [
+                  {
+                     "y" : 735,
+                     "w" : "719",
+                     "result" : "ok",
+                     "h" : "33",
+                     "similarity" : 100,
+                     "x" : 0
+                  },
+                  {
+                     "x" : 796,
+                     "similarity" : 97,
+                     "h" : "33",
+                     "result" : "ok",
+                     "w" : "28",
+                     "y" : 735
+                  },
+                  {
+                     "result" : "ok",
+                     "h" : "725",
+                     "w" : "919",
+                     "y" : 1,
+                     "x" : 105,
+                     "similarity" : 100
+                  }
+               ],
+               "name" : "live-desktop-useredition",
+               "error" : 0.000146779986690768,
+               "json" : "neon/needles/live/live-desktop-useredition.json"
+            }
+         ],
+         "needle" : "live-desktop-devedition-gitunstable",
+         "json" : "neon/needles/live/live-desktop-devedition-gitunstable.json",
+         "result" : "ok"
+      }
+   ],
+   "result" : "ok"
+}

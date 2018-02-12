@@ -1,0 +1,717 @@
+{
+   "details" : [
+      {
+         "result" : "ok",
+         "needle" : "calamares-installer-icon",
+         "json" : "neon/needles/install_calamares/calamares-installer-icon.json",
+         "properties" : [],
+         "tags" : [
+            "calamares-installer-icon"
+         ],
+         "area" : [
+            {
+               "x" : 37,
+               "similarity" : 100,
+               "h" : "48",
+               "result" : "ok",
+               "y" : 19,
+               "w" : "40"
+            }
+         ],
+         "frametime" : [
+            "5.38",
+            "5.42"
+         ],
+         "screenshot" : "install_calamares-1.png"
+      },
+      {
+         "result" : "ok",
+         "needle" : "calamares-installer-welcome",
+         "json" : "neon/needles/install_calamares/calamares-installer-welcome.json",
+         "tags" : [
+            "calamares-installer-welcome"
+         ],
+         "properties" : [],
+         "frametime" : [
+            "5.54",
+            "5.58"
+         ],
+         "area" : [
+            {
+               "similarity" : 100,
+               "x" : 5,
+               "y" : 218,
+               "w" : 144.666666666667,
+               "result" : "ok",
+               "h" : "395"
+            },
+            {
+               "similarity" : 100,
+               "x" : 21,
+               "y" : 142,
+               "w" : 125.090909090909,
+               "result" : "ok",
+               "h" : "64"
+            },
+            {
+               "y" : 205,
+               "w" : 520.666666666667,
+               "result" : "ok",
+               "h" : 37.3333333333333,
+               "similarity" : 100,
+               "x" : 331
+            },
+            {
+               "w" : "487",
+               "y" : 538,
+               "h" : 63.6666666666667,
+               "result" : "ok",
+               "similarity" : 100,
+               "x" : 330
+            },
+            {
+               "x" : 345,
+               "similarity" : 100,
+               "h" : "26",
+               "result" : "ok",
+               "w" : 504.4,
+               "y" : 250
+            },
+            {
+               "h" : 161.4,
+               "result" : "ok",
+               "y" : 351,
+               "w" : "768",
+               "x" : 229,
+               "similarity" : 100
+            }
+         ],
+         "screenshot" : "install_calamares-2.png"
+      },
+      {
+         "result" : "ok",
+         "area" : [
+            {
+               "w" : "84",
+               "y" : 621,
+               "h" : "28",
+               "result" : "ok",
+               "similarity" : 100,
+               "x" : 836
+            }
+         ],
+         "frametime" : [
+            "5.62",
+            "5.67"
+         ],
+         "screenshot" : "install_calamares-3.png",
+         "tags" : [
+            "calamares-installer-next"
+         ],
+         "properties" : [],
+         "needles" : [
+            {
+               "area" : [
+                  {
+                     "similarity" : 52,
+                     "x" : 838,
+                     "w" : "84",
+                     "y" : 621,
+                     "h" : "28",
+                     "result" : "fail"
+                  }
+               ],
+               "error" : 0.225429464151915,
+               "name" : "calamares-installer-next-highlight",
+               "json" : "neon/needles/install_calamares/calamares-installer-next-highlight.json"
+            }
+         ],
+         "needle" : "calamares-installer-next-nohighlight",
+         "json" : "neon/needles/install_calamares/calamares-installer-next-nohighlight.json"
+      },
+      {
+         "result" : "ok",
+         "properties" : [],
+         "tags" : [
+            "calamares-installer-timezone"
+         ],
+         "screenshot" : "install_calamares-4.png",
+         "frametime" : [
+            "5.75",
+            "5.79"
+         ],
+         "area" : [
+            {
+               "similarity" : 100,
+               "x" : 179,
+               "y" : 141,
+               "w" : "836",
+               "result" : "ok",
+               "h" : "476"
+            }
+         ],
+         "needle" : "calamares-installer-timezone",
+         "json" : "neon/needles/install_calamares/calamares-installer-timezone.json"
+      },
+      {
+         "screenshot" : "install_calamares-5.png",
+         "frametime" : [
+            "5.83",
+            "5.88"
+         ],
+         "area" : [
+            {
+               "similarity" : 100,
+               "x" : 836,
+               "w" : "84",
+               "y" : 621,
+               "result" : "ok",
+               "h" : "28"
+            }
+         ],
+         "tags" : [
+            "calamares-installer-next"
+         ],
+         "properties" : [],
+         "json" : "neon/needles/install_calamares/calamares-installer-next-nohighlight.json",
+         "needle" : "calamares-installer-next-nohighlight",
+         "needles" : [
+            {
+               "area" : [
+                  {
+                     "x" : 838,
+                     "similarity" : 52,
+                     "result" : "fail",
+                     "h" : "28",
+                     "w" : "84",
+                     "y" : 621
+                  }
+               ],
+               "name" : "calamares-installer-next-highlight",
+               "error" : 0.225429464151915,
+               "json" : "neon/needles/install_calamares/calamares-installer-next-highlight.json"
+            }
+         ],
+         "result" : "ok"
+      },
+      {
+         "screenshot" : "install_calamares-6.png",
+         "area" : [
+            {
+               "similarity" : 100,
+               "x" : 178,
+               "w" : "841",
+               "y" : 149,
+               "result" : "ok",
+               "h" : "471"
+            }
+         ],
+         "frametime" : [
+            "5.92",
+            "5.96"
+         ],
+         "properties" : [],
+         "tags" : [
+            "calamares-installer-keyboard"
+         ],
+         "needle" : "calamares-installer-keyboard",
+         "json" : "neon/needles/install_calamares/calamares-installer-keyboard.json",
+         "result" : "ok"
+      },
+      {
+         "needles" : [
+            {
+               "json" : "neon/needles/install_calamares/calamares-installer-next-highlight.json",
+               "error" : 0.225429464151915,
+               "name" : "calamares-installer-next-highlight",
+               "area" : [
+                  {
+                     "x" : 838,
+                     "similarity" : 52,
+                     "result" : "fail",
+                     "h" : "28",
+                     "w" : "84",
+                     "y" : 621
+                  }
+               ]
+            }
+         ],
+         "needle" : "calamares-installer-next-nohighlight",
+         "json" : "neon/needles/install_calamares/calamares-installer-next-nohighlight.json",
+         "properties" : [],
+         "tags" : [
+            "calamares-installer-next"
+         ],
+         "frametime" : [
+            "6.00",
+            "6.04"
+         ],
+         "area" : [
+            {
+               "w" : "84",
+               "y" : 621,
+               "h" : "28",
+               "result" : "ok",
+               "similarity" : 100,
+               "x" : 836
+            }
+         ],
+         "screenshot" : "install_calamares-7.png",
+         "result" : "ok"
+      },
+      {
+         "screenshot" : "install_calamares-8.png",
+         "frametime" : [
+            "6.12",
+            "6.17"
+         ],
+         "area" : [
+            {
+               "y" : 140,
+               "w" : "625",
+               "h" : "470",
+               "result" : "ok",
+               "similarity" : 100,
+               "x" : 178
+            }
+         ],
+         "tags" : [
+            "calamares-installer-disk"
+         ],
+         "properties" : [],
+         "needle" : "calamares-installer-disk",
+         "json" : "neon/needles/install_calamares/calamares-installer-disk.json",
+         "result" : "ok"
+      },
+      {
+         "result" : "ok",
+         "tags" : [
+            "calamares-installer-disk-erase"
+         ],
+         "properties" : [],
+         "frametime" : [
+            "6.21",
+            "6.25"
+         ],
+         "area" : [
+            {
+               "x" : 181,
+               "similarity" : 100,
+               "result" : "ok",
+               "h" : "44",
+               "w" : "652",
+               "y" : 186
+            }
+         ],
+         "screenshot" : "install_calamares-9.png",
+         "json" : "neon/needles/install_calamares/calamares-installer-disk-erase.json",
+         "needle" : "calamares-installer-disk-erase"
+      },
+      {
+         "result" : "ok",
+         "properties" : [],
+         "tags" : [
+            "calamares-installer-disk-erase-selected"
+         ],
+         "area" : [
+            {
+               "result" : "ok",
+               "h" : "470",
+               "w" : "671",
+               "y" : 140,
+               "x" : 179,
+               "similarity" : 98
+            }
+         ],
+         "frametime" : [
+            "6.29",
+            "6.33"
+         ],
+         "screenshot" : "install_calamares-10.png",
+         "needles" : [
+            {
+               "area" : [
+                  {
+                     "similarity" : 100,
+                     "x" : 176,
+                     "y" : 451,
+                     "w" : "641",
+                     "h" : "65",
+                     "result" : "ok"
+                  },
+                  {
+                     "similarity" : 0,
+                     "x" : 179,
+                     "w" : "287",
+                     "y" : 519,
+                     "h" : "52",
+                     "result" : "fail"
+                  },
+                  {
+                     "y" : 573,
+                     "w" : "114",
+                     "result" : "fail",
+                     "h" : "25",
+                     "similarity" : 67,
+                     "x" : 249
+                  },
+                  {
+                     "similarity" : 95,
+                     "x" : 179,
+                     "y" : 140,
+                     "w" : "671",
+                     "result" : "ok",
+                     "h" : "221"
+                  }
+               ],
+               "error" : 0.276375788572909,
+               "name" : "calamares-installer-disk-erase-selected",
+               "json" : "neon/needles/install_calamares/calamares-installer-disk-erase-selected.json"
+            }
+         ],
+         "needle" : "calamares-installer-disk-erase-selected-bios",
+         "json" : "neon/needles/install_calamares/calamares-installer-disk-erase-selected-bios.json"
+      },
+      {
+         "result" : "ok",
+         "needles" : [
+            {
+               "name" : "calamares-installer-next-highlight",
+               "error" : 0.225429464151915,
+               "area" : [
+                  {
+                     "w" : "84",
+                     "y" : 621,
+                     "result" : "fail",
+                     "h" : "28",
+                     "similarity" : 52,
+                     "x" : 838
+                  }
+               ],
+               "json" : "neon/needles/install_calamares/calamares-installer-next-highlight.json"
+            }
+         ],
+         "json" : "neon/needles/install_calamares/calamares-installer-next-nohighlight.json",
+         "needle" : "calamares-installer-next-nohighlight",
+         "properties" : [],
+         "tags" : [
+            "calamares-installer-next"
+         ],
+         "frametime" : [
+            "6.38",
+            "6.42"
+         ],
+         "area" : [
+            {
+               "similarity" : 100,
+               "x" : 836,
+               "w" : "84",
+               "y" : 621,
+               "h" : "28",
+               "result" : "ok"
+            }
+         ],
+         "screenshot" : "install_calamares-11.png"
+      },
+      {
+         "json" : "neon/needles/install_calamares/calamares-installer-user.json",
+         "needle" : "calamares-installer-user",
+         "tags" : [
+            "calamares-installer-user"
+         ],
+         "properties" : [],
+         "screenshot" : "install_calamares-12.png",
+         "area" : [
+            {
+               "y" : 140,
+               "w" : "838",
+               "result" : "ok",
+               "h" : "470",
+               "similarity" : 100,
+               "x" : 174
+            }
+         ],
+         "frametime" : [
+            "6.50",
+            "6.54"
+         ],
+         "result" : "ok"
+      },
+      {
+         "result" : "ok",
+         "json" : "neon/needles/install_calamares/calamares-installer-user-user.json",
+         "needle" : "calamares-installer-user-user",
+         "tags" : [
+            "calamares-installer-user-user"
+         ],
+         "properties" : [],
+         "area" : [
+            {
+               "similarity" : 99,
+               "x" : 174,
+               "w" : "234",
+               "y" : 139,
+               "h" : "338",
+               "result" : "ok"
+            }
+         ],
+         "frametime" : [
+            "6.58",
+            "6.62"
+         ],
+         "screenshot" : "install_calamares-13.png"
+      },
+      {
+         "screenshot" : "install_calamares-14.png",
+         "frametime" : [
+            "7.08",
+            "7.12"
+         ],
+         "area" : [
+            {
+               "y" : 142,
+               "w" : "510",
+               "h" : "260",
+               "result" : "ok",
+               "similarity" : 100,
+               "x" : 174
+            }
+         ],
+         "properties" : [],
+         "tags" : [
+            "calamares-installer-user-complete"
+         ],
+         "json" : "neon/needles/install_calamares/calamares-installer-user-complete.json",
+         "needle" : "calamares-installer-user-complete",
+         "result" : "ok"
+      },
+      {
+         "result" : "ok",
+         "json" : "neon/needles/install_calamares/calamares-installer-next-nohighlight.json",
+         "needle" : "calamares-installer-next-nohighlight",
+         "needles" : [
+            {
+               "error" : 0.225429464151915,
+               "name" : "calamares-installer-next-highlight",
+               "area" : [
+                  {
+                     "x" : 838,
+                     "similarity" : 52,
+                     "result" : "fail",
+                     "h" : "28",
+                     "y" : 621,
+                     "w" : "84"
+                  }
+               ],
+               "json" : "neon/needles/install_calamares/calamares-installer-next-highlight.json"
+            }
+         ],
+         "screenshot" : "install_calamares-15.png",
+         "frametime" : [
+            "7.17",
+            "7.21"
+         ],
+         "area" : [
+            {
+               "h" : "28",
+               "result" : "ok",
+               "w" : "84",
+               "y" : 621,
+               "x" : 836,
+               "similarity" : 100
+            }
+         ],
+         "properties" : [],
+         "tags" : [
+            "calamares-installer-next"
+         ]
+      },
+      {
+         "result" : "ok",
+         "json" : "neon/needles/install_calamares/calamares-installer-summary.json",
+         "needle" : "calamares-installer-summary",
+         "properties" : [],
+         "tags" : [
+            "calamares-installer-summary"
+         ],
+         "frametime" : [
+            "7.29",
+            "7.33"
+         ],
+         "area" : [
+            {
+               "x" : 174,
+               "similarity" : 100,
+               "result" : "ok",
+               "h" : "55",
+               "w" : "421",
+               "y" : 352
+            },
+            {
+               "similarity" : 100,
+               "x" : 171,
+               "y" : 140,
+               "w" : "668",
+               "result" : "ok",
+               "h" : "211"
+            }
+         ],
+         "screenshot" : "install_calamares-16.png"
+      },
+      {
+         "result" : "ok",
+         "tags" : [
+            "calamares-installer-next"
+         ],
+         "properties" : [],
+         "screenshot" : "install_calamares-17.png",
+         "frametime" : [
+            "7.38",
+            "7.42"
+         ],
+         "area" : [
+            {
+               "x" : 838,
+               "similarity" : 100,
+               "result" : "ok",
+               "h" : "28",
+               "w" : "84",
+               "y" : 641
+            }
+         ],
+         "json" : "neon/needles/install_calamares/calamares-installer-next-highlight.json",
+         "needle" : "calamares-installer-next-highlight",
+         "needles" : [
+            {
+               "json" : "neon/needles/install_calamares/calamares-installer-next-nohighlight.json",
+               "area" : [
+                  {
+                     "x" : 836,
+                     "similarity" : 49,
+                     "result" : "fail",
+                     "h" : "28",
+                     "w" : "84",
+                     "y" : 641
+                  }
+               ],
+               "name" : "calamares-installer-next-nohighlight",
+               "error" : 0.258666748965401
+            }
+         ]
+      },
+      {
+         "needle" : "calamares-installer-show",
+         "json" : "neon/needles/install_calamares/calamares-installer-show.json",
+         "area" : [
+            {
+               "h" : "395",
+               "result" : "ok",
+               "y" : 182,
+               "w" : "636",
+               "x" : 341,
+               "similarity" : 100
+            }
+         ],
+         "frametime" : [
+            "7.46",
+            "7.50"
+         ],
+         "screenshot" : "install_calamares-18.png",
+         "properties" : [],
+         "tags" : [
+            "calamares-installer-show"
+         ],
+         "result" : "ok"
+      },
+      {
+         "result" : "ok",
+         "properties" : [],
+         "tags" : [
+            "calamares-installer-restart"
+         ],
+         "screenshot" : "install_calamares-19.png",
+         "area" : [
+            {
+               "x" : 449,
+               "similarity" : 100,
+               "result" : "ok",
+               "h" : "49",
+               "w" : "286",
+               "y" : 324
+            },
+            {
+               "x" : 172,
+               "similarity" : 100,
+               "h" : "50",
+               "result" : "ok",
+               "w" : "120",
+               "y" : 582
+            },
+            {
+               "y" : 377,
+               "w" : "604",
+               "h" : "64",
+               "result" : "ok",
+               "similarity" : 100,
+               "x" : 287
+            }
+         ],
+         "frametime" : [
+            "12.88",
+            "12.92"
+         ],
+         "needle" : "calamares-installer-restart",
+         "json" : "neon/needles/install_calamares/calamares-installer-restart.json"
+      },
+      {
+         "frametime" : [
+            "12.96",
+            "13.00"
+         ],
+         "area" : [
+            {
+               "x" : 932,
+               "similarity" : 100,
+               "result" : "ok",
+               "h" : "27",
+               "y" : 643,
+               "w" : "86"
+            }
+         ],
+         "screenshot" : "install_calamares-20.png",
+         "tags" : [
+            "calamares-installer-restart-now"
+         ],
+         "properties" : [],
+         "json" : "neon/needles/install_calamares/calamares-installer-restart-now.json",
+         "needle" : "calamares-installer-restart-now",
+         "result" : "ok"
+      },
+      {
+         "screenshot" : "install_calamares-21.png",
+         "area" : [
+            {
+               "x" : 194,
+               "similarity" : 100,
+               "h" : "116",
+               "result" : "ok",
+               "y" : 561,
+               "w" : "598"
+            }
+         ],
+         "frametime" : [
+            "13.17",
+            "13.21"
+         ],
+         "tags" : [
+            "live-remove-medium"
+         ],
+         "properties" : [],
+         "needle" : "live-remove-medium",
+         "json" : "neon/needles/live/live-remove-medium.json",
+         "result" : "ok"
+      }
+   ],
+   "dents" : 0,
+   "result" : "ok"
+}
