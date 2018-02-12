@@ -1,14 +1,6 @@
 {
   "area": [
     {
-      "height": 38,
-      "match": 95,
-      "type": "match",
-      "width": 244,
-      "xpos": 0,
-      "ypos": 730
-    },
-    {
       "height": 477,
       "match": 95,
       "type": "match",
@@ -17,9 +9,12 @@
       "ypos": 211
     }
   ],
-  "properties": [],
+  "properties": [
+    "workaround"
+  ],
   "tags": [
+    "ENV-DISTRI-neon",
     "sddm",
-    "ENV-DISTRI-neon"
+    "sddm-no-noto"
   ]
 }
