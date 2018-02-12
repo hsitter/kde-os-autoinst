@@ -52,17 +52,10 @@ ApplicationWindow {
         image.source = png
     }
 
-    function writeData(path, data) {
-        var xhr = new XMLHttpRequest;
-        xhr.open("PUT", path);
-        xhr.send(data);
-    }
-
     function write(jsonData) {
         console.debug(path)
-        var xhr = new XMLHttpRequest;
-        xhr.open("PUT", path + ".json");
-        xhr.send(jsonData);
+        Needler.Application.write(path + ".json", jsonData)
+        // Don't XHR https://bugs.kde.org/show_bug.cgi?id=390328
     }
 
     width: 1290

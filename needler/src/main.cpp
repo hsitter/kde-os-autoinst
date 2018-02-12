@@ -46,6 +46,18 @@ public slots:
         qDebug() << "start";
         return job->exec();
     }
+
+    bool write(const QUrl &target, const QString &data)
+    {
+        QFile file(target.toLocalFile());
+        if (!file.open(QFile::WriteOnly | QFile::Text)) {
+            qDebug() << "failed to open for writing" << target;
+            return false;
+        }
+        QTextStream out(&file);
+        out << data << endl;
+        return true;
+    }
 };
 
 int main(int argc, char *argv[])
