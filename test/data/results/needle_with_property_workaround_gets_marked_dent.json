@@ -1,0 +1,52 @@
+{
+  "area": [
+    {
+      "y": 211,
+      "result": "ok",
+      "w": "862",
+      "similarity": 100,
+      "h": "477",
+      "x": 91
+    }
+  ],
+  "needles": [
+    {
+      "json": "neon/needles/sddm.json",
+      "name": "sddm",
+      "area": [
+        {
+          "y": 730,
+          "w": "244",
+          "similarity": 58,
+          "result": "fail",
+          "h": "38",
+          "x": 3
+        },
+        {
+          "h": "477",
+          "x": 84,
+          "y": 203,
+          "w": "862",
+          "similarity": 38,
+          "result": "fail"
+        }
+      ],
+      "error": 0.2725666085313
+    }
+  ],
+  "frametime": [
+    "0.96",
+    "1.00"
+  ],
+  "screenshot": "upgrade_sddm-2.png",
+  "needle": "sddm-no-noto",
+  "properties": [
+    "workaround"
+  ],
+  "tags": [
+    "sddm"
+  ],
+  "dent": 1,
+  "result": "ok",
+  "json": "neon/needles/sddm-no-noto.json"
+}

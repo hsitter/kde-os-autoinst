@@ -28,6 +28,10 @@ module OSAutoInst
       @detail_attributes ||= []
     end
 
+    def detail_attributes_optional
+      @detail_attributes_optional ||= []
+    end
+
     def attributes
       @attrs ||= begin
         attrs = detail_attributes.dup
@@ -39,8 +43,31 @@ module OSAutoInst
       end
     end
 
+    def optional_attributes
+      @optional_attrs ||= begin
+        attrs = detail_attributes_optional.dup
+        attrs += ancestors.collect do |klass|
+          next if klass == self || !klass.respond_to?(:detail_attributes_optional)
+          klass.detail_attributes_optional
+        end.flatten.uniq.compact
+        attrs.flatten.uniq.compact
+      end
+    end
+
+    def all_attributes
+      (attributes + optional_attributes).uniq.compact
+    end
+
     def detail_attr(sym)
       detail_attributes << sym
+      attr_reader_real sym
+    end
+
+    # Optionals are different. They may appear or not. Main example is a 'dent'.
+    # Pretty much all details may be marked as having a dent, i.e. they passed
+    # but not very nicely.
+    def optional_detail_attr(sym)
+      detail_attributes_optional << sym
       attr_reader_real sym
     end
 
@@ -61,11 +88,13 @@ module OSAutoInst
 
     class << self
       def can_represent_exactly?(data_blob)
-        data_blob.keys.sort == attributes.sort
+        data_blob.keys.sort == attributes.sort ||
+          data_blob.keys.sort == all_attributes.sort
       end
 
       def can_represent_approximately?(data_blob)
-        (data_blob.keys.sort - attributes.sort).empty?
+        (data_blob.keys.sort - attributes.sort).empty? ||
+          (data_blob.keys.sort - all_attributes.sort).empty?
       end
 
       def need?(_data)
@@ -90,8 +119,18 @@ module OSAutoInst
     # :ok or :fail or :unknown or :skip
     detail_attr :result
 
+    # Dents are optional markers to mark a result as not quite as good
+    # as should be. (e.g. it matched but only using a workaround needle).
+    # If I am not mistaken the primary cause for a dent is a workaround property
+    optional_detail_attr :dent
+
     def initialize(*)
+      @dent ||= false
       super
+      init_result
+    end
+
+    def init_result
       results = { 'unk' => :unknown, 'ok' => :ok, 'fail' => :fail }
       @result = results.fetch(result) do
         result.is_a?(Hash)
