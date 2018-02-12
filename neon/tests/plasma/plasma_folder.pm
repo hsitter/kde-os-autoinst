@@ -47,13 +47,4 @@ sub test_flags {
     return { important => 1 };
 }
 
-sub post_fail_hook {
-    my ($self) = shift;
-    # $self->SUPER::post_fail_hook;
-
-    select_console 'log-console';
-
-    upload_logs "/home/$testapi::username/.xsession-errors";
-}
-
 1;
