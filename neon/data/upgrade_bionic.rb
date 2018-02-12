@@ -46,27 +46,7 @@ Pin: release o=neon
 Pin-Priority: 1001
 PREFERENCE
 
-# This test is currently on UE, switch to unstable as bionic only has unstable
-# builds.
-
-sources = Dir.glob('/etc/apt/sources.list.d/*') << '/etc/apt/sources.list'
-sources.each do |source|
-  data = File.read(source)
-  data = data.gsub('/user', '/dev/unstable')
-  data = data.gsub('/release', '/dev/unstable')
-  File.write(source, data)
-end
-
 # NB: this is dist-upgrade only code which doesn't work QQ
-#
-# sources = Dir.glob('/etc/apt/sources.list.d/*') << '/etc/apt/sources.list'
-# sources.each do |source|
-#   data = File.read(source)
-#   data = data.gsub('xenial', 'bionic')
-#   data = data.gsub('/user', '/dev/unstable')
-#   data = data.gsub('/release', '/dev/unstable')
-#   File.write(source, data)
-# end
 #
 # system('apt update') || raise
 #
