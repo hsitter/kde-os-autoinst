@@ -49,6 +49,12 @@ class JUnit
       super()
       @detail = detail
       self.result = translate_result(detail.result)
+      if result == JenkinsJunitBuilder::Case::RESULT_PASSED &&
+         detail.dent
+        # iff this detail has a dent mark it skipped in junit; best
+        # representation we have.
+        self.result = JenkinsJunitBuilder::Case::RESULT_SKIPPED
+      end
       system_err.message = JSON.pretty_generate(detail.data)
     end
 
