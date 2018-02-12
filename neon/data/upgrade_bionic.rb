@@ -52,7 +52,6 @@ PREFERENCE
 sources = Dir.glob('/etc/apt/sources.list.d/*') << '/etc/apt/sources.list'
 sources.each do |source|
   data = File.read(source)
-  data = data.gsub('xenial', 'bionic')
   data = data.gsub('/user', '/dev/unstable')
   data = data.gsub('/release', '/dev/unstable')
   File.write(source, data)
