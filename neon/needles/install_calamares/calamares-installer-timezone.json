@@ -1,12 +1,28 @@
 {
   "area": [
     {
-      "height": 476,
+      "height": 38,
+      "match": 95,
+      "type": "match",
+      "width": 812,
+      "xpos": 201,
+      "ypos": 591
+    },
+    {
+      "height": 40,
+      "match": 95,
+      "type": "match",
+      "width": 818,
+      "xpos": 202,
+      "ypos": 630
+    },
+    {
+      "height": 414,
       "match": 75,
       "type": "match",
-      "width": 836,
-      "xpos": 179,
-      "ypos": 141
+      "width": 827,
+      "xpos": 195,
+      "ypos": 78
     }
   ],
   "properties": [],
@@ -15,3 +31,4 @@
     "ENV-DISTRI-neon"
   ]
 }
+

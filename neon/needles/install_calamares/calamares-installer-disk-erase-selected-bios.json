@@ -1,12 +1,52 @@
 {
   "area": [
     {
-      "height": 470,
+      "height": 99,
       "match": 95,
       "type": "match",
-      "width": 671,
-      "xpos": 179,
-      "ypos": 140
+      "width": 369,
+      "xpos": 195,
+      "ypos": 78
+    },
+    {
+      "height": 36,
+      "match": 95,
+      "type": "match",
+      "width": 160,
+      "xpos": 622,
+      "ypos": 82
+    },
+    {
+      "height": 117,
+      "match": 95,
+      "type": "match",
+      "width": 656,
+      "xpos": 193,
+      "ypos": 121
+    },
+    {
+      "height": 62,
+      "match": 95,
+      "type": "match",
+      "width": 532,
+      "xpos": 200,
+      "ypos": 476
+    },
+    {
+      "height": 59,
+      "match": 95,
+      "type": "match",
+      "width": 140,
+      "xpos": 200,
+      "ypos": 553
+    },
+    {
+      "height": 48,
+      "match": 95,
+      "type": "match",
+      "width": 285,
+      "xpos": 251,
+      "ypos": 635
     }
   ],
   "properties": [],
@@ -16,3 +56,4 @@
     "ENV-DISTRI-neon"
   ]
 }
+

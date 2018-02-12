@@ -5,29 +5,38 @@
       "match": 95,
       "type": "match",
       "width": 286,
-      "xpos": 449,
-      "ypos": 314
+      "xpos": 454,
+      "ypos": 271
     },
     {
       "height": 50,
       "match": 95,
       "type": "match",
       "width": 120,
-      "xpos": 172,
-      "ypos": 562
+      "xpos": 541,
+      "ypos": 426
     },
     {
       "height": 64,
       "match": 95,
       "type": "match",
       "width": 604,
-      "xpos": 287,
-      "ypos": 367
+      "xpos": 296,
+      "ypos": 334
+    },
+    {
+      "height": 45,
+      "match": 95,
+      "type": "match",
+      "width": 92,
+      "xpos": 929,
+      "ypos": 681
     }
   ],
   "properties": [],
   "tags": [
     "calamares-installer-restart",
-    "ENV-DISTRI-neon"
+    "calamares-installer-restart-now"
   ]
 }
+

@@ -1,20 +1,20 @@
 {
   "area": [
     {
-      "height": 55,
+      "height": 62,
       "match": 95,
       "type": "match",
-      "width": 421,
-      "xpos": 174,
-      "ypos": 352
+      "width": 419,
+      "xpos": 193,
+      "ypos": 306
     },
     {
-      "height": 211,
+      "height": 264,
       "match": 95,
       "type": "match",
       "width": 668,
-      "xpos": 171,
-      "ypos": 140
+      "xpos": 193,
+      "ypos": 34
     }
   ],
   "properties": [],
@@ -23,3 +23,4 @@
     "ENV-DISTRI-neon"
   ]
 }
+
