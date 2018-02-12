@@ -28,6 +28,8 @@ sub run {
     {
         assert_script_sudo 'apt update', 60 * 5;
         assert_script_sudo 'apt dist-upgrade -y', 60 * 15;
+        assert_script_run 'wget https://origin.archive.neon.kde.org/dev/unstable/pool/main/n/neon-settings/neon-settings_0.0+p16.04+git20180211.1123_all.deb', 60 * 15;
+        assert_script_sudo 'apt -y install `pwd`/neon-settings_0.0+p16.04+git20180211.1123_all.deb', 60 * 15;
         script_sudo 'reboot', 0;
         reset_consoles;
     }
