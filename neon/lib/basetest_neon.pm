@@ -90,6 +90,18 @@ sub boot {
         {
             assert_script_run 'wget ' . data_url('basetest_setup.rb'),  60;
             assert_script_sudo 'ruby basetest_setup.rb', 60;
+
+            # FIXME: copy pasta from install core.pm
+            if (get_var('OPENQA_APT_UPGRADE')) {
+                assert_script_sudo 'apt update',  2 * 60;
+                my $pkgs = get_var('OPENQA_APT_UPGRADE');
+                if ($pkgs eq "") {
+                    $pkgs = "dist-upgrade";
+                } else {
+                    $pkgs = "install " . $pkgs;
+                }
+                assert_script_sudo 'DEBIAN_FRONTEND=noninteractive apt -y ' . $pkgs, 30 * 60;
+            }
         }
         select_console 'x11';
         $self->{boot_setup_ran} = 1;
