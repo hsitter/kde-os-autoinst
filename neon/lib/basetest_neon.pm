@@ -22,6 +22,16 @@ use base 'basetest';
 use testapi;
 use strict;
 
+sub new {
+    my ($class, $args) = @_;
+    my $self = $class->SUPER::new($args);
+    # TODO: this maybe should be global as within a test series we still only
+    #   use the same VM and disk, so setup actually only needs to happen once
+    #   in an entire os-autoinst run.
+    $self->{boot_setup_ran} = 0;
+    return $self;
+}
+
 sub post_fail_hook {
     if (check_screen('drkonqi-notification', 4)) {
         assert_and_click('drkonqi-notification');
@@ -75,12 +85,15 @@ sub boot {
     }
     # else sddm, nothing to do
 
-    select_console 'log-console';
-    {
-        assert_script_run 'wget ' . data_url('basetest_setup.rb'),  60;
-        assert_script_sudo 'ruby basetest_setup.rb', 60;
+    if (!$self->{boot_setup_ran}) {
+        select_console 'log-console';
+        {
+            assert_script_run 'wget ' . data_url('basetest_setup.rb'),  60;
+            assert_script_sudo 'ruby basetest_setup.rb', 60;
+        }
+        select_console 'x11';
+        $self->{boot_setup_ran} = 1;
     }
-    select_console 'x11';
 
     type_password $testapi::password;
     send_key 'ret';
