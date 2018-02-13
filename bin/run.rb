@@ -117,7 +117,12 @@ else
   config[:KEEPHDDS] = true
   # Re-use existing raid/, comes from install test.
   os_auto_inst_dir = "/srv/os-autoinst/#{ENV.fetch('TYPE')}/wok/raid"
-  FileUtils.ln_s(os_auto_inst_dir, '../raid') if File.exist?(os_auto_inst_dir)
+  if File.exist?(os_auto_inst_dir)
+    # Do not explode on recylced build dirs which might still have the origin
+    # symlink linger.
+    FileUtils.rm_f('../raid')
+    FileUtils.ln_s(os_auto_inst_dir, '../raid')
+  end
   existing_raid = File.realpath('../raid')
   if File.exist?(existing_raid)
     warn "Overlaying existing #{existing_raid}"
