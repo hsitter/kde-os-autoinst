@@ -61,7 +61,17 @@ sub run {
     assert_and_click 'ubuntu-upgrade-start', 'left', 60 * 5;
     assert_and_click 'ubuntu-upgrade-remove', 'left', 60 * 15;
 
-    assert_and_click 'ubuntu-upgrade-restart', 'left', 60 * 5;
+    assert_screen 'ubuntu-upgrade-restart', 'left', 60 * 5;
+
+    # upload logs in case something went wrong!
+    select_console 'log-console';
+    {
+        assert_script_sudo 'tar -cJf /tmp/dist-upgrade.tar.xz /var/log/dist-upgrade/';
+        upload_logs '/tmp/dist-upgrade.tar.xz';
+    }
+    select_console 'x11';
+
+    assert_and_click 'ubuntu-upgrade-restart';
 
     reset_consoles;
     $self->boot;
