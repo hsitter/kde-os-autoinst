@@ -35,7 +35,7 @@ fancyNode('openqa') {
     }
   } finally {
     dir('metadata') { archiveArtifacts '*' }
-    archiveArtifacts allowEmptyArchive: true, artifacts: 'wok/testresults/*, wok/ulogs/*, wok/video.*'
+    dir('wok') { archiveArtifacts allowEmptyArchive: true, artifacts: 'testresults/*, ulogs/*, video.*' }
     junit 'junit/*'
   }
 }

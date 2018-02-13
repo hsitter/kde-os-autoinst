@@ -63,7 +63,7 @@ class JUnit
     end
 
     def artifact_url(artifact)
-      "#{BUILD_URL}/artifact/wok/testresults/#{artifact}"
+      "#{BUILD_URL}/artifact/testresults/#{artifact}"
     end
   end
 
