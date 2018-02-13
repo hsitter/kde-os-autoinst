@@ -2,7 +2,7 @@
   "area": [
     {
       "height": 37,
-      "match": 95,
+      "match": 90,
       "type": "match",
       "width": 337,
       "xpos": 626,
@@ -10,7 +10,7 @@
     },
     {
       "height": 43,
-      "match": 95,
+      "match": 90,
       "type": "match",
       "width": 120,
       "xpos": 756,
@@ -22,3 +22,4 @@
     "ubuntu-upgrade-restart"
   ]
 }
+
