@@ -51,6 +51,9 @@ end
 Dir.mkdir('wok') unless File.exist?('wok')
 Dir.chdir('wok')
 
+FileUtils.rm_rf('../metadata', verbose: true)
+FileUtils.mkdir('../metadata', verbose: true)
+
 # Cloud scaled node, use all cores, else only half of them to not impair
 # other functionality on the node.
 cpus = Etc.nprocessors
@@ -118,9 +121,19 @@ else
   existing_raid = File.realpath('../raid')
   if File.exist?(existing_raid)
     warn "Overlaying existing #{existing_raid}"
+
     FileUtils.rm_r('raid') if File.exist?('raid')
     FileUtils.mkpath('raid')
-    system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 20G") || raise
+    unless system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 20G")
+      raise "Failed to create overlay for #{existing_raid}"
+    end
+
+    # Copy base image metadata
+    if File.exist?("#{existing_raid}/metadata/")
+      FileUtils.cp_r("#{existing_raid}/metadata/.",
+                     '../metadata/',
+                     verbose: true)
+    end
   end
   config[:QEMU_DISABLE_SNAPSHOTS] = true
   config[:MAKETESTSNAPSHOTS] = false
@@ -143,4 +156,11 @@ File.write('live_log', '')
 system({ 'QEMU_AUDIO_DRV' => 'none' }, ISOTOVIDEO, '-d') || raise
 
 Dir.chdir('..')
+
+Dir.glob('wok/ulogs/metadata-*') do |file|
+  target = File.basename(file)
+  target = target.split('-', 2)[-1]
+  FileUtils.mv(file, File.join('metadata', target), verbose: true)
+end
+
 JUnit.from_openqa('wok/testresults')

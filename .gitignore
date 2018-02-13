@@ -13,6 +13,7 @@
 /*.iso
 /*.iso.zs-old
 /*.sig
+/metadata/
 
 # qtcreator build dir
 /needler/build-*/

@@ -47,6 +47,7 @@ fancyNode('openqa') {
       }
     }
   } finally {
+    dir('metadata') { archiveArtifacts '*' }
     archiveArtifacts 'wok/testresults/*, wok/ulogs/*, wok/video.*'
     junit 'junit/*'
     sh 'bin/contain.rb chown -R jenkins .'

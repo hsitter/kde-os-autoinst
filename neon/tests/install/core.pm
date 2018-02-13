@@ -31,6 +31,9 @@ sub run {
 
     select_console 'log-console';
     {
+        upload_logs '/cdrom/.disk/info', log_name => 'metadata';
+        upload_logs '/cdrom/casper/filesystem.manifest', log_name => 'metadata';
+
         assert_script_run 'wget ' . data_url('permissions_check.rb'),  16;
         assert_script_run 'ruby permissions_check.rb', 16;
 
