@@ -115,14 +115,28 @@ if ENV['INSTALLATION']
 else
   config[:BOOT_HDD_IMAGE] = true
   config[:KEEPHDDS] = true
+
   # Re-use existing raid/, comes from install test.
-  os_auto_inst_dir = "/srv/os-autoinst/#{ENV.fetch('TYPE')}/wok/raid"
-  if File.exist?(os_auto_inst_dir)
+  os_auto_inst_dir = "/srv/os-autoinst/#{ENV.fetch('TYPE')}/"
+  os_auto_inst_raid = "#{os_auto_inst_dir}/wok/raid"
+  if File.exist?(os_auto_inst_raid)
     # Do not explode on recylced build dirs which might still have the origin
     # symlink linger.
     FileUtils.rm_f('../raid')
-    FileUtils.ln_s(os_auto_inst_dir, '../raid')
+    FileUtils.ln_s(os_auto_inst_raid, '../raid')
+
+    # Copy base image metadata
+    if File.exist?("#{os_auto_inst_dir}/metadata/")
+      FileUtils.cp_r("#{os_auto_inst_dir}/metadata/.",
+                     '../metadata/',
+                     verbose: true)
+    end
   end
+
+  # This is separate from the os-autinst recycling as you can manually simulate
+  # it by simplying moving a suitable raid in place. This is for localhost
+  # usage. On CI systems we alway should hit the os-autoinst path and symlink
+  # the raid.
   existing_raid = File.realpath('../raid')
   if File.exist?(existing_raid)
     warn "Overlaying existing #{existing_raid}"
@@ -131,13 +145,6 @@ else
     FileUtils.mkpath('raid')
     unless system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 20G")
       raise "Failed to create overlay for #{existing_raid}"
-    end
-
-    # Copy base image metadata
-    if File.exist?("#{existing_raid}/metadata/")
-      FileUtils.cp_r("#{existing_raid}/metadata/.",
-                     '../metadata/',
-                     verbose: true)
     end
   end
   config[:QEMU_DISABLE_SNAPSHOTS] = true
