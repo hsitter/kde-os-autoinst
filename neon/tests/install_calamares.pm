@@ -81,7 +81,7 @@ sub run {
     assert_and_click "calamares-installer-next";
 
     assert_screen "calamares-installer-summary", 16;
-    assert_and_click "calamares-installer-next";
+    assert_and_click "calamares-installer-install";
 
     assert_screen "calamares-installer-show", 16;
 
