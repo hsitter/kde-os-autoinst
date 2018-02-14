@@ -73,9 +73,9 @@ sub maybe_login {
     }
 }
 
-# Waits for system to boot to desktop.
-sub boot {
-    my ($self, $args) = @_;
+sub boot_to_dm {
+    my ($self, %args) = @_;
+    $args{run_setup} //= 1;
 
     # Grub in user edition is broken as of Jan 2018 and doesn't match our needle
     # because it is shittyly themed. As we do not entirely care about this in
@@ -89,7 +89,7 @@ sub boot {
     }
     # else sddm, nothing to do
 
-    if (!$self->{boot_setup_ran}) {
+    if ($args{run_setup} && !$self->{boot_setup_ran}) {
         select_console 'log-console';
         {
             assert_script_run 'wget ' . data_url('basetest_setup.rb'),  60;
@@ -110,6 +110,13 @@ sub boot {
         select_console 'x11';
         $self->{boot_setup_ran} = 1;
     }
+}
+
+# Waits for system to boot to desktop.
+sub boot {
+    my ($self, $args) = @_;
+
+    $self->boot_to_dm;
 
     type_password $testapi::password;
     send_key 'ret';
