@@ -46,6 +46,9 @@ Pin: release o=neon
 Pin-Priority: 1001
 PREFERENCE
 
+# Debug policy.
+system('apt policy plasma-workspace')
+
 # NB: this is dist-upgrade only code which doesn't work QQ
 #
 # system('apt update') || raise
