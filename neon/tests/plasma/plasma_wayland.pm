@@ -58,18 +58,4 @@ sub test_flags {
     return { important => 1 };
 }
 
-sub post_fail_hook {
-
-    my ($self) = shift;
-    # $self->SUPER::post_fail_hook;
-
-    select_console 'log-console';
-
-    # Uploads end up in wok/ulogs/
-    assert_script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
-
-    upload_logs '/tmp/journal.txt';
-    upload_logs '/home/$USER/.local/share/sddm/wayland-session.log';
-}
-
 1;
