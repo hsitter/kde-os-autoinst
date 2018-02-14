@@ -48,7 +48,7 @@ fancyNode('openqa') {
     }
   } finally {
     dir('metadata') { archiveArtifacts '*' }
-    dir('wok') { archiveArtifacts allowEmptyArchive: true, artifacts: 'testresults/*, ulogs/*, video.*' }
+    dir('wok') { archiveArtifacts allowEmptyArchive: true, artifacts: 'testresults/*, ulogs/*, video.*, vars.json' }
     junit 'junit/*'
     sh 'bin/contain.rb chown -R jenkins .'
   }
