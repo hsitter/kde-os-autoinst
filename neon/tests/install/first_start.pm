@@ -38,6 +38,17 @@ sub run {
 
     select_console 'log-console';
 
+    # Assert that we have no preinstalled pool lingering around on the installed
+    # rootfs. preinstalled-pool comes from our livecd-rootfs-neon fork and
+    # contains bootloaders for offline install. This should be removed before
+    # installation is finalized
+    if (script_run('grep -r preinstalled-pool /etc/apt/') == 0) {
+        die '/var/lib/preinstalled-pool is in /etc/apt/* after install';
+    }
+    if (script_run('[ -e /var/lib/preinstalled-pool ]') == 0) {
+        die '/var/lib/preinstalled-pool exist after install';
+    }
+
     # Make sure this system is bootable throughout all use cases by ensuring
     # our loader is used as fallback loader in EFI\boot\bootx64.efi
     assert_script_run 'wget ' . data_url('uefi_boot.rb'),  16;
