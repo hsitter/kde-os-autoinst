@@ -26,7 +26,13 @@
 
 # This is already done in the installation first_start, but we'll do it
 # here again to be on the save side.
+puts "#{$0} Disabling snapd."
 system 'systemctl disable --now snapd.refresh.timer'
 system 'systemctl disable --now snapd.refresh.service'
 system 'systemctl disable --now snapd.snap-repair.timer'
 system 'systemctl disable --now snapd.service'
+
+# FIXME: temporary here until all base images got respun.
+puts "#{$0} Adding systemd-coredump."
+system 'apt update' || raise
+system 'apt install -y systemd-coredump' || raise

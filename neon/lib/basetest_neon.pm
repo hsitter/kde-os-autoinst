@@ -50,6 +50,9 @@ sub post_fail_hook {
     script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
     upload_logs '/tmp/journal.txt', failok => 1;
 
+    script_run 'coredumpctl info > /tmp/dumps.txt';
+    upload_logs '/tmp/dumps.txt', failok => 1;
+
     return 1;
 }
 
