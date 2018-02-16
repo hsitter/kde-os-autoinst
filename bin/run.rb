@@ -159,6 +159,12 @@ unless system('lsmod | grep -q kvm_intel')
   ENV['QEMU'] = '/usr/bin/qemu-system-x86_64'
 end
 
+if ENV['PLASMA_MOBILE']
+  config[:ISO] = '/workspace/neon-pm.iso'
+  config[:BOOT_HDD_IMAGE] = false
+  config[:KEEPHDDS] = false
+end
+
 warn "Going to use #{cpus} Cores"
 warn "Going to use KVM: #{!config.include?(:QEMU_NO_KVM)}"
 warn "Running from #{ISOTOVIDEO}"
