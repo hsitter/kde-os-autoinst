@@ -35,6 +35,13 @@ sub run {
 
     select_console 'log-console';
     {
+        # Manually downgrade xorg from HWE. There is a bug where xorg-hwe is
+        # not being properly migrated.
+        # https://bugs.launchpad.net/bugs/1749688
+        assert_script_sudo 'apt update', 60;
+        assert_script_sudo 'apt -y install xserver-xorg', 60 * 5;
+        record_soft_failure 'Downgrading xorg-hwe to xorg to enable upgrade';
+
         assert_script_run 'wget ' . data_url('upgrade_bionic.rb'),  16;
         assert_script_sudo 'ruby upgrade_bionic.rb', 60 * 60;
     }
