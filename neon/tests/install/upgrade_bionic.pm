@@ -43,7 +43,7 @@ sub run {
         record_soft_failure 'Downgrading xorg-hwe to xorg to enable upgrade';
 
         assert_script_run 'wget ' . data_url('upgrade_bionic.rb'),  16;
-        assert_script_sudo 'ruby upgrade_bionic.rb', 60 * 60;
+        assert_script_sudo 'ruby upgrade_bionic.rb', 60;
     }
     select_console 'x11';
 
