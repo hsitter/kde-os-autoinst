@@ -35,6 +35,7 @@ sub run {
     {
         assert_script_run 'wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.15.3/linux-image-4.15.3-041503-generic_4.15.3-041503.201802120730_amd64.deb',  60 * 5;
         assert_script_sudo 'apt install -y `pwd`/linux-image-4.15.3-041503-generic_4.15.3-041503.201802120730_amd64.deb', 60 * 2;
+        record_soft_failure 'Installed qxl compatible kernel!';
         script_sudo 'reboot', 0;
     }
     reset_consoles;
