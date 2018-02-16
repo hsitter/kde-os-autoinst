@@ -42,13 +42,6 @@ sub run {
 
     $self->boot_to_dm; # don't need the x11 session, we'll switch to wayland.
 
-    select_console 'log-console';
-    {
-        assert_script_sudo 'apt update';
-        assert_script_sudo 'apt install -y plasma-wayland-desktop';
-    }
-    select_console 'x11';
-
     assert_and_click 'sddm-choose-session';
     assert_and_click 'sddm-plasma-wayland';
 
