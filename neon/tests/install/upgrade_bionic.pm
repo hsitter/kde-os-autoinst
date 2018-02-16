@@ -81,7 +81,7 @@ sub run {
     assert_and_click 'ubuntu-upgrade-restart';
 
     reset_consoles;
-    $self->boot;
+    $self->boot_to_dm;
 }
 
 sub post_fail_hook {
