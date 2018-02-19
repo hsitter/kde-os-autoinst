@@ -55,14 +55,20 @@ sub xkill_while_needlematch {
 
 sub run {
     my ($self) = @_;
-    $self->boot;
 
+    # login to sddm
+    $self->boot_to_dm;
+
+    # install packages
     select_console 'log-console';
     assert_script_run 'wget ' . data_url('qt_compat_install.rb'),  16;
     assert_script_sudo 'ruby qt_compat_install.rb '.
                        'kdevelop skrooge kontact plasma-discover',
                        60 * 30;
     select_console 'x11';
+
+    # once install is done, login
+    $self->login;
 
     assert_screen 'folder-desktop', 30;
     # In case we have any lingering windows for whatever weird reason:
