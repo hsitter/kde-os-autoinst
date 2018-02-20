@@ -32,4 +32,4 @@ PREFERENCE
 
 system('add-apt-repository "deb https://archive.neon.kde.org/testing xenial main"') || raise
 system('apt update') || raise
-system('apt dist-upgrade -y --allow-downgrades') || raise
+system('apt dist-upgrade -y') || raise
