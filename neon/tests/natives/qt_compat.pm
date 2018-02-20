@@ -61,7 +61,7 @@ sub run {
 
     # install packages
     select_console 'log-console';
-    if ( testapi::get_var("ADD_TESTING_REPO") ) {
+    if (get_var('OPENQA_ADD_TESTING_REPO')) {
         assert_script_run 'wget ' . data_url('add_testing_repo.rb'),  16;
         assert_script_sudo 'ruby add_testing_repo.rb ', 60 * 30;
     }
