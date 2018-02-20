@@ -67,6 +67,7 @@ c = CI::Containment.new(JOB_NAME.gsub('%2F', '/').tr('/', '-'),
 
 # Whitelist
 ENV_VARS = %w[
+  ADD_TESTING_REPO
   BUILD_URL
   INSTALLATION
   INSTALLATION_OEM
