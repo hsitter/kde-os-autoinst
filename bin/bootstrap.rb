@@ -34,11 +34,5 @@ elsif ENV.fetch('NODE_NAME', '') == 'master' ||
   Dir.chdir('/opt') { system("#{__dir__}/install.rb") || raise }
 end
 
-if ENV['NODE_NAME'] # hack for CI nodes
-  # https://progress.opensuse.org/issues/31771
-  FileUtils.rm('/usr/bin/chattr', verbose: true)
-  FileUtils.ln_s('/bin/true', '/usr/bin/chattr', verbose: true)
-end
-
 system('bin/sync.rb') || raise if ENV['INSTALLATION']
 exec('bin/run.rb')
