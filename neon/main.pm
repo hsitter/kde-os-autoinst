@@ -59,6 +59,40 @@ sub cleanup_needles {
     unless (testapi::get_var('OPENQA_INSTALLATION_OFFLINE')) {
         unregister_needle_tags('ENV-OFFLINE');
     }
+
+    # Drop needles tagged with a different TYPE.
+    # This is a bit inflexible right now but the best to be done at short
+    # notice.
+    my $good_tag = "ENV-TYPE-$ENV{TYPE}";
+    for my $tag (keys %needle::tags) {
+        if ($tag !~ /ENV-TYPE-/) {
+            next;
+        }
+
+        if ($tag eq $good_tag) {
+            next;
+        }
+
+        # We've found a disqualified tag. Drop all needles that have it.
+        # UNLESS that needle has a qualifier tag (i.e. ENV-TYPE-$TYPE).
+        # qualification > disqualification
+        my @needles = @{needle::tags($tag)};
+        for my $needle (@needles) {
+            if ($needle->has_tag($good_tag)) {
+                next;
+            }
+            $needle->unregister($tag);
+        }
+    }
+
+    # TODO: implement exclusion of newer needles on older systems
+    # Now that we dropped all unsuitable needles. We should restirct the match.
+    # For all needles with our good tag we'll drop all needles that have the
+    # other tags but not our good tag
+    # e.g. n1 [ENV-TYPE-stable, dolphin]
+    #      n2 [dolphin]
+    #   -> we unregister n2 as it is less suitable than n1
+
 }
 
 $needle::cleanuphandler = \&cleanup_needles;
