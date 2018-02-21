@@ -1,7 +1,7 @@
 {
   "area": [
     {
-      "height": 186,
+      "height": 214,
       "match": 95,
       "type": "match",
       "width": 567,
@@ -19,7 +19,9 @@
   ],
   "properties": [],
   "tags": [
-    "dolphin"
+    "dolphin",
+    "ENV-TYPE-devedition-gitstable",
+    "ENV-TYPE-useredition",
+    "ENV-TYPE-userltsedition"
   ]
 }
-
