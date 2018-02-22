@@ -12,9 +12,9 @@
       "height": 25,
       "match": 95,
       "type": "match",
-      "width": 17,
-      "xpos": 596,
-      "ypos": 64
+      "width": 19.714285714285722,
+      "xpos": 608,
+      "ypos": 46.28571428571429
     },
     {
       "height": 32,
@@ -62,3 +62,4 @@
     "ubuntu-upgrade-start"
   ]
 }
+
