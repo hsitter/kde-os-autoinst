@@ -99,7 +99,7 @@ sub boot_to_dm {
             if (get_var('OPENQA_APT_UPGRADE')) {
                 assert_script_sudo 'apt update',  2 * 60;
                 my $pkgs = get_var('OPENQA_APT_UPGRADE');
-                if ($pkgs eq "") {
+                if ($pkgs eq "all") {
                     $pkgs = "dist-upgrade";
                 } else {
                     $pkgs = "install " . $pkgs;
