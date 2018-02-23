@@ -96,6 +96,11 @@ sub post_fail_hook {
     upload_logs '/var/log/dpkg.log';
     upload_logs '/var/log/apt/term.log';
     upload_logs '/var/log/apt/history.log';
+
+    # Try to get the dist upgrade log. It might not exist depending on when
+    # the failure occured though.
+    script_sudo 'tar -cJf /tmp/dist-upgrade.tar.xz /var/log/dist-upgrade/';
+    upload_logs '/tmp/dist-upgrade.tar.xz', failok => 1;
 }
 
 sub test_flags {
