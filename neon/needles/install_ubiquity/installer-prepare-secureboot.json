@@ -4,8 +4,8 @@
       "height": 561,
       "match": 95,
       "type": "match",
-      "width": 914,
-      "xpos": 0,
+      "width": 763,
+      "xpos": 151,
       "ypos": 0
     }
   ],
@@ -16,3 +16,4 @@
     "ENV-SECUREBOOT"
   ]
 }
+
