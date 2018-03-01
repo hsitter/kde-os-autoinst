@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-use base "basetest";
+use base "basetest_neon";
 use testapi;
 
 # Core test to run for all install cases. Asserts common stuff.
