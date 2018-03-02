@@ -32,11 +32,21 @@ sub run {
     # >30s would be indicative of a dbus timeout.
     assert_screen 'folder-desktop', 30;
 
-    assert_and_click "home-icon";
+    # 5.12 is the last version to have standard icons on desktop. So, only check
+    # for them there.
+    if (match_has_tag('folder-desktop-512')) {
+        assert_and_click "home-icon";
 
-    assert_screen 'dolphin', 10;
-    send_key 'alt-f4';
-    assert_screen 'folder-desktop', 8;
+        assert_screen 'dolphin', 10;
+        send_key 'alt-f4';
+        assert_screen 'folder-desktop', 8;
+    }
+
+    # While unstable installs are still on older plasmas this can be a soft
+    # failure, should become hard in April 2018 if I remember.
+    if ($ENV{TYPE} eq 'devedition-gitunstable' && match_has_tag('folder-desktop-512')) {
+        record_soft_failure "Screen had Plasma 5.12 icons but unstable should't have them!"
+    }
 }
 
 sub test_flags {
