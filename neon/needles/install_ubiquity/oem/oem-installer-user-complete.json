@@ -4,8 +4,8 @@
       "height": 308,
       "match": 95,
       "type": "match",
-      "width": 914,
-      "xpos": 0,
+      "width": 758,
+      "xpos": 156,
       "ypos": 0
     }
   ],
@@ -14,3 +14,4 @@
     "oem-installer-user-complete"
   ]
 }
+
