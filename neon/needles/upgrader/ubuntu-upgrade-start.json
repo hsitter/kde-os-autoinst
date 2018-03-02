@@ -17,14 +17,6 @@
       "ypos": 46.28571428571429
     },
     {
-      "height": 22,
-      "match": 90,
-      "type": "match",
-      "width": 143,
-      "xpos": 731,
-      "ypos": 3
-    },
-    {
       "height": 19,
       "match": 95,
       "type": "match",
@@ -44,7 +36,7 @@
       "height": 35,
       "match": 95,
       "type": "match",
-      "width": 96,
+      "width": 86,
       "xpos": 919,
       "ypos": 275
     },
