@@ -4,7 +4,7 @@
       "height": 32,
       "match": 95,
       "type": "match",
-      "width": 513,
+      "width": 367,
       "xpos": 251,
       "ypos": 5
     }
@@ -16,3 +16,4 @@
     "ENV-DESKTOP-kde"
   ]
 }
+
