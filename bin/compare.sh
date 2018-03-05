@@ -18,12 +18,16 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
-set -ex
+TMPDIR=`mktemp -d`
+
+trap "{ cd -; rm -rf $TMPDIR; exit 255; }" SIGINT
+
+curl -H "Content-Type:text/plain" "$1" > $TMPDIR/1.png
+curl -H "Content-Type:text/plain" "$2" > $TMPDIR/2.png
 
 compare \
-  <( curl -H "Content-Type:text/plain" "$1" ) \
-  <( curl -H "Content-Type:text/plain" "$2" ) \
+  $TMPDIR/1.png $TMPDIR/2.png \
   -compose src \
-  /tmp/diff.png
+  $TMPDIR/diff.png
 
-gwenview /tmp/diff.png
+dolphin $TMPDIR
