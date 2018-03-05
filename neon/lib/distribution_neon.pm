@@ -77,12 +77,27 @@ sub activate_console {
     diag "activating $console";
     if ($console eq 'log-console') {
         assert_screen 'tty6-selected';
+
         type_string $testapi::username;
         send_key 'ret';
         assert_screen 'tty-password';
         type_password $testapi::password;
         send_key 'ret';
-        assert_screen 'tty-logged-in';
+
+        assert_screen [qw(tty-logged-in tty-login-incorrect)];
+        if (match_has_tag('tty-login-incorrect')) {
+            # Let's try again if the login failed. If it fails again give up.
+            # It can happen that due to IO some of the password gets lost.
+            # Not much to be done about that other than retry and hope for the
+            # best.
+            type_string $testapi::username;
+            send_key 'ret';
+            assert_screen 'tty-password';
+            type_password $testapi::password;
+            send_key 'ret';
+            assert_screen 'tty-logged-in';
+        }
+
         # Mostly just a workaround. os-autoinst wants to write to /dev/ttyS0 but
         # on ubuntu that doesn't fly unless chowned first.
         testapi::assert_script_sudo("chown $testapi::username /dev/$testapi::serialdev");
