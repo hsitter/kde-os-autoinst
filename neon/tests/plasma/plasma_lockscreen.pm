@@ -39,6 +39,7 @@ sub run {
     # unreliable.
     select_console 'log-console';
     script_run 'exit', 0;
+    reset_consoles;
     select_console 'x11';
 
     lock_screen;
