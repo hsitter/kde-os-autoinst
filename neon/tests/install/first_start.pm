@@ -35,6 +35,11 @@ sub run {
     if (match_has_tag('grub')) {
         die 'Grub should not be visible by defualt but was detected';
     }
+    # Let the system settle down a bit. There may be first start setup going on
+    # slowing down IO responsiveness letting the following tty switch go
+    # wrong. Best save than sorry.
+    # (kinda hackish, ideally we shouldn't fail to accept vt switches :S)
+    sleep 8;
 
     select_console 'log-console';
 
