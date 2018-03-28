@@ -110,7 +110,10 @@ sub post_fail_hook {
     assert_script_sudo 'nmcli networking on';
 
     # Uploads end up in wok/ulogs/
+    # Older calamari used this path:
     upload_logs '/home/neon/.cache/Calamares/calamares/Calamares.log', failok => 1;
+    # Newer this one:
+    upload_logs '/home/neon/.cache/Calamares/session.log', failok => 1;
     upload_logs '/home/neon/.xsession-errors', failok => 1;
 
     script_sudo 'journalctl --no-pager -b 0 > /tmp/journal.txt';
