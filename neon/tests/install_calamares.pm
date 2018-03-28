@@ -110,11 +110,11 @@ sub post_fail_hook {
     assert_script_sudo 'nmcli networking on';
 
     # Uploads end up in wok/ulogs/
-    upload_logs '/home/neon/.cache/Calamares/calamares/Calamares.log';
-    upload_logs '/home/neon/.xsession-errors';
+    upload_logs '/home/neon/.cache/Calamares/calamares/Calamares.log', failok => 1;
+    upload_logs '/home/neon/.xsession-errors', failok => 1;
 
-    assert_script_sudo 'journalctl --no-pager -b 0 > /tmp/journal.txt';
-    upload_logs '/tmp/journal.txt';
+    script_sudo 'journalctl --no-pager -b 0 > /tmp/journal.txt';
+    upload_logs '/tmp/journal.txt', failok => 1;
 }
 
 sub test_flags {
