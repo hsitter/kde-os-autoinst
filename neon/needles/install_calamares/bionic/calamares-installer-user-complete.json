@@ -1,0 +1,18 @@
+{
+  "area": [
+    {
+      "height": 312,
+      "match": 95,
+      "type": "match",
+      "width": 579,
+      "xpos": 195,
+      "ypos": 79
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-user-complete",
+    "ENV-SERIES-bionic"
+  ]
+}
+

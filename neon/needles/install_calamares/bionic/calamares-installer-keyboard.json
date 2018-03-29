@@ -1,0 +1,18 @@
+{
+  "area": [
+    {
+      "height": 605,
+      "match": 90,
+      "type": "match",
+      "width": 827,
+      "xpos": 194,
+      "ypos": 72
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-keyboard",
+    "ENV-SERIES-bionic"
+  ]
+}
+
