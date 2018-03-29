@@ -27,7 +27,7 @@
 puts "#{$0}: Disabling snapd..."
 
 # TODO: maybe more programatically resolve all relevant timers.
-system('systemctl disable --now snapd.refresh.timer') || raise
-system('systemctl disable --now snapd.refresh.service') || raise
-system('systemctl disable --now snapd.snap-repair.timer') || raise
+system('systemctl disable --now snapd.refresh.timer')
+system('systemctl disable --now snapd.refresh.service')
+system('systemctl disable --now snapd.snap-repair.timer')
 system('systemctl disable --now snapd.service') || raise
