@@ -59,6 +59,8 @@ FileUtils.mkdir('../metadata', verbose: true)
 cpus = Etc.nprocessors
 cpus = (cpus / 2.0).ceil unless File.exist?('/tooling/is_scaling_node')
 
+defaultvga = ENV['OPENQA_SERIES'] == 'bionic' ? 'qxl' : 'cirrus'
+
 config = {
   BACKEND: 'qemu',
   CDMODEL: 'virtio-scsi-pci',
@@ -76,7 +78,7 @@ config = {
   #   3d accel on debian/ubuntu. needs passing of options to actually enable
   #   accel -display sdl,gl=on`
   #   https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=813658
-  QEMUVGA: ENV.fetch('QEMUVGA', 'cirrus'),
+  QEMUVGA: ENV.fetch('QEMUVGA', defaultvga),
   TESTDEBUG: false,
   MAKETESTSNAPSHOTS: false,
   QEMUCPUS: cpus,
