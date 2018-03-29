@@ -43,6 +43,10 @@ sub run {
 
     select_console 'log-console';
 
+    # General purpose hook.
+    assert_script_run 'wget ' . data_url('early_first_start.rb'),  16;
+    assert_script_sudo 'ruby early_first_start.rb', 60 * 5;
+
     # Assert that we have no preinstalled pool lingering around on the installed
     # rootfs. preinstalled-pool comes from our livecd-rootfs-neon fork and
     # contains bootloaders for offline install. This should be removed before

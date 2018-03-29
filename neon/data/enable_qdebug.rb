@@ -34,8 +34,3 @@ qt.scenegraph.time.*=false
 qt.quick.dirty=false
 qt.quick.hover.trace=false
 CONFIG
-
-# FIXME: probably should rename this script to generic debug enablement
-puts "#{$0} Adding systemd-coredump."
-system 'apt update' || raise
-system 'apt install -y systemd-coredump' || raise
