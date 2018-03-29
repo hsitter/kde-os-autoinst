@@ -25,11 +25,14 @@
       "ypos": 46
     }
   ],
-  "properties": [],
+  "properties": [
+    "workaround"
+  ],
   "tags": [
     "bootloader",
     "live-bootloader-uefi",
-    "ENV-DISTRI-neon"
+    "ENV-DISTRI-neon",
+    "live-bootloader-uefi-broken"
   ]
 }
 
