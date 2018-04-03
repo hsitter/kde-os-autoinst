@@ -21,6 +21,8 @@ use strict;
 use testapi;
 
 sub run {
+    my ($self) = shift;
+
     # Divert installation data to live data.
     my $user = $testapi::username;
     my $password = $testapi::password;
@@ -87,6 +89,15 @@ sub run {
 
     # Let install finish and restart
     assert_screen "calamares-installer-restart", 1200;
+
+    select_console 'log-console';
+    {
+        # Make sure networking is on (we disable it during installation).
+        assert_script_sudo 'nmcli networking on';
+        $self->upload_calamares_logs;
+    }
+    select_console 'x11';
+
     assert_and_click "calamares-installer-restart-now";
 
     assert_screen "live-remove-medium", 60;
@@ -100,6 +111,20 @@ sub run {
     $testapi::password = $password;
 }
 
+sub upload_calamares_logs {
+    # Uploads end up in wok/ulogs/
+    # Older calamari used this path:
+    script_run 'cd /home/neon/.cache';
+    script_run 'ls -lahR calamares';
+    script_run 'ls -lahR Calamares';
+    script_run 'ls -lah';
+    upload_logs '/home/neon/.cache/Calamares/calamares/Calamares.log', failok => 1;
+    # Newer this one:
+    upload_logs '/home/neon/.cache/Calamares/session.log', failok => 1;
+    # Even newer:
+    upload_logs '/home/neon/.cache/calamares/session.log', failok => 1;
+}
+
 sub post_fail_hook {
     my ($self) = shift;
     # $self->SUPER::post_fail_hook;
@@ -109,11 +134,7 @@ sub post_fail_hook {
     # Make sure networking is on (we disable it during installation).
     assert_script_sudo 'nmcli networking on';
 
-    # Uploads end up in wok/ulogs/
-    # Older calamari used this path:
-    upload_logs '/home/neon/.cache/Calamares/calamares/Calamares.log', failok => 1;
-    # Newer this one:
-    upload_logs '/home/neon/.cache/Calamares/session.log', failok => 1;
+    $self->upload_calamares_logs;
     upload_logs '/home/neon/.xsession-errors', failok => 1;
 
     script_sudo 'journalctl --no-pager -b 0 > /tmp/journal.txt';
