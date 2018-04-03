@@ -48,7 +48,7 @@ sub run {
     # Installer
     assert_and_click 'calamares-installer-icon';
 
-    assert_screen "calamares-installer-welcome", 120;
+    assert_screen "calamares-installer-welcome", 30;
     assert_and_click "calamares-installer-next";
 
     # Timezone has 75% fuzzyness as timezone is geoip'd so its fairly divergent.
