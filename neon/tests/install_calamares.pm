@@ -1,4 +1,4 @@
-# Copyright (C) 2016-2017 Harald Sitter <sitter@kde.org>
+# Copyright (C) 2016-2018 Harald Sitter <sitter@kde.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -33,6 +33,9 @@ sub run {
 
     select_console 'log-console';
     {
+        assert_script_run 'wget ' . data_url('geoip_service_calamares.rb'),  16;
+        script_sudo 'systemd-run ruby `pwd`/geoip_service_calamares.rb', 16;
+
         # Disable networking during installation to ensure network-less
         # installation works as expected.
         if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
