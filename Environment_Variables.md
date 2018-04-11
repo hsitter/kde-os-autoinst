@@ -27,6 +27,7 @@ still fish them out of `ENV` I suppose).
 |OEM_PASSWORD|Password of the oem user|
 |OPENQA_APT_UPGRADE|Can be a space separated list of packages or `all` to do a dist-upgrade|
 |OPENQA_INSTALLATION_OFFLINE|Modifier for INSTALLATION to switch networking offline before starting the install|
+|OPENQA_INSTALLATION_NONENGLISH|Modifier for INSTALLATION to switch networking offline before starting the install|
 |OPENQA_IN_CLOUD|Set by CI nodes. Used internally to optimize perform for builds on some cloud server (e.g. use apt mirrors for speed)|
 
 # Test Suites

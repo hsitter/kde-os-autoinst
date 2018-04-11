@@ -60,6 +60,9 @@ sub cleanup_needles {
     unless (testapi::get_var('OPENQA_INSTALLATION_OFFLINE')) {
         unregister_needle_tags('ENV-OFFLINE');
     }
+    unless (testapi::get_var('OPENQA_INSTALLATION_OFFLINE')) {
+        unregister_needle_tags('ENV-NONENGLISH');
+    }
 
     # Drop needles tagged with a different TYPE.
     # This is a bit inflexible right now but the best to be done at short

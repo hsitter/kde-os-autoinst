@@ -1,0 +1,18 @@
+{
+  "area": [
+    {
+      "height": 439,
+      "match": 75,
+      "type": "match",
+      "width": 914,
+      "xpos": 0,
+      "ypos": 31
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-timezone-offline",
+    "installer-timezone"
+  ]
+}
+
