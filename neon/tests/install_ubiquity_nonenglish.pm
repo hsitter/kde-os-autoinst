@@ -50,7 +50,6 @@ sub run {
 
     # Installer
     assert_and_click "installer-icon";
-    assert_and_click "installer-welcome", 60;
     assert_and_click "installer-welcome-language-select";
     assert_and_click "installer-next";
     assert_screen "installer-prepare", 16;
