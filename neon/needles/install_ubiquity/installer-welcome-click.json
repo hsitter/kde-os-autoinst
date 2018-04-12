@@ -11,8 +11,9 @@
   ],
   "properties": [],
   "tags": [
-    "installer-welcome",
-    "ENV-DISTRI-neon"
+    "ENV-DISTRI-neon",
+    "install-welcome-click",
+    "ENV-NONENGLISH"
   ]
 }
 
