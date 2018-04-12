@@ -31,6 +31,7 @@ sub kscreenlocker_disable {
 
 sub run {
     my ($self) = @_;
+    $testapi::distri->init_consoles();
     $self->boot;
 
     select_console 'log-console';
@@ -88,6 +89,8 @@ sub run {
     # used for x11 etc.
     set_var 'OPENQA_SERIES', 'bionic', reload_needles => true;
     reset_consoles;
+    # Make sure to fully reinit the consoles to adopt the VT change.
+    $testapi::distri->init_consoles();
     $self->boot_to_dm;
 }
 
