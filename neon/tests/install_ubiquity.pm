@@ -57,13 +57,19 @@ sub run {
         send_key 'ret';
         assert_screen 'installer-welcome-espanol';
         assert_and_click "installer-next-espanol";
+        assert_screen "installer-prepare-espanol", 16;
+        assert_and_click "installer-next-espanol";
+        assert_screen "installer-disk-espanol", 16;
+        assert_and_click "installer-install-now-espanol";
+        assert_and_click "installer-disk-confirm-espanol", 'left', 16;
+    } else {
+        assert_and_click "installer-next";
+        assert_screen "installer-prepare", 16;
+        assert_and_click "installer-next";
+        assert_screen "installer-disk", 16;
+        assert_and_click "installer-install-now";
+        assert_and_click "installer-disk-confirm", 'left', 16;
     }
-    assert_and_click "installer-next";
-    assert_screen "installer-prepare", 16;
-    assert_and_click "installer-next";
-    assert_screen "installer-disk", 16;
-    assert_and_click "installer-install-now";
-    assert_and_click "installer-disk-confirm", 'left', 16;
 
     # Timezone has 75% fuzzyness as timezone is geoip'd so its fairly divergent.
     # Also, starting here only the top section of the window gets matched as
@@ -72,29 +78,57 @@ sub run {
     # NB: we give way more leeway on the new needle appearing as disk IO can
     #   cause quite a bit of slowdown and ubiquity's transition policy is
     #   fairly weird when moving away from the disk page.
-    assert_screen "installer-timezone", 60;
-    assert_and_click "installer-next";
-    assert_screen "installer-keyboard", 16;
-    assert_and_click "installer-next";
+    if (get_var('OPENQA_INSTALLATION_NONENGLISH')) {
+        assert_screen "installer-timezone-espanol", 60;
+        assert_and_click "installer-next-espanol";
+        assert_screen "installer-keyboard-espanol", 16;
+        assert_and_click "installer-next-espanol";
+    } else {
+        assert_screen "installer-timezone-espanol", 60;
+        assert_and_click "installer-next-espanol";
+        assert_screen "installer-keyboard-espanol", 16;
+        assert_and_click "installer-next-espanol";
+    }
 
-    assert_screen "installer-user", 16;
-    type_string $user;
-    # user in user field, name field (needle doesn't include hostname in match)
-    assert_screen "installer-user-user", 16;
-    send_key "tab", 1; # username field
-    send_key "tab", 1; # 1st password field
-    type_string $password;
-    send_key "tab", 1; # 2nd password field
-    type_string $password;
-    # all fields filled (not matching hostname field)
-    assert_screen "installer-user-complete", 16;
-    assert_and_click "installer-next";
+    if (get_var('OPENQA_INSTALLATION_NONENGLISH')) {
+        assert_screen "installer-user-espanol", 16;
+        type_string $user;
+        # user in user field, name field (needle doesn't include hostname in match)
+        assert_screen "installer-user-user-espanol", 16;
+        send_key "tab", 1; # username field
+        send_key "tab", 1; # 1st password field
+        type_string $password;
+        send_key "tab", 1; # 2nd password field
+        type_string $password;
+        # all fields filled (not matching hostname field)
+        assert_screen "installer-user-complete-espanol", 16;
+        assert_and_click "installer-next-espanol";
 
-    assert_screen "installer-show", 10;
+        assert_screen "installer-show-espanol", 10;
 
-    # Let install finish and restart
-    assert_screen "installer-restart", 640;
-    assert_and_click "installer-restart-now";
+        # Let install finish and restart
+        assert_screen "installer-restart-espanol", 640;
+        assert_and_click "installer-restart-now-espanol";
+    } else {
+        assert_screen "installer-user", 16;
+        type_string $user;
+        # user in user field, name field (needle doesn't include hostname in match)
+        assert_screen "installer-user-user", 16;
+        send_key "tab", 1; # username field
+        send_key "tab", 1; # 1st password field
+        type_string $password;
+        send_key "tab", 1; # 2nd password field
+        type_string $password;
+        # all fields filled (not matching hostname field)
+        assert_screen "installer-user-complete", 16;
+        assert_and_click "installer-next";
+
+        assert_screen "installer-show", 10;
+
+        # Let install finish and restart
+        assert_screen "installer-restart", 640;
+        assert_and_click "installer-restart-now";
+    }
 
     assert_screen "live-remove-medium", 60;
     # The message actually comes up before input is read, make sure to send rets
