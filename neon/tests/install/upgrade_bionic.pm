@@ -83,6 +83,10 @@ sub run {
 
     assert_and_click 'ubuntu-upgrade-restart';
 
+    # Switch to bionic mode now.
+    # This among other things makes sure the right virtual terminals will be
+    # used for x11 etc.
+    set_var 'OPENQA_SERIES', 'bionic', reload_needles => true
     reset_consoles;
     $self->boot_to_dm;
 }
