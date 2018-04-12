@@ -52,7 +52,7 @@ sub run {
     assert_and_click "installer-icon";
     assert_screen "installer-welcome", 60;
     if (get_var('OPENQA_INSTALLATION_NONENGLISH')) {
-        assert_screen 'installer-welcome-click';
+        assert_and_click 'installer-welcome-click';
         send_key 'down';
         send_key 'ret';
         assert_screen 'installer-welcome-espanol';
