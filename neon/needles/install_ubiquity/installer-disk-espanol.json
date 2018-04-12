@@ -27,8 +27,9 @@
   ],
   "properties": [],
   "tags": [
-    "installer-disk",
-    "ENV-DISTRI-neon"
+    "installer-disk-espanol",
+    "ENV-DISTRI-neon",
+    "ENV-NONENGLISH"
   ]
 }
 

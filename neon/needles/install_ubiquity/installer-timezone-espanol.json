@@ -2,16 +2,16 @@
   "area": [
     {
       "type": "match",
-      "xpos": 800,
-      "ypos": 510,
-      "width": 110,
-      "height": 50,
-      "match": 90
+      "xpos": 0,
+      "ypos": 0,
+      "width": 914,
+      "height": 470,
+      "match": 75
     }
   ],
   "properties": [],
   "tags": [
-    "installer-install-now-espanol",
+    "installer-timezone-espanol",
     "ENV-DISTRI-neon",
     "ENV-NONENGLISH"
   ]

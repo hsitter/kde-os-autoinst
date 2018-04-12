@@ -2,16 +2,16 @@
   "area": [
     {
       "type": "match",
-      "xpos": 800,
-      "ypos": 510,
-      "width": 110,
-      "height": 50,
-      "match": 90
+      "xpos": 541,
+      "ypos": 389,
+      "width": 90,
+      "height": 31,
+      "match": 95
     }
   ],
   "properties": [],
   "tags": [
-    "installer-install-now-espanol",
+    "installer-restart-now-espanol",
     "ENV-DISTRI-neon",
     "ENV-NONENGLISH"
   ]
