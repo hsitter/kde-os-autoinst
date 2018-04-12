@@ -56,6 +56,7 @@ sub run {
         send_key 'down';
         send_key 'ret';
         assert_screen 'installer-welcome-espanol';
+        assert_and_click "installer-next-espanol";
     }
     assert_and_click "installer-next";
     assert_screen "installer-prepare", 16;
