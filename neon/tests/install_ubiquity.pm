@@ -51,6 +51,11 @@ sub run {
     # Installer
     assert_and_click "installer-icon";
     assert_screen "installer-welcome", 60;
+    if (get_var('OPENQA_INSTALLATION_NONENGLISH')) {
+        assert_screen 'installer-welcome-click';
+        send_key 'down';
+        send_key 'ret';
+    }
     assert_and_click "installer-next";
     assert_screen "installer-prepare", 16;
     assert_and_click "installer-next";

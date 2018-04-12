@@ -60,7 +60,7 @@ sub cleanup_needles {
     unless (testapi::get_var('OPENQA_INSTALLATION_OFFLINE')) {
         unregister_needle_tags('ENV-OFFLINE');
     }
-    unless (testapi::get_var('OPENQA_INSTALLATION_OFFLINE')) {
+    unless (testapi::get_var('OPENQA_INSTALLATION_NONENGLISH')) {
         unregister_needle_tags('ENV-NONENGLISH');
     }
 
