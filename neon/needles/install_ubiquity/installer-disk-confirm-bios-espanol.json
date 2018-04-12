@@ -13,16 +13,16 @@
       "match": 95,
       "type": "match",
       "width": 64,
-      "xpos": 623,
-      "ypos": 379
+      "xpos": 622,
+      "ypos": 396
     },
     {
       "height": 30,
       "match": 95,
       "type": "match",
       "width": 76,
-      "xpos": 526,
-      "ypos": 376
+      "xpos": 528,
+      "ypos": 395
     }
   ],
   "properties": [],
@@ -33,3 +33,4 @@
     "ENV-NONENGLISH"
   ]
 }
+
