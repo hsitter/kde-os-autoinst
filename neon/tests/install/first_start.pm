@@ -31,7 +31,7 @@ sub run {
     #   with tests running on drax presently this can easily exceed 5m
     #   (which would be my otherwise preferred value) as drax may be busy
     #   doing other things as well that slow the test down.
-    assert_screen ['sddm', 'grub'], 60 * 10;
+    assert_screen ['sddm-espanol', 'sddm', 'grub'], 60 * 10;
     if (match_has_tag('grub')) {
         die 'Grub should not be visible by defualt but was detected';
     }
