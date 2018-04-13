@@ -99,7 +99,7 @@ sub run {
 
         script_sudo "loginctl list-sessions";
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i <= 5; $i++) {
             script_sudo "loginctl show-session $i";
         }
     }
