@@ -91,6 +91,19 @@ sub run {
     # Make sure to fully reinit the consoles to adopt the VT change.
     $testapi::distri->init_consoles();
     $self->boot_to_dm;
+
+    select_console 'log-console';
+    {
+        script_sudo 'ps aux |grep tty';
+        script_sudo 'ps aux |grep sddm';
+
+        script_sudo "loginctl list-sessions";
+
+        for ($i = 0; $i < 10; $i++) {
+            script_sudo "loginctl show-session $i";
+        }
+    }
+    select_console 'x11';
 }
 
 sub post_fail_hook {
