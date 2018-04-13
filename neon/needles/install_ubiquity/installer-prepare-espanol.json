@@ -12,6 +12,7 @@
   "properties": [],
   "tags": [
     "installer-prepare-espanol",
+    "installer-prepare",
     "ENV-NO-SECUREBOOT",
     "ENV-NONENGLISH"
   ]
