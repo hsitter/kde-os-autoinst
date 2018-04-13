@@ -20,6 +20,8 @@
   "properties": [],
   "tags": [
     "sddm-espanol",
-    "ENV-DISTRI-neon"
+    "sddm",
+    "ENV-DISTRI-neon",
+    "ENV-NONENGLISH"
   ]
 }
