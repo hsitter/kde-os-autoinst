@@ -110,6 +110,15 @@ sub boot_to_dm {
         select_console 'x11';
         $self->{boot_setup_ran} = 1;
     }
+
+    select_console 'x11';
+    select_console 'x11';
+    select_console 'x11';
+    unless (get_var('OPENQA_SERIES') eq 'xenial') {
+        sleep 4;
+        print 'sending key manually now';
+        send_key 'ctrl-alt-f1';
+    }
 }
 
 # Waits for system to boot to desktop.
