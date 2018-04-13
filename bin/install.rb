@@ -46,6 +46,7 @@ end
 
 Dir.chdir('os-autoinst') do
   system('git pull --rebase') || raise
+  system('sed -i \'s%my ($self, $keys, $down_flag) = @_;%my ($self, $keys, $down_flag) = @_;\nuse Data::Dumper;\nprint Dumper($self);\nprint Dumper($keys);\nprint Dumper($down_flag);\n%g\' consoles/VNC.pm') || raise
   system('autoreconf -f -i') || raise
   system('./configure') || raise
   system('make') || raise
