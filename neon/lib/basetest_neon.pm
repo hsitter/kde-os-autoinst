@@ -89,8 +89,6 @@ sub boot_to_dm {
     }
     # else sddm, nothing to do
 
-    use Data::Dumper;
-
     if ($args{run_setup} && !$self->{boot_setup_ran}) {
         select_console 'log-console';
         {
@@ -109,29 +107,9 @@ sub boot_to_dm {
                 assert_script_sudo 'DEBIAN_FRONTEND=noninteractive apt -y ' . $pkgs, 30 * 60;
             }
         }
-        print "selected console\n";
-        print Dumper($testapi::selected_console);
-
         select_console 'x11';
         $self->{boot_setup_ran} = 1;
     }
-
-        print "selected console\n";
-        print Dumper($testapi::selected_console);
-    select_console 'x11';
-            print "selected console\n";
-            print Dumper($testapi::selected_console);
-    select_console 'x11';
-            print "selected console\n";
-            print Dumper($testapi::selected_console);
-    select_console 'x11';
-            print "selected console\n";
-            print Dumper($testapi::selected_console);
-    # unless (get_var('OPENQA_SERIES') eq 'xenial') {
-    #     sleep 4;
-    #     print 'sending key manually now';
-    #     send_key 'ctrl-alt-f1';
-    # }
 }
 
 # Waits for system to boot to desktop.
@@ -139,6 +117,8 @@ sub boot {
     my ($self, $args) = @_;
 
     $self->boot_to_dm;
+    # Should be at sddm. Short time out as this only is a VT switch.
+    assert_screen 'sddm', 4;
 
     type_password $testapi::password;
     send_key 'ret';
