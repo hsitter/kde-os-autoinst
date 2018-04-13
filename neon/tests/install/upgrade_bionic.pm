@@ -90,9 +90,6 @@ sub post_fail_hook {
 
     select_console 'log-console';
 
-    assert_script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
-    upload_logs '/tmp/journal.txt';
-
     upload_logs '/var/log/dpkg.log';
     upload_logs '/var/log/apt/term.log';
     upload_logs '/var/log/apt/history.log';
