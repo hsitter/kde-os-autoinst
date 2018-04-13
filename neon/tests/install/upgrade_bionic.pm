@@ -87,9 +87,7 @@ sub run {
     # This among other things makes sure the right virtual terminals will be
     # used for x11 etc.
     set_var 'OPENQA_SERIES', 'bionic', reload_needles => 1;
-    reset_consoles;
-    # Make sure to fully reinit the consoles to adopt the VT change.
-    $testapi::distri->init_consoles();
+    console('x11')->set_tty(1);
     reset_consoles;
 }
 
