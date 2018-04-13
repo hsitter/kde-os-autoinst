@@ -31,7 +31,6 @@ sub kscreenlocker_disable {
 
 sub run {
     my ($self) = @_;
-    $testapi::distri->init_consoles();
     $self->boot;
 
     select_console 'log-console';
