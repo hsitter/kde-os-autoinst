@@ -27,8 +27,7 @@
   ],
   "properties": [],
   "tags": [
-    "calamares-installer-timezone",
-    "ENV-DISTRI-neon"
+    "calamares-installer-timezone"
   ]
 }
 
