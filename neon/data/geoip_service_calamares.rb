@@ -30,6 +30,10 @@ conf = '/etc/calamares/modules/locale.conf'
 abort "Couldn't find config #{conf}" unless File.exist?(conf)
 yaml = YAML.load_file(conf)
 yaml['geoipUrl'] = "http://localhost:#{server.config[:Port]}"
+# TODO: drop this after 2018-04-30 or so
+# Make sure the style is set, older ISOs might not have this which would give
+# divergent behavior.
+yaml['geoipStyle'] = 'json'
 File.write(conf, YAML.dump(yaml))
 
 server.mount_proc '/' do |_req, res|
