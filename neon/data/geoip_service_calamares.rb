@@ -18,9 +18,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Mock Ubuntu's geoip service so we get consistent results
-# for Frankfurt; Timezone Berlin.
+# Doubles our geoip service so we get consistent results
 
+require 'json'
 require 'webrick'
 require 'yaml'
 
@@ -29,18 +29,20 @@ server = WEBrick::HTTPServer.new(Port: 0)
 conf = '/etc/calamares/modules/locale.conf'
 abort "Couldn't find config #{conf}" unless File.exist?(conf)
 yaml = YAML.load_file(conf)
-yaml['geoipUrl'] = "localhost:#{server.config[:Port]}"
+yaml['geoipUrl'] = "http://localhost:#{server.config[:Port]}"
 File.write(conf, YAML.dump(yaml))
 
 server.mount_proc '/' do |_req, res|
-  # Format from http://freegeoip.net/
+  # Format as documented in calamares' locale.conf. This is a test double
+  # for geoip.kde.org.
+  #
   # We are using a fancy time zone here to make sure calamares handles three
   # level timezones correctly.
   # Additionally calamares derives language and keyboard layout from the
   # timezone, so something en_US is preferred so we don't have to handle l10n.
   # A dedicated l10n test would have to do that, but for the purpose of the
   # core testing we stick to en_US.
-  res.body = JSON.generate('time_zone' => 'America/North Dakota/Beulah')
+  res.body = JSON.generate('time_zone' => 'America/North_Dakota/Beulah')
 end
 
 server.start
