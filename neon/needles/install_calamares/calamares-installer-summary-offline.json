@@ -1,0 +1,27 @@
+{
+  "area": [
+    {
+      "height": 62,
+      "match": 95,
+      "type": "match",
+      "width": 419,
+      "xpos": 193,
+      "ypos": 306
+    },
+    {
+      "height": 264,
+      "match": 95,
+      "type": "match",
+      "width": 668,
+      "xpos": 193,
+      "ypos": 34
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-summary",
+    "calamares-installer-summary-offline",
+    "ENV-OFFLINE"
+  ]
+}
+
