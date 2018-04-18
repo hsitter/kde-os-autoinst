@@ -186,4 +186,9 @@ Dir.glob('wok/ulogs/metadata-*') do |file|
   FileUtils.mv(file, File.join('metadata', target), verbose: true)
 end
 
+# Generate a slideshow and ignore return value. If this fails chances are junit
+# will too, if junit doesn't fail we'd not care that slideshow failed. This is
+# more of a bonus feature.
+system("#{__dir__}/slideshow.rb", 'wok/slide.html')
+
 JUnit.from_openqa('wok/testresults')
