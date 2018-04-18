@@ -1,0 +1,36 @@
+{
+  "area": [
+    {
+      "height": 218,
+      "match": 95,
+      "type": "match",
+      "width": 470,
+      "xpos": 213,
+      "ypos": 143
+    },
+    {
+      "height": 27,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 623,
+      "ypos": 387
+    },
+    {
+      "height": 28,
+      "match": 95,
+      "type": "match",
+      "width": 73,
+      "xpos": 531,
+      "ypos": 387
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-disk-confirm",
+    "installer-disk-confirm-uefi",
+    "installer-disk-confirm-uefi-newicon",
+    "workaround",
+    "ENV-DISTRI-neon"
+  ]
+}
