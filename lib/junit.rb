@@ -22,6 +22,8 @@ require 'fileutils'
 require 'json'
 require 'jenkins_junit_builder'
 
+require_relative 'result'
+
 # JUnit converter.
 class JUnit
   BUILD_URL = ENV.fetch('BUILD_URL', nil)
@@ -165,7 +167,6 @@ tags. Chances are there is no needle, or the tags are misspelled.
     def initialize(test_file, name:)
       super()
       @failed = false
-      require_relative 'result'
       result = OSAutoInst::ResultSuite.new(test_file)
       self.name = name
       self.package = name
