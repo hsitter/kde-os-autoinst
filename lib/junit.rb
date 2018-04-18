@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 #
-# Copyright (C) 2017 Harald Sitter <sitter@kde.org>
+# Copyright (C) 2017-2018 Harald Sitter <sitter@kde.org>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -213,23 +213,14 @@ tags. Chances are there is no needle, or the tags are misspelled.
     @failed
   end
 
-  def tests
-    @tests ||= begin
-      tests_order_file = "#{testresults_dir}/test_order.json"
-      unless File.exist?(tests_order_file)
-        raise "No tests run; can't find #{tests_order_file}"
-      end
-      JSON.parse(File.read(tests_order_file))
-    end
-  end
-
   def write_all
-    if tests.empty?
-      raise "No tests run; order array is empty in #{tests_order_file}"
+    order = OSAutoInst::TestOrder.new(testresults_dir: testresults_dir)
+    if order.tests.empty?
+      raise "No tests run; order array is empty in #{order.file}"
     end
-    tests.each_with_index do |test_h, i|
-      name = test_h.fetch('name')
-      test_file = "#{testresults_dir}/result-#{name}.json"
+    order.tests.each_with_index do |test, i|
+      name = test.fetch(:name)
+      test_file = test.fetch(:file)
       assert_test_file(name, test_file)
       suite = Suite.new(test_file, name: format('%03d_%s', i, name))
       @failed ||= suite.failed?

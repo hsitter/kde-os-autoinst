@@ -431,4 +431,35 @@ module OSAutoInst
       raise unless data.keys.empty?
     end
   end
+
+  class TestOrder
+    attr_reader :file
+    attr_reader :testresults_dir
+
+    attr_reader :tests
+
+    def initialize(testresults_dir:)
+      @testresults_dir = testresults_dir
+      @file = "#{testresults_dir}/test_order.json"
+      raise "No tests run; can't find #{@file}" unless File.exist?(@file)
+      @tests = JSON.parse(File.read(@file), symbolize_names: true)
+      extend_data!
+    end
+
+    def test_files
+      tests.collect { |t| t.fetch(:file) }
+    end
+
+    def result_suites
+      test_files.collect { |test_file| ResultSuite.new(test_file) }
+    end
+
+    private
+
+    def extend_data!
+      tests.each do |test|
+        test[:file] = "#{testresults_dir}/result-#{test.fetch(:name)}.json"
+      end
+    end
+  end
 end
