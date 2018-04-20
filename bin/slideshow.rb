@@ -50,6 +50,7 @@ File.write(ARGV[0], render)
 # http://www.efectorelativo.net/laboratory/noobSlide/
 # https://alistapart.com/article/imagegallery
 # https://galleria.io/
+# http://photoswipe.com/
 
 __END__
 
