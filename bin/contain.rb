@@ -44,6 +44,12 @@ if File.exist?(os_auto_inst_dir)
   # rubocop:enable Style/FormatStringToken
 end
 
+# Hugepages is a directory so docker will complain when passing it as a device,
+# instead use it as a volume.
+hugepages = '/dev/hugepages'
+dev_hugepages = ["#{hugepages}:#{hugepages}"]
+binds << dev_hugepages if File.exist?(hugepages)
+
 # Wrokaround tooling deployment broken making read-only unsupported.
 # http://mobile.neon.pangea.pub:8080/view/mgmt/job/mgmt_tooling_progenitor/
 # http://mobile.neon.pangea.pub:8080/view/mgmt/job/mgmt_tooling_test/

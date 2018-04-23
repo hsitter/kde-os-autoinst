@@ -158,6 +158,9 @@ else
   config[:MAKETESTSNAPSHOTS] = false
 end
 
+# Set our hugepages wrapper as qemu. It transparently injects hugepages options
+# to the call when possible, to increase performance.
+ENV['QEMU'] = File.join(__dir__, 'kvm_hugepages')
 
 if ENV['PLASMA_MOBILE']
   config[:ISO] = '/workspace/neon-pm.iso'
