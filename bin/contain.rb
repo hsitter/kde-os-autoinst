@@ -47,7 +47,7 @@ end
 # Hugepages is a directory so docker will complain when passing it as a device,
 # instead use it as a volume.
 hugepages = '/dev/hugepages'
-dev_hugepages = ["#{hugepages}:#{hugepages}"]
+dev_hugepages = "#{hugepages}:#{hugepages}"
 binds << dev_hugepages if File.exist?(hugepages)
 
 # Wrokaround tooling deployment broken making read-only unsupported.
