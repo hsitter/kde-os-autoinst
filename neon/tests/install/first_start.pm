@@ -80,6 +80,13 @@ sub run {
         assert_screen 'mokutil-sb-on';
     }
 
+    # Calamares specifically tends to meddle with the grub config, make sure
+    # it contains keys we absolutely expect.
+    assert_script_run 'grep -rE "GRUB_CMDLINE.+splash.+" /etc/default/grub',
+        fail_message => 'Failed to find splash key in grub cmdline!';
+    assert_script_run 'grep -rE "GRUB_CMDLINE.+quiet.+" /etc/default/grub',
+        fail_message => 'Failed to find quiet key in grub cmdline!';
+
     # Testing grub is a bit tricky because we first need to make sure it is
     # visible. To do that we'll run a fairly broad unhide script
     assert_script_run 'wget ' . data_url('grub_toggle_hide.rb'),  16;
