@@ -97,6 +97,8 @@ ENV.each { |k, v| config[k.to_sym] = v if k.start_with?('OPENQA_') }
 # The 16.04 ovmf doesn't work with virtio/virgil3d VGA and fails to init the
 # display. Use a binary copy of the bionic build
 # ovmf_0~20171205.a9212288-1_all.deb
+# There's also fancy builds at https://www.kraxel.org/repos/jenkins/edk2/
+# which contain more pertinent stuff.
 bionic_ovmf = File.expand_path("#{__dir__}/../OVMF/OVMF_CODE.fd")
 config[:UEFI_BIOS] = bionic_ovmf if File.exist?(bionic_ovmf)
 
