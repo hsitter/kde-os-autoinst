@@ -156,13 +156,6 @@ else
   config[:MAKETESTSNAPSHOTS] = false
 end
 
-# Neon builders don't do KVM, disable it if the module is not loaded.
-unless system('lsmod | grep -q kvm_intel')
-  config[:QEMU_NO_KVM] = true
-  # qemu.pm loads this from env. I have no idea why it would do that instead
-  # of config (or at least in addition to).
-  ENV['QEMU'] = '/usr/bin/qemu-system-x86_64'
-end
 
 if ENV['PLASMA_MOBILE']
   config[:ISO] = '/workspace/neon-pm.iso'
