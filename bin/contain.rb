@@ -27,12 +27,12 @@ DIST = ENV.fetch('DIST')
 JOB_NAME = ENV.fetch('JOB_NAME')
 PWD_BIND = ENV.fetch('PWD_BIND', '/workspace')
 
+devices = []
 dev_kvm = {
   PathOnHost: '/dev/kvm',
   PathInContainer: '/dev/kvm',
   CgroupPermissions: 'rwm'
 }
-devices = []
 devices << dev_kvm if File.exist?(dev_kvm[:PathOnHost])
 
 binds = ["#{Dir.pwd}:#{PWD_BIND}"]
