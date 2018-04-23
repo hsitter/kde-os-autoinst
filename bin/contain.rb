@@ -30,7 +30,7 @@ PWD_BIND = ENV.fetch('PWD_BIND', '/workspace')
 dev_kvm = {
   PathOnHost: '/dev/kvm',
   PathInContainer: '/dev/kvm',
-  CgroupPermissions: 'mrw'
+  CgroupPermissions: 'rwm'
 }
 devices = []
 devices << dev_kvm if File.exist?(dev_kvm[:PathOnHost])
