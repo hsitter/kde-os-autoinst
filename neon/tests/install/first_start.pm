@@ -25,13 +25,7 @@ sub run {
     # If we find grub instead we'll throw a tantrum. With only one OS installed
     # grub should be hidden by default unless the previous shutdown wasn't clean
     # none of which should be the case on first start!
-    # NB: this is 10m because we do not also wait for grub, so this timeout
-    #   entails: shutdown of the live session + uefi reinit +
-    #            grub (possibly with) + actual boot + start of sddm.
-    #   with tests running on drax presently this can easily exceed 5m
-    #   (which would be my otherwise preferred value) as drax may be busy
-    #   doing other things as well that slow the test down.
-    assert_screen ['sddm', 'grub'], 60 * 10;
+    assert_screen ['sddm', 'grub'], 60 * 2;
     if (match_has_tag('grub')) {
         die 'Grub should not be visible by defualt but was detected';
     }
