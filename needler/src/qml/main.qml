@@ -44,8 +44,8 @@ ApplicationWindow {
 
     function load(url) {
         path = withoutExtension(url.toString())
-        var json = withoutExtension(path) + ".json"
-        var png = withoutExtension(path) + ".png"
+        var json = path + ".json"
+        var png = path + ".png"
         console.debug("loading " + json + " " + png)
         selectorModel.loadFromJSON(json)
         image.source = ""
