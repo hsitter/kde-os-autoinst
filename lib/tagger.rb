@@ -24,6 +24,8 @@ require 'optparse'
 module Tagger
   module_function
 
+  Needle = Struct.new(:file, :json, :dirty)
+
   def parse_tags
     tags = []
 
@@ -45,17 +47,28 @@ module Tagger
     tags = parse_tags
 
     ARGV.each { |x| abort "Not a file: #{x}" unless File.file?(x) }
-    files = ARGV.collect { |x| [x, JSON.parse(File.read(x))] }.to_h
-    files.each_value do |json|
-      json_tags = json.fetch('tags')
-      yield tags, json_tags
-      json['tags'] = json_tags
+    needles = ARGV.collect do |x|
+      Needle.new(x, JSON.parse(File.read(x)))
     end
 
-    files.each do |file, json|
-      data = JSON.pretty_generate(json)
+    needles.each do |needle|
+      json_tags = needle.json.fetch('tags')
+      orig_tags = json_tags.dup
+      yield tags, json_tags
+      next if json_tags == orig_tags
+      needle.dirty = true
+      needle.json['tags'] = json_tags
+    end
+
+    needles.each do |needle|
+      next unless needle.dirty
+      data = JSON.pretty_generate(needle.json)
       data += "\n" unless data.end_with?("\n")
-      File.write(file, data)
+      # Qt's JSON.stringify formats empty arrays as [], ruby injects a newline,
+      # to avoid useless noise bend ruby accordingly.
+      # Somewhat naughty but there doesn't seem to be a switch for this.
+      data = data.gsub("\"properties\": [\n\n  ]", '"properties": []')
+      File.write(needle.file, data)
     end
   end
 end
