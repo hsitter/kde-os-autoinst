@@ -110,6 +110,10 @@ sub boot_to_dm {
         select_console 'x11';
         $self->{boot_setup_ran} = 1;
     }
+
+    # Move mouse to make sure sddm isn't idle before we return.
+    mouse_set(1, 1)
+    mouse_set(0, 0)
 }
 
 # Waits for system to boot to desktop.
