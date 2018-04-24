@@ -4,7 +4,7 @@
       "height": 38,
       "match": 95,
       "type": "match",
-      "width": 244,
+      "width": 1024,
       "xpos": 0,
       "ypos": 730
     },
@@ -17,11 +17,12 @@
       "ypos": 211
     }
   ],
-  "properties": [],
+  "properties": [
+
+  ],
   "tags": [
+    "sddm-idle",
     "sddm",
-    "ENV-DISTRI-neon",
-    "sddm-512"
+    "ENV-TYPE-devedition-gitunstable"
   ]
 }
-

@@ -15,6 +15,9 @@
   "tags": [
     "ENV-DISTRI-neon",
     "sddm",
-    "sddm-no-noto"
+    "sddm-no-noto",
+    "ENV-TYPE-useredition",
+    "ENV-TYPE-userltsedition",
+    "ENV-TYPE-devedition-gitstable"
   ]
 }

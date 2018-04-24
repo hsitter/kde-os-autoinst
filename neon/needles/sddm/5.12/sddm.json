@@ -21,11 +21,10 @@
 
   ],
   "tags": [
-    "sddm-espanol",
     "sddm",
-    "ENV-DISTRI-neon",
-    "ENV-NONENGLISH",
-    "sddm-es",
-    "ENV-TYPE-devedition-gitunstable"
+    "sddm-512",
+    "ENV-TYPE-useredition",
+    "ENV-TYPE-userltsedition",
+    "ENV-TYPE-devedition-gitstable"
   ]
 }
