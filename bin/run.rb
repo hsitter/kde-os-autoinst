@@ -106,7 +106,7 @@ config[:UEFI_BIOS] = bionic_ovmf if File.exist?(bionic_ovmf)
 config.delete(:UEFI) if ENV['OPENQA_BIOS']
 
 config[:TESTS_TO_RUN] = ENV['TESTS_TO_RUN'].split(':') if ENV['TESTS_TO_RUN']
-config[:PLASMA_DESKTOP]  = ENV['PLASMA_DESKTOP']
+config[:PLASMA_DESKTOP] = ENV['PLASMA_DESKTOP']
 if ENV['INSTALLATION']
   config[:INSTALLATION] = ENV['INSTALLATION']
   config[:INSTALLATION_OEM] = ENV['INSTALLATION_OEM']
