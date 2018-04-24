@@ -335,7 +335,10 @@ ApplicationWindow {
                                 properties: selectorModel.properties,
                                 tags: selectorModel.tags
                             }
-                            var json = JSON.stringify(needle, null, 2) + "\n"
+                            var json = JSON.stringify(needle, null, 2)
+                            if (!json.endsWith("\n")) {
+                                json += "\n"
+                            }
                             console.debug(json)
                             return json
                         }
