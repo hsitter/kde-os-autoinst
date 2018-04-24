@@ -22,6 +22,7 @@
     "sddm-espanol",
     "sddm",
     "ENV-DISTRI-neon",
-    "ENV-NONENGLISH"
+    "ENV-NONENGLISH",
+    "sddm-es"
   ]
 }
