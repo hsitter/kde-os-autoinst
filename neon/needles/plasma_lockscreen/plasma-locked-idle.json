@@ -1,21 +1,20 @@
 {
   "area": [
     {
-      "height": 39,
+      "height": 353,
       "match": 95,
       "type": "match",
-      "width": 152,
+      "width": 1024,
       "xpos": 0,
-      "ypos": 728
+      "ypos": 414
     }
   ],
   "properties": [
 
   ],
   "tags": [
-    "plasma-locked-keyboard-icon-inactive",
-    "plasma-locked-keyboard-icon",
-    "ENV-DISTRI-neon",
+    "plasma-locked-idle",
+    "plasma-locked",
     "ENV-TYPE-devedition-gitunstable"
   ]
 }

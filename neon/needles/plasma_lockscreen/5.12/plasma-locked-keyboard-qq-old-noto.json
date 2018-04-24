@@ -22,6 +22,9 @@
   ],
   "tags": [
     "plasma-locked-keyboard-qq",
-    "ENV-TYPE-devedition-gitunstable"
+    "plasma-locked-keyboard-qq-old-noto",
+    "ENV-TYPE-devedition-gitstable",
+    "ENV-TYPE-userltsedition",
+    "ENV-TYPE-useredition"
   ]
 }

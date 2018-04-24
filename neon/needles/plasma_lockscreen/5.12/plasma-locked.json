@@ -31,6 +31,8 @@
   "tags": [
     "plasma-locked",
     "ENV-DISTRI-neon",
-    "ENV-TYPE-devedition-gitunstable"
+    "ENV-TYPE-devedition-gitstable",
+    "ENV-TYPE-userltsedition",
+    "ENV-TYPE-useredition"
   ]
 }

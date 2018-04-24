@@ -16,6 +16,8 @@
     "plasma-locked-keyboard-icon-inactive",
     "plasma-locked-keyboard-icon",
     "ENV-DISTRI-neon",
-    "ENV-TYPE-devedition-gitunstable"
+    "ENV-TYPE-devedition-gitstable",
+    "ENV-TYPE-userltsedition",
+    "ENV-TYPE-useredition"
   ]
 }
