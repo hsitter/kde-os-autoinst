@@ -1,0 +1,35 @@
+{
+  "area": [
+    {
+      "height": 208,
+      "match": 95,
+      "type": "match",
+      "width": 470,
+      "xpos": 213,
+      "ypos": 153
+    },
+    {
+      "height": 27,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 623,
+      "ypos": 379
+    },
+    {
+      "height": 30,
+      "match": 95,
+      "type": "match",
+      "width": 76,
+      "xpos": 526,
+      "ypos": 376
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-disk-confirm",
+    "installer-disk-confirm-bios",
+    "installer-disk-confirm-bios-newicon",
+    "workaround"
+  ]
+}
