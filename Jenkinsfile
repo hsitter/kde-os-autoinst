@@ -29,7 +29,7 @@ properties([
 fancyNode('openqa') {
   try {
     stage('clone') {
-      git 'https://github.com/apachelogger/kde-os-autoinst'
+      git 'git://anongit.kde.org/sysadmin/neon-openqa.git'
     }
     stage('rake-test') {
       sh 'rake test'
