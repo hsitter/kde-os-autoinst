@@ -1,0 +1,20 @@
+{
+  "area": [
+    {
+      "height": 116,
+      "match": 95,
+      "type": "match",
+      "width": 502,
+      "xpos": 260,
+      "ypos": 325
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-restart-espanol-newicon",
+    "installer-restart-espanol",
+    "installer-restart",
+    "workaround",  
+    "ENV-NONENGLISH"
+  ]
+}
