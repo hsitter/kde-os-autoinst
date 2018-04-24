@@ -50,6 +50,8 @@ sub run {
     assert_screen 'folder-desktop', 60;
 
     lock_screen;
+    assert_screen('plasma-locked-idle');
+    mouse_hide;
 
     # virtual keyboard
     assert_and_click 'plasma-locked-keyboard-icon';
