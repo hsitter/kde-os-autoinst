@@ -9,12 +9,9 @@
       "ypos": 747
     }
   ],
-  "properties": [
-
-  ],
+  "properties": [],
   "tags": [
     "sddm-plasma-wayland",
-    "ENV-DISTRI-neon",
     "ENV-TYPE-devedition-gitunstable"
   ]
 }

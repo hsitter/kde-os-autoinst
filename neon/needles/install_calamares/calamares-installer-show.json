@@ -11,8 +11,6 @@
   ],
   "properties": [],
   "tags": [
-    "calamares-installer-show",
-    "ENV-DISTRI-neon"
+    "calamares-installer-show"
   ]
 }
-

@@ -25,12 +25,9 @@
       "ypos": 404
     }
   ],
-  "properties": [
-
-  ],
+  "properties": [],
   "tags": [
     "plasma-locked-switch",
-    "ENV-DISTRI-neon",
     "ENV-TYPE-devedition-gitstable",
     "ENV-TYPE-userltsedition",
     "ENV-TYPE-useredition"

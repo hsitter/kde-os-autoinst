@@ -11,8 +11,6 @@
   ],
   "properties": [],
   "tags": [
-    "calamares-installer-keyboard",
-    "ENV-DISTRI-neon"
+    "calamares-installer-keyboard"
   ]
 }
-

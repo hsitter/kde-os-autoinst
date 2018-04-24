@@ -13,7 +13,6 @@
     "workaround"
   ],
   "tags": [
-    "ENV-DISTRI-neon",
     "sddm",
     "sddm-no-noto",
     "ENV-TYPE-useredition",

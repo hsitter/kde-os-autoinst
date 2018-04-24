@@ -11,8 +11,6 @@
   ],
   "properties": [],
   "tags": [
-    "installer-user",
-    "ENV-DISTRI-neon"
+    "installer-user"
   ]
 }
-

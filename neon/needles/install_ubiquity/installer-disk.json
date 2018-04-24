@@ -27,8 +27,6 @@
   ],
   "properties": [],
   "tags": [
-    "installer-disk",
-    "ENV-DISTRI-neon"
+    "installer-disk"
   ]
 }
-

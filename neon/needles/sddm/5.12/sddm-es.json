@@ -17,13 +17,10 @@
       "ypos": 211
     }
   ],
-  "properties": [
-
-  ],
+  "properties": [],
   "tags": [
     "sddm-espanol",
     "sddm",
-    "ENV-DISTRI-neon",
     "ENV-NONENGLISH",
     "sddm-es",
     "ENV-TYPE-useredition",

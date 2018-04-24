@@ -27,7 +27,6 @@
   ],
   "properties": [],
   "tags": [
-    "live-bootloader-uefi-oem",
-    "ENV-DISTRI-neon"
+    "live-bootloader-uefi-oem"
   ]
 }

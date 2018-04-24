@@ -11,8 +11,6 @@
   ],
   "properties": [],
   "tags": [
-    "calamares-installer-disk",
-    "ENV-DISTRI-neon"
+    "calamares-installer-disk"
   ]
 }
-

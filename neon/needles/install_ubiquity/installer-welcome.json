@@ -11,7 +11,6 @@
   ],
   "properties": [],
   "tags": [
-    "installer-welcome",
-    "ENV-DISTRI-neon"
+    "installer-welcome"
   ]
 }

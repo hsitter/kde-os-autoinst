@@ -51,8 +51,6 @@
   ],
   "properties": [],
   "tags": [
-    "calamares-installer-disk-erase-selected",
-    "ENV-DISTRI-neon"
+    "calamares-installer-disk-erase-selected"
   ]
 }
-

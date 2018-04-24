@@ -11,7 +11,6 @@
   ],
   "properties": [],
   "tags": [
-    "ksmserver-shutdown",
-    "ENV-DISTRI-neon"
+    "ksmserver-shutdown"
   ]
 }

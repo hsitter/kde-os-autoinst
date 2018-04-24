@@ -31,8 +31,6 @@
   "tags": [
     "bootloader",
     "live-bootloader-uefi",
-    "ENV-DISTRI-neon",
     "live-bootloader-uefi-broken"
   ]
 }
-

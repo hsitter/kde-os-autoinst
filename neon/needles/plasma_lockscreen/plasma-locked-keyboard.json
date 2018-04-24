@@ -9,12 +9,9 @@
       "ypos": 356
     }
   ],
-  "properties": [
-
-  ],
+  "properties": [],
   "tags": [
     "plasma-locked-keyboard",
-    "ENV-DISTRI-neon",
     "ENV-TYPE-devedition-gitunstable"
   ]
 }

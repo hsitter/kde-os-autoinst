@@ -9,12 +9,9 @@
       "ypos": 737.6666666666665
     }
   ],
-  "properties": [
-
-  ],
+  "properties": [],
   "tags": [
     "sddm-choose-session",
-    "ENV-DISTRI-neon",
     "ENV-TYPE-devedition-gitunstable"
   ]
 }

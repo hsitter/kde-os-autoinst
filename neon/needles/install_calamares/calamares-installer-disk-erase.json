@@ -11,8 +11,6 @@
   ],
   "properties": [],
   "tags": [
-    "calamares-installer-disk-erase",
-    "ENV-DISTRI-neon"
+    "calamares-installer-disk-erase"
   ]
 }
-

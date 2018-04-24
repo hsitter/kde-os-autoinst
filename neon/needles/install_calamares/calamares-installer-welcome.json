@@ -51,8 +51,6 @@
   ],
   "properties": [],
   "tags": [
-    "calamares-installer-welcome",
-    "ENV-DISTRI-neon"
+    "calamares-installer-welcome"
   ]
 }
-

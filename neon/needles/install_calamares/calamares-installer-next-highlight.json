@@ -12,8 +12,6 @@
   "properties": [],
   "tags": [
     "calamares-installer-next",
-    "calamares-installer-next-highlight",
-    "ENV-DISTRI-neon"
+    "calamares-installer-next-highlight"
   ]
 }
-

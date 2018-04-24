@@ -28,7 +28,6 @@
   "properties": [],
   "tags": [
     "live-desktop",
-    "live-desktop-useredition",
-    "ENV-DISTRI-neon"
+    "live-desktop-useredition"
   ]
 }

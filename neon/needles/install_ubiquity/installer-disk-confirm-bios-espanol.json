@@ -30,8 +30,6 @@
     "installer-disk-confirm-espanol",
     "installer-disk-confirm-bios-espanol",
     "installer-disk-confirm",
-    "ENV-DISTRI-neon",
     "ENV-NONENGLISH"
   ]
 }
-

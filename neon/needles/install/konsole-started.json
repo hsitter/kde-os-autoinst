@@ -28,7 +28,6 @@
   "properties": [],
   "tags": [
     "konsole",
-    "konsole-started",
-    "ENV-DISTRI-neon"
+    "konsole-started"
   ]
 }

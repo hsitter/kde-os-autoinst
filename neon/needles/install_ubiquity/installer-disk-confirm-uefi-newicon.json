@@ -30,7 +30,6 @@
     "installer-disk-confirm",
     "installer-disk-confirm-uefi",
     "installer-disk-confirm-uefi-newicon",
-    "workaround",
-    "ENV-DISTRI-neon"
+    "workaround"
   ]
 }

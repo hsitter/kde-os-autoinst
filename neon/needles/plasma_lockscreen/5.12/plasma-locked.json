@@ -25,12 +25,9 @@
       "ypos": 595
     }
   ],
-  "properties": [
-
-  ],
+  "properties": [],
   "tags": [
     "plasma-locked",
-    "ENV-DISTRI-neon",
     "ENV-TYPE-devedition-gitstable",
     "ENV-TYPE-userltsedition",
     "ENV-TYPE-useredition"

@@ -19,7 +19,6 @@
   ],
   "properties": [],
   "tags": [
-    "ksmserver-logout",
-    "ENV-DISTRI-neon"
+    "ksmserver-logout"
   ]
 }

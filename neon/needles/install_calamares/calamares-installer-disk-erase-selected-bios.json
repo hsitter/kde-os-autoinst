@@ -52,8 +52,6 @@
   "properties": [],
   "tags": [
     "calamares-installer-disk-erase-selected",
-    "calamares-installer-disk-erase-selected-bios",
-    "ENV-DISTRI-neon"
+    "calamares-installer-disk-erase-selected-bios"
   ]
 }
-

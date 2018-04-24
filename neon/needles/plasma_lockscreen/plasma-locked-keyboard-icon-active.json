@@ -9,13 +9,10 @@
       "ypos": 733
     }
   ],
-  "properties": [
-
-  ],
+  "properties": [],
   "tags": [
     "plasma-locked-keyboard-icon-active",
     "plasma-locked-keyboard-icon",
-    "ENV-DISTRI-neon",
     "ENV-TYPE-devedition-gitunstable"
   ]
 }

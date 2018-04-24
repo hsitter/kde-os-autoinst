@@ -13,7 +13,6 @@
   "tags": [
     "installer-timezone-espanol",
     "installer-timezone",
-    "ENV-DISTRI-neon",
     "ENV-NONENGLISH"
   ]
 }

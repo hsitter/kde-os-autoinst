@@ -12,7 +12,6 @@
   "properties": [],
   "tags": [
     "installer-show-old",
-    "installer-show",
-    "ENV-DISTRI-neon"
+    "installer-show"
   ]
 }

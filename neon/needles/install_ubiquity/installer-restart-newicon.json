@@ -13,7 +13,6 @@
   "tags": [
     "installer-restart",
     "installer-restart-newicon",
-    "workaround",
-    "ENV-DISTRI-neon"
+    "workaround"
   ]
 }

@@ -28,7 +28,6 @@
   "properties": [],
   "tags": [
     "installer-disk-confirm",
-    "installer-disk-confirm-uefi",
-    "ENV-DISTRI-neon"
+    "installer-disk-confirm-uefi"
   ]
 }
