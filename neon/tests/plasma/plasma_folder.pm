@@ -47,6 +47,8 @@ sub run {
     if ($ENV{TYPE} eq 'devedition-gitunstable' && match_has_tag('folder-desktop-512')) {
         record_soft_failure "Screen had Plasma 5.12 icons but unstable should't have them!"
     }
+
+    send_key 'XF86PowerOff';
 }
 
 sub test_flags {
