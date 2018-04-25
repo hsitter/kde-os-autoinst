@@ -49,6 +49,7 @@ sub run {
     }
 
     send_key 'XF86PowerOff';
+    assert_screen 'folder-desktop', 8;
 }
 
 sub test_flags {
