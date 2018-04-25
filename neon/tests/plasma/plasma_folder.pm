@@ -48,8 +48,8 @@ sub run {
         record_soft_failure "Screen had Plasma 5.12 icons but unstable should't have them!"
     }
 
-    power 'reset';
-    assert_screen 'folder-desktop', 8;
+    power 'acpi';
+    assert_screen 'dolphin', 8;
 }
 
 sub test_flags {
