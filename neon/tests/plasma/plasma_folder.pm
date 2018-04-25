@@ -51,6 +51,7 @@ sub run {
     # test that powerdevil works which was broken in Plasma 5.12
     # it would be preferable to send XF86PowerOff but alas openqa can't
     x11_start_program 'konsole';
+    assert_and_click 'konsole-started';
     type_string 'qdbus org.kde.Solid.PowerManagement /org/kde/Solid/PowerManagement/Actions/HandleButtonEvents org.kde.Solid.PowerManagement.Actions.HandleButtonEvents.lidAction';
     send_key 'ret';
     assert_screen 'powermanagement-dbus';
