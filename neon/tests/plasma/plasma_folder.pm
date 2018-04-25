@@ -48,7 +48,7 @@ sub run {
         record_soft_failure "Screen had Plasma 5.12 icons but unstable should't have them!"
     }
 
-    send_key 'ctrl-alt-delete';
+    send_key 'power';
     assert_screen 'folder-desktop', 8;
 }
 
