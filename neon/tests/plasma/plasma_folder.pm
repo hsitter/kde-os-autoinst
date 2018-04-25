@@ -48,8 +48,14 @@ sub run {
         record_soft_failure "Screen had Plasma 5.12 icons but unstable should't have them!"
     }
 
-    power 'acpi';
-    assert_screen 'dolphin', 8;
+    send_key 'alt-space';
+    type_string 'konsole';
+    send_key 'ret';
+    type_string 'konsole';
+    type_string 'qdbus org.kde.Solid.PowerManagement /org/kde/Solid/PowerManagement/Actions/HandleButtonEvents org.kde.Solid.PowerManagement.Actions.HandleButtonEvents.lidAction';
+    send_key 'ret';
+
+    assert_screen 'dolphin';
 }
 
 sub test_flags {
