@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "height": 44,
+      "match": 95,
+      "type": "match",
+      "width": 625,
+      "xpos": 0,
+      "ypos": 58
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "powermanagement-dbus"
+  ]
+}
+

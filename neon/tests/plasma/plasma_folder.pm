@@ -48,11 +48,12 @@ sub run {
         record_soft_failure "Screen had Plasma 5.12 icons but unstable should't have them!"
     }
 
+    # test that powerdevil works which was broken in Plasma 5.12
+    # it would be preferable to send XF86PowerOff but alas openqa can't
     x11_start_program 'konsole';
     type_string 'qdbus org.kde.Solid.PowerManagement /org/kde/Solid/PowerManagement/Actions/HandleButtonEvents org.kde.Solid.PowerManagement.Actions.HandleButtonEvents.lidAction';
     send_key 'ret';
-
-    assert_screen 'dolphin';
+    assert_screen 'powermanagement-dbus';
 }
 
 sub test_flags {
