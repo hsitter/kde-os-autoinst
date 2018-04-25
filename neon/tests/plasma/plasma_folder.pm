@@ -48,7 +48,7 @@ sub run {
         record_soft_failure "Screen had Plasma 5.12 icons but unstable should't have them!"
     }
 
-    x11_start_program 'konsole'
+    x11_start_program 'konsole';
     type_string 'qdbus org.kde.Solid.PowerManagement /org/kde/Solid/PowerManagement/Actions/HandleButtonEvents org.kde.Solid.PowerManagement.Actions.HandleButtonEvents.lidAction';
     send_key 'ret';
 
