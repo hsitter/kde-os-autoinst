@@ -56,8 +56,7 @@ sub run {
     #send_key 'ret';
     #assert_screen 'powermanagement-dbus';
 
-    assert_script_run 'wget ' . data_url('chromium_install.rb'),  16;
-    assert_script_sudo 'ruby chromium_install.rb ', 60 * 30;
+    assert_script_sudo 'apt-get install -y chromium-browser', 60 * 30;
     x11_start_program 'chromium-browser';
     assert_screen 'dolphin';
 }
