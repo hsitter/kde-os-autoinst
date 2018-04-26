@@ -54,8 +54,12 @@ sub run {
     #assert_and_click 'konsole-started';
     #type_string 'qdbus org.kde.Solid.PowerManagement /org/kde/Solid/PowerManagement/Actions/HandleButtonEvents org.kde.Solid.PowerManagement.Actions.HandleButtonEvents.lidAction';
     #send_key 'ret';
-    power 'acpi';
-    assert_screen 'powermanagement-dbus';
+    #assert_screen 'powermanagement-dbus';
+
+    assert_script_run 'wget ' . data_url('chromium_install.rb'),  16;
+    assert_script_sudo 'ruby chromium_install.rb ', 60 * 30;
+    x11_start_program 'chromium-browser';
+    assert_screen 'dolphin';
 }
 
 sub test_flags {
