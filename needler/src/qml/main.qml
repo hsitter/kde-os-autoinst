@@ -288,14 +288,14 @@ ApplicationWindow {
                             var xhr = new XMLHttpRequest;
                             xhr.open("GET", path);
                             xhr.onreadystatechange = function() {
-                                if (xhr.readyState == XMLHttpRequest.DONE) {
+                                if (xhr.readyState === XMLHttpRequest.DONE) {
                                     var a = JSON.parse(xhr.responseText);
                                     for (var i in a.area) {
                                         console.debug("area " + a.area[i])
                                         var select = selector.createObject()
                                         select.fromObject(a.area[i])
 
-                                        if (i == a.area.length - 1) { // last
+                                        if (i === a.area.length - 1) { // last
                                             select.clickArea = true
                                         }
                                         selectorModel.append(select)
