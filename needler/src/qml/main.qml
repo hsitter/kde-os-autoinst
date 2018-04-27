@@ -109,16 +109,12 @@ ApplicationWindow {
         ColumnLayout {
             Layout.margins: fontMetrics.height / 4
 
-            // TODO: I do not know how properties work, they maybe should be
-            //   presented like tags - sitter
             Label { text: "Properties" }
-            TextArea {
-                placeholderText: "..."
-//                wrapMode: TextEdit.Wrap
-                text: selectorModel.properties
-                // FIXME: these are binding loops
-                // would need async timer or something
-                onTextChanged: { selectorModel.properties = text.split(',') }
+            ColumnLayout {
+                PropertyCheckBox {
+                    key: 'workaround'
+                    model: selectorModel.properties
+                }
             }
 
             Label { text: "Tags" }
