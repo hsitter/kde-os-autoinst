@@ -39,10 +39,11 @@ class JUnit
       # => JenkinsJunitBuilder::Case::RESULT_SKIPPED
     }.freeze
 
-    REPO = 'sysadmin/neon-openqa'.freeze
+    REPO = 'apachelogger/kde-os-autoinst'.freeze
     EXPECTATION_URL =
-      format('https://cgit.kde.org/%s.git/plain/',
-             REPO).freeze
+      format('https://raw.githubusercontent.com/%s/%s',
+             REPO,
+             REV && !REV.empty? ? REV : 'master').freeze
 
     attr_reader :detail
 
