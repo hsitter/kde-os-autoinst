@@ -27,7 +27,13 @@ sub run() {
         # enroll the default keys to enable secureboot.
         # In the core.pm we'll then assert that secureboot is on.
         # In first_start.pm we'll further assert that secureboot is still on.
-        send_key_until_needlematch 'ovmf', 'f2';
+
+        # Use a fairly low timeout for the f2 trigger. The default 1 second
+        # timeout might well cause us to shoot past tianocore and into the ISO.
+        # Checking more often is more expensive, but should prevent this from
+        # failing. Try this for only 10 seconds. If we aren't in OVMF by then
+        # something definitely went wrong.
+        send_key_until_needlematch 'ovmf', 'f2', 10 * 4, 0.25;
         send_key_until_needlematch 'ovmf-select-bootmgr', 'down';
         send_key 'ret';
         send_key_until_needlematch 'ovmf-bootmgr-shell', 'up'; # up is faster
