@@ -56,9 +56,9 @@ sub run {
     #send_key 'ret';
     #assert_screen 'powermanagement-dbus';
 
-    assert_script_sudo 'apt-get install -y chromium-browser', 60 * 30;
-    x11_start_program 'chromium-browser';
-    assert_screen 'dolphin';
+    #assert_script_sudo 'apt-get install -y chromium-browser', 60 * 30;
+    #x11_start_program 'chromium-browser';
+    #assert_screen 'dolphin';
 }
 
 sub test_flags {
