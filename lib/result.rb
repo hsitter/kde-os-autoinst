@@ -451,7 +451,12 @@ module OSAutoInst
     end
 
     def result_suites
-      test_files.collect { |test_file| ResultSuite.new(test_file) }
+      # missing files are ignored. Could also make this opt-in fatal. No use
+      # for this as junit (which wants to fail) does so in its own code
+      test_files.collect do |test_file|
+        next nil unless File.exist?(test_file)
+        ResultSuite.new(test_file)
+      end.compact
     end
 
     private
