@@ -59,7 +59,7 @@ sub run {
     assert_and_click 'plasma-locked-keyboard-q';
     assert_and_click 'plasma-locked-keyboard-q';
     # qq in password field
-    assert_screen 'plasma-locked-keyboard-qq';
+    assert_screen 'plasma-locked-keyboard-qq', no_wait => 1;
     send_key 'backspace';
     send_key 'backspace';
     assert_and_click 'plasma-locked-keyboard-icon-active';
