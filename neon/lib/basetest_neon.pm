@@ -112,8 +112,9 @@ sub boot_to_dm {
     }
 
     # Move mouse to make sure sddm isn't idle before we return.
+    # Make sure to hide it afterwards, lest it triggers hovers.
     mouse_set(1, 1);
-    mouse_set(0, 0);
+    mouse_hide;
 }
 
 # Waits for system to boot to desktop.
