@@ -30,6 +30,8 @@
     "plasma-locked",
     "ENV-TYPE-devedition-gitstable",
     "ENV-TYPE-userltsedition",
-    "ENV-TYPE-useredition"
+    "ENV-TYPE-useredition",
+    "plasma-locked-idle"
   ]
 }
+
