@@ -47,18 +47,6 @@ sub run {
     if ($ENV{TYPE} eq 'devedition-gitunstable' && match_has_tag('folder-desktop-512')) {
         record_soft_failure "Screen had Plasma 5.12 icons but unstable should't have them!"
     }
-
-    # test that powerdevil works which was broken in Plasma 5.12
-    # it would be preferable to send XF86PowerOff but alas openqa can't
-    #x11_start_program 'konsole';
-    #assert_and_click 'konsole-started';
-    #type_string 'qdbus org.kde.Solid.PowerManagement /org/kde/Solid/PowerManagement/Actions/HandleButtonEvents org.kde.Solid.PowerManagement.Actions.HandleButtonEvents.lidAction';
-    #send_key 'ret';
-    #assert_screen 'powermanagement-dbus';
-
-    #assert_script_sudo 'apt-get install -y chromium-browser', 60 * 30;
-    #x11_start_program 'chromium-browser';
-    #assert_screen 'dolphin';
 }
 
 sub test_flags {
