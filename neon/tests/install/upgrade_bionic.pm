@@ -71,6 +71,11 @@ sub run {
     {
         assert_script_sudo 'tar -cJf /tmp/dist-upgrade.tar.xz /var/log/dist-upgrade/';
         upload_logs '/tmp/dist-upgrade.tar.xz';
+
+        my $neon_list = '/etc/apt/sources.list.d/neon.list';
+        assert_script_run "[-e $neon_list]"
+        validate_script_output "cat $neon_list",
+            sub { m{^(\s?)deb(\s?)http://archive.neon.kde.org/user(\s?)bionic(\s?)main(\s?)$} }
     }
     select_console 'x11';
 
