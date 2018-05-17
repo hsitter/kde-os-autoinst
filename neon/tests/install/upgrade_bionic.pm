@@ -73,7 +73,7 @@ sub run {
         upload_logs '/tmp/dist-upgrade.tar.xz';
 
         validate_script_output "cat /etc/apt/sources.list.d/neon.list",
-            sub { m{^(\s?)deb(\s?)http://archive.neon.kde.org/user(\s?)bionic(\s?)main(\s?)$} };
+            sub { m{.*^(\s?)deb(\s?)http://archive.neon.kde.org/user(\s?)bionic(\s?)main.*} };
     }
     select_console 'x11';
 
