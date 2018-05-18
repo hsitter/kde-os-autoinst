@@ -51,6 +51,7 @@ sub run {
 
     lock_screen;
     assert_screen('plasma-locked-idle');
+    mouse_set(1, 1);
     mouse_hide;
 
     # virtual keyboard
