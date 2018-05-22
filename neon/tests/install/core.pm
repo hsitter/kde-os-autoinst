@@ -44,6 +44,10 @@ sub run {
         }
 
         if (get_var('OPENQA_APT_UPGRADE')) {
+            if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
+                die 'You cannot upgrade on an offline test!!!'
+            }
+
             assert_script_sudo 'apt update',  2 * 60;
             my $pkgs = get_var('OPENQA_APT_UPGRADE');
             if ($pkgs eq "") {
