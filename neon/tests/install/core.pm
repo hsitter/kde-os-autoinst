@@ -67,7 +67,7 @@ sub run {
             #   sure all deps are installed. Or maybe even install them one
             #   by one to make sure they actually work?
             # Make sure the preinstalled repo is actually being used.
-            validate_script_output 'apt-get policy bcmwl-kernel-source',
+            validate_script_output 'apt-cache policy bcmwl-kernel-source',
                                     sub { m{.*/var/lib/preinstalled-pool*} };
         }
 
