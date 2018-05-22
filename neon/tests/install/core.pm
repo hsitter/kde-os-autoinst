@@ -62,6 +62,13 @@ sub run {
         # installation works as expected.
         if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
             assert_script_sudo 'nmcli networking off';
+            # TODO: This isn't the most reliable assertion.
+            #   Ideally we'd have a list of all packages simulate them to make
+            #   sure all deps are installed. Or maybe even install them one
+            #   by one to make sure they actually work?
+            # Make sure the preinstalled repo is actually being used.
+            validate_script_output 'apt-get policy bcmwl-kernel-source',
+                                    sub { m{.*/var/lib/preinstalled-pool*} };
         }
 
         # TODO: maybe control via env var?
