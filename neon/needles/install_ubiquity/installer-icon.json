@@ -1,12 +1,12 @@
 {
   "area": [
     {
-      "height": 50,
+      "height": 49,
       "match": 90,
       "type": "match",
-      "width": 41,
-      "xpos": 34,
-      "ypos": 17
+      "width": 38,
+      "xpos": 35,
+      "ypos": 19
     }
   ],
   "properties": [],
@@ -14,3 +14,4 @@
     "installer-icon"
   ]
 }
+
