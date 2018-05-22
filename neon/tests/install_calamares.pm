@@ -35,18 +35,8 @@ sub run {
     {
         assert_script_run 'wget ' . data_url('geoip_service_calamares.rb'),  16;
         script_sudo 'systemd-run ruby `pwd`/geoip_service_calamares.rb', 16;
-
-        # Disable networking during installation to ensure network-less
-        # installation works as expected.
-        if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
-            assert_script_sudo 'nmcli networking off';
-        }
     }
     select_console 'x11';
-
-    if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
-        assert_screen 'plasma-nm-offline';
-    }
 
     # Installer
     assert_and_click 'calamares-installer-icon';

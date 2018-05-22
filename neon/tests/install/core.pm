@@ -54,6 +54,12 @@ sub run {
             assert_script_sudo 'DEBIAN_FRONTEND=noninteractive apt -y ' . $pkgs, 30 * 60;
         }
 
+        # Disable networking during installation to ensure network-less
+        # installation works as expected.
+        if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
+            assert_script_sudo 'nmcli networking off';
+        }
+
         # TODO: maybe control via env var?
         # assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
         # assert_script_run 'ruby enable_qdebug.rb', 16;
@@ -62,6 +68,11 @@ sub run {
 
     # Leave system as we have found it.
     assert_screen 'live-desktop', 5 * 60;
+
+    if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
+        assert_screen 'plasma-nm-offline';
+    }
+
     $testapi::username = $user;
     $testapi::password = $password;
 }
