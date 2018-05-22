@@ -123,8 +123,6 @@ if (testapi::get_var("INSTALLATION")) {
         'devedition-gitunstable' => "tests/install_calamares.pm",
         '' => "tests/install_ubiquity.pm"
     );
-    autotest::loadtest('tests/install/bootloader.pm');
-    autotest::loadtest('tests/install/core.pm');
     if (testapi::get_var("INSTALLATION_OEM")) {
         autotest::loadtest('tests/install/ubiquity_oem.pm');
     } else {

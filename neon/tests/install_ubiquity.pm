@@ -16,20 +16,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-use base "basetest";
+use base "livetest_neon";
+use strict;
 use testapi;
 
 sub run {
+    my ($self) = shift;
+    $self->boot;
+
     # Divert installation data to live data.
     my $user = $testapi::username;
     my $password = $testapi::password;
     $testapi::username = 'neon';
     $testapi::password = '';
-
-    # wait for the desktop to appear
-    assert_screen 'live-desktop', 360;
-
-    wait_still_screen;
 
     select_console 'log-console';
     {
@@ -37,6 +36,8 @@ sub run {
         script_sudo 'systemd-run ruby `pwd`/geoip_service.rb', 16;
     }
     select_console 'x11';
+
+    $self->maybe_switch_offline;
 
     # Installer
     assert_and_click "installer-icon";
@@ -111,14 +112,6 @@ sub post_fail_hook {
     my ($self) = shift;
     $self->SUPER::post_fail_hook;
 
-    select_console 'log-console';
-
-    # Make sure networking is on (we disable it during installation).
-    assert_script_sudo 'nmcli networking on';
-
-    # Uploads end up in wok/ulogs/
-    assert_script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
-    upload_logs '/tmp/journal.txt';
     assert_script_sudo 'tar cfJ /tmp/installer.tar.xz /var/log/installer';
     upload_logs '/tmp/installer.tar.xz';
 }

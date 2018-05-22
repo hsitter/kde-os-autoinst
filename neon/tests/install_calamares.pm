@@ -16,12 +16,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-use base "basetest";
+use base "livetest_neon";
 use strict;
 use testapi;
 
 sub run {
     my ($self) = shift;
+    $self->boot;
 
     # Divert installation data to live data.
     my $user = $testapi::username;
@@ -29,14 +30,14 @@ sub run {
     $testapi::username = 'neon';
     $testapi::password = '';
 
-    wait_still_screen;
-
     select_console 'log-console';
     {
         assert_script_run 'wget ' . data_url('geoip_service_calamares.rb'),  16;
         script_sudo 'systemd-run ruby `pwd`/geoip_service_calamares.rb', 16;
     }
     select_console 'x11';
+
+    $self->maybe_switch_offline;
 
     # Installer
     assert_and_click 'calamares-installer-icon';
@@ -86,7 +87,7 @@ sub run {
     select_console 'log-console';
     {
         # Make sure networking is on (we disable it during installation).
-        assert_script_sudo 'nmcli networking on';
+        $self->online;
         $self->upload_calamares_logs;
     }
     select_console 'x11';
@@ -107,10 +108,6 @@ sub run {
 sub upload_calamares_logs {
     # Uploads end up in wok/ulogs/
     # Older calamari used this path:
-    script_run 'cd /home/neon/.cache';
-    script_run 'ls -lahR calamares';
-    script_run 'ls -lahR Calamares';
-    script_run 'ls -lah';
     upload_logs '/home/neon/.cache/Calamares/calamares/Calamares.log', failok => 1;
     # Newer this one:
     upload_logs '/home/neon/.cache/Calamares/session.log', failok => 1;
@@ -120,18 +117,8 @@ sub upload_calamares_logs {
 
 sub post_fail_hook {
     my ($self) = shift;
-    # $self->SUPER::post_fail_hook;
-
-    select_console 'log-console';
-
-    # Make sure networking is on (we disable it during installation).
-    assert_script_sudo 'nmcli networking on';
-
+    $self->SUPER::post_fail_hook;
     $self->upload_calamares_logs;
-    upload_logs '/home/neon/.xsession-errors', failok => 1;
-
-    script_sudo 'journalctl --no-pager -b 0 > /tmp/journal.txt';
-    upload_logs '/tmp/journal.txt', failok => 1;
 }
 
 sub test_flags {
