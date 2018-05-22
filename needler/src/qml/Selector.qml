@@ -76,6 +76,7 @@ Rectangle {
         } else if (x > image.width) {
             x = image.width - minimumOffset
         }
+        x = Math.round(x)
     }
 
     onYChanged: {
@@ -84,12 +85,14 @@ Rectangle {
         } else if (y > image.height) {
             y = image.height - minimumOffset
         }
+        y = Math.round(y)
     }
 
     onWidthChanged: {
         if (x + width > image.width) {
             width = image.width - x
         }
+        width = Math.round(width)
         dimensionHint()
     }
 
@@ -97,6 +100,7 @@ Rectangle {
         if (y + height > image.height) {
             height = image.height - y
         }
+        height = Math.round(height)
         dimensionHint()
     }
 
