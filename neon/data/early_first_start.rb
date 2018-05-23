@@ -34,3 +34,9 @@ system('systemctl stop apt-daily.service')
 puts "#{$0} Adding systemd-coredump."
 system 'apt update' || raise
 system 'apt install -y systemd-coredump' || raise
+
+# ttyS1 is set up by our kvm wrapper, it ordinarily isn't available
+puts "#{$0} Letting systemd-journald log to ttyS1."
+system 'sed -i "s%.*ForwardToConsole=.*%ForwardToConsole=yes%g" /etc/systemd/journald.conf' || raise
+system 'sed -i "s%.*TTYPath=.*%TTYPath=/dev/ttyS1%g" /etc/systemd/journald.conf' || raise
+system 'systemctl restart systemd-journald' || raise
