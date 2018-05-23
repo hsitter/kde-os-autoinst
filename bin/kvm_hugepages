@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-
-hugepages = '/dev/hugepages'
-args = ARGV.dup
-args.unshift('-mem-path', hugepages) if File.exist?(hugepages)
-args.unshift('/usr/bin/kvm')
-
-warn "executing #{args}"
-exec(*args)

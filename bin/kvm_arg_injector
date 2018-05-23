@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+
+# Increase performance a bit by hugepaging for the VMs
+hugepages = '/dev/hugepages'
+args = ARGV.dup
+args.unshift('-mem-path', hugepages) if File.exist?(hugepages)
+args.unshift('/usr/bin/kvm')
+
+# os-autoinst uses ttyS0 to actually do serial interaction (kbd IO etc)
+# Set ttyS1 to a special log file which we'll then configure as console target
+# for journald. This way we'll get journal output even if there's a problem on
+# shutdown/startup which we'd otherwise have no reasonable means to debug.
+ulogs = File.join(Dir.pwd, 'ulogs')
+FileUtils.mkpath(ulogs, verbose: true) unless File.exist?(ulogs)
+args << '-chardev' << "file,id=charserial1,path=#{ulogs}/console-journal.log"
+args << '-device' << 'isa-serial,chardev=charserial1,id=serial1'
+
+warn "executing #{args}"
+exec(*args)
