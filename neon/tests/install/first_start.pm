@@ -91,7 +91,9 @@ sub run {
     reset_consoles;
 
     # Now grub ought to be appearing.
-    assert_screen "grub", 60;
+    # Do not use the global wait limit for screenshots, otherwise we might
+    # shoot past grub in the time between
+    assert_screen "grub", 60, no_wait => 1;
     send_key 'ret'; # start first entry
 
     # Once we are on sddm, hide grub again to speed up regular boots.
