@@ -148,6 +148,7 @@ if (testapi::get_var("INSTALLATION")) {
 } elsif (testapi::get_var("PLASMA_DESKTOP")) {
     autotest::loadtest('tests/plasma/plasma_folder.pm');
     autotest::loadtest('tests/plasma/plasma_lockscreen.pm');
+    autotest::loadtest('tests/plasma/plasma_favorite.pm');
 } else {
     testapi::diag 'ERROR FAILURE BAD ERROR no clue what to run!';
     exit 1;
