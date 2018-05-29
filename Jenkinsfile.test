@@ -16,7 +16,7 @@ if (env.TYPE == null) {
   error 'TYPE param not set. Cannot run install test without a type.'
 }
 
-if (env.TESTS_TO_RUN == null && env.PLASMA_DESKTOP == null) {
+if (env.TESTS_TO_RUN == null && env.PLASMA_DESKTOP == null && env.OPENQA_SNAP_NAME == null) {
   error 'TESTS_TO_RUN param not set. Cannot run nothing.'
 }
 
