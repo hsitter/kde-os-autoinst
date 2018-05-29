@@ -129,6 +129,17 @@ if (testapi::get_var("INSTALLATION")) {
         autotest::loadtest($test{$ENV{TYPE}} || $test{''});
     }
     autotest::loadtest('tests/install/first_start.pm');
+} elsif (testapi::get_var('OPENQA_SNAP_NAME')) {
+    print("Running a snap test...\n");
+    my $snap_name = testapi::get_var('OPENQA_SNAP_NAME');
+    my $script = "tests/snap/$snap_name.pm";
+    if (-f join('/', testapi::get_var('CASEDIR'), $script)) {
+        print("Found specific test for snap $script\n");
+        autotest::loadtest($script);
+    } else {
+        print("Using generic test for snap $snap_name\n");
+        autotest::loadtest("tests/snap/generic.pm");
+    }
 } elsif (testapi::get_var("TESTS_TO_RUN")) {
     my $testpaths = testapi::get_var("TESTS_TO_RUN");
     for my $testpath (@$testpaths) {
