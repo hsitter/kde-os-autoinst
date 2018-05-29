@@ -13,5 +13,6 @@
   "tags": [
     "sddm-plasma-wayland",
     "ENV-TYPE-devedition-gitunstable"
+    "ENV-TYPE-devedition-gitstable"
   ]
 }

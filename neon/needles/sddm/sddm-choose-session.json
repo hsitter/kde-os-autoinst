@@ -12,6 +12,7 @@
   "properties": [],
   "tags": [
     "sddm-choose-session",
-    "ENV-TYPE-devedition-gitunstable"
+    "ENV-TYPE-devedition-gitunstable",
+    "ENV-TYPE-devedition-gitstable"
   ]
 }

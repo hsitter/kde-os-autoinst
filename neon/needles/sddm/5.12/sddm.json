@@ -24,7 +24,6 @@
     "sddm",
     "sddm-512",
     "ENV-TYPE-useredition",
-    "ENV-TYPE-userltsedition",
-    "ENV-TYPE-devedition-gitstable"
+    "ENV-TYPE-userltsedition"
   ]
 }
