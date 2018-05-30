@@ -154,8 +154,12 @@ sub enable_snapd {
     my $channel = get_var('OPENQA_SNAP_CHANNEL');
     assert_script_sudo "snap switch --$channel kde-frameworks-5";
     assert_script_sudo 'snap refresh', 30 * 60;
+    script_run "snap info kde-frameworks-5 > /tmp/runtime.info"
+    upload_logs '/tmp/runtime.info';
     if ($args{auto_install_snap}) {
         assert_script_sudo "snap install --$channel $snap", 15 * 60;
+        script_run "snap info $snap > /tmp/snap.info"
+        upload_logs '/tmp/snap.info';
     }
 
     select_console 'x11';
