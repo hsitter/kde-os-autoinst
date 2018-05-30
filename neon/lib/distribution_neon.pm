@@ -7,6 +7,7 @@ sub init() {
     my ($self) = @_;
     $self->SUPER::init();
     $self->init_consoles();
+    $self->{console_sudo_cache} = %{()};
 }
 
 sub x11_start_program($$$) {
@@ -74,18 +75,58 @@ sub init_consoles {
 }
 
 sub script_sudo($$) {
-    my $self = shift;
     # Clear the TTY first, otherwise we may needle match a previous sudo
     # password query and get confused. Clearing first make sure the TTY is empty
     # and we'll either get a new password query or none (still in cache).
     type_string "clear\n";
-    return $self->SUPER::script_sudo(@_);
+
+    # NB: this is an adjusted code copy from os-autoinst distribution, we're
+    #   caching sudo results as by default sudo has a cache anyway.
+    my ($self, $prog, $wait) = @_;
+
+    # Iff the current console is a tty and it's been less than 4 minutes since
+    # the last auth we don't expect an auth and skip the auth needle.
+    # The time stamps are reset in activate_console which is only called after
+    # consoles get reset and switched to again, so this should be fairly ok.
+    # !tty never are cached. e.g. on x11 you could have multiple konsoles but
+    # since the sudo cache is per-shell we don't know if there is a cache.
+    use Scalar::Util 'blessed';
+    my $class = blessed($self->{consoles}{$testapi::selected_console});
+    my $is_tty = ($class =~ m/ttyConsole/);
+    my $last_auth = $self->{console_sudo_cache}{$testapi::selected_console};
+    my $need_auth = (!$is_tty || !$last_auth || (time() - $last_auth >= 4 * 60));
+    # Debug for now. Can be removed when someone stumbles upon this again.
+    print "sudo cache [tty: $is_tty, last_auth: $last_auth, need auth: $need_auth]:\n";
+
+    $wait //= 10;
+
+    my $str;
+    if ($wait > 0) {
+        $str  = testapi::hashed_string("SS$prog$wait");
+        $prog = "$prog; echo $str > /dev/$testapi::serialdev";
+    }
+    testapi::type_string "sudo $prog\n";
+    if ($need_auth) {
+        if (testapi::check_screen "sudo-passwordprompt", 3) {
+            testapi::type_password;
+            testapi::send_key "ret";
+
+            $self->{console_sudo_cache}{$testapi::selected_console} = time();
+        }
+    }
+    if ($str) {
+        return testapi::wait_serial($str, $wait);
+    }
+    return;
 }
 
 sub activate_console {
     my ($self, $console) = @_;
 
     diag "activating $console";
+
+    $self->{console_sudo_cache}{$console} = 0;
+
     if ($console eq 'log-console') {
         assert_screen 'tty6-selected';
 
