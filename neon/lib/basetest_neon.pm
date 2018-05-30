@@ -135,7 +135,7 @@ sub enable_snapd {
     my ($self, $args) = @_;
     select_console 'log-console';
     assert_script_sudo 'systemctl enable --now snapd.service';
-    assert_script_sudo 'snap switch --candidate kde-frameworks-5',;
+    assert_script_sudo 'snap refresh --candidate kde-frameworks-5';
     assert_script_sudo 'snap refresh', 30 * 60;
     select_console 'x11';
 }
