@@ -133,8 +133,9 @@ sub boot {
 }
 
 sub enable_snapd {
-    my ($self, $args) = @_;
-    my $channel = get_var('OPENQA_SNAP_CHANNEL');
+    my ($self, %args) = @_;
+
+    $args{auto_install_snap} //= 0;
 
     select_console 'log-console';
     assert_script_sudo 'systemctl enable --now snapd.service';
@@ -149,9 +150,20 @@ sub enable_snapd {
         @changes = @{decode_json($changes_json)->{result}};
     } while (@changes);
 
+    my $snap = get_var('OPENQA_SNAP_NAME');
+    my $channel = get_var('OPENQA_SNAP_CHANNEL');
     assert_script_sudo "snap switch --$channel kde-frameworks-5";
     assert_script_sudo 'snap refresh', 30 * 60;
+    if ($args{auto_install_snap}) {
+        assert_script_sudo "snap install --$channel $snap", 15 * 60;
+    }
+
     select_console 'x11';
+}
+
+sub enable_snapd_and_install_snap {
+    my ($self, $args) = @_;
+    return $self->enable_snapd(auto_install_snap => 1);
 }
 
 1;

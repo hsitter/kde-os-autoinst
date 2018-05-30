@@ -23,16 +23,12 @@ use testapi;
 sub run {
     my ($self) = @_;
     my $snap = get_var('OPENQA_SNAP_NAME');
-    my $channel = get_var('OPENQA_SNAP_CHANNEL');
 
     $self->boot;
-    $self->enable_snapd;
+    $self->enable_snapd_and_install_snap;
 
     x11_start_program 'konsole';
     assert_screen 'konsole';
-
-    assert_script_sudo "snap install --$channel $snap", 15 * 60;
-
     type_string "/snap/bin/$snap";
     send_key 'ret';
 

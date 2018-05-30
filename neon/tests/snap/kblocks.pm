@@ -1,4 +1,4 @@
-# Copyright (C) 2017 Harald Sitter <sitter@kde.org>
+# Copyright (C) 2018 Harald Sitter <sitter@kde.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -22,15 +22,12 @@ use testapi;
 
 sub run {
     my ($self) = @_;
+
     $self->boot;
-    $self->enable_snapd;
+    $self->enable_snapd_and_install_snap;
 
     x11_start_program 'konsole';
     assert_screen 'konsole';
-
-    assert_script_sudo 'snap remove kblocks', 5 * 60;
-    assert_script_sudo 'snap install kblocks', 15 * 60;
-
     type_string '/snap/bin/kblocks';
     send_key 'ret';
 
