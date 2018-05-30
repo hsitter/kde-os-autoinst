@@ -1,0 +1,49 @@
+{
+  "area": [
+    {
+      "height": 21,
+      "match": 75,
+      "type": "match",
+      "width": 75,
+      "xpos": 665,
+      "ypos": 223
+    },
+    {
+      "height": 32,
+      "match": 95,
+      "type": "match",
+      "width": 81,
+      "xpos": 387,
+      "ypos": 250
+    },
+    {
+      "height": 53,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 395,
+      "ypos": 401
+    },
+    {
+      "height": 52,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 394,
+      "ypos": 485
+    },
+    {
+      "height": 321,
+      "match": 95,
+      "type": "match",
+      "width": 429,
+      "xpos": 581,
+      "ypos": 329
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "okular"
+  ]
+}
+
