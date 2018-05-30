@@ -140,7 +140,7 @@ Rectangle {
         modal: true
         standardButtons: Dialog.Ok | Dialog.Cancel
 
-        contentItem: ColumnLayout {
+        ColumnLayout {
             RowLayout {
                 Label { text: "type" }
                 TextField { id:typeField; text: rect.type }
