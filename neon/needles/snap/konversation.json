@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "height": 21,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 317,
+      "ypos": 38
+    },
+    {
+      "height": 29,
+      "match": 95,
+      "type": "match",
+      "width": 130,
+      "xpos": 351,
+      "ypos": 296
+    },
+    {
+      "height": 192,
+      "match": 95,
+      "type": "match",
+      "width": 193,
+      "xpos": 691,
+      "ypos": 251
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "konversation"
+  ]
+}
+
