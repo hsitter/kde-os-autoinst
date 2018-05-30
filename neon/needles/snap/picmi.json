@@ -1,0 +1,49 @@
+{
+  "area": [
+    {
+      "height": 23,
+      "match": 95,
+      "type": "match",
+      "width": 50,
+      "xpos": 332,
+      "ypos": 171
+    },
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 124,
+      "xpos": 436,
+      "ypos": 5
+    },
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 105,
+      "xpos": 614,
+      "ypos": 144
+    },
+    {
+      "height": 26,
+      "match": 95,
+      "type": "match",
+      "width": 98,
+      "xpos": 749,
+      "ypos": 695
+    },
+    {
+      "height": 112,
+      "match": 95,
+      "type": "match",
+      "width": 134,
+      "xpos": 367,
+      "ypos": 239
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "picmi"
+  ]
+}
+

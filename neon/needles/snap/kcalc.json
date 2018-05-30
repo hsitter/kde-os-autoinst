@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 124,
+      "xpos": 719,
+      "ypos": 5
+    },
+    {
+      "height": 159,
+      "match": 95,
+      "type": "match",
+      "width": 105,
+      "xpos": 660,
+      "ypos": 141
+    },
+    {
+      "height": 27,
+      "match": 95,
+      "type": "match",
+      "width": 134,
+      "xpos": 765,
+      "ypos": 78
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kcalc"
+  ]
+}
+

@@ -1,0 +1,41 @@
+{
+  "area": [
+    {
+      "height": 21,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 667,
+      "ypos": 225
+    },
+    {
+      "height": 21,
+      "match": 95,
+      "type": "match",
+      "width": 45,
+      "xpos": 388,
+      "ypos": 255
+    },
+    {
+      "height": 38,
+      "match": 75,
+      "type": "match",
+      "width": 363,
+      "xpos": 506,
+      "ypos": 461
+    },
+    {
+      "height": 64,
+      "match": 75,
+      "type": "match",
+      "width": 370,
+      "xpos": 505,
+      "ypos": 502
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "bomber"
+  ]
+}
+

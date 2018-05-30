@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 124,
+      "xpos": 257,
+      "ypos": 5
+    },
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 44,
+      "xpos": 3,
+      "ypos": 35
+    },
+    {
+      "height": 89,
+      "match": 60,
+      "type": "match",
+      "width": 130,
+      "xpos": 456,
+      "ypos": 364
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kmplot"
+  ]
+}
+

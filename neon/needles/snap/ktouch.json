@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "height": 29,
+      "match": 95,
+      "type": "match",
+      "width": 344,
+      "xpos": 287,
+      "ypos": 259
+    },
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 124,
+      "xpos": 436,
+      "ypos": 5
+    },
+    {
+      "height": 26,
+      "match": 95,
+      "type": "match",
+      "width": 212,
+      "xpos": 391,
+      "ypos": 219
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "ktouch"
+  ]
+}
+

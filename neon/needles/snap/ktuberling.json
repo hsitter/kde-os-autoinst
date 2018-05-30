@@ -1,0 +1,65 @@
+{
+  "area": [
+    {
+      "height": 24,
+      "match": 95,
+      "type": "match",
+      "width": 57,
+      "xpos": 387,
+      "ypos": 253
+    },
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 124,
+      "xpos": 436,
+      "ypos": 5
+    },
+    {
+      "height": 18,
+      "match": 95,
+      "type": "match",
+      "width": 149,
+      "xpos": 630,
+      "ypos": 225
+    },
+    {
+      "height": 25,
+      "match": 95,
+      "type": "match",
+      "width": 49,
+      "xpos": 454,
+      "ypos": 354
+    },
+    {
+      "height": 27,
+      "match": 95,
+      "type": "match",
+      "width": 48,
+      "xpos": 593,
+      "ypos": 627
+    },
+    {
+      "height": 64,
+      "match": 95,
+      "type": "match",
+      "width": 112,
+      "xpos": 658,
+      "ypos": 377
+    },
+    {
+      "height": 26,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 393,
+      "ypos": 286
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "ktuberling"
+  ]
+}
+

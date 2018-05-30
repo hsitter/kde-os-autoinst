@@ -1,0 +1,41 @@
+{
+  "area": [
+    {
+      "height": 23,
+      "match": 95,
+      "type": "match",
+      "width": 41,
+      "xpos": 50,
+      "ypos": 55
+    },
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 124,
+      "xpos": 373,
+      "ypos": 26
+    },
+    {
+      "height": 206,
+      "match": 95,
+      "type": "match",
+      "width": 105,
+      "xpos": 229,
+      "ypos": 199
+    },
+    {
+      "height": 46,
+      "match": 95,
+      "type": "match",
+      "width": 134,
+      "xpos": 216,
+      "ypos": 439
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kbruch"
+  ]
+}
+

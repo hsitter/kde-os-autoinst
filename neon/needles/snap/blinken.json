@@ -1,0 +1,41 @@
+{
+  "area": [
+    {
+      "height": 21,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 691,
+      "ypos": 210
+    },
+    {
+      "height": 95,
+      "match": 95,
+      "type": "match",
+      "width": 130,
+      "xpos": 524,
+      "ypos": 262
+    },
+    {
+      "height": 64,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 793,
+      "ypos": 294
+    },
+    {
+      "height": 64,
+      "match": 95,
+      "type": "match",
+      "width": 242,
+      "xpos": 608,
+      "ypos": 409
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "blinken"
+  ]
+}
+

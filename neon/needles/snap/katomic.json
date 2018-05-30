@@ -1,0 +1,41 @@
+{
+  "area": [
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 124,
+      "xpos": 641,
+      "ypos": 163
+    },
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 56,
+      "xpos": 388,
+      "ypos": 193
+    },
+    {
+      "height": 65,
+      "match": 60,
+      "type": "match",
+      "width": 116,
+      "xpos": 687,
+      "ypos": 332
+    },
+    {
+      "height": 64,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 922,
+      "ypos": 496
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "katomic"
+  ]
+}
+

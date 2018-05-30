@@ -1,0 +1,41 @@
+{
+  "area": [
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 124,
+      "xpos": 336,
+      "ypos": 31
+    },
+    {
+      "height": 159,
+      "match": 95,
+      "type": "match",
+      "width": 105,
+      "xpos": 301,
+      "ypos": 111
+    },
+    {
+      "height": 26,
+      "match": 95,
+      "type": "match",
+      "width": 98,
+      "xpos": 749,
+      "ypos": 695
+    },
+    {
+      "height": 22,
+      "match": 95,
+      "type": "match",
+      "width": 134,
+      "xpos": 34,
+      "ypos": 131
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kgeography"
+  ]
+}
+

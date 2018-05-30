@@ -1,0 +1,41 @@
+{
+  "area": [
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 124,
+      "xpos": 704,
+      "ypos": 138
+    },
+    {
+      "height": 34,
+      "match": 75,
+      "type": "match",
+      "width": 264,
+      "xpos": 652,
+      "ypos": 407
+    },
+    {
+      "height": 19,
+      "match": 95,
+      "type": "match",
+      "width": 59,
+      "xpos": 525,
+      "ypos": 168
+    },
+    {
+      "height": 41,
+      "match": 75,
+      "type": "match",
+      "width": 53,
+      "xpos": 673,
+      "ypos": 443
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kollision"
+  ]
+}
+
