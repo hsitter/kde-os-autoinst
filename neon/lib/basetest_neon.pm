@@ -19,8 +19,9 @@
 package basetest_neon;
 use base 'basetest';
 
-use testapi;
+use JSON qw(decode_json);
 use strict;
+use testapi;
 
 sub new {
     my ($class, $args) = @_;
@@ -135,7 +136,18 @@ sub enable_snapd {
     my ($self, $args) = @_;
     select_console 'log-console';
     assert_script_sudo 'systemctl enable --now snapd.service';
-    assert_script_sudo 'snap refresh --candidate kde-frameworks-5';
+
+    # When turning on snapd it may schedule a whole bunch of stuff to update.
+    # Wait until all automatic changes are done. To establish that talk to
+    # the API and get in-progress changes.
+    my @changes = ();
+    do {
+        sleep 8;
+        my $changes_json = script_output 'curl --unix-socket /run/snapd.socket http:/v2/changes?select=in-progress';
+        @changes = @{decode_json($changes_json)->{result}};
+    } while (@changes);
+
+    assert_script_sudo 'snap switch --candidate kde-frameworks-5';
     assert_script_sudo 'snap refresh', 30 * 60;
     select_console 'x11';
 }
