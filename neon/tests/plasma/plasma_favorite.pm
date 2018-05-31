@@ -22,18 +22,26 @@ use strict;
 use testapi;
 
 sub run {
-    assert_screen 'folder-desktop', 30;
+    assert_screen 'folder-desktop';
 
     # Starts the Application Launcher
     assert_and_click 'kickoff';
     wait_still_screen;
     # Switches to the Application Tab
-    assert_and_click 'kickoff-application', 30;
+    assert_screen 'kickoff-favorite';
+    assert_and_click 'kickoff-application';
     assert_and_click 'kickoff-office';
     # Adds Okular in the favorites tab
-    assert_and_click 'kickoff-okular', "right", 20;
+    assert_and_click 'kickoff-okular', 'right';
     assert_and_click 'kickoff-add-to-favorite';
-    assert_screen 'kickoff-favorite', 30;
+    assert_screen 'kickoff-favorite-okular';
+    # Removes Okular from the favorites tab
+    assert_and_click 'kickoff-favorite-okular', 'right';
+    assert_and_click 'kickoff-remove-from-favorite';
+    assert_screen ['kickoff-favorite-okular', 'kickoff-favorite'], 60;
+    if (match_has_tag('kickoff-favorite-okular')) {
+        die 'Okular should not be visible on the favorite tab'
+    }
 }
  
 sub test_flags {
