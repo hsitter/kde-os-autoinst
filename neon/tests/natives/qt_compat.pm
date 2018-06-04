@@ -101,4 +101,16 @@ sub run {
     assert_screen 'folder-desktop', 30;
 }
 
+sub post_fail_hook {
+    my ($self) = shift;
+    $self->SUPER::post_fail_hook;
+
+    select_console 'log-console';
+
+    # Uploads end up in wok/ulogs/
+    assert_script_run 'apt-cache policy kwayland-data > /tmp/kwayland-policy.txt';
+    upload_logs '/tmp/kwayland-policy.txt'
+}
+
+
 1;
