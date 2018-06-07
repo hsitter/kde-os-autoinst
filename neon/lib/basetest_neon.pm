@@ -150,16 +150,21 @@ sub enable_snapd {
         @changes = @{decode_json($changes_json)->{result}};
     } while (@changes);
 
+    my $runtime = 'kde-frameworks-5';
     my $snap = get_var('OPENQA_SNAP_NAME');
     my $channel = get_var('OPENQA_SNAP_CHANNEL');
-    assert_script_sudo "snap switch --$channel kde-frameworks-5";
+    assert_script_sudo "snap switch --$channel $runtime";
     assert_script_sudo 'snap refresh', 30 * 60;
-    script_run "snap info kde-frameworks-5 > /tmp/runtime.info";
+    script_run "snap info $runtime > /tmp/runtime.info";
     upload_logs '/tmp/runtime.info';
+    assert_script_run "curl --unix-socket /run/snapd.socket http:/v2/snaps/$runtime > /tmp/runtime.json";
+    upload_logs '/tmp/runtime.json';
     if ($args{auto_install_snap}) {
         assert_script_sudo "snap install --$channel $snap", 15 * 60;
         script_run "snap info $snap > /tmp/snap.info";
         upload_logs '/tmp/snap.info';
+        assert_script_run "curl --unix-socket /run/snapd.socket http:/v2/snaps/$snap > /tmp/snap.json";
+        upload_logs '/tmp/snap.json';
     }
 
     select_console 'x11';
