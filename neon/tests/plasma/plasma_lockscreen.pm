@@ -85,7 +85,7 @@ sub run {
     send_key 'ret';
     # ugh, sddm has no way to get us back, start a new session?
     wait_still_screen;
-    assert_and_click 'kickoff', undef, 60; # 60 seconds since we don't assert desktop
+    assert_and_click 'plasma-launcher', undef, 60; # 60 seconds since we don't assert desktop
     assert_and_click 'kickoff-leave';
     assert_and_click 'kickoff-leave-logout';
     assert_and_click 'ksmserver-logout';

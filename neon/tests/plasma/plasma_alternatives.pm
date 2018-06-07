@@ -24,26 +24,34 @@ use testapi;
 sub run {
     assert_screen 'folder-desktop';
     
-    # Starts the Application Launcher
+    # Starts the Alternative Menu
+    assert_and_click 'plasma-launcher', 'right';
+    
+    # Selects the Application Menu
+    assert_and_click 'kickoff-alternatives';
+    assert_and_click 'kickoff-alternatives-popup';
+    
+    # Switches to Application Menu
+    assert_and_click 'plasma-alternatives-switch';
+    assert_screen 'folder-desktop';
+    
+    # Check if kicker opens instead of kickoff
     assert_and_click 'plasma-launcher';
+    assert_screen 'plasma-kicker';
+    send_key 'esc';
+    
+    # Roll back to kickoff
+    assert_and_click 'plasma-launcher', 'right';
+    assert_and_click 'kickoff-alternatives';
+    assert_and_click 'kickoff-alternatives-launcher';
+    assert_and_click 'plasma-alternatives-switch';
+    assert_screen 'folder-desktop';
+    assert_and_click 'plasma-launcher';
+    assert_screen 'kickoff-popup';
     wait_still_screen;
-    # Switches to the Application Tab
-    assert_screen 'kickoff-favorite';
-    assert_and_click 'kickoff-application';
-    assert_and_click 'kickoff-office';
-    # Adds Okular in the favorites tab
-    assert_and_click 'kickoff-okular', 'right';
-    assert_and_click 'kickoff-add-to-favorite';
-    assert_screen 'kickoff-favorite-okular';
-    # Removes Okular from the favorites tab
-    assert_and_click 'kickoff-favorite-okular', 'right';
-    assert_and_click 'kickoff-remove-from-favorite';
-    assert_screen ['kickoff-favorite-okular', 'kickoff-favorite'], 60;
-    if (match_has_tag('kickoff-favorite-okular')) {
-        die 'Okular should not be visible on the favorite tab'
-    }
-    # Close the kickoff otherwise next test will fail
-    assert_and_click 'kickoff-dismiss';
+    send_key 'esc';
+    wait_still_screen;
+    assert_screen 'folder-desktop';
 }
 
 sub test_flags {
@@ -55,3 +63,4 @@ sub test_flags {
 }
 
 1;
+ 
