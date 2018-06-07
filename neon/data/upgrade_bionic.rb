@@ -28,16 +28,17 @@ puts "#{$0}: Upgrading to bionic via apt..."
 
 ENV['DEBIAN_FRONTEND'] = 'noninteractive'
 
-system('apt update') || raise
-system('apt install -y ubuntu-release-upgrader-qt') || raise
-
 File.write('/etc/update-manager/meta-release', <<-META_RELEASE)
 [METARELEASE]
-URI = http://metadata.neon.kde.org/changelogs/meta-release
-URI_LTS = http://metadata.neon.kde.org/changelogs/meta-release-lts
+URI = http://releases.neon.kde.org/meta-release
+URI_LTS = http://releases.neon.kde.org/meta-release-lts
 URI_UNSTABLE_POSTFIX = -development
 URI_PROPOSED_POSTFIX = -proposed
 META_RELEASE
+
+File.write('/etc/hosts', <<-HOSTS, mode: 'a')
+212.47.227.29 releases.neon.kde.org
+HOSTS
 
 # Bionic builds aren't always ahead of ubuntu, so pin neon builds.
 File.write('/etc/apt/preferences.d/neon-bionic', <<-PREFERENCE)
