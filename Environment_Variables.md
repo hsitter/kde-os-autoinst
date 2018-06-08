@@ -29,6 +29,10 @@ still fish them out of `ENV` I suppose).
 |OPENQA_INSTALLATION_OFFLINE|Modifier for INSTALLATION to switch networking offline before starting the install|
 |OPENQA_INSTALLATION_NONENGLISH|Modifier for INSTALLATION to test install in Spanish|
 |OPENQA_IN_CLOUD|Set by CI nodes. Used internally to optimize perform for builds on some cloud server (e.g. use apt mirrors for speed)|
+|OPENQA_IN_CLOUD|Set by CI nodes. Used internally to optimize perform for builds on some cloud server (e.g. use apt mirrors for speed)|
+|OPENQA_SNAP_NAME|For snap testing this sets the application snap name. This is also the name that will be passed to `snap run`|
+|OPENQA_SNAP_CHANNEL|For snap testing this sets the store channel snaps are pulled from|
+|OPENQA_SNAP_RUNTIME_CHANNEL|For snap testing this sets the store channel the snap runtime (kde-frameworks-5) is pulled from. If this is not set OPENQA_SNAP_CHANNEL will be used. If that isn't set either, the stable channel is used instead|
 
 # Test Suites
 
@@ -40,3 +44,4 @@ tests. Suites are generally mutually exclusive.
 |INSTALLATION|Test group. Conduct an installation test. Requires a TYPE to decide which ISO to install|
 |PLASMA_DESKTOP|Test group. Core Plasma behavior|
 |TESTS_TO_RUN|Colon separated list of test files to run (e.g. `tests/install_ubiquity.pm:tests/plasma_folder.pm`). Only used unless a test group is set.|
+|OPENQA_SNAP_NAME|Basename of a snap-only test. This test needs to be in the `tests/snap/` directory. This can be a specific testfile, e.g. `okular.pm`, if none exists `generic.pm` will be used instead. This variable is also a test variable (see above)|
