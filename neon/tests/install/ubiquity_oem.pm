@@ -1,4 +1,4 @@
-# Copyright (C) 2016-2017 Harald Sitter <sitter@kde.org>
+# Copyright (C) 2016-2018 Harald Sitter <sitter@kde.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -16,10 +16,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-use base "basetest";
+use base "livetest_neon";
+use strict;
 use testapi;
 
 sub run {
+    my ($self) = shift;
+    $self->boot;
+
     # Divert installation data to live data.
     my $user = $testapi::username;
     my $password = $testapi::password;
