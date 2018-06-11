@@ -27,7 +27,7 @@ Rectangle {
 
     signal remove
 
-    implicitWidth: layout.width
+    implicitWidth: parent.width
     implicitHeight: layout.height
 
     radius: fontMetrics.height / 4
@@ -36,17 +36,19 @@ Rectangle {
     RowLayout {
         id: layout
 
+        width: parent.width
+
         Text {
             id: textField
             Layout.leftMargin: fontMetrics.height / 4
+            Layout.fillWidth: true
             elide: Text.ElideMiddle
         }
-        Rectangle { Layout.fillWidth: true }
         AbstractButton {
             id: removeButton
 
-            height: textField.contentHeight
-            implicitWidth: height
+            height: fontMetrics.height
+            width: height
 
             contentItem: Image {
                 source: "file:///usr/share/icons/breeze/actions/22/list-remove.svg"
