@@ -155,13 +155,10 @@ sub enable_snapd {
     my $snap_channel = get_var('OPENQA_SNAP_CHANNEL');
     my $channel = get_var('OPENQA_SNAP_RUNTIME_CHANNEL');
     if ($channel == "") {
-        $channel = $snap_channel;
+        $channel = get_var('OPENQA_SNAP_CHANNEL');
     }
     if ($channel == "") {
         $channel = "stable";
-    }
-    if ($snap_channel == "") {
-        $snap_channel = "stable";
     }
     assert_script_sudo "snap switch --$channel $runtime";
     assert_script_sudo 'snap refresh', 30 * 60;
