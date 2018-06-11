@@ -29,7 +29,31 @@ import privateneedler 1.0 as Needler
 ApplicationWindow {
     property string path
 
+    MessageDialog {
+        property string base
+
+        id: missingMasterTagDialog
+        title: "Missing master tag"
+        text: "All needles must be tagged with their basename, this needle is missing it though. This could mean that you misspelled it or simply forgot. <br/>Should I add it automatically?"
+        informativeText: ""
+        icon: StandardIcon.Critical
+        standardButtons: StandardButton.Yes | StandardButton.No
+        onYes: {
+            console.debug("ADDING " + base)
+            selectorModel.tags.push(base)
+            selectorModel.tags = selectorModel.tags // Reassign to trigger reload
+            save()
+        }
+    }
+
     function save() {
+        // If the basename isn't in the tags we'll wanna raise a warning.
+        var base = baseName(path)
+        if (selectorModel.tags.indexOf(base) < 0) {
+            missingMasterTagDialog.base = base
+            missingMasterTagDialog.visible = true
+            return
+        }
         write(selectorModel.toJSON())
     }
 
@@ -40,6 +64,12 @@ ApplicationWindow {
             str = str.substring(0, str.lastIndexOf("."));
         }
         return str;
+    }
+
+    function baseName(str)
+    {
+       var str = new String(str) // Make sure its a stringy.
+       return str.substring(str.lastIndexOf('/') + 1);
     }
 
     function load(url) {
