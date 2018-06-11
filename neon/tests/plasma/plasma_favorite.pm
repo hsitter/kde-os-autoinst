@@ -43,7 +43,7 @@ sub run {
         die 'Okular should not be visible on the favorite tab'
     }
 }
- 
+
 sub test_flags {
     # without anything - rollback to 'lastgood' snapshot if failed
     # 'fatal' - whole test suite is in danger if this fails
