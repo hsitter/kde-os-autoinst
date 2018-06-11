@@ -53,8 +53,8 @@ sub run {
     mouse_set 400, 300;
     mouse_click 'right';
     assert_and_click 'plasma-context-config-folder';
-    assert_and_click 'plasma-folder-config-folder-background';
-    assert_and_click 'plasma-folder-config-folder-background-color';
+    assert_and_click 'plasma-folder-config-background';
+    assert_and_click 'plasma-folder-config-background-color';
     # Should the deafault ever become undesirable: #1d99f3 is the lovely color.
     assert_and_click 'kcm-ok';
 
