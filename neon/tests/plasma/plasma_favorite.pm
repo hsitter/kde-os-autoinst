@@ -26,12 +26,10 @@ sub run {
 
     # Temporary hack to see if disabling compositing is able to make the needles
     # pass. Working theory is that translucency is screwing the matching degree.
-    select_console 'log-console';
-    {
-        assert_script_run 'qdbus org.kde.KWin /Compositor org.kde.kwin.Compositing.suspend';
-    }
-    select_console 'x11';
-
+    x11_start_program 'konsole';
+    assert_screen 'konsole';
+    type_string 'qdbus org.kde.KWin /Compositor org.kde.kwin.Compositing.suspend';
+    send_key 'ret';
 
     # Starts the Application Launcher
     assert_and_click 'kickoff';
