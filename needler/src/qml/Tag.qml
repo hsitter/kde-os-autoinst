@@ -43,6 +43,18 @@ Rectangle {
             Layout.leftMargin: fontMetrics.height / 4
             Layout.fillWidth: true
             elide: Text.ElideMiddle
+
+            MouseArea {
+                id: textFieldArea
+
+                anchors.fill: parent
+                hoverEnabled: true
+
+                ToolTip.delay: 1000
+                ToolTip.visible: textFieldArea.containsMouse
+                ToolTip.text: textField.text
+            }
+
         }
         AbstractButton {
             id: removeButton
