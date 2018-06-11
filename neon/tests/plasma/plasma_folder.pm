@@ -47,6 +47,19 @@ sub run {
     if ($ENV{TYPE} eq 'devedition-gitunstable' && match_has_tag('folder-desktop-512')) {
         record_soft_failure "Screen had Plasma 5.12 icons but unstable should't have them!"
     }
+
+    # TODO: move to first_start.pm
+    #   we'd assert the wallpaper once and then switch to static color only
+    mouse_set 400, 300;
+    mouse_click 'right';
+    assert_and_click 'plasma-context-config-folder';
+    assert_and_click 'plasma-folder-config-folder-background';
+    assert_and_click 'plasma-folder-config-folder-background-color';
+    # Should the deafault ever become undesirable: #1d99f3 is the lovely color.
+    assert_and_click 'kcm-ok';
+
+    # Should now be lovely blue.
+    assert_screen 'folder-desktop-color';
 }
 
 sub test_flags {

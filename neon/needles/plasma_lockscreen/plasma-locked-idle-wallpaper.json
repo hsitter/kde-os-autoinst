@@ -9,11 +9,12 @@
       "ypos": 414
     }
   ],
-  "properties": [],
+  "properties": [
+
+  ],
   "tags": [
     "plasma-locked-idle",
     "plasma-locked",
     "ENV-TYPE-devedition-gitunstable"
   ]
 }
-

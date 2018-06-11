@@ -42,6 +42,16 @@ sub run {
     reset_consoles;
     select_console 'x11';
 
+    # TODO: move to first_start.pm we want static colors. probably not necessary
+    #   to assert the default appearance?
+    x11_start_program 'kcmshell5 screenlocker' ;
+    assert_screen 'kcm-screenlocker';
+    assert_and_click 'kcm-screenlocker-appearance';
+    assert_and_click 'kcm-screenlocker-appearance-type';
+    assert_and_click 'kcm-screenlocker-appearance-type-color';
+    # Should the deafault ever become undesirable: #1d99f3 is the lovely color.
+    assert_and_click 'kcm-ok';
+
     lock_screen;
 
     # simple unlock

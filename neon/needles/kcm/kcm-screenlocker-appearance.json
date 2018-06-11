@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 36,
+      "match": 95,
+      "type": "match",
+      "width": 227,
+      "xpos": 242,
+      "ypos": 192
+    },
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 80,
+      "xpos": 318,
+      "ypos": 247
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kcm-screenlocker-appearance"
+  ]
+}
+
