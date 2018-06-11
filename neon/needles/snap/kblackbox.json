@@ -1,0 +1,49 @@
+{
+  "area": [
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 105,
+      "xpos": 648,
+      "ypos": 225
+    },
+    {
+      "height": 23,
+      "match": 95,
+      "type": "match",
+      "width": 77,
+      "xpos": 886,
+      "ypos": 699
+    },
+    {
+      "height": 40,
+      "match": 95,
+      "type": "match",
+      "width": 24,
+      "xpos": 422,
+      "ypos": 580
+    },
+    {
+      "height": 23,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 386,
+      "ypos": 256
+    },
+    {
+      "height": 29,
+      "match": 95,
+      "type": "match",
+      "width": 59,
+      "xpos": 397,
+      "ypos": 284
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kblackbox"
+  ]
+}
+
