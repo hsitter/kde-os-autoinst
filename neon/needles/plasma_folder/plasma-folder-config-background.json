@@ -1,5 +1,14 @@
 {
-  "area": [],
+  "area": [
+    {
+      "height": 22,
+      "match": 95,
+      "type": "match",
+      "width": 230,
+      "xpos": 270,
+      "ypos": 123
+    }
+  ],
   "properties": [],
   "tags": [
     "plasma-folder-config-background"
