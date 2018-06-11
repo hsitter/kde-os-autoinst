@@ -152,12 +152,16 @@ sub enable_snapd {
 
     my $runtime = 'kde-frameworks-5';
     my $snap = get_var('OPENQA_SNAP_NAME');
+    my $snap_channel = get_var('OPENQA_SNAP_CHANNEL');
     my $channel = get_var('OPENQA_SNAP_RUNTIME_CHANNEL');
     if ($channel == "") {
-        $channel = get_var('OPENQA_SNAP_CHANNEL');
+        $channel = $snap_channel;
     }
     if ($channel == "") {
         $channel = "stable";
+    }
+    if ($snap_channel == "") {
+        $snap_channel = "stable";
     }
     assert_script_sudo "snap switch --$channel $runtime";
     assert_script_sudo 'snap refresh', 30 * 60;
@@ -166,7 +170,7 @@ sub enable_snapd {
     assert_script_run "curl --unix-socket /run/snapd.socket http:/v2/snaps/$runtime > /tmp/runtime.json";
     upload_logs '/tmp/runtime.json';
     if ($args{auto_install_snap}) {
-        assert_script_sudo "snap install --$channel $snap", 15 * 60;
+        assert_script_sudo "snap install --$snap_channel $snap", 15 * 60;
         script_run "snap info $snap > /tmp/snap.info";
         upload_logs '/tmp/snap.info';
         assert_script_run "curl --unix-socket /run/snapd.socket http:/v2/snaps/$snap > /tmp/snap.json";
