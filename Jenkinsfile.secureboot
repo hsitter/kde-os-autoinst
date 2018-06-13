@@ -32,7 +32,9 @@ fancyNode('openqa') {
     }
     stage('test_installation') {
       wrap([$class: 'LiveScreenshotBuildWrapper', fullscreenFilename: 'wok/qemuscreenshot/last.png']) {
-        sh 'OPENQA_SECUREBOOT=1 INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
+        lock(inversePrecedence: true, label: 'OPENQA_INSTALL') {
+          sh 'OPENQA_SECUREBOOT=1 INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
+        }
       }
     }
   } finally {

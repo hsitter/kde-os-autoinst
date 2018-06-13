@@ -40,9 +40,12 @@ fancyNode('openqa') {
           sh "cp -v ${params.ISO} incoming.iso"
       }
     }
+
     stage('test_installation') {
       wrap([$class: 'LiveScreenshotBuildWrapper', fullscreenFilename: 'wok/qemuscreenshot/last.png']) {
-        sh 'INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
+        lock(inversePrecedence: true, label: 'OPENQA_INSTALL') {
+          sh 'INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
+        }
       }
     }
     if (env.ARCHIVE) {
