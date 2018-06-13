@@ -26,38 +26,39 @@ properties([
   pipelineTriggers([cron('0 H(9-22) * * *')])
 ])
 
-fancyNode('openqa') {
-  try {
-    stage('clone') {
-      git 'git://anongit.kde.org/sysadmin/neon-openqa.git'
-    }
-    stage('rake-test') {
-      sh 'rake test'
-    }
-    stage('iso-handover') {
-        if (params.ISO) {
-          echo 'Picking up ISO from trigger job.'
-          sh "cp -v ${params.ISO} incoming.iso"
-      }
-    }
 
-    stage('test_installation') {
-      wrap([$class: 'LiveScreenshotBuildWrapper', fullscreenFilename: 'wok/qemuscreenshot/last.png']) {
-        lock(inversePrecedence: true, label: 'OPENQA_INSTALL') {
+lock(inversePrecedence: true, label: 'OPENQA_INSTALL') {
+  fancyNode('openqa') {
+    try {
+      stage('clone') {
+        git 'git://anongit.kde.org/sysadmin/neon-openqa.git'
+      }
+      stage('rake-test') {
+        sh 'rake test'
+      }
+      stage('iso-handover') {
+          if (params.ISO) {
+            echo 'Picking up ISO from trigger job.'
+            sh "cp -v ${params.ISO} incoming.iso"
+        }
+      }
+
+      stage('test_installation') {
+        wrap([$class: 'LiveScreenshotBuildWrapper', fullscreenFilename: 'wok/qemuscreenshot/last.png']) {
           sh 'INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
         }
       }
-    }
-    if (env.ARCHIVE) {
-      stage('archive-raid') {
-        sh 'bin/archive.rb'
+      if (env.ARCHIVE) {
+        stage('archive-raid') {
+          sh 'bin/archive.rb'
+        }
       }
+    } finally {
+      dir('metadata') { archiveArtifacts '*' }
+      dir('wok') { archiveArtifacts allowEmptyArchive: true, artifacts: 'testresults/*, ulogs/*, video.*, vars.json, slide.html' }
+      junit 'junit/*'
+      sh 'bin/contain.rb chown -R jenkins .'
     }
-  } finally {
-    dir('metadata') { archiveArtifacts '*' }
-    dir('wok') { archiveArtifacts allowEmptyArchive: true, artifacts: 'testresults/*, ulogs/*, video.*, vars.json, slide.html' }
-    junit 'junit/*'
-    sh 'bin/contain.rb chown -R jenkins .'
   }
 }
 

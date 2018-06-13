@@ -22,25 +22,26 @@ properties([
   pipelineTriggers([cron('0 H(9-22) * * *')])
 ])
 
-fancyNode('openqa') {
-  try {
-    stage('clone') {
-      git 'git://anongit.kde.org/sysadmin/neon-openqa.git'
-    }
-    stage('rake-test') {
-      sh 'rake test'
-    }
-    stage('test_installation') {
-      wrap([$class: 'LiveScreenshotBuildWrapper', fullscreenFilename: 'wok/qemuscreenshot/last.png']) {
-        lock(inversePrecedence: true, label: 'OPENQA_INSTALL') {
+
+lock(inversePrecedence: true, label: 'OPENQA_INSTALL') {
+  fancyNode('openqa') {
+    try {
+      stage('clone') {
+        git 'git://anongit.kde.org/sysadmin/neon-openqa.git'
+      }
+      stage('rake-test') {
+        sh 'rake test'
+      }
+      stage('test_installation') {
+        wrap([$class: 'LiveScreenshotBuildWrapper', fullscreenFilename: 'wok/qemuscreenshot/last.png']) {
           sh 'OPENQA_SECUREBOOT=1 INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
         }
       }
+    } finally {
+      dir('metadata') { archiveArtifacts '*' }
+      dir('wok') { archiveArtifacts allowEmptyArchive: true, artifacts: 'testresults/*, ulogs/*, video.*, vars.json, slide.html' }
+      junit 'junit/*'
     }
-  } finally {
-    dir('metadata') { archiveArtifacts '*' }
-    dir('wok') { archiveArtifacts allowEmptyArchive: true, artifacts: 'testresults/*, ulogs/*, video.*, vars.json, slide.html' }
-    junit 'junit/*'
   }
 }
 
