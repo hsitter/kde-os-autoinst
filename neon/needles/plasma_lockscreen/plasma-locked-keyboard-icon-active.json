@@ -13,6 +13,8 @@
   "tags": [
     "plasma-locked-keyboard-icon-active",
     "plasma-locked-keyboard-icon",
-    "ENV-TYPE-devedition-gitunstable"
+    "ENV-TYPE-devedition-gitunstable",
+    "ENV-TYPE-useredition",
+    "ENV-TYPE-devedition-gitstable"
   ]
 }

@@ -24,6 +24,7 @@
     "ENV-NONENGLISH",
     "sddm-es",
     "ENV-TYPE-devedition-gitunstable",
-    "ENV-TYPE-devedition-gitstable"
+    "ENV-TYPE-devedition-gitstable",
+    "ENV-TYPE-useredition"
   ]
 }

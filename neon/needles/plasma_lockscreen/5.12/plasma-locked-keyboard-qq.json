@@ -17,13 +17,9 @@
       "ypos": 466
     }
   ],
-  "properties": [
-
-  ],
+  "properties": [],
   "tags": [
     "plasma-locked-keyboard-qq",
-    "ENV-TYPE-devedition-gitstable",
-    "ENV-TYPE-userltsedition",
-    "ENV-TYPE-useredition"
+    "ENV-TYPE-userltsedition"
   ]
 }

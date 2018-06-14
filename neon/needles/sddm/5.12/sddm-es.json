@@ -23,7 +23,6 @@
     "sddm",
     "ENV-NONENGLISH",
     "sddm-es",
-    "ENV-TYPE-useredition",
     "ENV-TYPE-userltsedition"
   ]
 }

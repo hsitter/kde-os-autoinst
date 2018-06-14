@@ -14,7 +14,8 @@
     "plasma-locked-idle",
     "plasma-locked",
     "ENV-TYPE-devedition-gitunstable",
-    "plasma-locked-idle-wallpaper"
+    "plasma-locked-idle-wallpaper",
+    "ENV-TYPE-useredition",
+    "ENV-TYPE-devedition-gitstable"
   ]
 }
-

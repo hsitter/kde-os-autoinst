@@ -12,7 +12,6 @@
   "properties": [],
   "tags": [
     "sddm-plasma-wayland",
-    "ENV-TYPE-useredition",
     "ENV-TYPE-userltsedition"
   ]
 }

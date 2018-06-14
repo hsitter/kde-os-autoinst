@@ -17,13 +17,12 @@
       "ypos": 211
     }
   ],
-  "properties": [
-
-  ],
+  "properties": [],
   "tags": [
     "sddm-idle",
     "sddm",
     "ENV-TYPE-devedition-gitunstable",
-    "ENV-TYPE-devedition-gitstable"
+    "ENV-TYPE-devedition-gitstable",
+    "ENV-TYPE-useredition"
   ]
 }

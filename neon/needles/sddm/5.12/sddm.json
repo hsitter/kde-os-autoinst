@@ -17,13 +17,10 @@
       "ypos": 211
     }
   ],
-  "properties": [
-
-  ],
+  "properties": [],
   "tags": [
     "sddm",
     "sddm-512",
-    "ENV-TYPE-useredition",
     "ENV-TYPE-userltsedition"
   ]
 }

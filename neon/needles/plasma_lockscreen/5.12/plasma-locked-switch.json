@@ -28,8 +28,6 @@
   "properties": [],
   "tags": [
     "plasma-locked-switch",
-    "ENV-TYPE-devedition-gitstable",
-    "ENV-TYPE-userltsedition",
-    "ENV-TYPE-useredition"
+    "ENV-TYPE-userltsedition"
   ]
 }

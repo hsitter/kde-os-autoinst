@@ -20,6 +20,8 @@
   "properties": [],
   "tags": [
     "plasma-locked-keyboard-qq",
-    "ENV-TYPE-devedition-gitunstable"
+    "ENV-TYPE-devedition-gitunstable",
+    "ENV-TYPE-useredition",
+    "ENV-TYPE-devedition-gitstable"
   ]
 }

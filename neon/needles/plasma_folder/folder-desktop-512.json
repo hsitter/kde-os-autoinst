@@ -29,8 +29,6 @@
   "tags": [
     "folder-desktop",
     "folder-desktop-512",
-    "ENV-TYPE-useredition",
-    "ENV-TYPE-userltsedition",
-    "ENV-TYPE-devedition-gitstable"
+    "ENV-TYPE-userltsedition"
   ]
 }
