@@ -1,0 +1,19 @@
+{
+  "exclude": "(^test/)",
+  "linters": {
+    "spelling": {
+      "type": "spelling"
+    },
+    "json": {
+      "type": "json",
+      "include": "(\\.json$)"
+    },
+    "merge-conflict": {
+      "type": "merge-conflict"
+    },
+    "ruby": {
+      "type": "ruby",
+      "include": "(\\.rb$)"
+    }
+  }
+}
