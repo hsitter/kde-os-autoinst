@@ -32,7 +32,7 @@ module Tagger
     parser = OptionParser.new do |opts|
       opts.banner = "Usage: #{opts.program_name} [options] -t tag FILES"
 
-      opts.on('-t', '--tag HOST',
+      opts.on('-t', '--tag TAG',
               'tag to change [can be used multiple times ]') do |v|
         tags << v
       end
