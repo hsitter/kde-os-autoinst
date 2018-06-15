@@ -2,11 +2,11 @@
   "area": [
     {
       "height": 353,
-      "match": 95,
+      "match": 50,
       "type": "match",
       "width": 1024,
       "xpos": 0,
-      "ypos": 414
+      "ypos": 21
     }
   ],
   "properties": [],
@@ -18,3 +18,4 @@
     "ENV-TYPE-devedition-gitstable"
   ]
 }
+
