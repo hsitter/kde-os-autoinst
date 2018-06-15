@@ -147,9 +147,13 @@ if (testapi::get_var("INSTALLATION")) {
     }
 } elsif (testapi::get_var("PLASMA_DESKTOP")) {
     autotest::loadtest('tests/plasma/plasma_folder.pm');
-    autotest::loadtest('tests/plasma/plasma_lockscreen.pm');
     autotest::loadtest('tests/plasma/plasma_favorite.pm');
     autotest::loadtest('tests/plasma/plasma_alternatives.pm');
+    # Do not run tests after the lockscreen. We log into a second session
+    # to get away from a switch-user sddm (which has no other means to do so
+    # via the GUI). This may have any number of unfortunate side effects in the
+    # main session (e.g. cache corruption?).
+    autotest::loadtest('tests/plasma/plasma_lockscreen.pm');
 } else {
     testapi::diag 'ERROR FAILURE BAD ERROR no clue what to run!';
     exit 1;
