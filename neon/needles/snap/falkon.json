@@ -1,0 +1,41 @@
+{
+  "area": [
+    {
+      "height": 36,
+      "match": 95,
+      "type": "match",
+      "width": 130,
+      "xpos": 242,
+      "ypos": 194
+    },
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 124,
+      "xpos": 436,
+      "ypos": 5
+    },
+    {
+      "height": 21,
+      "match": 95,
+      "type": "match",
+      "width": 53,
+      "xpos": 644,
+      "ypos": 139
+    },
+    {
+      "height": 64,
+      "match": 95,
+      "type": "match",
+      "width": 249,
+      "xpos": 510,
+      "ypos": 384
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "falkon"
+  ]
+}
+
