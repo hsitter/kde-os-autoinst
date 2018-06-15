@@ -23,23 +23,30 @@ use testapi;
 
 sub run {
     assert_screen 'folder-desktop';
-    
+
     # Starts the Alternative Menu
     assert_and_click 'plasma-launcher', 'right';
-    
+
     # Selects the Application Menu
     assert_and_click 'kickoff-alternatives';
     assert_and_click 'kickoff-alternatives-popup';
-    
+
     # Switches to Application Menu
+    # FIXME: temporary hack. there is a rendering bug appearing every so often
+    #   where the popup is corrupted and the entries are off-set by 1, so we'd
+    #   click the wrong entry. a wait may fix this if the corruption is
+    #   transient. if not, we'll need to assert that the screen is not corrupted
+    #   and only then do the click. if it is corrupted we'll need to reopen
+    #   the popup until it is not.
+    wait_still_screen;
     assert_and_click 'plasma-alternatives-switch';
     assert_screen 'folder-desktop';
-    
+
     # Check if kicker opens instead of kickoff
     assert_and_click 'plasma-launcher';
     assert_screen 'plasma-kicker';
     send_key 'esc';
-    
+
     # Roll back to kickoff
     assert_and_click 'plasma-launcher', 'right';
     assert_and_click 'kickoff-alternatives';
@@ -63,4 +70,3 @@ sub test_flags {
 }
 
 1;
- 
