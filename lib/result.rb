@@ -389,7 +389,7 @@ module OSAutoInst
     # assertion for 'grub' it may take multiple screenshots which may get
     # recorded as unknown. The last of them may be fail if no match was found
     # and the time ran out. In these cases we do however want to make the
-    # entire chain of unknown preceeding details fail as well. Otherwise its
+    # entire chain of unknown preceding details fail as well. Otherwise its
     # hard to find out where things started to fail.
     # This requires that details that can appear in a fail chain implement
     # the {same?} method to check if they qualify as the same check as
