@@ -74,6 +74,11 @@ sub maybe_login {
     }
 }
 
+sub logout {
+    testapi::x11_start_program('Logout');
+    assert_and_click ('ksmserver-logout');
+}
+
 sub boot_to_dm {
     my ($self, %args) = @_;
     $args{run_setup} //= 1;

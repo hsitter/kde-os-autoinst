@@ -51,6 +51,7 @@ sub switch_to {
 }
 
 sub run {
+    my ($self) = @_;
     assert_screen 'folder-desktop';
 
     # Switch to menu (kicker)
@@ -62,6 +63,13 @@ sub run {
     assert_and_click 'plasma-launcher';
     assert_screen 'plasma-kicker';
     send_key 'esc';
+    
+    # Starting a new session
+    $self->logout;
+    
+    # Back in the session
+    $self->login;
+    assert_screen 'folder-desktop';
 
     # Roll back to launcher (kickoff)
     switch_to 'launcher';

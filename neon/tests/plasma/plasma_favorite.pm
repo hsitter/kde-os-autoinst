@@ -22,26 +22,44 @@ use strict;
 use testapi;
 
 sub run {
+    my ($self) = @_;
     assert_screen 'folder-desktop';
-    
+
     # Starts the Application Launcher
     assert_and_click 'plasma-launcher';
     wait_still_screen;
+
     # Switches to the Application Tab
     assert_screen 'kickoff-favorite';
     assert_and_click 'kickoff-application';
     assert_and_click 'kickoff-office';
+
     # Adds Okular in the favorites tab
     assert_and_click 'kickoff-okular', 'right';
     assert_and_click 'kickoff-add-to-favorite';
-    assert_screen 'kickoff-favorite-okular';
+    assert_screen 'kickoff-favorite-okular', 60;
+    send_key 'esc';
+    wait_still_screen;
+    assert_and_click 'plasma-launcher';
+    send_key 'esc';
+
+    # Logging out from the session
+    $self->logout;
+
+    # Back in the session
+    $self->login;
+    assert_screen 'folder-desktop', 60;
+
     # Removes Okular from the favorites tab
+    assert_and_click 'plasma-launcher';
+    wait_still_screen;
     assert_and_click 'kickoff-favorite-okular', 'right';
     assert_and_click 'kickoff-remove-from-favorite';
     assert_screen ['kickoff-favorite-okular', 'kickoff-favorite'], 60;
     if (match_has_tag('kickoff-favorite-okular')) {
         die 'Okular should not be visible on the favorite tab'
     }
+
     # Close the kickoff otherwise next test will fail
     assert_and_click 'kickoff-dismiss';
 }
