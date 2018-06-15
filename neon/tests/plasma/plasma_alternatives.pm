@@ -24,21 +24,27 @@ use testapi;
 sub run {
     assert_screen 'folder-desktop';
 
-    # Starts the Alternative Menu
-    assert_and_click 'plasma-launcher', 'right';
+    do {
+        # Close open popup if there is any.
+        send_key 'esc';
 
-    # Selects the Application Menu
-    assert_and_click 'kickoff-alternatives';
+        # Starts the Alternative Menu
+        assert_and_click 'plasma-launcher', 'right';
+
+        # Selects the Application Menu
+        assert_and_click 'kickoff-alternatives';
+        assert_screen 'kickoff-alternatives-popup';
+
+        # Repeat this entire dance if the popup has corrupted graphics.
+        # This happens every so often and renders the popup incorrectly. If
+        # we were to click at this point we'd be selecting an off-by-one item.
+        # instead of the intended one.
+        # Cause unknown.
+    } while (match_has_tag 'kickoff-alternatives-popup-corrupted');
+
     assert_and_click 'kickoff-alternatives-popup';
 
     # Switches to Application Menu
-    # FIXME: temporary hack. there is a rendering bug appearing every so often
-    #   where the popup is corrupted and the entries are off-set by 1, so we'd
-    #   click the wrong entry. a wait may fix this if the corruption is
-    #   transient. if not, we'll need to assert that the screen is not corrupted
-    #   and only then do the click. if it is corrupted we'll need to reopen
-    #   the popup until it is not.
-    wait_still_screen;
     assert_and_click 'plasma-alternatives-switch';
     assert_screen 'folder-desktop';
 

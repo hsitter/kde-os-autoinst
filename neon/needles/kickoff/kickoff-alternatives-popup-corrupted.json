@@ -1,0 +1,20 @@
+{
+  "area": [
+    {
+      "height": 151,
+      "match": 95,
+      "type": "match",
+      "width": 190,
+      "xpos": 0,
+      "ypos": 602
+    }
+  ],
+  "properties": [
+    "workaround"
+  ],
+  "tags": [
+    "kickoff-alternatives-popup-corrupted",
+    "kickoff-alternatives-popup"
+  ]
+}
+
