@@ -57,7 +57,7 @@ sub run {
     # simple unlock
     type_password $testapi::password;
     send_key 'ret';
-    assert_screen 'folder-desktop', 60;
+    assert_screen 'folder-desktop';
 
     lock_screen;
     if (check_screen('plasma-locked-idle')) {
