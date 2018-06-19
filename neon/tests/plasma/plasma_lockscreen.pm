@@ -63,7 +63,9 @@ sub run {
     if (check_screen('plasma-locked-idle')) {
         mouse_set(1, 1);
         mouse_hide;
-        send_key 'esc'; # make double sure it's unidled
+        # NB: do not use esc. Esc is a toggle key. If it is not idle anymore esc
+        #   will make it idle again!
+        send_key 'ctrl'; # make double sure it's unidled
     }
 
     # virtual keyboard
