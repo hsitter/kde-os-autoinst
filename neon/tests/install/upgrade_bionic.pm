@@ -50,6 +50,7 @@ sub run {
     send_key 'ret';
 
     assert_and_click 'distro-release-notifier';
+    assert_and_click 'distro-release-notifier-2';
     assert_screen 'kdesudo';
     type_password $testapi::password;
     send_key 'ret';
