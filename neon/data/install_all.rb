@@ -54,7 +54,10 @@ pub.Sources.each do |x|
 end
 packages = packages.collect { |x| x.split(' ')[1] }
 # special hack, neon-adwaita in 16.04 is not meant to be installed
-packages = packages.reject { |x| x == 'neon-adwaita' }
+# TODO imagewriter-neon needs deleting from repos
+# TODO calamares-settings doesn't seem to properly rename calamares on remove
+EXCLUSIONS = %w[neon-adwaita imagewriter-neon calamares-settings].freeze
+packages = packages.reject { |x| EXCLUSIONS.include?(x) }
 
 ENV['DEBIAN_FRONTEND'] = 'noninteractive'
 system('apt update') || raise
