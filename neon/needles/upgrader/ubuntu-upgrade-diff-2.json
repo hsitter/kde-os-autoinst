@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "height": 16,
+      "match": 95,
+      "type": "match",
+      "width": 85,
+      "xpos": 667,
+      "ypos": 133
+    },
+    {
+      "height": 21,
+      "match": 95,
+      "type": "match",
+      "width": 149,
+      "xpos": 609,
+      "ypos": 109
+    },
+    {
+      "height": 37,
+      "match": 95,
+      "type": "match",
+      "width": 88,
+      "xpos": 627,
+      "ypos": 262
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "ubuntu-upgrade-diff-2"
+  ]
+}
+
