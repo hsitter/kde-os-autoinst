@@ -21,8 +21,8 @@
       "match": 95,
       "type": "match",
       "width": 92,
-      "xpos": 638,
-      "ypos": 526
+      "xpos": 633,
+      "ypos": 521
     }
   ],
   "properties": [],
@@ -30,3 +30,4 @@
     "ubuntu-upgrade-fetcher-notes"
   ]
 }
+
