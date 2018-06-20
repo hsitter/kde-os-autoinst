@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "height": 26,
+      "match": 90,
+      "type": "match",
+      "width": 23,
+      "xpos": 761,
+      "ypos": 737
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "distro-release-notifier"
+  ]
+}
+
