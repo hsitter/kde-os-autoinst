@@ -25,11 +25,11 @@ sub lock_screen {
     hold_key('alt');
     hold_key('l');
 
-    assert_screen('plasma-locked');
-
     release_key('l');
     release_key('alt');
     release_key('ctrl');
+
+    assert_screen('plasma-locked');
 }
 
 sub run {
