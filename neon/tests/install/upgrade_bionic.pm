@@ -64,7 +64,6 @@ sub run {
     # A config was changed by us to force the bionic upgrade to be enabled,
     # we should get a diff prompt.
     assert_and_click 'ubuntu-upgrade-diff-2', 'left', 60 * 10;
-    assert_and_click 'ubuntu-upgrade-diff', 'left', 60 * 10;
     assert_and_click 'ubuntu-upgrade-remove', 'left', 60 * 10;
 
     assert_screen 'ubuntu-upgrade-restart', 'left', 60 * 5;
