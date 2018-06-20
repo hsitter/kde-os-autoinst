@@ -41,10 +41,12 @@ sources = sources.compact.uniq
 source = sources[0]
 warn "Source: #{source}"
 raise source unless source.start_with?('deb http://archive.neon')
-source_uri = URI.parse(source.split(' ')[1])
+parts = source.split(' ')
+source_uri = URI.parse(parts[1])
+dist = parts[2]
 
 pub = Aptly::PublishedRepository.list.find do |x|
-  File.join('/', x.Prefix) == source_uri.path
+  File.join('/', x.Prefix) == source_uri.path && x.Distribution == dist
 end
 packages = []
 pub.Sources.each do |x|
