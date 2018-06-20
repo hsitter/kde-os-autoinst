@@ -32,9 +32,13 @@ sub run {
     select_console 'log-console';
     {
         assert_script_run 'wget ' . data_url('install_all.rb'),  16;
-        assert_script_sudo 'ruby insall_all.rb', 60 * 45;
+        assert_script_sudo 'ruby install_all.rb', 60 * 45;
     }
     select_console 'x11';
+
+    # Make sure sddm isn't idle. Not sure if basetest knows to unidle
+    # sddm when it encounters it in the beginning (versus the end)
+    send_key 'ctrl';
 }
 
 sub test_flags {
