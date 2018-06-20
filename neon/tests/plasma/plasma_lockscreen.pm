@@ -44,6 +44,10 @@ sub run {
 
     # TODO: move to first_start.pm we want static colors. probably not necessary
     #   to assert the default appearance?
+    # TODO: we may want to switch to #2ecc71 (greenish) to have an easier time
+    #   differentiating wallpaper from lockscreen in a needle. the idle mode
+    #   of the lockscreen makes it very hard to match as it has exclusively
+    #   mutable information while idling
     x11_start_program 'kcmshell5 screenlocker' ;
     assert_screen 'kcm-screenlocker';
     assert_and_click 'kcm-screenlocker-appearance';
