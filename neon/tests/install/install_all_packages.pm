@@ -41,6 +41,18 @@ sub run {
     send_key 'ctrl';
 }
 
+sub post_fail_hook {
+    my ($self) = shift;
+    $self->SUPER::post_fail_hook;
+
+    select_console 'log-console';
+
+    upload_logs '/var/log/dpkg.log';
+    upload_logs '/var/log/apt/term.log';
+    upload_logs '/var/log/apt/history.log';
+}
+
+
 sub test_flags {
     # without anything - rollback to 'lastgood' snapshot if failed
     # 'fatal' - whole test suite is in danger if this fails
