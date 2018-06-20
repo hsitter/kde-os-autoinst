@@ -51,7 +51,7 @@ sub run {
 
     assert_and_click 'distro-release-notifier';
     assert_and_click 'distro-release-notifier-2';
-    assert_screen 'kdesudo';
+    assert_screen 'policykit';
     type_password $testapi::password;
     send_key 'ret';
 
