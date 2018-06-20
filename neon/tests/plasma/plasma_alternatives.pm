@@ -21,31 +21,41 @@ use base "basetest_neon";
 use strict;
 use testapi;
 
-sub run {
-    assert_screen 'folder-desktop';
+sub switch_to {
+    my ($type) = @_;
 
     do {
         # Close open popup if there is any.
+        send_key 'esc';
+        send_key 'esc';
         send_key 'esc';
 
         # Starts the Alternative Menu
         assert_and_click 'plasma-launcher', 'right';
 
-        # Selects the Application Menu
+        # Selects the menu type.
         assert_and_click 'kickoff-alternatives';
-        assert_screen 'kickoff-alternatives-popup';
+        assert_screen "kickoff-alternatives-$type";
 
         # Repeat this entire dance if the popup has corrupted graphics.
         # This happens every so often and renders the popup incorrectly. If
         # we were to click at this point we'd be selecting an off-by-one item.
         # instead of the intended one.
         # Cause unknown.
-    } while (match_has_tag 'kickoff-alternatives-popup-corrupted');
+    } while (match_has_tag 'kickoff-alternatives-corrupted');
 
-    assert_and_click 'kickoff-alternatives-popup';
-
-    # Switches to Application Menu
+    # Select type.
+    assert_and_click "kickoff-alternatives-$type";
+    # Apply the switch.
     assert_and_click 'plasma-alternatives-switch';
+}
+
+sub run {
+    assert_screen 'folder-desktop';
+
+    # Switch to menu (kicker)
+    switch_to 'menu';
+
     assert_screen 'folder-desktop';
 
     # Check if kicker opens instead of kickoff
@@ -53,17 +63,14 @@ sub run {
     assert_screen 'plasma-kicker';
     send_key 'esc';
 
-    # Roll back to kickoff
-    assert_and_click 'plasma-launcher', 'right';
-    assert_and_click 'kickoff-alternatives';
-    assert_and_click 'kickoff-alternatives-launcher';
-    assert_and_click 'plasma-alternatives-switch';
+    # Roll back to launcher (kickoff)
+    switch_to 'launcher';
+
     assert_screen 'folder-desktop';
     assert_and_click 'plasma-launcher';
     assert_screen 'kickoff-popup';
     wait_still_screen;
     send_key 'esc';
-    wait_still_screen;
     assert_screen 'folder-desktop';
 }
 
