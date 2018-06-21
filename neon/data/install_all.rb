@@ -65,3 +65,6 @@ FileUtils.rm_f('/usr/bin/_neon.calamares')
 ENV['DEBIAN_FRONTEND'] = 'noninteractive'
 system('apt update') || raise
 system('apt', 'install', '-y', *packages) || raise
+# Make sure the downloaded debs are cleared. Otherwise we may run out of disk
+# quickly.
+system('apt', 'clean') || raise
