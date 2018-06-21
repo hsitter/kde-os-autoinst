@@ -150,8 +150,7 @@ else
 
     FileUtils.rm_r('raid') if File.exist?('raid')
     FileUtils.mkpath('raid')
-    size = ENV.fetch('OPENQA_DISK_SIZE', '20G')
-    unless system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 #{size}")
+    unless system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 20G")
       raise "Failed to create overlay for #{existing_raid}"
     end
   end
