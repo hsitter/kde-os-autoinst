@@ -54,10 +54,13 @@ pub.Sources.each do |x|
 end
 packages = packages.collect { |x| x.split(' ')[1] }
 # special hack, neon-adwaita in 16.04 is not meant to be installed
-# TODO imagewriter-neon needs deleting from repos
-# TODO calamares-settings doesn't seem to properly rename calamares on remove
-EXCLUSIONS = %w[neon-adwaita imagewriter-neon calamares-settings].freeze
+EXCLUSIONS = %w[neon-adwaita].freeze
 packages = packages.reject { |x| EXCLUSIONS.include?(x) }
+
+# TODO: remove. this is a temporary workaround for calmares-settings not
+#   properly cleaning up after the original installation from the ISO
+# https://packaging.neon.kde.org/neon/calamares-settings.git/commit/?h=Neon/unstable&id=245ad665fda23043e7220cc480ff8afd24c3dc32
+FileUtils.rm_f('/usr/bin/_neon.calamares')
 
 ENV['DEBIAN_FRONTEND'] = 'noninteractive'
 system('apt update') || raise
