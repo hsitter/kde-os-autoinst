@@ -12,17 +12,17 @@
       "height": 25,
       "match": 95,
       "type": "match",
-      "width": 19.714285714285722,
+      "width": 20,
       "xpos": 608,
-      "ypos": 46.28571428571429
+      "ypos": 46
     },
     {
-      "height": 19,
-      "match": 95,
+      "height": 12,
+      "match": 85,
       "type": "match",
       "width": 126,
       "xpos": 699,
-      "ypos": 230
+      "ypos": 234
     },
     {
       "height": 36,
