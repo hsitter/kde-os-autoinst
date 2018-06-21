@@ -32,6 +32,12 @@ ISOTOVIDEO = if File.exist?('/opt/os-autoinst/isotovideo')
                File.expand_path('os-autoinst/isotovideo')
              end
 
+# FIXME: we really want 20G to not accidently risk out of disking the server
+#   if a test has a data leak. OTOH we need larger setups for some tests.
+#   might be worth investing into a solution that can dynamically upscale a
+#   20G base image (would need larger overlay + resizing the partition table)
+DISK_SIZE_GB = '30'.freeze
+
 ENV['PERL5LIB'] = PERL5LIB
 
 # Default to xenial unless otherwise specified.
@@ -86,7 +92,7 @@ config = {
   MAKETESTSNAPSHOTS: false,
   QEMUCPUS: cpus,
   QEMURAM: 2048,
-  HDDSIZEGB_1: '20', # G is appended by os-autoinst
+  HDDSIZEGB_1: DISK_SIZE_GB, # G is appended by os-autoinst
   UEFI_BIOS: '/usr/share/OVMF/OVMF_CODE.fd',
   UEFI: 1,
   QEMU_COMPRESS_QCOW2: true
@@ -150,9 +156,10 @@ else
 
     FileUtils.rm_r('raid') if File.exist?('raid')
     FileUtils.mkpath('raid')
-    unless system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 20G")
+    unless system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 #{DISK_SIZE_GB}G")
       raise "Failed to create overlay for #{existing_raid}"
     end
+    system('qemu-img info raid/1')
   end
   config[:QEMU_DISABLE_SNAPSHOTS] = true
   config[:MAKETESTSNAPSHOTS] = false
