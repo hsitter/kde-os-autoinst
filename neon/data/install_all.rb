@@ -33,6 +33,10 @@ end
 
 Aptly.configure do |config|
   config.uri = URI::HTTPS.build(host: 'archive-api.neon.kde.org')
+  # Aptly has awkward locking in 1.3 at least making even simple queries blocked
+  # while a snapshot is being published. Make sure we don't needlesly time out.
+  config.timeout = 16 * 60
+  config.write_timeout = 15 * 60
 end
 
 sources = File.read('/etc/apt/sources.list.d/neon.list')
