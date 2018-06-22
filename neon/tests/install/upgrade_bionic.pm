@@ -71,7 +71,7 @@ sub run {
     #   covered by an error or unexpected dialog we'd then abort immediately.
     assert_and_click 'ubuntu-upgrade-remove', 'left', 60 * 30;
 
-    assert_screen 'ubuntu-upgrade-restart', 'left', 60 * 10;
+    assert_screen 'ubuntu-upgrade-restart', 'left', 60 * 20;
 
     # upload logs in case something went wrong!
     select_console 'log-console';
