@@ -64,9 +64,14 @@ sub run {
     # A config was changed by us to force the bionic upgrade to be enabled,
     # we should get a diff prompt.
     assert_and_click 'ubuntu-upgrade-diff-2', 'left', 60 * 10;
-    assert_and_click 'ubuntu-upgrade-remove', 'left', 60 * 10;
+    # (This has a super long time out because upgrading an all-packages
+    #  install takes forever)
+    # TODO: consider finding a better way to detect problems than such a long
+    #   time out. maybe assert [remove, standardwindow], if the window gets
+    #   covered by an error or unexpected dialog we'd then abort immediately.
+    assert_and_click 'ubuntu-upgrade-remove', 'left', 60 * 30;
 
-    assert_screen 'ubuntu-upgrade-restart', 'left', 60 * 5;
+    assert_screen 'ubuntu-upgrade-restart', 'left', 60 * 10;
 
     # upload logs in case something went wrong!
     select_console 'log-console';
