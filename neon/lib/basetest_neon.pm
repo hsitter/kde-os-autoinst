@@ -174,6 +174,9 @@ sub enable_snapd {
         upload_logs '/tmp/snap.json';
     }
 
+    assert_script_run 'curl --unix-socket /run/snapd.socket http:/v2/interfaces > /tmp/interfaces.json';
+    upload_logs '/tmp/interfaces.json';
+
     select_console 'x11';
 }
 
