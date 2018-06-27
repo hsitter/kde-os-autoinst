@@ -67,7 +67,7 @@ sub run {
     }
     assert_script_run 'wget ' . data_url('qt_compat_install.rb'),  16;
     assert_script_sudo 'ruby qt_compat_install.rb '.
-                       'kdevelop skrooge kontact plasma-discover',
+                       'kdevelop skrooge kontact plasma-discover qtcreator',
                        60 * 30;
     select_console 'x11';
 
@@ -87,6 +87,10 @@ sub run {
     send_key_while_needlematch('breeze-close', 'alt-f4', 20, 2);
 
     x11_start_program('skrooge');
+    assert_screen 'breeze-close';
+    send_key_while_needlematch('breeze-close', 'alt-f4', 20, 2);
+
+    x11_start_program('qtcreator');
     assert_screen 'breeze-close';
     send_key_while_needlematch('breeze-close', 'alt-f4', 20, 2);
 
