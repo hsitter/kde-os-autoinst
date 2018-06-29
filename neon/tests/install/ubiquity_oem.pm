@@ -150,6 +150,14 @@ sub run {
 
     assert_screen "oem-config-show", 10;
 
+    # Set final installation data.
+    # We do this before we expect sddm. If things fail at this point the oem
+    # user may no longer be functional; the final user should work fine though.
+    # Otherwise a failure in the transition to sddm may result in no useful
+    # data being archived.
+    $testapi::username = $user;
+    $testapi::password = $password;
+
     # NB: oem-config closes all sessions, so for all intents and purposes
     # it is like the system was restarted and we need to reset our console
     # states.
@@ -157,10 +165,6 @@ sub run {
 
     # Once config is done we are expected to end up on sddm.
     assert_screen 'sddm', 60 * 10;
-
-    # Set final installation data.
-    $testapi::username = $user;
-    $testapi::password = $password;
 }
 
 sub post_fail_hook {
