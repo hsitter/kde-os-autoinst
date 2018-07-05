@@ -20,6 +20,12 @@ use base "livetest_neon";
 use strict;
 use testapi;
 
+# Enable debugging of calamares.
+# NB: this needs to be explicitly called and this cannot be enabled via ENV
+#   because the default expectation should not ever be to run in debug mode.
+#   There have been issues that do not appear in debug mode, so testing MUST
+#   be using !debug. And, it is easier to forget undoing an ENV change, and when
+#   it is forgotten it may not be obvious where it is set.
 sub enable_cala_debug {
     select_console 'log-console';
     {
