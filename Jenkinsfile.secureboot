@@ -38,9 +38,12 @@ lock(inversePrecedence: true, label: 'OPENQA_INSTALL') {
         }
       }
     } finally {
-      dir('metadata') { archiveArtifacts '*' }
+      dir('metadata') { allowEmptyArchive: true, archiveArtifacts '*' }
       dir('wok') { archiveArtifacts allowEmptyArchive: true, artifacts: 'testresults/*, ulogs/*, video.*, vars.json, slide.html' }
       junit 'junit/*'
+      // Make sure we fail if metadata was empty, we didn't assert this earlier
+      // because we want the rest of the post-build to run.
+      sh 'ls metadata/*'
     }
   }
 }
