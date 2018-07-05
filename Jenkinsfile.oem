@@ -39,7 +39,7 @@ lock(inversePrecedence: true, label: 'OPENQA_INSTALL') {
         }
       }
     } finally {
-      dir('metadata') { allowEmptyArchive: true, archiveArtifacts '*' }
+      dir('metadata') { archiveArtifacts allowEmptyArchive: true, artifacts: '*' }
       dir('wok') { archiveArtifacts allowEmptyArchive: true, artifacts: 'testresults/*, ulogs/*, video.*, vars.json, slide.html' }
       junit 'junit/*'
       sh 'bin/contain.rb chown -R jenkins .'
