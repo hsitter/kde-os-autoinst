@@ -20,6 +20,14 @@ use base "livetest_neon";
 use strict;
 use testapi;
 
+sub enable_cala_debug {
+    select_console 'log-console';
+    {
+        assert_script_run 'sed -ri \'s%^Exec=(.+)%Exec=\1 -d%g\' ~/Desktop/calamares.desktop';
+    }
+    select_console 'x11';
+}
+
 sub run {
     my ($self) = shift;
     $self->boot;
