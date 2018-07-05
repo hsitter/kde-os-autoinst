@@ -47,8 +47,6 @@ sub run {
 
     $self->maybe_switch_offline;
 
-    enable_cala_debug;
-
     # Installer
     assert_and_click 'calamares-installer-icon';
 
