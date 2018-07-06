@@ -1,0 +1,35 @@
+<script>
+    function refresh(node)
+    {
+        var sleep = 100;
+
+        (function startRefresh()
+        {
+            if (node.complete !== true) {
+                // If the previous image hasn't completed loading, skip this update and schedule a new one.
+                // This prevents us from overloading weak connections with cancelled transfers.
+                setTimeout(startRefresh, sleep);
+                return;
+            }
+
+            var address;
+            if (node.src.indexOf('?') > -1) {
+            address = node.src.split('?')[0];
+            } else {
+            address = node.src;
+            }
+            node.src = address+"?time=" + new Date().getTime();
+
+            setTimeout(startRefresh, sleep);
+        })();
+
+    }
+
+    window.onload = function()
+    {
+        var node = document.getElementById('fullScreenshot');
+        refresh(node);
+    }
+</script>
+
+<p algin="center"><img id="fullScreenshot" src="wok/qemuscreenshot/last.png" /></p></div></div>
