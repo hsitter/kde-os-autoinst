@@ -69,8 +69,26 @@ def fancyNode(label = null, body) {
   node(label) {
     wrap([$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']) {
       wrap([$class: 'TimestamperBuildWrapper']) {
-        body()
+        finally_cleanup { finally_chown { body() } }
       }
+    }
+  }
+}
+
+def finally_chown(body) {
+  try {
+    body()
+  } finally {
+    sh 'bin/contain.rb chown -R jenkins .'
+  }
+}
+
+def finally_cleanup(body) {
+  try {
+    body()
+  } finally {
+    if (!env.NO_CLEAN) {
+      cleanWs()
     }
   }
 }
