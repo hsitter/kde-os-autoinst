@@ -23,7 +23,8 @@ require 'mkmf' # for find_executable
 
 build_deps = %w[libtheora-dev libopencv-dev libfftw3-dev libsndfile1-dev
                 pkg-config libtool autoconf automake build-essential
-                libxml2-dev libssh2-1-dev libdbus-1-dev carton]
+                libxml2-dev libssh2-1-dev libdbus-1-dev carton
+                libexpat1-dev]
 runtime_deps = %w[qemu-kvm qemu kmod git ovmf cpu-checker]
 zsync_build_deps = %w[devscripts autotools-dev libcurl4-openssl-dev]
 deps = build_deps + runtime_deps + zsync_build_deps
