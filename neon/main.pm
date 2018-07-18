@@ -97,15 +97,11 @@ sub cleanup_needles {
     #   as they pop up.
     if (testapi::get_var('OPENQA_SERIES') eq 'bionic') {
         for my $needle (needle::all) {
-            use Data::Dumper;
-            print Dumper($needle);
+            # use Data::Dumper;
+            # print Dumper($needle);
             my @areas = $needle->{area};
             for my $area (@{$needle->{area}}) {
-                my $m = $area->{match};
-                print "area matchyness $m\n";
                 $area->{match} = min($area->{match}, 70);
-                my $n = $area->{match};
-                print "  new needle matchyness $n\n";
             }
         }
     }
