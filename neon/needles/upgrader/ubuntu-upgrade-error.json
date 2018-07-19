@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 21,
+      "match": 95,
+      "type": "match",
+      "width": 73,
+      "xpos": 725,
+      "ypos": 55
+    },
+    {
+      "height": 28,
+      "match": 95,
+      "type": "match",
+      "width": 230,
+      "xpos": 666,
+      "ypos": 88
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "ubuntu-upgrade-error"
+  ]
+}
+
