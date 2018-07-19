@@ -96,13 +96,16 @@ sub cleanup_needles {
     #   we'll want to gradually increase this to 100% and sort out failures
     #   as they pop up.
     if (testapi::get_var('OPENQA_SERIES') eq 'bionic') {
-        for my $needle (needle::all) {
-            # use Data::Dumper;
-            # print Dumper($needle);
-            my @areas = $needle->{area};
-            for my $area (@{$needle->{area}}) {
-                $area->{match} //= 95; # os-autoinst doesn't default this.
-                $area->{match} = min($area->{match}, 70);
+        # needle::needles is <name,needle> so overlapping names are lost.
+        # Go through tags instead <tag,needles>
+        for my $needles (values %needle::tags) {
+            for my $needle (@{$needles}) {
+                print("needle\n");
+                my @areas = $needle->{area};
+                for my $area (@{$needle->{area}}) {
+                    $area->{match} //= 95; # os-autoinst doesn't default this.
+                    $area->{match} = min($area->{match}, 70);
+                }
             }
         }
     }
