@@ -101,6 +101,7 @@ sub cleanup_needles {
             # print Dumper($needle);
             my @areas = $needle->{area};
             for my $area (@{$needle->{area}}) {
+                $area->{match} //= 95; # os-autoinst doesn't default this.
                 $area->{match} = min($area->{match}, 70);
             }
         }
