@@ -69,8 +69,7 @@ sub run {
     # TODO: consider finding a better way to detect problems than such a long
     #   time out. maybe assert [remove, standardwindow], if the window gets
     #   covered by an error or unexpected dialog we'd then abort immediately.
-    assert_screen [qw(ubuntu-upgrade-error, ubuntu-upgrade-remove)], 60 * 30;
-
+    assert_screen [qw(ubuntu-upgrade-error ubuntu-upgrade-remove)], 60 * 30;
     if (match_has_tag('ubuntu-upgrade-error')) {
         die 'We got error while upgrading.';
     }
