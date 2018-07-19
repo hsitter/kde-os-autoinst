@@ -100,7 +100,6 @@ sub cleanup_needles {
         # Go through tags instead <tag,needles>
         for my $needles (values %needle::tags) {
             for my $needle (@{$needles}) {
-                print("needle\n");
                 my @areas = $needle->{area};
                 for my $area (@{$needle->{area}}) {
                     $area->{match} //= 95; # os-autoinst doesn't default this.
