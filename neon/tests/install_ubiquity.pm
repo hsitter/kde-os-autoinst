@@ -49,6 +49,14 @@ sub run {
         assert_screen 'installer-welcome-espanol';
     }
     assert_and_click "installer-next";
+
+    # bionic version of ubiquity moved the keyboard configuration as first step
+    if (testapi::get_var('OPENQA_SERIES') eq 'bionic') {
+        assert_screen "installer-keyboard", 16;
+        record_soft_failure 'https://phabricator.kde.org/T9236';
+        assert_and_click "installer-next";
+    }
+
     assert_screen "installer-prepare", 16;
     assert_and_click "installer-next";
     assert_screen "installer-disk", 16;
@@ -64,9 +72,14 @@ sub run {
     #   fairly weird when moving away from the disk page.
     assert_screen "installer-timezone", 60;
     assert_and_click "installer-next";
-    assert_screen "installer-keyboard", 16;
-    assert_and_click "installer-next";
 
+    # bionic version of ubiquity moved the keyboard configuration as first step
+    # while in xenial version the keyboard config is after timezone setup
+    if (testapi::get_var('OPENQA_SERIES') eq 'xenial') {
+        assert_screen "installer-keyboard", 16;
+        record_soft_failure 'https://phabricator.kde.org/T9236';
+        assert_and_click "installer-next";
+    }
     assert_screen "installer-user", 16;
     type_string $user;
     # user in user field, name field (needle doesn't include hostname in match)
@@ -80,7 +93,7 @@ sub run {
     assert_screen "installer-user-complete", 16;
     assert_and_click "installer-next";
 
-    assert_screen "installer-show", 10;
+    assert_screen "installer-show", 15;
 
     # Let install finish and restart
     assert_screen "installer-restart", 640;

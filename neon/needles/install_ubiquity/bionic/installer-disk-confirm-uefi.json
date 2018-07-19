@@ -1,0 +1,43 @@
+{
+  "area": [
+    {
+      "height": 180,
+      "match": 95,
+      "type": "match",
+      "width": 464,
+      "xpos": 220,
+      "ypos": 147
+    },
+    {
+      "height": 27,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 619,
+      "ypos": 359
+    },
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 195,
+      "xpos": 356,
+      "ypos": 112
+    },
+    {
+      "height": 28,
+      "match": 95,
+      "type": "match",
+      "width": 73,
+      "xpos": 525,
+      "ypos": 359
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-disk-confirm",
+    "installer-disk-confirm-uefi",
+    "ENV-SERIES-bionic"
+  ]
+}
+

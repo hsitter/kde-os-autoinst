@@ -1,0 +1,18 @@
+{
+  "area": [
+    {
+      "height": 278,
+      "match": 95,
+      "type": "match",
+      "width": 760,
+      "xpos": 154,
+      "ypos": 30
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-user-complete",
+    "ENV-SERIES-bionic"
+  ]
+}
+
