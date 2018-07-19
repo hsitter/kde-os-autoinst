@@ -13,8 +13,10 @@
 /*.iso
 /*.iso.zs-old
 /*.sig
+/mkhf.log
 /metadata/
 /cpanfile.snapshot
+/zsync-curl/
 
 # qtcreator build dir
-/needler/build-*/
+/needler/build*/
