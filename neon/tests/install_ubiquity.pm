@@ -51,7 +51,7 @@ sub run {
     assert_and_click "installer-next";
 
     # bionic version of ubiquity moved the keyboard configuration as first step
-    if (testapi::get_var('OPENQA_SERIES') eq 'bionic') {
+    if (testapi::get_var('OPENQA_SERIES') ne 'xenial') {
         assert_screen "installer-keyboard", 16;
         record_soft_failure 'https://phabricator.kde.org/T9236';
         assert_and_click "installer-next";
