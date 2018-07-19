@@ -26,7 +26,8 @@ require 'json'
 require_relative '../lib/junit'
 require_relative '../lib/paths'
 
-ISOTOVIDEO = if File.exist?('/opt/os-autoinst/isotovideo')
+ISOTOVIDEO = if File.exist?('/opt/os-autoinst/isotovideo') &&
+                !ENV['OPENQA_OS_AUTOINST_IN_TREE']
                '/opt/os-autoinst/isotovideo'
              else
                File.expand_path('os-autoinst/isotovideo')

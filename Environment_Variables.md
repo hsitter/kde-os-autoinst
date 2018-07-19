@@ -14,6 +14,7 @@ still fish them out of `ENV` I suppose).
 |OPENQA_BIOS|Modifies the system to boot in BIOS mode instead of UEFI (our tooling only). In os-autoinst this var is `UEFI` and inverted.|
 |PLASMA_MOBILE|Enables special config for plasma mobile|
 |NO_CLEAN|Sets Jenkinsfile to not clean up workspace when the job ends (useful to inspect the disk image)|
+|OPENQA_OS_AUTOINST_IN_TREE|Super duper internal var. If you don't wanna read the code for it you really don't need to know what it does|
 
 # Test Variables
 
