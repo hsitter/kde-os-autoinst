@@ -47,7 +47,7 @@ end
 
 Dir.chdir('os-autoinst') do
   system('git reset --hard') || raise
-  system('git pull --rebase') || raise
+  system('git pull origin master') || raise
   # After this commit a major rewrite was landed which breaks a whole bunch of
   # stuff and makes all our tests not pass. Lock in place for now.
   warn 'W: Locking os-autoinst at be88945fe2ad1b442804cb171e9f4cbb42b17889'
