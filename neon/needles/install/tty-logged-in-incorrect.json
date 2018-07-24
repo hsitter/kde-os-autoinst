@@ -12,7 +12,8 @@
   "tags": [
     "tty-logged-in-live",
     "tty-logged-in",
-    "log-console"
+    "log-console",
+    "tty-logged-in-incorrect"
   ]
 }
 
