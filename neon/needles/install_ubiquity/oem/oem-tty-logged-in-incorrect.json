@@ -1,7 +1,7 @@
 {
   "area": [
     {
-      "height": 17,
+      "height": 20,
       "match": 90,
       "type": "match",
       "width": 26,
@@ -9,7 +9,7 @@
       "ypos": 336
     },
     {
-      "height": 17,
+      "height": 20,
       "match": 90,
       "type": "match",
       "width": 38,
@@ -20,7 +20,8 @@
   "tags": [
     "oem-tty-logged-in",
     "tty-logged-in",
-    "log-console"
+    "log-console",
+    "oem-tty-logged-in-incorrect"
   ]
 }
 
