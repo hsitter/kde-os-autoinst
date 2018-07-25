@@ -1,0 +1,20 @@
+{
+  "area": [
+    {
+      "height": 427,
+      "match": 95,
+      "type": "match",
+      "width": 804,
+      "xpos": 160,
+      "ypos": 34
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-keyboard-espanol",
+    "installer-keyboard",
+    "ENV-NONENGLISH",
+    "ENV-SERIES-bionic"
+  ]
+}
+
