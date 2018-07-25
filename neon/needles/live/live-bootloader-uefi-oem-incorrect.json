@@ -12,7 +12,7 @@
       "height": 32,
       "match": 95,
       "type": "match",
-      "width": 232,
+      "width": 221,
       "xpos": 197,
       "ypos": 189
     },
@@ -25,9 +25,12 @@
       "ypos": 46
     }
   ],
-  "properties": [],
+  "properties": [
+    "workaround"
+  ],
   "tags": [
-    "live-bootloader-uefi-oem"
+    "live-bootloader-uefi-oem",
+    "live-bootloader-uefi-oem-incorrect"
   ]
 }
 
