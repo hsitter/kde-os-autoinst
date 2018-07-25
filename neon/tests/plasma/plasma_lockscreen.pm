@@ -33,13 +33,22 @@ sub lock_screen {
 }
 
 sub run {
+    # NB: do not go into any consoles after this, they show up in the user
+    #   switch dialog!
     # Before we start the lock screen test make sure we aren't logged in on
     # our terminal.
     # Otherwise the tty6 session would show up in the switch and make results
     # unreliable.
     select_console 'log-console';
-    script_run 'exit', 0;
-    reset_consoles;
+    {
+      script_run 'exit', 0;
+      # Make sure logout actually happened. We have had cases where tty6
+      # magically appeared in the switch dialog, supposedly because exit failed.
+      # By asserting the default tty state we either know the logout failed
+      # or have a visual record of what went wrong.
+      assert_screen 'tty6-selected';
+      reset_consoles;
+    }
     select_console 'x11';
 
     # TODO: move to first_start.pm we want static colors. probably not necessary
