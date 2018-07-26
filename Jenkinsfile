@@ -12,20 +12,21 @@ if (env.TYPE == null) {
   }
 }
 
-if (env.OPENQA_SERIES == null) {
-  env.OPENQA_SERIES = 'xenial'
-}
-
 if (env.TYPE == null) {
   error 'TYPE param not set. Cannot run install test without a type.'
 }
 
+if (env.OPENQA_SERIES == null) {
+  env.OPENQA_SERIES = 'xenial'
+}
+
+// WARNING: these override the XML configs when run!
 properties([
+  disableConcurrentBuilds(),
   pipelineTriggers([upstream(threshold: 'UNSTABLE',
                              upstreamProjects: "iso_neon_${env.OPENQA_SERIES}_${TYPE}_amd64")]),
   pipelineTriggers([cron('0 H(9-22) * * *')])
 ])
-
 
 lock(inversePrecedence: true, label: 'OPENQA_INSTALL', quantity: 1) {
   fancyNode('openqa') {
