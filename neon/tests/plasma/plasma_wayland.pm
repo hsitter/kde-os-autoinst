@@ -23,23 +23,6 @@ use testapi;
 sub run {
     my ($self) = @_;
 
-    $self->boot_to_dm(run_setup => 0);
-
-    # Wayland testing needs to happen with qxl VGA. BUT qxl has artifact bugs
-    # on 16.04, so we'll switch out the kernel for one that doesn't suffer from
-    # this problem.
-    # This strictly speaking makes the test less representitive, but is still
-    # loads better than not having the test pass at all.
-    # TODO: can be dropped for 18.04
-    select_console 'log-console';
-    {
-        assert_script_run 'wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.15.3/linux-image-4.15.3-041503-generic_4.15.3-041503.201802120730_amd64.deb',  60 * 5;
-        assert_script_sudo 'apt install -y `pwd`/linux-image-4.15.3-041503-generic_4.15.3-041503.201802120730_amd64.deb', 60 * 2;
-        record_soft_failure 'Installed qxl compatible kernel!';
-        script_sudo 'reboot', 0;
-    }
-    reset_consoles;
-
     $self->boot_to_dm; # don't need the x11 session, we'll switch to wayland.
 
     assert_and_click 'sddm-choose-session';
