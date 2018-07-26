@@ -28,10 +28,11 @@ properties([
   pipelineTriggers([cron('0 H(9-22) * * *')])
 ])
 
-lock(inversePrecedence: true, label: 'OPENQA_INSTALL', quantity: 1) {
+lock(inversePrecedence: true, label: 'OPENQA_INSTALL', quantity: 1, variable: 'DEBUG_LOCK') {
   fancyNode('openqa') {
     try {
       stage('clone') {
+        sh 'env'
         git 'git://anongit.kde.org/sysadmin/neon-openqa.git'
       }
       stage('rake-test') {
