@@ -1,0 +1,20 @@
+{
+  "area": [
+    {
+      "height": 287,
+      "match": 95,
+      "type": "match",
+      "width": 761,
+      "xpos": 155,
+      "ypos": 32
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-prepare",
+    "ENV-SERIES-bionic",
+    "ENV-OFFLINE",
+    "installer-prepare-offline"
+  ]
+}
+
