@@ -27,7 +27,7 @@ properties([
 ])
 
 
-lock(inversePrecedence: true, label: 'OPENQA_INSTALL') {
+lock(inversePrecedence: true, label: 'OPENQA_INSTALL', quantity: 1) {
   fancyNode('openqa') {
     try {
       stage('clone') {
