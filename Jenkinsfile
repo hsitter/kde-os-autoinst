@@ -39,12 +39,6 @@ lock(inversePrecedence: true, label: 'OPENQA_INSTALL', quantity: 1, variable: 'D
       stage('rake-test') {
         sh 'rake test'
       }
-      stage('iso-handover') {
-          if (params.ISO) {
-            echo 'Picking up ISO from trigger job.'
-            sh "cp -v ${params.ISO} incoming.iso"
-        }
-      }
 
       stage('test_installation') {
         wrap([$class: 'LiveScreenshotBuildWrapper', fullscreenFilename: 'wok/qemuscreenshot/last.png']) {
