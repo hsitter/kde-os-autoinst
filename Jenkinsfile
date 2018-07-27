@@ -50,6 +50,7 @@ lock(inversePrecedence: true, label: 'OPENQA_INSTALL', quantity: 1, variable: 'D
           sh 'INSTALLATION=1 bin/contain.rb /workspace/bin/bootstrap.rb'
         }
       }
+
       if (env.ARCHIVE) {
         stage('archive-raid') {
           sh 'bin/archive.rb'
