@@ -20,13 +20,14 @@ if (env.OPENQA_SERIES == null) {
   env.OPENQA_SERIES = 'xenial'
 }
 
-// WARNING: these override the XML configs when run!
-properties([
-  disableConcurrentBuilds(),
-  pipelineTriggers([upstream(threshold: 'UNSTABLE',
-                             upstreamProjects: "iso_neon_${env.OPENQA_SERIES}_${TYPE}_amd64")]),
-  pipelineTriggers([cron('0 H(9-22) * * *')])
-])
+// WARNING: DO NOT set properites()!
+// properties() calls override whatever we set in the XML via our tooling
+// templates. That is to say: calling properties() overrides the actual
+// properties from the XML and can have all sorts of side effects.
+// This is contrary to the reference documentation which says properties
+// are preserved for non-multibranch pipelines!
+// If you need properties set do it in pangea-tooling or talk to sitter/bshah
+// about it
 
 lock(inversePrecedence: true, label: 'OPENQA_INSTALL', quantity: 1, variable: 'DEBUG_LOCK') {
   fancyNode('openqa') {
