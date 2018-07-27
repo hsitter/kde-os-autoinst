@@ -53,7 +53,6 @@ sub run {
     # bionic version of ubiquity moved the keyboard configuration as first step
     if (testapi::get_var('OPENQA_SERIES') ne 'xenial') {
         assert_screen "installer-keyboard", 16;
-        record_soft_failure 'https://phabricator.kde.org/T9236';
         assert_and_click "installer-next";
     }
 
@@ -77,9 +76,9 @@ sub run {
     # while in xenial version the keyboard config is after timezone setup
     if (testapi::get_var('OPENQA_SERIES') eq 'xenial') {
         assert_screen "installer-keyboard", 16;
-        record_soft_failure 'https://phabricator.kde.org/T9236';
         assert_and_click "installer-next";
     }
+
     assert_screen "installer-user", 16;
     type_string $user;
     # user in user field, name field (needle doesn't include hostname in match)
