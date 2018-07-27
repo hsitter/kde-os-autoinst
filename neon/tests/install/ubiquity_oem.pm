@@ -51,6 +51,13 @@ sub run {
     send_key 'tab'; # oem label
     type_string 'frenchfries';
     assert_and_click "installer-next";
+
+    # bionic version of ubiquity moved the keyboard configuration as first step
+    if (testapi::get_var('OPENQA_SERIES') ne 'xenial') {
+        assert_screen "installer-keyboard", 16;
+        assert_and_click "installer-next";
+    }
+
     assert_screen "installer-prepare", 16;
     assert_and_click "installer-next";
     assert_screen "installer-disk", 16;
@@ -66,8 +73,13 @@ sub run {
     #   fairly weird when moving away from the disk page.
     assert_screen "installer-timezone", 60;
     assert_and_click "installer-next";
-    assert_screen "installer-keyboard", 16;
-    assert_and_click "installer-next";
+
+    # bionic version of ubiquity moved the keyboard configuration as first step
+    # while in xenial version the keyboard config is after timezone setup
+    if (testapi::get_var('OPENQA_SERIES') eq 'xenial') {
+        assert_screen "installer-keyboard", 16;
+        assert_and_click "installer-next";
+    }
 
     assert_screen "oem-installer-user", 16;
     # We are in the password field already. Username is oem by default
@@ -129,11 +141,21 @@ sub run {
 
     assert_and_click "installer-next";
 
+    # bionic version of ubiquity moved the keyboard configuration as first step
+    if (testapi::get_var('OPENQA_SERIES') ne 'xenial') {
+        assert_screen "installer-keyboard", 16;
+        assert_and_click "installer-next";
+    }
+
     assert_screen 'oem-config-timezone';
     assert_and_click "installer-next";
 
-    assert_screen 'oem-config-keyboard';
-    assert_and_click "installer-next";
+    # bionic version of ubiquity moved the keyboard configuration as first step
+    # while in xenial version the keyboard config is after timezone setup
+    if (testapi::get_var('OPENQA_SERIES') eq 'xenial') {
+        assert_screen "installer-keyboard", 16;
+        assert_and_click "installer-next";
+    }
 
     assert_screen "oem-config-user", 16;
     type_string $user;
