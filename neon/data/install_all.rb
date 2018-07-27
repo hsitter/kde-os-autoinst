@@ -54,7 +54,7 @@ pub = Aptly::PublishedRepository.list.find do |x|
 end
 packages = []
 pub.Sources.each do |x|
-  packages += x.packages(q: '!Name (~ ".*-[dbg|dbgsym]"), $Architecture (amd64)')
+  packages += x.packages(q: '!Name (~ ".*-[dbg|dbgsym|udeb]"), $Architecture (amd64)')
 end
 packages = packages.collect { |x| x.split(' ')[1] }
 # special hack, neon-adwaita in 16.04 is not meant to be installed
