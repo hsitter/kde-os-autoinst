@@ -54,8 +54,8 @@ sub run {
 
     # bionic version of ubiquity moved the keyboard configuration as first step
     if (testapi::get_var('OPENQA_SERIES') ne 'xenial') {
-        assert_screen "installer-keyboard", 16;
-        assert_and_click "installer-next";
+        assert_screen 'installer-keyboard', 16;
+        assert_and_click 'installer-next';
     }
 
     assert_screen "installer-prepare", 16;
@@ -77,8 +77,8 @@ sub run {
     # bionic version of ubiquity moved the keyboard configuration as first step
     # while in xenial version the keyboard config is after timezone setup
     if (testapi::get_var('OPENQA_SERIES') eq 'xenial') {
-        assert_screen "installer-keyboard", 16;
-        assert_and_click "installer-next";
+        assert_screen 'installer-keyboard', 16;
+        assert_and_click 'installer-next';
     }
 
     assert_screen "oem-installer-user", 16;
@@ -143,8 +143,8 @@ sub run {
 
     # bionic version of ubiquity moved the keyboard configuration as first step
     if (testapi::get_var('OPENQA_SERIES') ne 'xenial') {
-        assert_screen "installer-keyboard", 16;
-        assert_and_click "installer-next";
+        assert_screen 'oem-config-keyboard', 16;
+        assert_and_click 'installer-next';
     }
 
     assert_screen 'oem-config-timezone';
@@ -153,8 +153,8 @@ sub run {
     # bionic version of ubiquity moved the keyboard configuration as first step
     # while in xenial version the keyboard config is after timezone setup
     if (testapi::get_var('OPENQA_SERIES') eq 'xenial') {
-        assert_screen "installer-keyboard", 16;
-        assert_and_click "installer-next";
+        assert_screen 'oem-config-keyboard', 16;
+        assert_and_click 'installer-next';
     }
 
     assert_screen "oem-config-user", 16;
