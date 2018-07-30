@@ -30,6 +30,7 @@ sub ensure_installed {
     testapi::x11_start_program('konsole');
     assert_screen('konsole');
     testapi::assert_script_sudo("chown $testapi::username /dev/$testapi::serialdev");
+    testapi::assert_script_sudo("chmod 666 /dev/$testapi::serialdev");
 
     # make sure packagekit service is available
     testapi::assert_script_sudo('systemctl is-active -q packagekit || (systemctl unmask -q packagekit ; systemctl start -q packagekit)');
@@ -153,6 +154,7 @@ sub activate_console {
         # Mostly just a workaround. os-autoinst wants to write to /dev/ttyS0 but
         # on ubuntu that doesn't fly unless chowned first.
         testapi::assert_script_sudo("chown $testapi::username /dev/$testapi::serialdev");
+        testapi::assert_script_sudo("chmod 666 /dev/$testapi::serialdev");
     }
 
     return;
