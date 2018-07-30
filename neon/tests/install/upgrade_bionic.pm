@@ -66,7 +66,7 @@ sub run {
             sleep 4;
 
             validate_script_output 'ls', sub { '' };
-            assert_script_run 'touch marker'
+            assert_script_run 'touch marker';
             validate_script_output 'ls', sub { m/marker/ };
 
             script_run 'logout', 0;
