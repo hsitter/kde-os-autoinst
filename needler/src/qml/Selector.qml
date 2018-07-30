@@ -110,7 +110,7 @@ Rectangle {
 
         ToolTip.delay: 1500
         ToolTip.visible: containsMouse
-        ToolTip.text: "x: %1\ny: %2\nw: %3\nh: %4".arg(rect.x).arg(rect.y).arg(rect.width).arg(rect.height)
+        ToolTip.text: "x: %1\ny: %2\nw: %3\nh: %4\ntype: %5".arg(rect.x).arg(rect.y).arg(rect.width).arg(rect.height).arg(type)
     }
 
     Rectangle {
