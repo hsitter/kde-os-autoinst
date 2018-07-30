@@ -23,6 +23,8 @@ import QtQuick.Controls 2.2
 import QtQml.Models 2.2
 import QtQuick.Layouts 1.3
 
+import org.kde.kirigami 2.3 as Kirigami
+
 Rectangle {
     id: rect
 
@@ -149,27 +151,23 @@ Rectangle {
         modal: true
         standardButtons: Dialog.Ok | Dialog.Cancel
 
-        ColumnLayout {
-            RowLayout {
-                Label { text: "type" }
-                ComboBox {
-                    id: typeBox
-                    Layout.fillWidth: true
-                    // Fixed types.
-                    // match: pixel matching
-                    // ocr: run through optical character recogniation
-                    // exclude: exclude from reference. not sure how this works
-                    model: [ 'match', 'ocr', 'exclude' ]
-                }
+        Kirigami.FormLayout {
+            ComboBox {
+                id: typeBox
+                Kirigami.FormData.label: "Type:"
+                // Fixed types.
+                // match: pixel matching
+                // ocr: run through optical character recogniation
+                // exclude: exclude from reference. not sure how this works
+                model: [ 'match', 'ocr', 'exclude' ]
+
             }
-            RowLayout {
-                Label { text: "match" }
-                TextField {
-                    id: matchField
-                    Layout.fillWidth: true
-                    text: rect.match
-                    validator: IntValidator{ bottom: 0; top: 100; }
-                }
+
+            TextField {
+                id: matchField
+                Kirigami.FormData.label: "Similarity:"
+                text: rect.match
+                validator: IntValidator{ bottom: 0; top: 100; }
             }
         }
 
