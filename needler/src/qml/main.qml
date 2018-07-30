@@ -325,7 +325,9 @@ ApplicationWindow {
                                         var select = selector.createObject()
                                         select.fromObject(a.area[i])
 
-                                        if (i === a.area.length - 1) { // last
+                                        // i isn't a number. I don't know why. Javascript :@
+                                        if (Number(i) === a.area.length - 1) { // last
+                                            console.log("clickarea!")
                                             select.clickArea = true
                                         }
                                         selectorModel.append(select)
