@@ -42,7 +42,7 @@ sub run {
             assert_script_sudo 'apt update', 60;
             assert_script_sudo 'apt install -y ecryptfs-utils', 60 * 5;
 
-            script_sudo "adduser --gecos '' --encrypt-home --force $encrypt_user";
+            script_sudo "adduser --gecos '' --encrypt-home --force $encrypt_user", 0;
             assert_screen 'adduser-password1';
             type_string $encrypt_password;
             send_key 'ret';
