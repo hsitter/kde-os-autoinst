@@ -31,7 +31,7 @@ sub kscreenlocker_disable {
 
 sub run {
     my ($self) = @_;
-    $self->boot;
+    $self->boot_to_dm;
 
     select_console 'log-console';
     {
@@ -39,6 +39,9 @@ sub run {
         assert_script_sudo 'ruby upgrade_bionic.rb', 60;
     }
     select_console 'x11';
+
+    $self->login;
+    assert_screen 'folder-desktop', 30;
 
     # Disable screen locker, this is gonna take a while.
     kscreenlocker_disable;
