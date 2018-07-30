@@ -83,10 +83,18 @@ sub run {
         assert_script_sudo 'tar -cJf /tmp/dist-upgrade.tar.xz /var/log/dist-upgrade/';
         upload_logs '/tmp/dist-upgrade.tar.xz';
 
+        my %type_to_path = (
+            'devedition-gitunstable' => 'dev/unstable',
+            'devedition-gistable' => 'dev/stable',
+            'useredition' => 'user',
+            'userltsedition' => 'user/lts'
+        );
+        my $path = $type_to_path{$ENV{TYPE}};
+
         # NB: this hardcodes unstable, when we introduce other tests this needs
         #   fixing somehow (map types to repos in a hash?)
         validate_script_output "cat /etc/apt/sources.list.d/neon.list",
-            sub { m{.*^(\s?)deb(\s?)http://archive.neon.kde.org/dev/unstable(\s?)bionic(\s?)main.*} };
+            sub { m{.*^(\s?)deb(\s?)http://archive.neon.kde.org/$path(\s?)bionic(\s?)main.*} };
     }
     select_console 'x11';
 
