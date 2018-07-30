@@ -123,18 +123,14 @@ sub boot_to_dm {
     mouse_hide;
 }
 
-# Waits for system to boot to desktop.
+# Waits for system to boot and log in (no assertion about desktop).
 sub boot {
     my ($self, $args) = @_;
 
     $self->boot_to_dm;
-    # Should be at sddm. Short time out as this only is a VT switch.
-    assert_screen 'sddm', 4;
+    $self->login;
+}
 
-    type_password $testapi::password;
-    send_key 'ret';
-
-    wait_still_screen;
 }
 
 sub enable_snapd {
