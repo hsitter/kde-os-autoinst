@@ -44,9 +44,12 @@ sub run {
       script_run 'exit', 0;
       # Make sure logout actually happened. We have had cases where tty6
       # magically appeared in the switch dialog, supposedly because exit failed.
-      # By asserting the default tty state we either know the logout failed
-      # or have a visual record of what went wrong.
-      assert_screen 'tty6-selected';
+      # NOTE: Unfortunately we cannot assert anything here. On 18.04+ we'd
+      # automatically switch to the remaining active VT (x11), so the state of
+      # vt6 is left a mystery.
+      # Whether the sleep actually helps with anything is unknown. But one can
+      # hope.
+      sleep 4;
       reset_consoles;
     }
     select_console 'x11';
