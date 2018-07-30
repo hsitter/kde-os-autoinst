@@ -33,6 +33,56 @@ sub run {
     my ($self) = @_;
     $self->boot_to_dm;
 
+    my $encrypt_user = 'encrypty';
+    my $encrypt_password = 'password';
+    if (!get_var('OPENQA_UPGRADE_ENCRYPT_HOME')) {
+        select_console 'log-console';
+        {
+            # https://help.ubuntu.com/community/EncryptedHome
+            assert_script_sudo 'apt update', 60;
+            assert_script_sudo 'apt install -y ecryptfs-utils', 60 * 5;
+
+            script_sudo "adduser --gecos '' --encrypt-home --force $encrypt_user";
+            assert_screen 'adduser-password1';
+            type_string $encrypt_password;
+            send_key 'ret';
+            assert_screen 'adduser-password2';
+            type_string $encrypt_password;
+            send_key 'ret';
+            assert_screen 'adduser-done';
+
+            script_run 'logout', 0;
+
+            assert_screen 'tty6-selected';
+            type_string $encrypt_user;
+            send_key 'ret';
+            assert_screen 'tty-password';
+            type_password $encrypt_password;
+            send_key 'ret';
+
+            # This is a bit stupid but we don't actually have a better way to
+            # check except for looking at a completely new needle. Go with this
+            # for now.
+            sleep 4;
+
+            validate_script_output 'ls', sub { '' };
+            assert_script_run 'touch marker'
+            validate_script_output 'ls', sub { 'marker' };
+
+            script_run 'logout', 0;
+            reset_consoles;
+
+            # Relogin by simply switching to the console again.
+            select_console 'log-console';
+            # Cache sudo password.
+            assert_script_sudo 'ls';
+            # ...and make sure the home is encrypted!
+            validate_script_output "sudo ls /home/$encrypt_user",
+                                   sub { m/Access-Your-Private-Data\.desktop.*/ };
+        }
+        select_console 'x11';
+    }
+
     select_console 'log-console';
     {
         assert_script_run 'wget ' . data_url('upgrade_bionic.rb'),  16;
@@ -109,6 +159,36 @@ sub run {
     set_var 'OPENQA_SERIES', 'bionic', reload_needles => 1;
     console('x11')->set_tty(1);
     reset_consoles;
+
+    $self->boot_to_dm;
+
+    if (!get_var('OPENQA_UPGRADE_ENCRYPT_HOME')) {
+        select_console 'log_console';
+        {
+            # Switch to encrypted user and make sure it still has access to
+            # its data after the upgrade.
+            script_run 'logout', 0;
+
+            assert_screen 'tty6-selected';
+            type_string $encrypt_user;
+            send_key 'ret';
+            assert_screen 'tty-password';
+            type_password $encrypt_password;
+            send_key 'ret';
+
+            # This is a bit stupid but we don't actually have a better way to
+            # check except for looking at a completely new needle. Go with this
+            # for now.
+            sleep 4;
+
+            validate_script_output 'ls', sub { 'marker' };
+
+            # And pop back to regular user.
+            script_run 'logout', 0;
+            reset_consoles;
+        }
+        select_console 'x11';
+    }
 }
 
 sub post_fail_hook {
