@@ -67,7 +67,7 @@ sub run {
 
             validate_script_output 'ls', sub { '' };
             assert_script_run 'touch marker'
-            validate_script_output 'ls', sub { 'marker' };
+            validate_script_output 'ls', sub { m/marker/ };
 
             script_run 'logout', 0;
             reset_consoles;
@@ -181,7 +181,7 @@ sub run {
             # for now.
             sleep 4;
 
-            validate_script_output 'ls', sub { 'marker' };
+            validate_script_output 'ls', sub { m/marker/ };
 
             # And pop back to regular user.
             script_run 'logout', 0;
