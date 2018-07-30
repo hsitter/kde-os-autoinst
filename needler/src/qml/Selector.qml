@@ -108,7 +108,7 @@ Rectangle {
         anchors.fill: parent
         hoverEnabled: true
 
-        ToolTip.delay: 2500
+        ToolTip.delay: 1500
         ToolTip.visible: containsMouse
         ToolTip.text: "x: %1\ny: %2\nw: %3\nh: %4".arg(rect.x).arg(rect.y).arg(rect.width).arg(rect.height)
     }
