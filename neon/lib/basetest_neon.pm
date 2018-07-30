@@ -131,6 +131,11 @@ sub boot {
     $self->login;
 }
 
+# Switches to log-console and reboots the system via 'reboot'
+sub reboot {
+    select_console 'log-console';
+    script_sudo 'reboot', 0;
+    reset_consoles;
 }
 
 sub enable_snapd {
