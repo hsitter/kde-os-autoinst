@@ -35,7 +35,7 @@ sub run {
 
     my $encrypt_user = 'encrypty';
     my $encrypt_password = 'password';
-    if (!get_var('OPENQA_UPGRADE_ENCRYPT_HOME')) {
+    if (get_var('OPENQA_UPGRADE_ENCRYPT_HOME')) {
         select_console 'log-console';
         {
             # https://help.ubuntu.com/community/EncryptedHome
@@ -162,7 +162,7 @@ sub run {
 
     $self->boot_to_dm;
 
-    if (!get_var('OPENQA_UPGRADE_ENCRYPT_HOME')) {
+    if (get_var('OPENQA_UPGRADE_ENCRYPT_HOME')) {
         select_console 'log_console';
         {
             # Switch to encrypted user and make sure it still has access to
