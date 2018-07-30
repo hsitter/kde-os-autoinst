@@ -152,12 +152,21 @@ Rectangle {
         ColumnLayout {
             RowLayout {
                 Label { text: "type" }
-                TextField { id:typeField; text: rect.type }
+                ComboBox {
+                    id: typeBox
+                    Layout.fillWidth: true
+                    // Fixed types.
+                    // match: pixel matching
+                    // ocr: run through optical character recogniation
+                    // exclude: exclude from reference. not sure how this works
+                    model: [ 'match', 'ocr', 'exclude' ]
+                }
             }
             RowLayout {
                 Label { text: "match" }
                 TextField {
-                    id:matchField
+                    id: matchField
+                    Layout.fillWidth: true
                     text: rect.match
                     validator: IntValidator{ bottom: 0; top: 100; }
                 }
@@ -165,7 +174,7 @@ Rectangle {
         }
 
         onAccepted: {
-            rect.type = typeField.text
+            rect.type = typeBox.currentText
             rect.match = parseFloat(matchField.text)
         }
     }
