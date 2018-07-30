@@ -116,7 +116,7 @@ Rectangle {
     Rectangle {
         id: fill
         anchors.fill: parent
-        color:  clickArea ? "yellow" : "steelblue"
+        color:  (type === "exclude") ? "red" : (clickArea ? "yellow" : "steelblue")
         opacity: 0.6
     }
 
