@@ -69,7 +69,7 @@ FileUtils.mkdir('../metadata', verbose: true)
 cpus = Etc.nprocessors
 cpus = (cpus / 2.0).ceil unless File.exist?('/tooling/is_scaling_node')
 
-defaultvga = ENV['OPENQA_SERIES'] == 'bionic' ? 'qxl' : 'cirrus'
+defaultvga = 'qxl'
 
 config = {
   BACKEND: 'qemu',
