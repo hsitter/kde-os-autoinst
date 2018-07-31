@@ -65,17 +65,20 @@ sub run {
             # for now.
             sleep 4;
 
-            validate_script_output 'ls', sub { '' };
+            validate_script_output 'ls', sub { m/^$/ };
             assert_script_run 'touch marker';
-            validate_script_output 'ls', sub { m/marker/ };
+            validate_script_output 'ls', sub { m/^marker$/ };
 
             script_run 'logout', 0;
             reset_consoles;
 
             # Relogin by simply switching to the console again.
             select_console 'log-console';
-            # Cache sudo password.
-            assert_script_sudo 'ls';
+            # Cache sudo password & make sure the home is unmounted!
+            # https://wiki.ubuntu.com/EncryptedHomeFolder
+            #   Sometimes pam fails to unmount your folder (esp if use
+            #   graphical login), leaving it open even though your logged out.
+            script_sudo "umount /home/$encrypt_user";
             # ...and make sure the home is encrypted!
             validate_script_output "sudo ls /home/$encrypt_user",
                                    sub { m/Access-Your-Private-Data\.desktop.*/ };
@@ -181,7 +184,7 @@ sub run {
             # for now.
             sleep 4;
 
-            validate_script_output 'ls', sub { m/marker/ };
+            validate_script_output 'ls', sub { m/^marker$/ };
 
             # And pop back to regular user.
             script_run 'logout', 0;
