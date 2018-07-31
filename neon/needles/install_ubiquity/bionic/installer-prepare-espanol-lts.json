@@ -1,0 +1,22 @@
+{
+  "area": [
+    {
+      "height": 527,
+      "match": 95,
+      "type": "match",
+      "width": 906,
+      "xpos": 4,
+      "ypos": 32
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-prepare",
+    "ENV-NO-SECUREBOOT",
+    "ENV-SERIES-bionic",
+    "installer-prepare-espanol-lts",
+    "ENV-NONENGLISH",
+    "ENV-TYPE-userltsedition"
+  ]
+}
+

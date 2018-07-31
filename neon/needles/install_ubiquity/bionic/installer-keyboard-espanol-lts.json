@@ -1,0 +1,22 @@
+{
+  "area": [
+    {
+      "height": 397,
+      "match": 95,
+      "type": "match",
+      "width": 759,
+      "xpos": 151,
+      "ypos": 36
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-keyboard-espanol",
+    "installer-keyboard",
+    "ENV-NONENGLISH",
+    "ENV-SERIES-bionic",
+    "installer-keyboard-espanol-lts",
+    "ENV-TYPE-userltsedition"
+  ]
+}
+

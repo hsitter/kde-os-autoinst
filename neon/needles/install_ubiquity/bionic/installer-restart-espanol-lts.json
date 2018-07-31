@@ -1,0 +1,21 @@
+{
+  "area": [
+    {
+      "height": 116,
+      "match": 95,
+      "type": "match",
+      "width": 502,
+      "xpos": 219,
+      "ypos": 199
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-restart-espanol",
+    "installer-restart",
+    "ENV-NONENGLISH",
+    "installer-restart-espanol-lts",
+    "ENV-TYPE-userltsedition",
+    "ENV-SERIES-bionic"
+  ]
+}

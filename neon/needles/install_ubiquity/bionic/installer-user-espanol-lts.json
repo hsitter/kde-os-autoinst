@@ -1,0 +1,22 @@
+{
+  "area": [
+    {
+      "height": 434,
+      "match": 95,
+      "type": "match",
+      "width": 761,
+      "xpos": 153,
+      "ypos": 36
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-user-espanol",
+    "installer-user",
+    "ENV-NONENGLISH",
+    "ENV-TYPE-userltsedition",
+    "ENV-SERIES-bionic",
+    "installer-user-espanol-lts"
+  ]
+}
+
