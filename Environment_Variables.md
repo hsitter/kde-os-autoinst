@@ -34,7 +34,6 @@ still fish them out of `ENV` I suppose).
 |OPENQA_SNAP_NAME|For snap testing this sets the application snap name. This is also the name that will be passed to `snap run`|
 |OPENQA_SNAP_CHANNEL|For snap testing this sets the store channel snaps are pulled from|
 |OPENQA_SNAP_RUNTIME_CHANNEL|For snap testing this sets the store channel the snap runtime (kde-frameworks-5) is pulled from. If this is not set OPENQA_SNAP_CHANNEL will be used. If that isn't set either, the stable channel is used instead|
-|OPENQA_UPGRADE_ENCRYPT_HOME|Used in the upgrade_bionic test to enable home encryption|
 
 # Test Suites
 

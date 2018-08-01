@@ -33,58 +33,65 @@ sub run {
     my ($self) = @_;
     $self->boot_to_dm;
 
+    # Setup a second user with an encrypted home. In ubiquity we never really
+    # disabled home encryption as we didn't wanna support it but then it was
+    # working fine and we had no reason to take away something that works.
+    # Now we pay the price for that niceness.
+    # As a basic requirement we'll want encrypted homes to be still encrypted
+    # and accessible after the upgrade. Since we do not install encrypted
+    # images though we'll have to manually setup an encrypted home first.
+    # This isn't perfectly representive of how a ubiquity encrypted home
+    # may look like, but it should be close enough.
     my $encrypt_user = 'encrypty';
     my $encrypt_password = 'password';
-    if (get_var('OPENQA_UPGRADE_ENCRYPT_HOME')) {
+    select_console 'log-console';
+    {
+        # https://help.ubuntu.com/community/EncryptedHome
+        assert_script_sudo 'apt update', 60;
+        assert_script_sudo 'apt install -y ecryptfs-utils', 60 * 5;
+
+        script_sudo "adduser --gecos '' --encrypt-home --force $encrypt_user", 0;
+        assert_screen 'adduser-password1';
+        type_string $encrypt_password;
+        send_key 'ret';
+        assert_screen 'adduser-password2';
+        type_string $encrypt_password;
+        send_key 'ret';
+        assert_screen 'adduser-done';
+
+        script_run 'logout', 0;
+
+        assert_screen 'tty6-selected';
+        type_string $encrypt_user;
+        send_key 'ret';
+        assert_screen 'tty-password';
+        type_password $encrypt_password;
+        send_key 'ret';
+
+        # This is a bit stupid but we don't actually have a better way to
+        # check except for looking at a completely new needle. Go with this
+        # for now.
+        sleep 4;
+
+        validate_script_output 'ls', sub { m/^$/ };
+        assert_script_run 'touch marker';
+        validate_script_output 'ls', sub { m/^marker$/ };
+
+        script_run 'logout', 0;
+        reset_consoles;
+
+        # Relogin by simply switching to the console again.
         select_console 'log-console';
-        {
-            # https://help.ubuntu.com/community/EncryptedHome
-            assert_script_sudo 'apt update', 60;
-            assert_script_sudo 'apt install -y ecryptfs-utils', 60 * 5;
-
-            script_sudo "adduser --gecos '' --encrypt-home --force $encrypt_user", 0;
-            assert_screen 'adduser-password1';
-            type_string $encrypt_password;
-            send_key 'ret';
-            assert_screen 'adduser-password2';
-            type_string $encrypt_password;
-            send_key 'ret';
-            assert_screen 'adduser-done';
-
-            script_run 'logout', 0;
-
-            assert_screen 'tty6-selected';
-            type_string $encrypt_user;
-            send_key 'ret';
-            assert_screen 'tty-password';
-            type_password $encrypt_password;
-            send_key 'ret';
-
-            # This is a bit stupid but we don't actually have a better way to
-            # check except for looking at a completely new needle. Go with this
-            # for now.
-            sleep 4;
-
-            validate_script_output 'ls', sub { m/^$/ };
-            assert_script_run 'touch marker';
-            validate_script_output 'ls', sub { m/^marker$/ };
-
-            script_run 'logout', 0;
-            reset_consoles;
-
-            # Relogin by simply switching to the console again.
-            select_console 'log-console';
-            # Cache sudo password & make sure the home is unmounted!
-            # https://wiki.ubuntu.com/EncryptedHomeFolder
-            #   Sometimes pam fails to unmount your folder (esp if use
-            #   graphical login), leaving it open even though your logged out.
-            script_sudo "umount /home/$encrypt_user";
-            # ...and make sure the home is encrypted!
-            validate_script_output "sudo ls /home/$encrypt_user",
-                                   sub { m/Access-Your-Private-Data\.desktop.*/ };
-        }
-        select_console 'x11';
+        # Cache sudo password & make sure the home is unmounted!
+        # https://wiki.ubuntu.com/EncryptedHomeFolder
+        #   Sometimes pam fails to unmount your folder (esp if use
+        #   graphical login), leaving it open even though your logged out.
+        script_sudo "umount /home/$encrypt_user";
+        # ...and make sure the home is encrypted!
+        validate_script_output "sudo ls /home/$encrypt_user",
+                               sub { m/Access-Your-Private-Data\.desktop.*/ };
     }
+    select_console 'x11';
 
     select_console 'log-console';
     {
@@ -165,37 +172,37 @@ sub run {
 
     $self->boot_to_dm;
 
-    if (get_var('OPENQA_UPGRADE_ENCRYPT_HOME')) {
-        select_console 'log-console';
-        {
-            # We don't have access...
-            validate_script_output "sudo ls /home/$encrypt_user",
-                                   sub { m/Access-Your-Private-Data\.desktop.*/ };
-            # Switch to encrypted user and make sure it still has access to
-            # its data after the upgrade though...
-            script_run 'logout', 0;
+    # Before handing over to subsequent tests we'll assert encrypted homes
+    # are still working.
+    select_console 'log-console';
+    {
+        # We don't have access...
+        validate_script_output "sudo ls /home/$encrypt_user",
+                               sub { m/Access-Your-Private-Data\.desktop.*/ };
+        # Switch to encrypted user and make sure it still has access to
+        # its data after the upgrade though...
+        script_run 'logout', 0;
 
-            assert_screen 'tty6-selected';
-            type_string $encrypt_user;
-            send_key 'ret';
-            assert_screen 'tty-password';
-            type_password $encrypt_password;
-            send_key 'ret';
+        assert_screen 'tty6-selected';
+        type_string $encrypt_user;
+        send_key 'ret';
+        assert_screen 'tty-password';
+        type_password $encrypt_password;
+        send_key 'ret';
 
-            # This is a bit stupid but we don't actually have a better way to
-            # check except for looking at a completely new needle. Go with this
-            # for now.
-            sleep 4;
+        # This is a bit stupid but we don't actually have a better way to
+        # check except for looking at a completely new needle. Go with this
+        # for now.
+        sleep 4;
 
-            assert_script_run 'ls';
-            validate_script_output 'ls', sub { m/^marker$/ };
+        assert_script_run 'ls';
+        validate_script_output 'ls', sub { m/^marker$/ };
 
-            # And pop back to regular user.
-            script_run 'logout', 0;
-            reset_consoles;
-        }
-        select_console 'x11';
+        # And pop back to regular user.
+        script_run 'logout', 0;
+        reset_consoles;
     }
+    select_console 'x11';
 }
 
 sub post_fail_hook {
