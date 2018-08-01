@@ -184,6 +184,7 @@ sub run {
             # for now.
             sleep 4;
 
+            assert_script_run 'ls';
             validate_script_output 'ls', sub { m/^marker$/ };
 
             # And pop back to regular user.
