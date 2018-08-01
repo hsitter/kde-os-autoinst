@@ -1,28 +1,28 @@
 {
   "area": [
     {
-      "height": 218,
+      "height": 227,
       "match": 95,
       "type": "match",
       "width": 470,
       "xpos": 213,
-      "ypos": 143
+      "ypos": 134
     },
     {
       "height": 27,
       "match": 95,
       "type": "match",
       "width": 64,
-      "xpos": 623,
-      "ypos": 387
+      "xpos": 621,
+      "ypos": 370
     },
     {
       "height": 28,
       "match": 95,
       "type": "match",
       "width": 73,
-      "xpos": 531,
-      "ypos": 387
+      "xpos": 525,
+      "ypos": 367
     }
   ],
   "properties": [],
@@ -33,3 +33,4 @@
     "ENV-SERIES-bionic"
   ]
 }
+
