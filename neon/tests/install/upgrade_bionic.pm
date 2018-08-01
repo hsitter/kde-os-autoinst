@@ -168,8 +168,11 @@ sub run {
     if (get_var('OPENQA_UPGRADE_ENCRYPT_HOME')) {
         select_console 'log-console';
         {
+            # We don't have access...
+            validate_script_output "sudo ls /home/$encrypt_user",
+                                   sub { m/Access-Your-Private-Data\.desktop.*/ };
             # Switch to encrypted user and make sure it still has access to
-            # its data after the upgrade.
+            # its data after the upgrade though...
             script_run 'logout', 0;
 
             assert_screen 'tty6-selected';
