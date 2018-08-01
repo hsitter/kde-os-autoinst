@@ -166,7 +166,7 @@ sub run {
     $self->boot_to_dm;
 
     if (get_var('OPENQA_UPGRADE_ENCRYPT_HOME')) {
-        select_console 'log_console';
+        select_console 'log-console';
         {
             # Switch to encrypted user and make sure it still has access to
             # its data after the upgrade.
