@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "height": 470,
+      "match": 95,
+      "type": "match",
+      "width": 960,
+      "xpos": 32,
+      "ypos": 130
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "oem-config-user",
+    "ENV-SERIES-bionic"
+  ]
+}
