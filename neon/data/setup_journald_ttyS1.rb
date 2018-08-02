@@ -18,20 +18,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Hook run at the earlierst possiblity. Should generally not fail but do stuff
-# which must happen ASAP.
-# NB: this is also run for all livetests, so be careful with what is done here.
-
-puts "#{$0}: Running early first start hook..."
-
-# Apt gloriously has a timer which regularly locks the database and prevents the
-# user from doing anything. Genious design.
-# Disable this crap.
-puts "#{$0} Disabling apt-daily."
-system('systemctl disable --now apt-daily.timer')
-system('systemctl disable --now apt-daily.service')
-system('systemctl stop apt-daily.service')
-
-puts "#{$0} Adding systemd-coredump."
-system 'apt update' || raise
-system 'apt install -y systemd-coredump' || raise
+# ttyS1 is set up by our kvm wrapper, it ordinarily isn't available
+# Also see bin/kvm_arg_injector for additional information.
+puts "#{$0} Letting systemd-journald log to ttyS1."
+system 'sed -i "s%.*ForwardToConsole=.*%ForwardToConsole=yes%g" /etc/systemd/journald.conf' || raise
+system 'sed -i "s%.*TTYPath=.*%TTYPath=/dev/ttyS1%g" /etc/systemd/journald.conf' || raise
+system 'systemctl restart systemd-journald' || raise
