@@ -203,6 +203,17 @@ sub run {
         reset_consoles;
     }
     select_console 'x11';
+
+    # Make sure the evdev driver is installed. We prefer evdev at this time
+    # instead of libinput since our KCMs aren't particularly awesome for
+    # libinput.
+    select_console 'log-console';
+    {
+        assert_script_run 'dpkg -s xserver-xorg-input-evdev';
+        validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
+                               sub { m/.+evdev.+/ };
+    }
+    select_console 'x11';
 }
 
 sub post_fail_hook {
