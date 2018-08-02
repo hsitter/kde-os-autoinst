@@ -11,6 +11,8 @@
   ],
   "properties": [],
   "tags": [
-    "installer-keyboard"
+    "installer-keyboard",
+    "installer-keyboard-en-us"
   ]
 }
+

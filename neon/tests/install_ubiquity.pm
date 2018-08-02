@@ -20,6 +20,38 @@ use base "livetest_neon";
 use strict;
 use testapi;
 
+sub assert_keyboard_page {
+    assert_screen 'installer-keyboard', 16;
+
+    # On bionic the keyboard is by default !english when installing !english,
+    # this is a problem because we need english keyboard maps to do input
+    # via openqa. So, once we've asserted the default keyboard page, change it
+    # to use english instead.
+    if (match_has_tag('installer-keyboard-espanol') && get_var('OPENQA_SERIES') ne 'xenial') {
+        # Open the combobox
+        assert_and_click 'installer-keyboard', 4;
+        # Jump close to english (ingles).
+        type_string 'in';
+        # At the time of writing there is a
+        # crasher when selecting certain english variants, so we can't just
+        # type this out. We'll move arrow down from 'in' until we have found
+        # en_US.
+        my $counter = 20;
+        while (!check_screen('installer-keyboard-select-en-us', 1)) {
+            if (!$counter--) {
+                last;
+            }
+            send_key 'down';
+            sleep 1;
+        }
+        assert_and_click 'installer-keyboard-select-en-us', 2;
+    }
+
+    # Make sure we've now ended up with the standard en-us keyboard setup.
+    assert_screen 'installer-keyboard-en-us', 2;
+    assert_and_click 'installer-next';
+}
+
 sub run {
     my ($self) = shift;
     $self->boot;
@@ -52,8 +84,7 @@ sub run {
 
     # bionic version of ubiquity moved the keyboard configuration as first step
     if (testapi::get_var('OPENQA_SERIES') ne 'xenial') {
-        assert_screen "installer-keyboard", 16;
-        assert_and_click "installer-next";
+        assert_keyboard_page;
     }
 
     assert_screen "installer-prepare", 16;
@@ -75,8 +106,7 @@ sub run {
     # bionic version of ubiquity moved the keyboard configuration as first step
     # while in xenial version the keyboard config is after timezone setup
     if (testapi::get_var('OPENQA_SERIES') eq 'xenial') {
-        assert_screen "installer-keyboard", 16;
-        assert_and_click "installer-next";
+        assert_keyboard_page;
     }
 
     assert_screen "installer-user", 16;
