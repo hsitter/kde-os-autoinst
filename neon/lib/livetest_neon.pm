@@ -223,6 +223,13 @@ sub boot {
         assert_script_run 'wget ' . data_url('permissions_check.rb'),  16;
         assert_script_run 'ruby permissions_check.rb', 16;
 
+        # This primarily makes sure apt isn't hogged by apt-daily AND most
+        # importantly sets up a journald console output for /dev/ttyS1.
+        # This script will also be run for the final system on first start and
+        # retained in the image.
+        assert_script_run 'wget ' . data_url('early_first_start.rb'),  16;
+        assert_script_sudo 'ruby early_first_start.rb', 60 * 5;
+
         # TODO: maybe control via env var?
         # assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
         # assert_script_run 'ruby enable_qdebug.rb', 16;

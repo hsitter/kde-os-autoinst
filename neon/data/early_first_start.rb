@@ -20,6 +20,7 @@
 
 # Hook run at the earlierst possiblity. Should generally not fail but do stuff
 # which must happen ASAP.
+# NB: this is also run for all livetests, so be careful with what is done here.
 
 puts "#{$0}: Running early first start hook..."
 
