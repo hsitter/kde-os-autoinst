@@ -46,6 +46,7 @@ sub assert_keyboard_page {
             send_key 'down';
             sleep 1;
         }
+        send_key 'down';
         assert_and_click 'installer-keyboard-select-en-us', 2;
     }
 
