@@ -29,7 +29,7 @@ sub assert_keyboard_page {
     # to use english instead.
     if (match_has_tag('installer-keyboard-espanol') && get_var('OPENQA_SERIES') ne 'xenial') {
         # Open the combobox
-        assert_and_click 'installer-keyboard', 4;
+        assert_and_click 'installer-keyboard';
         # Wait for combobox to come up -.-
         sleep 8;
         # Jump close to english (ingles).
