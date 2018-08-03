@@ -46,7 +46,7 @@ sub assert_keyboard_page {
             send_key 'down';
             sleep 1;
         }
-        assert_and_click 'installer-keyboard-select-en-us', 2;
+        assert_and_click 'installer-keyboard-select-en-us';
     }
 
     # Make sure we've now ended up with the standard en-us keyboard setup.
