@@ -44,6 +44,13 @@ sub run {
     assert_script_run 'wget ' . data_url('early_first_start.rb'),  16;
     assert_script_sudo 'ruby early_first_start.rb', 60 * 5;
 
+    # Make sure the evdev driver is installed. We prefer evdev at this time
+    # instead of libinput since our KCMs aren't particularly awesome for
+    # libinput.
+    assert_script_run 'dpkg -s xserver-xorg-input-evdev';
+    validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
+                           sub { m/.+evdev.+/ };
+
     # Assert that we have no preinstalled pool lingering around on the installed
     # rootfs. preinstalled-pool comes from our livecd-rootfs-neon fork and
     # contains bootloaders for offline install. This should be removed before
