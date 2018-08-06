@@ -9,6 +9,14 @@
       "ypos": 306
     },
     {
+      "height": 18,
+      "match": 95,
+      "type": "exclude",
+      "width": 123,
+      "xpos": 361,
+      "ypos": 348
+    },
+    {
       "height": 264,
       "match": 95,
       "type": "match",
