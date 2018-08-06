@@ -236,9 +236,11 @@ sub boot {
         # Make sure the evdev driver is installed. We prefer evdev at this time
         # instead of libinput since our KCMs aren't particularly awesome for
         # libinput.
-        assert_script_run 'dpkg -s xserver-xorg-input-evdev';
-        validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
-                               sub { m/.+evdev.+/ };
+        if (get_var('OPENQA_SERIES') ne 'xenial') {
+            assert_script_run 'dpkg -s xserver-xorg-input-evdev';
+            validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
+                                   sub { m/.+evdev.+/ };
+        }
 
         # TODO: maybe control via env var?
         # assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
