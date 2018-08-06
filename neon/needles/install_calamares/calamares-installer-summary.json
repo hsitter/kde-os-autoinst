@@ -4,16 +4,16 @@
       "height": 62,
       "match": 95,
       "type": "match",
-      "width": 419,
+      "width": 168,
       "xpos": 193,
       "ypos": 306
     },
     {
-      "height": 19,
+      "height": 20,
       "match": 95,
-      "type": "exclude",
-      "width": 124,
-      "xpos": 361,
+      "type": "match",
+      "width": 128,
+      "xpos": 485,
       "ypos": 347
     },
     {
