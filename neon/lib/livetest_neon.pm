@@ -216,6 +216,10 @@ sub boot {
 
     select_console 'log-console';
     {
+        # FIXME: temporary; remove if you run into this
+        assert_script_run 'lsblk --output model'
+        save_screenshot;
+
         $self->_archive_iso_artifacts;
         $self->_secureboot;
         $self->_upgrade;
