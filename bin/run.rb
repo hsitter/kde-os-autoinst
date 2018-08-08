@@ -131,7 +131,9 @@ else
   config[:KEEPHDDS] = true
 
   # Re-use existing raid/, comes from install test.
-  os_auto_inst_dir = "/srv/os-autoinst/#{ENV.fetch('TYPE')}/"
+  os_auto_inst_dir = File.join('/srv/os-autoinst/',
+                               ENV.fetch('OPENQA_SERIES'),
+                               ENV.fetch('TYPE'))
   os_auto_inst_raid = "#{os_auto_inst_dir}/wok/raid"
   if File.exist?(os_auto_inst_raid)
     # Do not explode on recylced build dirs which might still have the origin

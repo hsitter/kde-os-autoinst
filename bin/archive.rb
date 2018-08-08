@@ -21,6 +21,7 @@
 
 require 'tty/command'
 
+OPENQA_SERIES = ENV.fetch('OPENQA_SERIES', 'xenial')
 TYPE = ENV.fetch('TYPE')
 # Both rsync and tar have the same exclude arg syntax \o/
 EXCLUSION_ARGS = %w[
@@ -46,7 +47,7 @@ end
 # TODO: ideally we should only publish the raid itself and expect tests to clone
 #   the git repo
 
-destdir = "/srv/os-autoinst/#{TYPE}"
+destdir = "/srv/os-autoinst/#{OPENQA_SERIES}/#{TYPE}"
 FileUtils.mkpath(destdir) unless File.exist?(destdir)
 cmd.run('rsync', '-a', '--delete', '--info=progress2',
         *EXCLUSION_ARGS,
