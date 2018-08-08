@@ -43,7 +43,7 @@ TYPE = ENV.fetch('TYPE')
 # FIXME: undo all the bionic and OPENQA_SKIP_SIG_CHECK branching madness
 #   it's only here to enable preliminary bionic based testing
 if ENV['OPENQA_SERIES'] == 'bionic'
-  ISO_URL = "http://files.kde.org/.bionic/neon-#{TYPE}-current.iso".freeze
+  ISO_URL = "http://files.kde.org/neon/images/bionic-preview/neon-#{TYPE}/current/neon-#{TYPE}-current.iso".freeze
 else
   ISO_URL = "http://files.kde.org/neon/images/neon-#{TYPE}/current/neon-#{TYPE}-current.iso".freeze
 end
