@@ -1,0 +1,41 @@
+{
+  "area": [
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 197,
+      "ypos": 160
+    },
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 761,
+      "ypos": 242
+    },
+    {
+      "height": 19,
+      "match": 95,
+      "type": "match",
+      "width": 27,
+      "xpos": 853,
+      "ypos": 243
+    },
+    {
+      "height": 42,
+      "match": 95,
+      "type": "match",
+      "width": 112,
+      "xpos": 208,
+      "ypos": 242
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-manual-new-ext4-root"
+  ]
+}
+

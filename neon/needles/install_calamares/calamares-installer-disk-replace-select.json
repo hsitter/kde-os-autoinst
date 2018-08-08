@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 44,
+      "match": 95,
+      "type": "match",
+      "width": 652,
+      "xpos": 199,
+      "ypos": 188
+    },
+    {
+      "height": 40,
+      "match": 70,
+      "type": "match",
+      "width": 418,
+      "xpos": 200,
+      "ypos": 490
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-replace-select"
+  ]
+}
+

@@ -121,7 +121,10 @@ sub cleanup_needles {
 
 $needle::cleanuphandler = \&cleanup_needles;
 
-if (testapi::get_var("INSTALLATION")) {
+
+if (testapi::get_var("INSTALLATION") && testapi::get_var('OPENQA_PARTITIONING')) {
+    autotest::loadtest('tests/install/calamares_partitioning.pm');
+} elsif (testapi::get_var("INSTALLATION")) {
     my %test = (
         'devedition-gitunstable' => "tests/install_calamares.pm",
         '' => "tests/install_ubiquity.pm"

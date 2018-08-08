@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 67,
+      "match": 95,
+      "type": "match",
+      "width": 139,
+      "xpos": 206,
+      "ypos": 243
+    },
+    {
+      "height": 25,
+      "match": 95,
+      "type": "match",
+      "width": 595,
+      "xpos": 194,
+      "ypos": 126
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-manual-clean"
+  ]
+}
+

@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "height": 49,
+      "match": 95,
+      "type": "match",
+      "width": 286,
+      "xpos": 454,
+      "ypos": 271
+    },
+    {
+      "height": 64,
+      "match": 95,
+      "type": "match",
+      "width": 604,
+      "xpos": 296,
+      "ypos": 334
+    },
+    {
+      "height": 25,
+      "match": 95,
+      "type": "match",
+      "width": 104,
+      "xpos": 557,
+      "ypos": 435
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-restart-checkbox"
+  ]
+}
+

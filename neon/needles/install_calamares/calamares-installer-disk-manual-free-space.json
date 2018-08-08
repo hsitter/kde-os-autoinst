@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 67,
+      "match": 95,
+      "type": "match",
+      "width": 114,
+      "xpos": 210,
+      "ypos": 242
+    },
+    {
+      "height": 23,
+      "match": 95,
+      "type": "match",
+      "width": 163,
+      "xpos": 206,
+      "ypos": 242
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-manual-free-space"
+  ]
+}
+

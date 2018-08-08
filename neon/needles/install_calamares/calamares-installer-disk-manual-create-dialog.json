@@ -1,0 +1,57 @@
+{
+  "area": [
+    {
+      "height": 18,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 161,
+      "ypos": 113
+    },
+    {
+      "height": 26,
+      "match": 95,
+      "type": "match",
+      "width": 91,
+      "xpos": 132,
+      "ypos": 144
+    },
+    {
+      "height": 22,
+      "match": 95,
+      "type": "match",
+      "width": 81,
+      "xpos": 143,
+      "ypos": 194
+    },
+    {
+      "height": 21,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 229,
+      "ypos": 195
+    },
+    {
+      "height": 19,
+      "match": 95,
+      "type": "match",
+      "width": 98,
+      "xpos": 445,
+      "ypos": 48
+    },
+    {
+      "height": 52,
+      "match": 95,
+      "type": "match",
+      "width": 93,
+      "xpos": 694,
+      "ypos": 665
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-manual-create-dialog"
+  ]
+}
+

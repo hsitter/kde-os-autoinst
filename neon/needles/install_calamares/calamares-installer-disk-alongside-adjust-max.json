@@ -1,0 +1,34 @@
+{
+  "area": [
+    {
+      "height": 14,
+      "match": 95,
+      "type": "match",
+      "width": 80,
+      "xpos": 323,
+      "ypos": 634
+    },
+    {
+      "height": 42,
+      "match": 95,
+      "type": "match",
+      "width": 595,
+      "xpos": 201,
+      "ypos": 133
+    },
+    {
+      "height": 21,
+      "match": 95,
+      "type": "match",
+      "width": 20,
+      "xpos": 465,
+      "ypos": 598
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-alongside-adjust",
+    "calamares-installer-disk-alongside-adjust-max"
+  ]
+}
+

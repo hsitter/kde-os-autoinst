@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "height": 42,
+      "match": 95,
+      "type": "match",
+      "width": 595,
+      "xpos": 196,
+      "ypos": 308
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-manual"
+  ]
+}
+

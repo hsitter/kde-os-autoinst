@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 42,
+      "match": 95,
+      "type": "match",
+      "width": 595,
+      "xpos": 201,
+      "ypos": 133
+    },
+    {
+      "height": 36,
+      "match": 95,
+      "type": "match",
+      "width": 507,
+      "xpos": 201,
+      "ypos": 514
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-alongside-select"
+  ]
+}
+

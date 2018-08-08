@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 42,
+      "match": 95,
+      "type": "match",
+      "width": 102,
+      "xpos": 207,
+      "ypos": 241
+    },
+    {
+      "height": 39,
+      "match": 95,
+      "type": "match",
+      "width": 96,
+      "xpos": 740,
+      "ypos": 607
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-manual-create"
+  ]
+}
+

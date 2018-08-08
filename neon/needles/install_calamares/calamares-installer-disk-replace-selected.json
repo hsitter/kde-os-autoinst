@@ -1,0 +1,41 @@
+{
+  "area": [
+    {
+      "height": 44,
+      "match": 95,
+      "type": "match",
+      "width": 652,
+      "xpos": 199,
+      "ypos": 188
+    },
+    {
+      "height": 18,
+      "match": 95,
+      "type": "match",
+      "width": 22,
+      "xpos": 254,
+      "ypos": 531
+    },
+    {
+      "height": 17,
+      "match": 95,
+      "type": "match",
+      "width": 21,
+      "xpos": 397,
+      "ypos": 532
+    },
+    {
+      "height": 37,
+      "match": 95,
+      "type": "match",
+      "width": 418,
+      "xpos": 274,
+      "ypos": 489
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-replace-selected"
+  ]
+}
+

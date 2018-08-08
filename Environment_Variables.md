@@ -34,6 +34,7 @@ still fish them out of `ENV` I suppose).
 |OPENQA_SNAP_NAME|For snap testing this sets the application snap name. This is also the name that will be passed to `snap run`|
 |OPENQA_SNAP_CHANNEL|For snap testing this sets the store channel snaps are pulled from|
 |OPENQA_SNAP_RUNTIME_CHANNEL|For snap testing this sets the store channel the snap runtime (kde-frameworks-5) is pulled from. If this is not set OPENQA_SNAP_CHANNEL will be used. If that isn't set either, the stable channel is used instead|
+|OPENQA_PARTITIONING|Can only be used in combination with INSTALLATION=1. Selects advanced partitioning tests during installation. This does not create a fully functional installation when done but instead serves only to test all partitioning features in the installer.|
 
 # Test Suites
 

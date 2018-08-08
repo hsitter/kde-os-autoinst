@@ -1,0 +1,18 @@
+{
+  "area": [
+    {
+      "height": 374,
+      "match": 95,
+      "type": "match",
+      "width": 652,
+      "xpos": 198,
+      "ypos": 128
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-complete",
+    "calamares-installer-disk"
+  ]
+}
+

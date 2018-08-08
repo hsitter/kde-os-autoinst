@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "height": 30,
+      "match": 95,
+      "type": "match",
+      "width": 168,
+      "xpos": 193,
+      "ypos": 306
+    },
+    {
+      "height": 34,
+      "match": 95,
+      "type": "match",
+      "width": 192,
+      "xpos": 193,
+      "ypos": 195
+    },
+    {
+      "height": 136,
+      "match": 95,
+      "type": "match",
+      "width": 668,
+      "xpos": 193,
+      "ypos": 34
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-summary-flexible"
+  ]
+}
+

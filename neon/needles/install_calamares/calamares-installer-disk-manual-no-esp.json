@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 30,
+      "match": 95,
+      "type": "match",
+      "width": 283,
+      "xpos": 329,
+      "ypos": 257
+    },
+    {
+      "height": 45,
+      "match": 95,
+      "type": "match",
+      "width": 94,
+      "xpos": 651,
+      "ypos": 409
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-manual-no-esp"
+  ]
+}
+

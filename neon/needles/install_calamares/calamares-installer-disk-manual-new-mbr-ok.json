@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 19,
+      "match": 95,
+      "type": "match",
+      "width": 221,
+      "xpos": 263,
+      "ypos": 359
+    },
+    {
+      "height": 42,
+      "match": 95,
+      "type": "match",
+      "width": 95,
+      "xpos": 556,
+      "ypos": 411
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-manual-new-mbr-ok"
+  ]
+}
+
