@@ -28,9 +28,12 @@ EXCLUSION_ARGS = %w[
   --exclude=*.iso
   --exclude=*.iso.*
   --exclude=*socket
+  --exclude=neon/needles
+  --exclude=.git
   --exclude=wok/video.ogv
   --exclude=wok/ulogs
   --exclude=wok/testresults
+  --exclude=wok/qemuscreenshot
 ].freeze
 
 cmd = TTY::Command.new
