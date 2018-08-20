@@ -1,0 +1,58 @@
+{
+  "area": [
+    {
+      "height": 34,
+      "match": 95,
+      "type": "match",
+      "width": 21,
+      "xpos": 805,
+      "ypos": 733
+    },
+    {
+      "height": 22,
+      "match": 95,
+      "type": "match",
+      "width": 84,
+      "xpos": 199,
+      "ypos": 232
+    },
+    {
+      "height": 23,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 201,
+      "ypos": 408
+    },
+    {
+      "height": 18,
+      "match": 95,
+      "type": "match",
+      "width": 123,
+      "xpos": 351,
+      "ypos": 233
+    },
+    {
+      "height": 23,
+      "match": 95,
+      "type": "match",
+      "width": 38,
+      "xpos": 377,
+      "ypos": 408
+    },
+    {
+      "height": 20,
+      "match": 95,
+      "type": "match",
+      "width": 148,
+      "xpos": 276,
+      "ypos": 181
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "drkonqi-dialog",
+    "drkonqi-dev-info"
+  ]
+}
+

@@ -39,6 +39,10 @@ sub post_fail_hook {
         record_soft_failure 'not implemented drkonqi opening';
     }
 
+    if (check_screen('drkonqi-dialog', 4)) {
+        assert_and_click('drkonqi-dialog');
+    }
+
     select_console 'log-console';
 
     # The next uploads are largely failok since we want to get as many logs
