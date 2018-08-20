@@ -121,6 +121,8 @@ sub run {
     }
     select_console 'x11';
 
+    $self->maybe_switch_offline;
+
     # First erase and do a standard partitioning
     run_partioning sub {
         assert_and_click 'calamares-installer-disk-erase';
