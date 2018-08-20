@@ -137,8 +137,12 @@ sub maybe_switch_offline {
         # FIXME: we should possibly preseed the coredumpd into the ISO repo
         #   so we can install it even without internet in the tests.
         #   The package is fairly small and has no extra deps.
-        assert_script_run 'wget ' . data_url('early_first_start.rb'),  16;
-        assert_script_sudo 'ruby early_first_start.rb', 60 * 5;
+        select_console 'log-console';
+        {
+          assert_script_run 'wget ' . data_url('early_first_start.rb'),  16;
+          assert_script_sudo 'ruby early_first_start.rb', 60 * 5;
+        }
+        select_console 'x11';
 
         return 0;
     }
