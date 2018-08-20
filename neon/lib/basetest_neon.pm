@@ -41,6 +41,12 @@ sub post_fail_hook {
 
     if (check_screen('drkonqi-dialog', 4)) {
         assert_and_click('drkonqi-dialog');
+        # FIXME: these are hacks because we don't have a needle to assert
+        #  for how long the gdb tracing may take.
+        sleep 12;
+        send_key 'alt-f4';
+        # FIXME: like above but we don't know when coredumpd is done
+        sleep 12;
     }
 
     select_console 'log-console';
