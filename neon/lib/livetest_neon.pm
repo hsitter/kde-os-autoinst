@@ -129,6 +129,17 @@ sub maybe_switch_offline {
 
     if (!get_var('OPENQA_INSTALLATION_OFFLINE')) {
         print "staying online!\n";
+
+        # Run the early first start script to install coredumpd.
+        # Only when NOT offline!
+        # This runs apt update which would otherwise break the offline testing
+        # with an update apt cache.
+        # FIXME: we should possibly preseed the coredumpd into the ISO repo
+        #   so we can install it even without internet in the tests.
+        #   The package is fairly small and has no extra deps.
+        assert_script_run 'wget ' . data_url('early_first_start.rb'),  16;
+        assert_script_sudo 'ruby early_first_start.rb', 60 * 5;
+
         return 0;
     }
 
