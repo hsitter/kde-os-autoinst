@@ -36,13 +36,6 @@ URI_UNSTABLE_POSTFIX = -development
 URI_PROPOSED_POSTFIX = -proposed
 META_RELEASE
 
-# Bionic builds aren't always ahead of ubuntu, so pin neon builds.
-File.write('/etc/apt/preferences.d/neon-bionic', <<-PREFERENCE)
-Package: *
-Pin: release o=neon
-Pin-Priority: 1001
-PREFERENCE
-
 # Debug policy.
 system('apt policy plasma-workspace')
 
