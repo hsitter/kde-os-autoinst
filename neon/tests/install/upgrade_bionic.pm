@@ -93,6 +93,15 @@ sub run {
     }
     select_console 'x11';
 
+    select_console 'log-console';
+    {
+        # Install a suitable logging file so we can easily debug things in case
+        # of failure.
+        assert_script_run 'mkdir -pfv .config/QtProject/'
+        assert_script_run 'wget -O .config/QtProject/qtlogging.ini ' . data_url('upgrade_bionic_qtlogging.ini');
+    }
+    select_console 'x11';
+
     $self->login;
     assert_screen 'folder-desktop', 30;
 
