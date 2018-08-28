@@ -109,7 +109,10 @@ sub run {
     # x11_start_program 'distro-release-notifier';
     x11_start_program 'konsole';
     assert_screen 'konsole';
-    type_string 'distro-release-notifier';
+    # Assert that the notifier was auto-started.
+    assert_script_run 'pidof distro-release-notifier';
+    # And trigger a devel upgrade.
+    type_string 'qdbus org.kde.DistroReleaseNotifier / org.kde.DistroReleaseNotifier.UseDevel true';
     send_key 'ret';
 
     assert_and_click 'distro-release-notifier';
