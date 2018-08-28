@@ -112,7 +112,7 @@ sub boot_to_dm {
             # TODO: this can e dropped after 2018-09-10 or so (once all disks
             #   rotated in the fix)
             # https://packaging.neon.kde.org/neon/settings.git/commit/?h=Neon/unstable_xenial&id=dc28d791e5e4432174dca9a02eccecebccf024b0
-            if (get_var('OPENQA_SERIES') ne 'xenial') {
+            if (get_var('OPENQA_SERIES') eq 'xenial') {
               script_sudo 'rm /etc/apt/preferences.d/99-neon-qca';
             }
 
