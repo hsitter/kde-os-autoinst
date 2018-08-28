@@ -33,4 +33,5 @@ qt.scenegraph.renderloop=false
 qt.scenegraph.time.*=false
 qt.quick.dirty=false
 qt.quick.hover.trace=false
+qt.qpa.input.events=false
 CONFIG
