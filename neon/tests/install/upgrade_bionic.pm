@@ -93,13 +93,6 @@ sub run {
     }
     select_console 'x11';
 
-    select_console 'log-console';
-    {
-        assert_script_run 'wget ' . data_url('upgrade_bionic.rb'),  16;
-        assert_script_sudo 'ruby upgrade_bionic.rb', 60;
-    }
-    select_console 'x11';
-
     $self->login;
     assert_screen 'folder-desktop', 30;
 
