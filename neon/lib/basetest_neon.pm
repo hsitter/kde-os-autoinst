@@ -108,6 +108,14 @@ sub boot_to_dm {
     if ($args{run_setup} && !$self->{boot_setup_ran}) {
         select_console 'log-console';
         {
+            # Drop random file which wasn't meant to be there in xenial
+            # TODO: this can e dropped after 2018-09-10 or so (once all disks
+            #   rotated in the fix)
+            # https://packaging.neon.kde.org/neon/settings.git/commit/?h=Neon/unstable_xenial&id=dc28d791e5e4432174dca9a02eccecebccf024b0
+            if (get_var('OPENQA_SERIES') ne 'xenial') {
+              script_sudo 'rm /etc/apt/preferences.d/99-neon-qca';
+            }
+
             assert_script_run 'wget ' . data_url('basetest_setup.rb'),  60;
             assert_script_sudo 'ruby basetest_setup.rb', 60;
 
