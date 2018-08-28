@@ -113,6 +113,7 @@ sub run {
     assert_screen 'konsole';
     # Assert that the notifier was auto-started.
     assert_script_run 'pidof distro-release-notifier';
+    sleep 20; # Make sure we don't collide with the auto-check after 10 seconds.
     # And trigger a devel upgrade.
     type_string 'qdbus org.kde.DistroReleaseNotifier / org.kde.DistroReleaseNotifier.UseDevel true';
     send_key 'ret';
