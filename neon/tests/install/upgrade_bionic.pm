@@ -84,7 +84,20 @@ sub run {
     select_console 'x11';
 
     $self->login;
-    assert_screen 'folder-desktop', 30;
+
+    # TODO: move to first_start.pm
+    # Assert we have the correct wallpaper and then change it to a static color
+    # so we don't have hugely variable needles because the translucency of
+    # plasma lets the wallpaper bleed through.
+    assert_screen 'folder-desktop';
+    mouse_set 400, 300;
+    mouse_click 'right';
+    assert_and_click 'plasma-context-config-folder';
+    assert_and_click 'plasma-folder-config-background';
+    assert_and_click 'plasma-folder-config-background-color';
+    # Should the default ever become undesirable: #1d99f3 is the lovely color.
+    assert_and_click 'kcm-ok';
+    assert_screen 'folder-desktop-color';
 
     # x11_start_program 'distro-release-notifier';
     x11_start_program 'konsole';
