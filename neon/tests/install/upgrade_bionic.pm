@@ -154,6 +154,10 @@ sub run {
         #   fixing somehow (map types to repos in a hash?)
         validate_script_output "cat /etc/apt/sources.list.d/neon.list",
             sub { m{.*^(\s?)deb(\s?)http://archive.neon.kde.org/$path(\s?)bionic(\s?)main.*} };
+
+        # There are some apt preferences which will cause a further downgrade.
+        # TODO: shouldn't we facilitate this during the upgrade?
+        assert_script_sudo "echo 'APT::Get::allow-downgrades \"true\";' > /etc/apt/apt.conf.d/99allow-downgrades";
     }
     select_console 'x11';
 
