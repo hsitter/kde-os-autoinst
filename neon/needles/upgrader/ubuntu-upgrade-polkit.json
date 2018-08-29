@@ -1,15 +1,15 @@
 {
   "area": [
     {
-      "height": 79.71428571428567,
+      "height": 80,
       "match": 90,
       "type": "match",
       "width": 455,
       "xpos": 251,
-      "ypos": 162.28571428571433
+      "ypos": 162
     },
     {
-      "height": 28.14285714285711,
+      "height": 28,
       "match": 90,
       "type": "match",
       "width": 64,
@@ -17,25 +17,25 @@
       "ypos": 418
     },
     {
-      "height": 34.66666666666674,
+      "height": 35,
       "match": 90,
       "type": "match",
       "width": 409,
       "xpos": 321,
-      "ypos": 333.33333333333326
+      "ypos": 333
     },
     {
       "height": 29,
       "match": 90,
       "type": "match",
-      "width": 351.3047619047619,
-      "xpos": 397.6952380952381,
+      "width": 351,
+      "xpos": 398,
       "ypos": 418
     }
   ],
   "properties": [],
   "tags": [
-    "policykit"
+    "ubuntu-upgrade-polkit"
   ]
 }
 
