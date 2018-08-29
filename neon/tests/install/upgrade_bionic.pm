@@ -105,7 +105,7 @@ sub run {
     # Assert that the notifier was auto-started.
     assert_script_run 'pidof distro-release-notifier';
     # And trigger a devel upgrade.
-    type_string 'neon-preview-upgrade';
+    type_string 'neon-preview-upgrade; exit';
     send_key 'ret';
 
     assert_and_click 'distro-release-notifier';
