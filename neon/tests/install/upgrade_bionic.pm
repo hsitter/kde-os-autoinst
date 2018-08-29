@@ -156,8 +156,8 @@ sub run {
             sub { m{.*^(\s?)deb(\s?)http://archive.neon.kde.org/$path(\s?)bionic(\s?)main.*} };
 
         # There are some apt preferences which will cause a further downgrade.
-        # TODO: shouldn't we facilitate this during the upgrade?
-        assert_script_sudo "echo 'APT::Get::allow-downgrades \"true\";' > /etc/apt/apt.conf.d/99allow-downgrades";
+        # TODO: shouldn't we facilitate this during the upgrade? T9535
+        assert_script_sudo 'wget -O /etc/apt/apt.conf.d/99allow-downgrades ' . data_url('99allow-downgrades'),;
     }
     select_console 'x11';
 

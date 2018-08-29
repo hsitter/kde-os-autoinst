@@ -1,0 +1,2 @@
+# apt preference to allow downgrades globally
+APT::Get::allow-downgrades "true";
