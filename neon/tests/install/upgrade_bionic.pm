@@ -19,16 +19,6 @@
 use base "basetest_neon";
 use testapi;
 
-sub kscreenlocker_disable {
-    x11_start_program 'kcmshell5 screenlocker' ;
-    assert_screen 'kcm-screenlocker';
-    if (match_has_tag 'kcm-screenlocker-enabled') {
-        assert_and_click 'kcm-screenlocker-disable';
-    }
-    assert_screen 'kcm-screenlocker-disabled';
-    assert_and_click 'kcm-ok';
-}
-
 sub run {
     my ($self) = @_;
     $self->boot_to_dm;
@@ -95,9 +85,6 @@ sub run {
 
     $self->login;
     assert_screen 'folder-desktop', 30;
-
-    # Disable screen locker, this is gonna take a while.
-    kscreenlocker_disable;
 
     # x11_start_program 'distro-release-notifier';
     x11_start_program 'konsole';
