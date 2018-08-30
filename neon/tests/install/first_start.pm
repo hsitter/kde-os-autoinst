@@ -21,14 +21,10 @@ use testapi;
 
 # Core test to run for all install cases. Asserts common stuff.
 sub run {
-    # Eventually we should end up in sddm
-    # If we find grub instead we'll throw a tantrum. With only one OS installed
-    # grub should be hidden by default unless the previous shutdown wasn't clean
-    # none of which should be the case on first start!
-    assert_screen ['sddm', 'grub'], 60 * 2;
-    if (match_has_tag('grub')) {
-        die 'Grub should not be visible by defualt but was detected';
-    }
+    my ($self) = @_;
+
+    $self->boot_to_dm run_setup => 0;
+
     # Let the system settle down a bit. There may be first start setup going on
     # slowing down IO responsiveness letting the following tty switch go
     # wrong. Best save than sorry.
@@ -112,7 +108,40 @@ sub run {
     assert_screen 'sddm', 60 * 10;
     select_console 'log-console';
     assert_script_sudo 'ruby grub_toggle_hide.rb', 16;
+    select_console 'x11';
 
+    $self->login;
+    {
+        # Assert we have the correct wallpaper and then change it to a static color
+        # so we don't have hugely variable needles because the translucency of
+        # plasma lets the wallpaper bleed through.
+        assert_screen('folder-desktop');
+        mouse_set 400, 300;
+        mouse_click 'right';
+        assert_and_click 'plasma-context-config-folder';
+        assert_and_click 'plasma-folder-config-background';
+        assert_and_click 'plasma-folder-config-background-color';
+        # Should the default ever become undesirable: #1d99f3 is the lovely color.
+        assert_and_click 'kcm-ok';
+        assert_screen('folder-desktop-color');
+
+        # Also change the lock screen to a static color.
+        # NB: this is uncomfortably similar to the wallpaper and makes matching
+        #   difficult, but according to Fabian Vogt openqa only sees in black and
+        #   white, so changing the color to something else wouldn't help and we'll
+        #   simply have to deal with this. Should this change, #2ecc71 (greenish)
+        #   is a nice color.
+        x11_start_program 'kcmshell5 screenlocker' ;
+        assert_screen 'kcm-screenlocker';
+        assert_and_click 'kcm-screenlocker-appearance';
+        assert_and_click 'kcm-screenlocker-appearance-type';
+        assert_and_click 'kcm-screenlocker-appearance-type-color';
+        # Should the deafault ever become undesirable: #1d99f3 is the lovely color.
+        assert_and_click 'kcm-ok';
+    }
+    $self->logout;
+
+    select_console 'log-console';
     script_sudo 'shutdown now', 0;
     assert_shutdown;
 }

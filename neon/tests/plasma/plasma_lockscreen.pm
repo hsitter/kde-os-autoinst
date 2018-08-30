@@ -54,17 +54,16 @@ sub run {
     }
     select_console 'x11';
 
-    # TODO: move to first_start.pm we want static colors. probably not necessary
-    #   to assert the default appearance?
-    # TODO: we may want to switch to #2ecc71 (greenish) to have an easier time
-    #   differentiating wallpaper from lockscreen in a needle. the idle mode
-    #   of the lockscreen makes it very hard to match as it has exclusively
-    #   mutable information while idling
     x11_start_program 'kcmshell5 screenlocker' ;
     assert_screen 'kcm-screenlocker';
     assert_and_click 'kcm-screenlocker-appearance';
-    assert_and_click 'kcm-screenlocker-appearance-type';
-    assert_and_click 'kcm-screenlocker-appearance-type-color';
+    assert_screen 'kcm-screenlocker-appearance-type';
+    if (match_has_tag('kcm-screenlocker-appearance-type-is-color')) {
+        # TODO: drop once all images have been rotated (~mid Sept 2018)
+        record_soft_failure 'Testing an old disk image without static lockscreen';
+        assert_and_click 'kcm-screenlocker-appearance-type';
+        assert_and_click 'kcm-screenlocker-appearance-type-color';
+    }
     # Should the deafault ever become undesirable: #1d99f3 is the lovely color.
     assert_and_click 'kcm-ok';
 

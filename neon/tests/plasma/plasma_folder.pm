@@ -49,10 +49,9 @@ sub run {
     }
 
     assert_screen 'folder-desktop';
-
     if (!match_has_tag('folder-desktop-color')) {
-        # TODO: move to first_start.pm
-        #   we'd assert the wallpaper once and then switch to static color only
+        # TODO: drop once all images have been rotated (~mid Sept 2018)
+        record_soft_failure 'Testing an old disk image without static wallpaper';
         mouse_set 400, 300;
         mouse_click 'right';
         assert_and_click 'plasma-context-config-folder';
@@ -61,7 +60,6 @@ sub run {
         # Should the deafault ever become undesirable: #1d99f3 is the lovely color.
         assert_and_click 'kcm-ok';
     }
-
     # Should now be lovely blue.
     assert_screen 'folder-desktop-color';
 }
