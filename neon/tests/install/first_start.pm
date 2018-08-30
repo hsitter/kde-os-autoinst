@@ -23,7 +23,7 @@ use testapi;
 sub run {
     my ($self) = @_;
 
-    $self->boot_to_dm { run_setup => 0 };
+    $self->boot_to_dm(run_setup => 0);
 
     # Let the system settle down a bit. There may be first start setup going on
     # slowing down IO responsiveness letting the following tty switch go
