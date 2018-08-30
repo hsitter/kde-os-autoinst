@@ -49,7 +49,7 @@ sub run {
     }
 
     assert_screen 'folder-desktop';
-    if (!match_has_tag('folder-desktop-color')) {
+    if (!check_screen('folder-desktop-color', 4)) {
         # TODO: drop once all images have been rotated (~mid Sept 2018)
         record_soft_failure 'Testing an old disk image without static wallpaper';
         mouse_set 400, 300;
