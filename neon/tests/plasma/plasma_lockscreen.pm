@@ -57,10 +57,10 @@ sub run {
     x11_start_program 'kcmshell5 screenlocker' ;
     assert_screen 'kcm-screenlocker';
     assert_and_click 'kcm-screenlocker-appearance';
-    assert_screen 'kcm-screenlocker-appearance-type';
-    if (check_screen('kcm-screenlocker-appearance-type-is-color', 2)) {
+    if (!check_screen('kcm-screenlocker-appearance-type-is-color', 4)) {
         # TODO: drop once all images have been rotated (~mid Sept 2018)
         record_soft_failure 'Testing an old disk image without static lockscreen';
+        assert_screen 'kcm-screenlocker-appearance-type';
         assert_and_click 'kcm-screenlocker-appearance-type';
         assert_and_click 'kcm-screenlocker-appearance-type-color';
     }
