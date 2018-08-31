@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "height": 22,
+      "match": 95,
+      "type": "match",
+      "width": 21,
+      "xpos": 763,
+      "ypos": 738
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "distro-release-notifier-sni"
+  ]
+}
+
