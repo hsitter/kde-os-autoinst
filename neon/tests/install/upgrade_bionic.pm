@@ -203,8 +203,14 @@ sub run {
         # And pop back to regular user.
         script_run 'logout', 0;
         reset_consoles;
+        # Wait a bit before switching around again
+        sleep 2;
     }
     select_console 'x11';
+
+    # Wait a bit before switching back. Since x11 doesn't assert a screen we
+    # could be switching too quickly and end up on the wrong VT.
+    sleep 2;
 
     # Make sure the evdev driver is installed. We prefer evdev at this time
     # instead of libinput since our KCMs aren't particularly awesome for
