@@ -229,6 +229,10 @@ sub post_fail_hook {
 
     select_console 'log-console';
 
+    # Check if the upgrader is running on the system bus.
+    script_run 'qdbus --system | grep -i ubuntu';
+    save_screenshot;
+
     upload_logs '/var/log/dpkg.log';
     upload_logs '/var/log/apt/term.log';
     upload_logs '/var/log/apt/history.log';
