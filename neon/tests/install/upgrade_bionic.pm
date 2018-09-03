@@ -122,11 +122,6 @@ sub run {
     # ... preparation happens ...
     assert_and_click 'ubuntu-upgrade-start', 'left', 60 * 5;
 
-    # Make sure the StatusNotifierItem of the notifier is no longer visible.
-    if (check_screen('distro-release-notifier-sni')) {
-        die 'Notifier tray icon should not be visible.';
-    }
-
     # A config was changed by us to force the bionic upgrade to be enabled,
     # we should get a diff prompt.
     assert_and_click 'ubuntu-upgrade-diff-2', 'left', 60 * 10;
