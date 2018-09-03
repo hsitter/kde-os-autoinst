@@ -4,7 +4,7 @@
       "height": 768,
       "match": 95,
       "type": "match",
-      "width": 268,
+      "width": 129,
       "xpos": 0,
       "ypos": 0
     },
@@ -20,17 +20,17 @@
       "height": 768,
       "match": 95,
       "type": "match",
-      "width": 272,
-      "xpos": 749,
+      "width": 118,
+      "xpos": 903,
       "ypos": 0
     },
     {
-      "height": 569,
+      "height": 547,
       "match": 95,
       "type": "match",
       "width": 1024,
       "xpos": 0,
-      "ypos": 197
+      "ypos": 217
     }
   ],
   "properties": [],
