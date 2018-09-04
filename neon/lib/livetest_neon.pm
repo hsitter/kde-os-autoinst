@@ -65,25 +65,6 @@ sub _secureboot {
     assert_screen 'mokutil-sb-on';
 }
 
-sub _upgrade {
-    if (!get_var('OPENQA_APT_UPGRADE')) {
-        return
-    }
-
-    if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
-        die 'You cannot upgrade on an offline test!!!'
-    }
-
-    assert_script_sudo 'apt update',  2 * 60;
-    my $pkgs = get_var('OPENQA_APT_UPGRADE');
-    if ($pkgs eq "") {
-        $pkgs = "dist-upgrade";
-    } else {
-        $pkgs = "install " . $pkgs;
-    }
-    assert_script_sudo 'DEBIAN_FRONTEND=noninteractive apt -y ' . $pkgs, 30 * 60;
-}
-
 sub offline {
     my ($self, $args) = @_;
 

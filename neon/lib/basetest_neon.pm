@@ -89,6 +89,25 @@ sub logout {
     assert_and_click ('ksmserver-logout');
 }
 
+sub _upgrade {
+    if (!get_var('OPENQA_APT_UPGRADE')) {
+        return
+    }
+
+    if (get_var('OPENQA_INSTALLATION_OFFLINE')) {
+        die 'You cannot upgrade on an offline test!!!'
+    }
+
+    assert_script_sudo 'apt update',  2 * 60;
+    my $pkgs = get_var('OPENQA_APT_UPGRADE');
+    if ($pkgs eq "all") {
+        $pkgs = "dist-upgrade";
+    } else {
+        $pkgs = "install " . $pkgs;
+    }
+    assert_script_sudo 'DEBIAN_FRONTEND=noninteractive apt -y ' . $pkgs, 30 * 60;
+}
+
 sub boot_to_dm {
     my ($self, %args) = @_;
     $args{run_setup} //= 1;
@@ -119,17 +138,7 @@ sub boot_to_dm {
             assert_script_run 'wget ' . data_url('basetest_setup.rb'),  60;
             assert_script_sudo 'ruby basetest_setup.rb', 60;
 
-            # FIXME: copy pasta from install core.pm
-            if (get_var('OPENQA_APT_UPGRADE')) {
-                assert_script_sudo 'apt update',  2 * 60;
-                my $pkgs = get_var('OPENQA_APT_UPGRADE');
-                if ($pkgs eq "all") {
-                    $pkgs = "dist-upgrade";
-                } else {
-                    $pkgs = "install " . $pkgs;
-                }
-                assert_script_sudo 'DEBIAN_FRONTEND=noninteractive apt -y ' . $pkgs, 30 * 60;
-            }
+            $self->_upgrade;
         }
         select_console 'x11';
         $self->{boot_setup_ran} = 1;
