@@ -185,7 +185,7 @@ sub run {
         # its data after the upgrade though...
         script_run 'logout', 0;
 
-        assert_screen 'tty6-selected';
+        assert_screen 'tty6-selected', 60 * 2;
         type_string $encrypt_user;
         send_key 'ret';
         assert_screen 'tty-password';
