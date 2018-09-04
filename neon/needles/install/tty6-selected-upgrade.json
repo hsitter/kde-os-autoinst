@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 22,
+      "match": 95,
+      "type": "match",
+      "width": 244,
+      "xpos": 0,
+      "ypos": 11
+    },
+    {
+      "height": 18,
+      "match": 95,
+      "type": "match",
+      "width": 133,
+      "xpos": 1,
+      "ypos": 33
+    }
+  ],
+  "tags": [
+    "tty6-selected",
+    "tty6-selected-upgrade"
+  ]
+}
+
