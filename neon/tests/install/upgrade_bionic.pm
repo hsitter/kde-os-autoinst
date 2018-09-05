@@ -49,6 +49,10 @@ sub run {
         send_key 'ret';
         assert_screen 'adduser-done';
 
+        # Give the new user sudo privs so they may actually chown the serial
+        # device for logging.
+        script_sudo "adduser $encrypt_user sudo";
+
         script_run 'logout', 0;
 
         assert_screen 'tty6-selected';
