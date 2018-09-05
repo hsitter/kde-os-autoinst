@@ -45,24 +45,24 @@ sub post_fail_hook {
     # This ends in a system crash. We'll not be able to retrieve anything useful
     # anyway as the system is in a garbage state if plymouth gets stuck.
     if (check_screen('plymouth', 4)) {
-        send_key 'sysrq-r'; # raw kbd mode
-        send_key 'sysrq-9'; # log level
-        send_key 'sysrq-k'; # kill programs on VT (plymouth I hope)
+        send_key 'alt-sysrq-r'; # raw kbd mode
+        send_key 'alt-sysrq-9'; # log level
+        send_key 'alt-sysrq-k'; # kill programs on VT (plymouth I hope)
         sleep 1;
         save_screenshot;
-        send_key 'sysrq-l'; # backtrace cpus
+        send_key 'alt-sysrq-l'; # backtrace cpus
         sleep 1;
         save_screenshot;
-        send_key 'sysrq-m'; # memory info
+        send_key 'alt-sysrq-m'; # memory info
         sleep 1;
         save_screenshot;
-        send_key 'sysrq-t'; # all task info
+        send_key 'alt-sysrq-t'; # all task info
         sleep 1;
         save_screenshot;
-        send_key 'sysrq-w'; # list blocked tasks
+        send_key 'alt-sysrq-w'; # list blocked tasks
         sleep 1;
         save_screenshot;
-        send_key 'sysrq-c'; # crash the system
+        send_key 'alt-sysrq-c'; # crash the system
         sleep 1;
         save_screenshot;
     }
