@@ -1,0 +1,49 @@
+{
+  "area": [
+    {
+      "height": 265,
+      "match": 95,
+      "type": "match",
+      "width": 1024,
+      "xpos": 0,
+      "ypos": 0
+    },
+    {
+      "height": 152,
+      "match": 95,
+      "type": "match",
+      "width": 173,
+      "xpos": 418,
+      "ypos": 305
+    },
+    {
+      "height": 30,
+      "match": 95,
+      "type": "match",
+      "width": 117,
+      "xpos": 410,
+      "ypos": 461
+    },
+    {
+      "height": 768,
+      "match": 95,
+      "type": "match",
+      "width": 307,
+      "xpos": 717,
+      "ypos": 0
+    },
+    {
+      "height": 768,
+      "match": 95,
+      "type": "match",
+      "width": 272,
+      "xpos": 0,
+      "ypos": 0
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "plymouth"
+  ]
+}
+

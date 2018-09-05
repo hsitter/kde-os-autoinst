@@ -34,6 +34,39 @@ sub new {
 }
 
 sub post_fail_hook {
+    # Special handler for plymouth.
+    # We continue to have problems with systems rebooting. According to the
+    # journal systemd reached the shutdown state but the screen is stuck on
+    # plymouth. There's a range of options of what is going wrong ranging from
+    # kvm/qemu bug to systemd bug to openqa bug. Without additional data its
+    # hard to say what's going on. To get that data we'll attempt to get data
+    # out of the kernel. Should that turn out unresponsive as well we at least
+    # know it's not a problem in the guest.
+    # This ends in a system crash. We'll not be able to retrieve anything useful
+    # anyway as the system is in a garbage state if plymouth gets stuck.
+    if (check_screen('plymouth', 4)) {
+        send_key 'sysrq-r'; # raw kbd mode
+        send_key 'sysrq-9'; # log level
+        send_key 'sysrq-k'; # kill programs on VT (plymouth I hope)
+        sleep 1;
+        save_screenshot;
+        send_key 'sysrq-l'; # backtrace cpus
+        sleep 1;
+        save_screenshot;
+        send_key 'sysrq-m'; # memory info
+        sleep 1;
+        save_screenshot;
+        send_key 'sysrq-t'; # all task info
+        sleep 1;
+        save_screenshot;
+        send_key 'sysrq-w'; # list blocked tasks
+        sleep 1;
+        save_screenshot;
+        send_key 'sysrq-c'; # crash the system
+        sleep 1;
+        save_screenshot;
+    }
+
     if (check_screen('drkonqi-notification', 4)) {
         assert_and_click('drkonqi-notification');
         record_soft_failure 'not implemented drkonqi opening';

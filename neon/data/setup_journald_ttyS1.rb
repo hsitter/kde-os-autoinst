@@ -24,3 +24,9 @@ puts "#{$0} Letting systemd-journald log to ttyS1."
 system 'sed -i "s%.*ForwardToConsole=.*%ForwardToConsole=yes%g" /etc/systemd/journald.conf' || raise
 system 'sed -i "s%.*TTYPath=.*%TTYPath=/dev/ttyS1%g" /etc/systemd/journald.conf' || raise
 system 'systemctl restart systemd-journald' || raise
+
+# Ubuntu by default is hardened. To ease debugging we'll want full sysrq access.
+# This is done in here since this is the only helpe rurn by both regular tests
+# and live tests.
+puts "#{$0} Enabling sysrq."
+File.write('/proc/sys/kernel/sysrq', '1')
