@@ -51,7 +51,7 @@ sub run {
 
         # Give the new user sudo privs so they may actually chown the serial
         # device for logging.
-        script_sudo "adduser $encrypt_user sudo";
+        assert_script_sudo "adduser $encrypt_user sudo";
 
         script_run 'logout', 0;
 
@@ -84,6 +84,9 @@ sub run {
         # ...and make sure the home is encrypted!
         validate_script_output "sudo ls /home/$encrypt_user",
                                sub { m/Access-Your-Private-Data\.desktop.*/ };
+
+        # Take away sudo access again so it doesn't show up in polkit.
+        assert_script_sudo "deluser $encrypt_user sudo";
     }
     select_console 'x11';
 
@@ -194,6 +197,11 @@ sub run {
         # We don't have access...
         validate_script_output "sudo ls /home/$encrypt_user",
                                sub { m/Access-Your-Private-Data\.desktop.*/ };
+
+        # Give the encrypted user sudo privs so they may actually chown the
+        # serial device for logging.
+        assert_script_sudo "adduser $encrypt_user sudo";
+
         # Switch to encrypted user and make sure it still has access to
         # its data after the upgrade though...
         script_run 'logout', 0;
