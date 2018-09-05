@@ -190,7 +190,8 @@ sub run {
         # Switch to encrypted user and make sure it still has access to
         # its data after the upgrade though...
         script_run 'logout', 0;
-        reset_consoles;
+        # NB: don't reset here. We may get dropped to x11, when we return we'll
+        #   not wont to get auto logged in, instead we need to log in manually!
         # Wait a bit before switching around again
         sleep 1;
     }
