@@ -96,7 +96,8 @@ config = {
   HDDSIZEGB_1: DISK_SIZE_GB, # G is appended by os-autoinst
   UEFI_BIOS: '/usr/share/OVMF/OVMF_CODE.fd',
   UEFI: 1,
-  QEMU_COMPRESS_QCOW2: true
+  QEMU_COMPRESS_QCOW2: true,
+  TYPE: ENV.fetch('TYPE')
 }
 
 ENV.each { |k, v| config[k.to_sym] = v if k.start_with?('OPENQA_') }
