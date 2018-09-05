@@ -245,6 +245,15 @@ sub run {
     # libinput.
     select_console 'log-console';
     {
+        # Cache sudo password & make sure the home is unmounted!
+        # https://wiki.ubuntu.com/EncryptedHomeFolder
+        #   Sometimes pam fails to unmount your folder (esp if use
+        #   graphical login), leaving it open even though your logged out.
+        script_sudo "umount /home/$encrypt_user";
+
+        # Delete the encrypted user.
+        assert_script_sudo "deluser $encrypt_user";
+
         assert_script_run 'dpkg -s xserver-xorg-input-evdev';
         validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
                                sub { m/.+evdev.+/ };
