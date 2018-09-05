@@ -169,7 +169,7 @@ sub run {
     # This among other things makes sure the right virtual terminals will be
     # used for x11 etc.
     set_var 'OPENQA_SERIES', 'bionic', reload_needles => 1;
-    console('x11')->set_tty(2);
+    console('x11')->set_tty(1);
     reset_consoles;
 
     $self->boot_to_dm;
@@ -198,7 +198,7 @@ sub run {
 
     # Wait a bit before switching back. Since x11 doesn't assert a screen we
     # could be switching too quickly and end up on the wrong VT.
-    sleep 2;
+    sleep 20;
 
     select_console 'log-console';
     {
