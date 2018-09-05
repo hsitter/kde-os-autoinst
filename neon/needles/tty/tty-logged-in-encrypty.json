@@ -1,0 +1,26 @@
+{
+  "area": [
+    {
+      "height": 18,
+      "match": 85,
+      "type": "match",
+      "width": 24,
+      "xpos": 130,
+      "ypos": 513
+    },
+    {
+      "height": 16,
+      "match": 85,
+      "type": "match",
+      "width": 69,
+      "xpos": 0,
+      "ypos": 515
+    }
+  ],
+  "tags": [
+    "tty-logged-in",
+    "log-console",
+    "tty-logged-in-encrypty"
+  ]
+}
+
