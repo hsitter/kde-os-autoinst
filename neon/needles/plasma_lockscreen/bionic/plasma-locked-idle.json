@@ -1,0 +1,46 @@
+{
+  "area": [
+    {
+      "height": 768,
+      "match": 95,
+      "type": "match",
+      "width": 129,
+      "xpos": 0,
+      "ypos": 0
+    },
+    {
+      "height": 43,
+      "match": 60,
+      "type": "match",
+      "width": 83,
+      "xpos": 655,
+      "ypos": 147
+    },
+    {
+      "height": 768,
+      "match": 95,
+      "type": "match",
+      "width": 118,
+      "xpos": 903,
+      "ypos": 0
+    },
+    {
+      "height": 547,
+      "match": 95,
+      "type": "match",
+      "width": 1024,
+      "xpos": 0,
+      "ypos": 217
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "plasma-locked-idle",
+    "plasma-locked",
+    "ENV-TYPE-devedition-gitunstable",
+    "ENV-TYPE-useredition",
+    "ENV-TYPE-devedition-gitstable",
+    "ENV-SERIES-bionic"
+  ]
+}
+
