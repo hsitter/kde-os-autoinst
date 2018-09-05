@@ -174,6 +174,12 @@ sub run {
 
     $self->boot_to_dm;
 
+    # NB: bionic has really awkward behavior if you log out of the getty
+    #  it gets closed and you get dumped back to an active VT (i.e. SDDM).
+    #  This screws up console consistency!
+    #  As a result logout is followed by reset and there's sleeps in place to
+    #  ensure VTs are fully active by the time we attempt to select another one.
+
     # Before handing over to subsequent tests we'll assert encrypted homes
     # are still working.
     select_console 'log-console';
@@ -184,7 +190,18 @@ sub run {
         # Switch to encrypted user and make sure it still has access to
         # its data after the upgrade though...
         script_run 'logout', 0;
+        reset_consoles;
+        # Wait a bit before switching around again
+        sleep 1;
+    }
+    select_console 'x11';
 
+    # Wait a bit before switching back. Since x11 doesn't assert a screen we
+    # could be switching too quickly and end up on the wrong VT.
+    sleep 2;
+
+    select_console 'log-console';
+    {
         assert_screen 'tty6-selected';
         type_string $encrypt_user;
         send_key 'ret';
@@ -195,6 +212,9 @@ sub run {
         # This is a bit stupid but we don't actually have a better way to
         # check except for looking at a completely new needle. Go with this
         # for now.
+        # We have to wait for the decryption to happen. We have no way to assert
+        # this as this is a temporary user and the terminal is otherwise
+        # unremarkable.
         sleep 4;
 
         assert_script_run 'ls';
@@ -204,7 +224,7 @@ sub run {
         script_run 'logout', 0;
         reset_consoles;
         # Wait a bit before switching around again
-        sleep 2;
+        sleep 1;
     }
     select_console 'x11';
 
