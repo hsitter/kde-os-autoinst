@@ -53,6 +53,10 @@ data.gsub!(/^GRUB_HIDDEN_TIMEOUT=.+/, '')
 data.gsub!(/^GRUB_HIDDEN_TIMEOUT_QUIET=.+/, 'GRUB_HIDDEN_TIMEOUT_QUIET=false')
 # Set a reasonably high visible timeout so we can definitely screenshot it.
 data.gsub!(/^GRUB_TIMEOUT=.+/, 'GRUB_TIMEOUT=10')
+# Ditch serial setup in case the ISO was running with a console= argument which
+# may have been used for debugging reboot problems.
+data.gsub!(/^GRUB_TERMINAL=.+/, '')
+data.gsub!(/^GRUB_SERIAL_COMMAND=.+/, '')
 
 File.write(cfgfile, data)
 
