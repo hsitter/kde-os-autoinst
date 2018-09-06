@@ -111,6 +111,17 @@ sub run {
     assert_script_sudo 'ruby grub_toggle_hide.rb', 16;
     select_console 'x11';
 
+    # TODO: ideally we would get ARCHIVE passed in and not run any of the
+    #   setup code if not archiving. This includes, but is not limited to,
+    #   the plasma and lockscreen set up.
+    if (get_var('OPENQA_INSTALLATION_NONENGLISH')) {
+        # No use running the persistent setup for nonenglish as it isn't
+        # archived. Also, nonenglish would need needles for this stuff, so
+        # for the sake of us not having to write useless needles let's just
+        # return early.
+        return;
+    }
+
     $self->login;
     {
         # Assert we have the correct wallpaper and then change it to a static color
