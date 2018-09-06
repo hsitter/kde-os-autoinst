@@ -56,5 +56,9 @@ data.gsub!(/^GRUB_TIMEOUT=.+/, 'GRUB_TIMEOUT=10')
 
 File.write(cfgfile, data)
 
+# Log it to screen.
+puts cfgfile
+puts File.read(cfgfile)
+
 update_grub
 exit 0

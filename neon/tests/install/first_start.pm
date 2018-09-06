@@ -94,6 +94,7 @@ sub run {
     # visible. To do that we'll run a fairly broad unhide script
     assert_script_run 'wget ' . data_url('grub_toggle_hide.rb'),  16;
     assert_script_sudo 'ruby grub_toggle_hide.rb', 16;
+    upload_logs '/etc/default/grub';
 
     script_sudo 'reboot', 0;
     reset_consoles;
