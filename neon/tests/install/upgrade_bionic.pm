@@ -39,6 +39,10 @@ sub run {
         # https://help.ubuntu.com/community/EncryptedHome
         assert_script_sudo 'apt update', 60;
         assert_script_sudo 'apt install -y ecryptfs-utils', 60 * 5;
+        # Simulate an oddity where some users seem to somehow ended up with
+        # ecryptfs-utils only being a transitive auto dep that would end up
+        # in the remove list of the upgrade.
+        assert_script_sudo 'apt-mark auto ecryptfs-utils', 16;
 
         script_sudo "adduser --gecos '' --encrypt-home --force $encrypt_user", 0;
         assert_screen 'adduser-password1';
