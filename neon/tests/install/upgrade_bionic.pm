@@ -157,7 +157,7 @@ sub run {
             'useredition' => 'user',
             'userltsedition' => 'user/lts'
         );
-        my $path = $type_to_path{$ENV{TYPE}};
+        my $path = $type_to_path{get_var('TYPE')};
 
         # NB: this hardcodes unstable, when we introduce other tests this needs
         #   fixing somehow (map types to repos in a hash?)

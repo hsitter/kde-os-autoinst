@@ -69,7 +69,7 @@ sub cleanup_needles {
     # Drop needles tagged with a different TYPE.
     # This is a bit inflexible right now but the best to be done at short
     # notice.
-    my $good_tag = "ENV-TYPE-$ENV{TYPE}";
+    my $good_tag = "ENV-TYPE-${testapi::get_var('TYPE')}";
     for my $tag (keys %needle::tags) {
         if ($tag !~ /ENV-TYPE-/) {
             next;
@@ -134,7 +134,7 @@ if (testapi::get_var("INSTALLATION") && testapi::get_var('OPENQA_PARTITIONING'))
     if (testapi::get_var("INSTALLATION_OEM")) {
         autotest::loadtest('tests/install/ubiquity_oem.pm');
     } else {
-        autotest::loadtest($test{$ENV{TYPE}} || $test{''});
+        autotest::loadtest($test{testapi::get_var("TYPE")} || $test{''});
     }
     autotest::loadtest('tests/install/first_start.pm');
 } elsif (testapi::get_var('OPENQA_SNAP_NAME')) {
