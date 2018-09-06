@@ -109,7 +109,7 @@ ENV.each { |k, v| config[k.to_sym] = v if k.start_with?('OPENQA_') }
 #   edk2.git-ovmf-x64-0-20180807.244.gde005223b7.noarch.rpm
 # There's also fancy builds at https://www.kraxel.org/repos/jenkins/edk2/
 # which contain more pertinent stuff.
-bionic_ovmf = File.expand_path("#{__dir__}/../OVMF/OVMF_CODE.fd")
+bionic_ovmf = File.expand_path("#{__dir__}/../OVMF/OVMF_CODE-pure-efi.fd")
 config[:UEFI_BIOS] = bionic_ovmf if File.exist?(bionic_ovmf)
 
 # Switch to bios mode when requested.
