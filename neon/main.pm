@@ -69,7 +69,7 @@ sub cleanup_needles {
     # Drop needles tagged with a different TYPE.
     # This is a bit inflexible right now but the best to be done at short
     # notice.
-    my $good_tag = "ENV-TYPE-${testapi::get_var('TYPE')}";
+    my $good_tag = sprintf('ENV-TYPE-%s', testapi::get_var('TYPE'));
     for my $tag (keys %needle::tags) {
         if ($tag !~ /ENV-TYPE-/) {
             next;
