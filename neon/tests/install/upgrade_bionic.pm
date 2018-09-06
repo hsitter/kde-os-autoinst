@@ -164,9 +164,10 @@ sub run {
         validate_script_output "cat /etc/apt/sources.list.d/neon.list",
             sub { m{.*^(\s?)deb(\s?)http://archive.neon.kde.org/$path(\s?)bionic(\s?)main.*} };
 
-        # There are some apt preferences which will cause a further downgrade.
-        # TODO: shouldn't we facilitate this during the upgrade? T9535
-        assert_script_sudo 'wget -O /etc/apt/apt.conf.d/99allow-downgrades ' . data_url('99allow-downgrades'),;
+        # Attempt a dist-upgrade. This should not cause any downgrades
+        # as per T9535. Upgrading at this point would fail since downgrades
+        # are not allowed by default and we've not enabled them either.
+        assert_script_sudo 'DEBIAN_FRONTEND=noninteractive apt -y dist-upgrade', 30 * 60;
     }
     select_console 'x11';
 
