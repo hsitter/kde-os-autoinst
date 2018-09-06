@@ -29,4 +29,12 @@ system 'systemctl restart systemd-journald' || raise
 # This is done in here since this is the only helpe rurn by both regular tests
 # and live tests.
 puts "#{$0} Enabling sysrq."
-File.write('/proc/sys/kernel/sysrq', '1')
+system 'sysctl kernel.sysrq=1' || raise;
+
+# Turn on more systemd and kernel debuggyness to get more data should
+# reboot fail to excute properly.
+puts "#{$0} Enabling systemd and kernel debugging."
+system '/bin/kill -SIGRTMIN+20 1' || raise; # systemd.show_status=1
+system '/bin/kill -SIGRTMIN+22 1' || raise; # systemd.log_level=debug
+system 'sysctl kernel.printk_devkmsg=on' || raise; # unlimited logging from userspace
+system 'sysctl kernel.printk="7 7 7 7"' || raise; # kernel debug
