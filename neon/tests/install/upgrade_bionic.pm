@@ -261,6 +261,10 @@ sub run {
         assert_script_run 'dpkg -s xserver-xorg-input-evdev';
         validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
                                sub { m/.+evdev.+/ };
+
+       # Also assert that the upgrade's preference file is no longer present
+       # T9535
+       assert_script_run '[ ! -e /etc/apt/preferences.d/98-xenial-overrides ]'
     }
     select_console 'x11';
 }
