@@ -114,7 +114,7 @@ sub run {
     # TODO: ideally we would get ARCHIVE passed in and not run any of the
     #   setup code if not archiving. This includes, but is not limited to,
     #   the plasma and lockscreen set up.
-    if (get_var('OPENQA_INSTALLATION_NONENGLISH')) {
+    if (get_var('OPENQA_INSTALLATION_NONENGLISH') || get_var('TYPE') eq 'userltsedition') {
         # No use running the persistent setup for nonenglish as it isn't
         # archived. Also, nonenglish would need needles for this stuff, so
         # for the sake of us not having to write useless needles let's just
