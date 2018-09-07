@@ -266,8 +266,6 @@ sub boot {
 
     $testapi::username = $user;
     $testapi::password = $password;
-
-    wait_still_screen;
 }
 
 1;
