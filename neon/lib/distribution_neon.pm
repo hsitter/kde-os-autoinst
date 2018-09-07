@@ -168,9 +168,10 @@ sub console_selected {
     # FIXME: should make sure the session is unlocked
     if ($console eq 'x11') {
         # Do not wait on X11 specifically. Desktop state is wildely divergent.
-        # Instead wait screen. Which is a bit shit. But meh.
-        # We could maybe needle the panel specifically?
-        wait_still_screen;
+        # Instead wait a static amount. This is a bit shit. But meh.
+        # We could maybe needle the panel specifically? But then sddm has no
+        # panel. I am really not sure how to best handle this.
+        sleep 2;
         return;
     }
     assert_screen($console, no_wait => 1);
