@@ -108,7 +108,7 @@ sub script_sudo($$) {
     }
     testapi::type_string "sudo $prog\n";
     if ($need_auth) {
-        if (testapi::check_screen "sudo-passwordprompt", 3) {
+        if (testapi::check_screen "sudo-passwordprompt", 2, no_wait => 1) {
             testapi::type_password;
             testapi::send_key "ret";
 
