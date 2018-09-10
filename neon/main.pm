@@ -149,8 +149,8 @@ if (testapi::get_var("INSTALLATION") && testapi::get_var('OPENQA_PARTITIONING'))
         autotest::loadtest("tests/snap/generic.pm");
     }
 } elsif (testapi::get_var("TESTS_TO_RUN")) {
-    my $testpaths = testapi::get_var("TESTS_TO_RUN");
-    for my $testpath (@$testpaths) {
+    my @testpaths = split /:/, testapi::get_var("TESTS_TO_RUN");
+    for my $testpath (@testpaths) {
         autotest::loadtest $testpath;
     }
 } elsif (testapi::get_var("PLASMA_DESKTOP")) {
