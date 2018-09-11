@@ -188,28 +188,28 @@ sub bootloader {
     # When it is grub we need to hit enter to proceed.
     assert_screen 'bootloader', 60;
     if (match_has_tag('live-bootloader-uefi')) {
-      # Hack to force kmsg onto ttyS1 to debug shutdown problems. This hack
-      # can be dropped once neon properly shuts down all the time again!
-      # Edits grub entry to add more kernel cmdlines.
-      send_key 'e';
-      send_key 'down';
-      send_key 'down';
-      send_key 'down';
-      send_key 'down';
-      send_key 'end';
-      send_key 'left';
-      send_key 'left';
-      send_key 'left';
-      # Set the kmsg target to ttyS1. We then also need to force plymouth as
-      # it'd not do anything if console= is set.
-      type_string 'console=ttyS1 plymouth.force-splash plymouth.ignore-show-splash plymouth.ignore-serial-consoles ';
-      send_key 'ctrl-x';
+        # Hack to force kmsg onto ttyS1 to debug shutdown problems. This hack
+        # can be dropped once neon properly shuts down all the time again!
+        # Edits grub entry to add more kernel cmdlines.
+        send_key 'e';
+        send_key 'down';
+        send_key 'down';
+        send_key 'down';
+        send_key 'down';
+        send_key 'end';
+        send_key 'left';
+        send_key 'left';
+        send_key 'left';
+        # Set the kmsg target to ttyS1. We then also need to force plymouth as
+        # it'd not do anything if console= is set.
+        type_string 'console=ttyS1 plymouth.force-splash plymouth.ignore-show-splash plymouth.ignore-serial-consoles ';
+        send_key 'ctrl-x';
 
-      if (testapi::get_var("INSTALLATION_OEM")) {
+        if (testapi::get_var("INSTALLATION_OEM")) {
           send_key 'down';
           assert_screen('live-bootloader-uefi-oem');
-      }
-      send_key 'ret';
+        }
+        send_key 'ret';
     }
 }
 
@@ -229,6 +229,9 @@ sub boot {
 
     select_console 'log-console';
     {
+                  validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
+                                         sub { m/.+evdev.+/ };
+
         $self->_archive_iso_artifacts;
         $self->_secureboot;
         $self->_upgrade;
@@ -245,11 +248,11 @@ sub boot {
         # Make sure the evdev driver is installed. We prefer evdev at this time
         # instead of libinput since our KCMs aren't particularly awesome for
         # libinput.
-        if (get_var('OPENQA_SERIES') ne 'xenial') {
-            assert_script_run 'dpkg -s xserver-xorg-input-evdev';
-            validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
-                                   sub { m/.+evdev.+/ };
-        }
+        # if (get_var('OPENQA_SERIES') ne 'xenial') {
+        #     assert_script_run 'dpkg -s xserver-xorg-input-evdev';
+        #     validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
+        #                            sub { m/.+evdev.+/ };
+        # }
 
         # TODO: maybe control via env var?
         # assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
