@@ -192,10 +192,16 @@ sub bootloader {
         # can be dropped once neon properly shuts down all the time again!
         # Edits grub entry to add more kernel cmdlines.
         send_key 'e';
-        send_key 'down';
-        send_key 'down';
-        send_key 'down';
-        send_key 'down';
+
+        my $counter = 8;
+        while (!check_screen('live-grub-linux', 1)) {
+            if (!$counter--) {
+                last;
+            }
+            send_key 'down';
+            sleep 1;
+        }
+
         send_key 'end';
         send_key 'left';
         send_key 'left';

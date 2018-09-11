@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "height": 30,
+      "match": 95,
+      "type": "match",
+      "width": 211,
+      "xpos": 43,
+      "ypos": 210
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "live-grub-linux"
+  ]
+}
+
