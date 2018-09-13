@@ -23,6 +23,7 @@
 puts "#{$0} Letting systemd-journald log to ttyS1."
 system 'sed -i "s%.*ForwardToConsole=.*%ForwardToConsole=yes%g" /etc/systemd/journald.conf' || raise
 system 'sed -i "s%.*TTYPath=.*%TTYPath=/dev/ttyS1%g" /etc/systemd/journald.conf' || raise
+system 'sed -i "s%.*MaxLevelConsole=.*%MaxLevelConsole=debug%g" /etc/systemd/journald.conf' || raise
 system 'systemctl restart systemd-journald' || raise
 
 # Ubuntu by default is hardened. To ease debugging we'll want full sysrq access.
