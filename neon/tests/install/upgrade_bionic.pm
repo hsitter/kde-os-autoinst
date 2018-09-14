@@ -201,7 +201,7 @@ sub run {
     {
         # We don't have access...
         validate_script_output "sudo ls /home/$encrypt_user",
-                               sub { m/Access-Your-Private-Data\.desktop.*/ };
+                               sub { m/.*Access-Your-Private-Data\.desktop.*/ };
 
         # Give the encrypted user sudo privs so they may actually chown the
         # serial device for logging.
