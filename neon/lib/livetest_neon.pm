@@ -273,4 +273,39 @@ sub boot {
     $testapi::password = $password;
 }
 
+# TODO: could maybe be renamed to reboot and also grow an impl in basetest, then
+#   use them interchangably. However, this doesn't actually trigger a reboot,
+#   but conducts it, so it's somewhat different from a regular reboot in
+#   basetest. Muse on this a bit.
+sub live_reboot {
+    assert_screen "live-remove-medium", 60;
+    # The message actually comes up before input is read, make sure to send rets
+    # until the system reboots or we've waited a bit of time. We'll then
+    # continue and would fail on the first start test if the system in fact
+    # never rebooted.
+    my $counter = 20;
+    while (check_screen('live-remove-medium', 1)) {
+      if (!$counter--) {
+          last;
+      }
+      eject_cd;
+      send_key 'ret';
+      sleep 1;
+    }
+
+    # There's a bug in the unit ordering which prevents reboot from working
+    # every once in a while. I utterly failed to debug what exactly is wrong,
+    # but it sucks enormously in code that isn't even maintained by us.
+    # So, to mitigate this problem w'll force a reset if the remove medium
+    # screen is still up after having tried to reboot nicely.
+    #           - sitter, Sept. 2018
+    if (check_screen('live-remove-medium', 1)) {
+        eject_cd;
+        sleep 1;
+        power 'reset';
+    }
+
+    reset_consoles;
+}
+
 1;
