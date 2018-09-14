@@ -87,7 +87,7 @@ sub run {
         script_sudo "umount /home/$encrypt_user";
         # ...and make sure the home is encrypted!
         validate_script_output "sudo ls /home/$encrypt_user",
-                               sub { m/Access-Your-Private-Data\.desktop.*/ };
+                               sub { m/.*Access-Your-Private-Data\.desktop.*/ };
 
         # Take away sudo access again so it doesn't show up in polkit.
         assert_script_sudo "deluser $encrypt_user sudo";
