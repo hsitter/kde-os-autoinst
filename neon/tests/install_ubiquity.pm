@@ -52,16 +52,8 @@ sub assert_keyboard_page {
     assert_and_click 'installer-next';
 }
 
-sub run {
-    my ($self) = shift;
-    $self->boot;
-
-    # Divert installation data to live data.
-    my $user = $testapi::username;
-    my $password = $testapi::password;
-    $testapi::username = 'neon';
-    $testapi::password = '';
-
+# Prepares live session for install. This expects a newly booted system.
+sub prepare {
     select_console 'log-console';
     {
         assert_script_run 'wget ' . data_url('geoip_service.rb'),  16;
@@ -70,6 +62,13 @@ sub run {
     select_console 'x11';
 
     $self->maybe_switch_offline;
+}
+
+# Runs an install.
+# @param disk_empty whether the disk is empty (when not empty it will be wiped)
+sub install {
+    my ($self, %args) = @_;
+    $args{disk_empty} //= 1;
 
     # Installer
     assert_and_click "installer-icon";
@@ -89,8 +88,13 @@ sub run {
 
     assert_screen "installer-prepare", 16;
     assert_and_click "installer-next";
-    assert_screen "installer-disk", 16;
-    assert_and_click "installer-install-now";
+    if ($args{disk_empty}) {
+        assert_screen "installer-disk", 16;
+        assert_and_click "installer-install-now";
+    } else {
+        assert_and_click "installer-disk-wipe", 16;
+        assert_and_click "installer-install-now";
+    }
     assert_and_click "installer-disk-confirm", 'left', 16;
 
     # Timezone has 75% fuzzyness as timezone is geoip'd so its fairly divergent.
@@ -124,8 +128,33 @@ sub run {
 
     assert_screen "installer-show", 15;
 
-    # Let install finish and restart
+    # Let install finish
     assert_screen "installer-restart", 640;
+}
+
+sub run {
+    my ($self) = shift;
+
+    # Divert installation data to live data.
+    my $user = $testapi::username;
+    my $password = $testapi::password;
+    $testapi::username = 'neon';
+    $testapi::password = '';
+
+    $self->boot;
+    $self->prepare;
+    $self->install;
+
+    # Reset the system and redo the entire installation to ensure partitioning
+    # works on pre-existing partition tables. This is broken in bionic as of
+    # the user edition ISO from 2018-09-15.
+
+    power 'reset';
+    reset_consoles;
+
+    $self->boot;
+    $self->prepare;
+    $self->install(disk_empty => 0);
 
     select_console 'log-console';
     {

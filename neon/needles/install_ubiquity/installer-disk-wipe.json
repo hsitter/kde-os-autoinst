@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "height": 26,
+      "match": 95,
+      "type": "match",
+      "width": 117,
+      "xpos": 166,
+      "ypos": 109
+    },
+    {
+      "height": 26,
+      "match": 95,
+      "type": "match",
+      "width": 174,
+      "xpos": 169,
+      "ypos": 137
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "installer-disk-wipe"
+  ]
+}
+
