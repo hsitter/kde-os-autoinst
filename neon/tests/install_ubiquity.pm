@@ -97,7 +97,8 @@ sub install {
         assert_screen "installer-disk", 16;
         assert_and_click "installer-install-now";
     } else {
-        assert_and_click "installer-disk-wipe", 16;
+        assert_and_click "installer-disk-wipe";
+        assert_screen "installer-disk-wipe-selected", 16;
         assert_and_click "installer-install-now";
     }
     assert_and_click "installer-disk-confirm", 'left', 16;
