@@ -126,6 +126,15 @@ sub run {
 
     # Let install finish and restart
     assert_screen "installer-restart", 640;
+
+    select_console 'log-console';
+    {
+        # Make sure networking is on (we disable it during installation).
+        $self->online;
+        $self->upload_ubiquity_logs;
+    }
+    select_console 'x11';
+
     assert_and_click "installer-restart-now";
 
     $self->live_reboot;
@@ -135,12 +144,16 @@ sub run {
     $testapi::password = $password;
 }
 
+sub upload_ubiquity_logs {
+    # Uploads end up in wok/ulogs/
+    assert_script_sudo 'tar cfJ /tmp/installer.tar.xz /var/log/installer';
+    upload_logs '/tmp/installer.tar.xz', failok => 1;
+}
+
 sub post_fail_hook {
     my ($self) = shift;
     $self->SUPER::post_fail_hook;
-
-    assert_script_sudo 'tar cfJ /tmp/installer.tar.xz /var/log/installer';
-    upload_logs '/tmp/installer.tar.xz';
+    $self->upload_ubiquity_logs;
 }
 
 sub test_flags {
