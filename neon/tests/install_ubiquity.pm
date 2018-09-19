@@ -57,6 +57,8 @@ sub assert_keyboard_page {
 
 # Prepares live session for install. This expects a newly booted system.
 sub prepare {
+    my ($self) = shift;
+
     select_console 'log-console';
     {
         assert_script_run 'wget ' . data_url('geoip_service.rb'),  16;
