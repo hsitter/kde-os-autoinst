@@ -20,6 +20,9 @@ use base "livetest_neon";
 use strict;
 use testapi;
 
+my $user = $testapi::username;
+my $password = $testapi::password;
+
 sub assert_keyboard_page {
     assert_screen 'installer-keyboard', 16;
 
@@ -136,8 +139,6 @@ sub run {
     my ($self) = shift;
 
     # Divert installation data to live data.
-    my $user = $testapi::username;
-    my $password = $testapi::password;
     $testapi::username = 'neon';
     $testapi::password = '';
 
