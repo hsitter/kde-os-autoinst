@@ -125,7 +125,11 @@ $needle::cleanuphandler = \&cleanup_needles;
 
 
 if (testapi::get_var("INSTALLATION") && testapi::get_var('OPENQA_PARTITIONING')) {
-    autotest::loadtest('tests/install/calamares_partitioning.pm');
+    if (testapi::get_var("TYPE")} eq 'devedition-gitunstable') {
+        autotest::loadtest('tests/install/calamares_partitioning.pm');
+    } else {
+        die 'cannot partition !unstable';
+    }
 } elsif (testapi::get_var("INSTALLATION")) {
     my %test = (
         'devedition-gitunstable' => "tests/install_calamares.pm",
