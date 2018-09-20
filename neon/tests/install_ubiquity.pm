@@ -149,16 +149,18 @@ sub run {
     $self->prepare;
     $self->install;
 
-    # Reset the system and redo the entire installation to ensure partitioning
-    # works on pre-existing partition tables. This is broken in bionic as of
-    # the user edition ISO from 2018-09-15.
+    if (get_var('OPENQA_PARTITIONING')) {
+        # Reset the system and redo the entire installation to ensure partitioning
+        # works on pre-existing partition tables. This is broken in bionic as of
+        # the user edition ISO from 2018-09-15.
 
-    power 'reset';
-    reset_consoles;
+        power 'reset';
+        reset_consoles;
 
-    $self->boot;
-    $self->prepare;
-    $self->install(disk_empty => 0);
+        $self->boot;
+        $self->prepare;
+        $self->install(disk_empty => 0);
+    }
 
     select_console 'log-console';
     {

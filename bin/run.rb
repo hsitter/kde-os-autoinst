@@ -121,9 +121,12 @@ if ENV['INSTALLATION']
   config[:INSTALLATION] = ENV['INSTALLATION']
   config[:INSTALLATION_OEM] = ENV['INSTALLATION_OEM']
   config[:ISO] = '/workspace/neon.iso'
-  # explicitly boot from ISO. on reboots we'll expect the ISO to have been
-  # ejected.
-  config[:BOOTFROM] = 'cdrom'
+  if ENV['OPENQA_PARTITIONING']
+    # explicitly boot from ISO. for ubiquity we need to reboot, ordinarily
+    # qemu would then boot from the HDD if it has an ESP, we never want to
+    # boot from HDD in partitioning tests though.
+    config[:BOOTFROM] = 'cdrom'
+  end
 
   if ENV['OPENQA_SECUREBOOT']
     # https://fedoraproject.org/wiki/Using_UEFI_with_QEMU#Testing_Secureboot_in_a_VM

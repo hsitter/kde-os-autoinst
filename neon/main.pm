@@ -128,7 +128,12 @@ if (testapi::get_var("INSTALLATION") && testapi::get_var('OPENQA_PARTITIONING'))
     if (testapi::get_var("TYPE")} eq 'devedition-gitunstable') {
         autotest::loadtest('tests/install/calamares_partitioning.pm');
     } else {
-        die 'cannot partition !unstable';
+        # For ubiquity the partitioning test is the regular install test but
+        # it has built-in conditionals for OPENQA_PARTITIONING. This is because
+        # with ubiquity we need to run complete installs to conduct our tests,
+        # so a separate test would be a huge copy pasta. Cala OTOH has
+        # a super simplified much faster test which easily stands up on its own.
+        autotest::loadtest('tests/install_ubiquity.pm');
     }
 } elsif (testapi::get_var("INSTALLATION")) {
     my %test = (
