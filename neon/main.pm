@@ -125,7 +125,7 @@ $needle::cleanuphandler = \&cleanup_needles;
 
 
 if (testapi::get_var("INSTALLATION") && testapi::get_var('OPENQA_PARTITIONING')) {
-    if (testapi::get_var("TYPE")} eq 'devedition-gitunstable') {
+    if (testapi::get_var("TYPE") eq 'devedition-gitunstable') {
         autotest::loadtest('tests/install/calamares_partitioning.pm');
     } else {
         # For ubiquity the partitioning test is the regular install test but
