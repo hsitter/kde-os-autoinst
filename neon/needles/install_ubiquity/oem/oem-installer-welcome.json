@@ -1,12 +1,12 @@
 {
   "area": [
     {
-      "height": 563,
+      "height": 536,
       "match": 95,
       "type": "match",
       "width": 914,
       "xpos": 0,
-      "ypos": 0
+      "ypos": 27
     }
   ],
   "properties": [],
@@ -14,3 +14,4 @@
     "oem-installer-welcome"
   ]
 }
+
