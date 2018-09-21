@@ -188,6 +188,10 @@ sub bootloader {
     # When it is grub we need to hit enter to proceed.
     assert_screen 'bootloader', 60;
     if (match_has_tag('live-bootloader-uefi')) {
+        if (testapi::get_var("INSTALLATION_OEM")) {
+          send_key 'down';
+          assert_screen('live-bootloader-uefi-oem');
+        }
         # Hack to force kmsg onto ttyS1 to debug shutdown problems. This hack
         # can be dropped once neon properly shuts down all the time again!
         # Edits grub entry to add more kernel cmdlines.
@@ -210,12 +214,6 @@ sub bootloader {
         # it'd not do anything if console= is set.
         type_string 'console=ttyS1 plymouth.force-splash plymouth.ignore-show-splash plymouth.ignore-serial-consoles ';
         send_key 'ctrl-x';
-
-        if (testapi::get_var("INSTALLATION_OEM")) {
-          send_key 'down';
-          assert_screen('live-bootloader-uefi-oem');
-        }
-        send_key 'ret';
     }
 }
 
