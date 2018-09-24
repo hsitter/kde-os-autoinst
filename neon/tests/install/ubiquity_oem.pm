@@ -84,6 +84,8 @@ sub run {
     assert_screen "oem-installer-user", 16;
     assert_screen "oem-installer-user-complete", 16;
     # We are in the password field already. Username is oem by default
+    send_key "tab", 1; # Pick a username firled
+    send_key "tab", 1; # 1st password field
     type_string get_var("OEM_PASSWORD");
     send_key "tab", 1; # 2nd password field
     type_string get_var("OEM_PASSWORD");
