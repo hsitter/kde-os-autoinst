@@ -207,9 +207,9 @@ sub bootloader {
         }
 
         send_key 'end';
-        send_key 'left';
-        send_key 'left';
-        send_key 'left';
+        foreach my $i (0..25) {
+            send_key 'left';
+        }
         # Set the kmsg target to ttyS1. We then also need to force plymouth as
         # it'd not do anything if console= is set.
         type_string 'console=ttyS1 plymouth.force-splash plymouth.ignore-show-splash plymouth.ignore-serial-consoles ';
