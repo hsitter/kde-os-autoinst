@@ -40,13 +40,7 @@ end
 
 
 TYPE = ENV.fetch('TYPE')
-# FIXME: undo all the bionic and OPENQA_SKIP_SIG_CHECK branching madness
-#   it's only here to enable preliminary bionic based testing
-if ENV['OPENQA_SERIES'] == 'bionic'
-  ISO_URL = "http://files.kde.org/neon/images/bionic-preview/neon-#{TYPE}/current/neon-#{TYPE}-current.iso".freeze
-else
-  ISO_URL = "http://files.kde.org/neon/images/neon-#{TYPE}/current/neon-#{TYPE}-current.iso".freeze
-end
+ISO_URL = "http://files.kde.org/neon/images/neon-#{TYPE}/current/neon-#{TYPE}-current.iso".freeze
 ZSYNC_URL = "#{ISO_URL}.zsync".freeze
 SIG_URL = "#{ISO_URL}.sig".freeze
 GPG_KEY = '348C 8651 2066 33FD 983A 8FC4 DEAC EA00 075E 1D76'.freeze
@@ -69,22 +63,16 @@ if ENV['NODE_NAME'] # probably jenkins use, download from mirror
   #   ISOs from master.
   system('wget', '-q', '-O', 'neon.iso',
          ISO_URL.gsub('files.kde.org', 'files.kde.mirror.pangea.pub')) || raise
-  unless ENV['OPENQA_SKIP_SIG_CHECK']
-    system('wget', '-q', '-O', 'neon.iso.sig',
-           SIG_URL.gsub('files.kde.org', 'files.kde.mirror.pangea.pub')) || raise
-  end
+  system('wget', '-q', '-O', 'neon.iso.sig',
+         SIG_URL.gsub('files.kde.org', 'files.kde.mirror.pangea.pub')) || raise
 else # probably not
   system('zsync_curl', '-o', 'neon.iso', ZSYNC_URL) || raise
-  unless ENV['OPENQA_SKIP_SIG_CHECK']
-    system('wget', '-q', '-O', 'neon.iso.sig', SIG_URL) || raise
-  end
+  system('wget', '-q', '-O', 'neon.iso.sig', SIG_URL) || raise
 end
 # Retry this a bit, gpg servers may not always answer in time.
-unless ENV['OPENQA_SKIP_SIG_CHECK']
-  retry_it(times: 4, sleep: 1) do
-    system('gpg2',
-           '--keyserver', 'keyserver.ubuntu.com',
-           '--recv-key', GPG_KEY,) || raise
-  end
-  system('gpg2', '--verify', 'neon.iso.sig') || raise
+retry_it(times: 4, sleep: 1) do
+  system('gpg2',
+         '--keyserver', 'keyserver.ubuntu.com',
+         '--recv-key', GPG_KEY,) || raise
 end
+system('gpg2', '--verify', 'neon.iso.sig') || raise
