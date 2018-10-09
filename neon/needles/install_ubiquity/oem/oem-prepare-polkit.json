@@ -1,12 +1,12 @@
 {
   "area": [
     {
-      "height": 335,
+      "height": 250,
       "match": 95,
       "type": "match",
       "width": 501,
       "xpos": 252,
-      "ypos": 159
+      "ypos": 202
     }
   ],
   "properties": [],
@@ -14,3 +14,4 @@
     "oem-prepare-polkit"
   ]
 }
+
