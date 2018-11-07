@@ -36,6 +36,7 @@ sub run {
 
     # Adds Okular in the favorites tab
     assert_and_click 'kickoff-okular', 'right';
+    assert_and_click 'kickoff-okular', 'right';
     assert_and_click 'kickoff-add-to-favorite';
     assert_screen 'kickoff-favorite-okular', 60;
     send_key 'esc';
