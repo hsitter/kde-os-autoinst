@@ -1,0 +1,58 @@
+{
+  "area": [
+    {
+      "height": 22,
+      "match": 95,
+      "type": "match",
+      "width": 21,
+      "xpos": 804,
+      "ypos": 740
+    },
+    {
+      "height": 28,
+      "match": 95,
+      "type": "match",
+      "width": 146,
+      "xpos": 632,
+      "ypos": 602
+    },
+    {
+      "height": 45,
+      "match": 95,
+      "type": "match",
+      "width": 43,
+      "xpos": 587,
+      "ypos": 603
+    },
+    {
+      "height": 26,
+      "match": 95,
+      "type": "match",
+      "width": 70,
+      "xpos": 633,
+      "ypos": 629
+    },
+    {
+      "height": 36,
+      "match": 95,
+      "type": "match",
+      "width": 64,
+      "xpos": 924,
+      "ypos": 632
+    },
+    {
+      "height": 26,
+      "match": 90,
+      "type": "match",
+      "width": 23,
+      "xpos": 777,
+      "ypos": 737
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "distro-release-notifier-nolongerupdates",
+    "distro-release-notifier"
+  ]
+}
+
