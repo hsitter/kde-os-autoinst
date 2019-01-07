@@ -8,7 +8,7 @@ os-autoinst is largely written in perl, tests for os-autoinst are also written i
 
 testapi docs http://open.qa/api/testapi/
 
-# Bootstrapperino
+# Bootstrap
 
 To use os-autoinst it is advisible to install KVM on the system as full
 virtualziation will give obsurdly bad performance. KVM uses hardware
