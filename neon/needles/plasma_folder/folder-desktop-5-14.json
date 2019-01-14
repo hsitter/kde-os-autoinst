@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "height": 34.5,
+      "match": 95,
+      "type": "match",
+      "width": 305,
+      "xpos": 0,
+      "ypos": 733
+    },
+    {
+      "height": 31,
+      "match": 95,
+      "type": "match",
+      "width": 29,
+      "xpos": 994,
+      "ypos": 736
+    },
+    {
+      "height": 33,
+      "match": 95,
+      "type": "match",
+      "width": 28,
+      "xpos": 864,
+      "ypos": 735
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "folder-desktop",
+    "folder-desktop-5-14"
+  ]
+}
