@@ -30,6 +30,6 @@ Pin: release l=Neon - Testing
 Pin-Priority: 1001
 PREFERENCE
 
-system('add-apt-repository "deb https://archive.neon.kde.org/testing xenial main"') || raise
+system('add-apt-repository "deb https://archive.neon.kde.org/testing bionic main"') || raise
 system('apt update') || raise
 system('apt dist-upgrade -y --allow-downgrades') || raise
