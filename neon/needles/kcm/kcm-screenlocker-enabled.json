@@ -1,20 +1,20 @@
 {
   "area": [
     {
-      "height": 36,
-      "match": 95,
       "type": "match",
-      "width": 227,
       "xpos": 242,
-      "ypos": 192
+      "ypos": 192,
+      "width": 227,
+      "height": 36,
+      "match": 95
     },
     {
-      "height": 28,
-      "match": 95,
       "type": "match",
-      "width": 129,
       "xpos": 237,
-      "ypos": 278
+      "ypos": 278,
+      "width": 129,
+      "height": 28,
+      "match": 95
     }
   ],
   "properties": [],
@@ -24,3 +24,4 @@
     "kcm-screenlocker"
   ]
 }
+
