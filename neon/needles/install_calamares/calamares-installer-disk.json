@@ -1,12 +1,12 @@
 {
   "area": [
     {
-      "height": 547,
-      "match": 95,
       "type": "match",
-      "width": 625,
       "xpos": 200,
-      "ypos": 122
+      "ypos": 190,
+      "width": 625,
+      "height": 416,
+      "match": 95
     }
   ],
   "properties": [],
@@ -14,3 +14,4 @@
     "calamares-installer-disk"
   ]
 }
+
