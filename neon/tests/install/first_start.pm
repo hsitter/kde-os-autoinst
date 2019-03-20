@@ -69,7 +69,7 @@ sub run {
     assert_script_run 'ruby enable_qdebug.rb', 16;
 
     assert_script_run 'wget ' . data_url('snapd_disable.rb'),  16;
-    assert_script_sudo 'ruby snapd_disable.rb', 16;
+    assert_script_sudo 'ruby snapd_disable.rb', 30;
 
     if (get_var('OPENQA_IN_CLOUD')) {
         assert_script_run 'wget ' . data_url('apt_mirror.rb'),  16;
