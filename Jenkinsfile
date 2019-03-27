@@ -96,7 +96,7 @@ def inferType() {
   if (!env.JOB_NAME) {
     return null
   }
-  String[] types = ["useredition", "userltsedition", "devedition-gitunstable", "devedition-gitstable"]
+  String[] types = ["user", "user_lts", "unstable", "testing"]
   for (type in types) {
     if (env.JOB_NAME.contains(type)) {
       return type
