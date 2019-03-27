@@ -23,6 +23,7 @@ require 'fileutils'
 
 Dir.chdir(File.dirname(__dir__)) # go into working dir
 
+puts "xx bootstrap.rb"
 if ENV['OPENQA_OS_AUTOINST_IN_TREE'] || !File.exist?('/opt/os-autoinst')
   # Install into working tree. I am not sure why though. FIXME: install to opt
   require_relative 'install.rb'
@@ -34,5 +35,7 @@ elsif ENV.fetch('NODE_NAME', '') == 'master' ||
   Dir.chdir('/opt') { system("#{__dir__}/install.rb") || raise }
 end
 
+puts "xx sync.rb"
 system('bin/sync.rb') || raise if ENV['INSTALLATION']
+put "xx run.rb"
 exec('bin/run.rb')
