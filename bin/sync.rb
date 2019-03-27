@@ -40,7 +40,7 @@ end
 
 
 TYPE = ENV.fetch('TYPE')
-ISO_URL = "http://files.kde.org/neon/images/neon-#{TYPE}/current/neon-#{TYPE}-current.iso".freeze
+ISO_URL = "http://files.kde.org/neon/images/#{TYPE}/current/neon-#{TYPE}-current.iso".freeze
 ZSYNC_URL = "#{ISO_URL}.zsync".freeze
 SIG_URL = "#{ISO_URL}.sig".freeze
 GPG_KEY = '348C 8651 2066 33FD 983A 8FC4 DEAC EA00 075E 1D76'.freeze
