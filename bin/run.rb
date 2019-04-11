@@ -41,9 +41,6 @@ DISK_SIZE_GB = '30'.freeze
 
 ENV['PERL5LIB'] = PERL5LIB
 
-# Default to xenial unless otherwise specified.
-ENV['OPENQA_SERIES'] = 'xenial' unless ENV['OPENQA_SERIES']
-
 puts 'kvm-ok?'
 system 'kvm-ok'
 system 'ls -lah /dev/kvm'

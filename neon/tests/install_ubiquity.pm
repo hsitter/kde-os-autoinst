@@ -30,7 +30,7 @@ sub assert_keyboard_page {
     # this is a problem because we need english keyboard maps to do input
     # via openqa. So, once we've asserted the default keyboard page, change it
     # to use english instead.
-    if (match_has_tag('installer-keyboard-espanol') && get_var('OPENQA_SERIES') ne 'xenial') {
+    if (match_has_tag('installer-keyboard-espanol')) {
         # Open the combobox
         assert_and_click 'installer-keyboard';
         # Jump close to english (ingles).
@@ -86,11 +86,6 @@ sub install {
     }
     assert_and_click "installer-next";
 
-    # bionic version of ubiquity moved the keyboard configuration as first step
-    if (testapi::get_var('OPENQA_SERIES') ne 'xenial') {
-        assert_keyboard_page;
-    }
-
     assert_screen "installer-prepare", 16;
     assert_and_click "installer-next";
     if ($args{disk_empty}) {
@@ -113,11 +108,7 @@ sub install {
     assert_screen "installer-timezone", 60;
     assert_and_click "installer-next";
 
-    # bionic version of ubiquity moved the keyboard configuration as first step
-    # while in xenial version the keyboard config is after timezone setup
-    if (testapi::get_var('OPENQA_SERIES') eq 'xenial') {
-        assert_keyboard_page;
-    }
+    assert_keyboard_page;
 
     assert_screen "installer-user", 16;
     type_string $user;

@@ -21,7 +21,7 @@
 
 require 'tty/command'
 
-OPENQA_SERIES = ENV.fetch('OPENQA_SERIES', 'xenial')
+OPENQA_SERIES = ENV.fetch('OPENQA_SERIES')
 TYPE = ENV.fetch('TYPE')
 # Both rsync and tar have the same exclude arg syntax \o/
 EXCLUSION_ARGS = %w[

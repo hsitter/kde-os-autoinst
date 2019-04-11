@@ -1,4 +1,4 @@
-env.DIST = 'xenial'
+env.DIST = 'bionic'
 env.PWD_BIND = '/workspace'
 
 if (env.TYPE == null) {

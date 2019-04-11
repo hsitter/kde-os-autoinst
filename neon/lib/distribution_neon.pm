@@ -56,15 +56,11 @@ sub init_consoles {
     $self->add_console('root-virtio-terminal', 'virtio-terminal', {});
     # NB: ubuntu only sets up tty1 to 7 by default.
     $self->add_console('log-console', 'tty-console', {tty => 6});
-    if (get_var('OPENQA_SERIES') eq 'xenial') {
-        print("init_consoles :: XENIAL\n");
-        $self->add_console('x11', 'tty-console', {tty => 7});
-    } else {
-        print("init_consoles :: !XENIAL\n");
-        # in bionic ubuntu switched to tty1 for default. we adjusted our sddm
-        # accordingly.
-        $self->add_console('x11', 'tty-console', {tty => 1});
-    }
+
+    # in bionic ubuntu switched to tty1 for default. we adjusted our sddm
+    # accordingly.
+    $self->add_console('x11', 'tty-console', {tty => 1});
+
     # oem-config runs on tty1, later it will drop into tty7 for the final
     # x11.
     $self->add_console('oem-config', 'tty-console', {tty => 1});

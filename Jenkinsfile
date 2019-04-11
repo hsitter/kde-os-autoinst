@@ -1,4 +1,4 @@
-env.DIST = 'xenial'
+env.DIST = 'bionic'
 env.PWD_BIND = '/workspace'
 
 if (env.TYPE == null) {
@@ -14,10 +14,6 @@ if (env.TYPE == null) {
 
 if (env.TYPE == null) {
   error 'TYPE param not set. Cannot run install test without a type.'
-}
-
-if (env.OPENQA_SERIES == null) {
-  env.OPENQA_SERIES = 'xenial'
 }
 
 // WARNING: DO NOT set properites()!
