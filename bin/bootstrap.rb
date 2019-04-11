@@ -37,5 +37,5 @@ end
 
 puts "xx sync.rb"
 system('bin/sync.rb') || raise if ENV['INSTALLATION']
-put "xx run.rb"
+puts "xx run.rb"
 exec('bin/run.rb')
