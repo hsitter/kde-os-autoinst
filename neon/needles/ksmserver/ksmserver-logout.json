@@ -1,20 +1,20 @@
 {
   "area": [
     {
-      "height": 33,
-      "match": 70,
       "type": "match",
-      "width": 108.33333333333337,
-      "xpos": 421,
-      "ypos": 525
+      "xpos": 416,
+      "ypos": 526,
+      "width": 108,
+      "height": 33,
+      "match": 70
     },
     {
-      "height": 24,
-      "match": 95,
       "type": "match",
-      "width": 107,
       "xpos": 393,
-      "ypos": 571
+      "ypos": 571,
+      "width": 107,
+      "height": 24,
+      "match": 95
     }
   ],
   "properties": [],
@@ -22,3 +22,4 @@
     "ksmserver-logout"
   ]
 }
+
