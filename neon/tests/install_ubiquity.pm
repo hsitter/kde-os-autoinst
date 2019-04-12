@@ -86,6 +86,8 @@ sub install {
     }
     assert_and_click "installer-next";
 
+    assert_keyboard_page;
+
     assert_screen "installer-prepare", 16;
     assert_and_click "installer-next";
     if ($args{disk_empty}) {
@@ -107,8 +109,6 @@ sub install {
     #   fairly weird when moving away from the disk page.
     assert_screen "installer-timezone", 60;
     assert_and_click "installer-next";
-
-    assert_keyboard_page;
 
     assert_screen "installer-user", 16;
     type_string $user;
