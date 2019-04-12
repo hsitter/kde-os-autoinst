@@ -44,7 +44,7 @@ sub run {
 
     # While unstable installs are still on older plasmas this can be a soft
     # failure, should become hard in April 2018 if I remember.
-    if (get_var('TYPE') eq 'devedition-gitunstable' && match_has_tag('folder-desktop-512')) {
+    if (get_var('TYPE') eq 'unstable' && match_has_tag('folder-desktop-512')) {
         record_soft_failure "Screen had Plasma 5.12 icons but unstable should't have them!"
     }
 

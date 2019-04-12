@@ -156,8 +156,8 @@ sub run {
         upload_logs '/tmp/dist-upgrade.tar.xz';
 
         my %type_to_path = (
-            'devedition-gitunstable' => 'unstable',
-            'devedition-gistable' => 'testing',
+            'unstable' => 'unstable',
+            'testing' => 'testing',
             'useredition' => 'user',
             'userltsedition' => 'user/lts'
         );
