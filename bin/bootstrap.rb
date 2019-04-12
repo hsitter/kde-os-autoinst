@@ -35,7 +35,5 @@ elsif ENV.fetch('NODE_NAME', '') == 'master' ||
   Dir.chdir('/opt') { system("#{__dir__}/install.rb") || raise }
 end
 
-puts "xx sync.rb"
 system('bin/sync.rb') || raise if ENV['INSTALLATION']
-puts "xx run.rb"
 exec('bin/run.rb')
