@@ -13,9 +13,9 @@
   "tags": [
     "plasma-locked-idle",
     "plasma-locked",
-    "ENV-TYPE-devedition-gitunstable",
+    "ENV-TYPE-unstable",
     "plasma-locked-idle-wallpaper",
     "ENV-TYPE-useredition",
-    "ENV-TYPE-devedition-gitstable"
+    "ENV-TYPE-testing"
   ]
 }

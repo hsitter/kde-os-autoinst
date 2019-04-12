@@ -28,8 +28,8 @@
   "properties": [],
   "tags": [
     "plasma-locked",
-    "ENV-TYPE-devedition-gitunstable",
+    "ENV-TYPE-unstable",
     "ENV-TYPE-useredition",
-    "ENV-TYPE-devedition-gitstable"
+    "ENV-TYPE-testing"
   ]
 }

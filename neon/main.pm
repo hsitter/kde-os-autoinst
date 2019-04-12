@@ -137,7 +137,7 @@ if (testapi::get_var("INSTALLATION") && testapi::get_var('OPENQA_PARTITIONING'))
     }
 } elsif (testapi::get_var("INSTALLATION")) {
     my %test = (
-        'devedition-gitunstable' => "tests/install_calamares.pm",
+        'unstable' => "tests/install_calamares.pm",
         '' => "tests/install_ubiquity.pm"
     );
     if (testapi::get_var("INSTALLATION_OEM")) {
