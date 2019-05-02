@@ -25,6 +25,6 @@
     "sddm-es",
     "ENV-TYPE-unstable",
     "ENV-TYPE-testing",
-    "ENV-TYPE-useredition"
+    "ENV-TYPE-user"
   ]
 }

@@ -29,7 +29,7 @@
   "tags": [
     "plasma-locked",
     "ENV-TYPE-unstable",
-    "ENV-TYPE-useredition",
+    "ENV-TYPE-user",
     "ENV-TYPE-testing"
   ]
 }

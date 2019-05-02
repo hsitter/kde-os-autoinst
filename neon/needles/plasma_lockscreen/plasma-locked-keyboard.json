@@ -13,7 +13,7 @@
   "tags": [
     "plasma-locked-keyboard",
     "ENV-TYPE-unstable",
-    "ENV-TYPE-useredition",
+    "ENV-TYPE-user",
     "ENV-TYPE-testing"
   ]
 }

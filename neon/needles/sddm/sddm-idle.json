@@ -22,7 +22,7 @@
     "sddm-idle",
     "sddm",
     "ENV-TYPE-testing",
-    "ENV-TYPE-useredition"
+    "ENV-TYPE-user"
   ]
 }
 

@@ -15,7 +15,7 @@
     "plasma-locked",
     "ENV-TYPE-unstable",
     "plasma-locked-idle-wallpaper",
-    "ENV-TYPE-useredition",
+    "ENV-TYPE-user",
     "ENV-TYPE-testing"
   ]
 }
