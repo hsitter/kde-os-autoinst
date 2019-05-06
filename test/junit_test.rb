@@ -49,4 +49,14 @@ class JUnitTest < Minitest::Test
       JUnit.from_openqa(Dir.pwd)
     end
   end
+
+  def test_from_openqa_canceled
+    # Sometimes test can fail on cancel, this seems to be caused when the
+    # runner received sigter for whatever reason. We'll treat it like a failure.
+    FileUtils.cp_r("#{datadir}/result-install_calamares_canceled.json", 'result-install_calamares.json')
+    FileUtils.cp_r("#{datadir}/test_order.json", '.')
+    assert_raises do
+      JUnit.from_openqa(Dir.pwd)
+    end
+  end
 end

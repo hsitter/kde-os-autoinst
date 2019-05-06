@@ -376,7 +376,7 @@ module OSAutoInst
   end
 
   class ResultSuite
-    # Result :ok or :fail
+    # Result :ok or :fail or :canceled
     attr_reader :result
     # TODO: unknown
     attr_reader :dents
@@ -423,6 +423,7 @@ module OSAutoInst
       @result = case @result
                 when 'ok' then :ok
                 when 'fail' then :fail
+                when 'canceled' then :canceled
                 else raise "Unknown result #{@result}"
                 end
       @details = data.delete(:details)

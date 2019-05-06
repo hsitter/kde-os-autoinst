@@ -35,7 +35,11 @@ class JUnit
     RESULT_MAP = {
       ok: JenkinsJunitBuilder::Case::RESULT_PASSED,
       fail: JenkinsJunitBuilder::Case::RESULT_FAILURE,
-      unknown: JenkinsJunitBuilder::Case::RESULT_PASSED
+      unknown: JenkinsJunitBuilder::Case::RESULT_PASSED,
+      # It's actually unclear why canceled appears. Code suggests it's set when
+      # the test runner gets TERM. Question is why it would I guess. In any
+      # event we'll consider this a failure.
+      canceled: JenkinsJunitBuilder::Case::RESULT_FAILURE
       # => JenkinsJunitBuilder::Case::RESULT_SKIPPED
     }.freeze
 

@@ -1,0 +1,230 @@
+{
+   "details" : [
+      {
+         "frametime" : [
+            "0.71",
+            "0.75"
+         ],
+         "needles" : [
+            {
+               "json" : "neon/needles/live/live-bootloader-uefi-broken.json",
+               "area" : [
+                  {
+                     "w" : "148",
+                     "y" : 181,
+                     "h" : "39",
+                     "result" : "fail",
+                     "x" : 196,
+                     "similarity" : 26
+                  },
+                  {
+                     "w" : "221",
+                     "y" : 189,
+                     "h" : "32",
+                     "result" : "ok",
+                     "similarity" : 100,
+                     "x" : 197
+                  },
+                  {
+                     "result" : "fail",
+                     "h" : "70",
+                     "x" : 269,
+                     "similarity" : 1,
+                     "y" : 10,
+                     "w" : "388"
+                  }
+               ],
+               "error" : 0.501802386806696,
+               "name" : "live-bootloader-uefi-broken"
+            },
+            {
+               "error" : 1,
+               "name" : "bootloader",
+               "json" : "neon/needles/live/bootloader.json",
+               "area" : [
+                  {
+                     "h" : "264",
+                     "result" : "fail",
+                     "similarity" : 0,
+                     "x" : 0,
+                     "w" : "548",
+                     "y" : 4
+                  }
+               ]
+            }
+         ],
+         "area" : [
+            {
+               "y" : 147,
+               "w" : "148",
+               "x" : 196,
+               "similarity" : 100,
+               "result" : "ok",
+               "h" : "39"
+            },
+            {
+               "similarity" : 100,
+               "x" : 197,
+               "result" : "ok",
+               "h" : "32",
+               "y" : 189,
+               "w" : "221"
+            },
+            {
+               "w" : "388",
+               "y" : 46,
+               "similarity" : 100,
+               "x" : 200,
+               "h" : "70",
+               "result" : "ok"
+            }
+         ],
+         "result" : "ok",
+         "json" : "neon/needles/live/live-bootloader-uefi.json",
+         "needle" : "live-bootloader-uefi",
+         "tags" : [
+            "bootloader"
+         ],
+         "screenshot" : "install_calamares-1.png",
+         "properties" : []
+      },
+      {
+         "tags" : [
+            "live-grub-linux"
+         ],
+         "screenshot" : "install_calamares-2.png",
+         "frametime" : [
+            "0.88",
+            "0.92"
+         ],
+         "needles" : [
+            {
+               "error" : 1,
+               "name" : "live-grub-linux",
+               "json" : "neon/needles/live/live-grub-linux.json",
+               "area" : [
+                  {
+                     "x" : 43,
+                     "similarity" : 0,
+                     "result" : "fail",
+                     "h" : "30",
+                     "y" : 210,
+                     "w" : "211"
+                  }
+               ]
+            }
+         ],
+         "result" : "unk"
+      },
+      {
+         "result" : "unk",
+         "frametime" : [
+            "1.08",
+            "1.12"
+         ],
+         "needles" : [
+            {
+               "json" : "neon/needles/live/live-grub-linux.json",
+               "area" : [
+                  {
+                     "w" : "211",
+                     "y" : 210,
+                     "x" : 43,
+                     "similarity" : 0,
+                     "h" : "30",
+                     "result" : "fail"
+                  }
+               ],
+               "error" : 1,
+               "name" : "live-grub-linux"
+            }
+         ],
+         "tags" : [
+            "live-grub-linux"
+         ],
+         "screenshot" : "install_calamares-3.png"
+      },
+      {
+         "frametime" : [
+            "1.29",
+            "1.33"
+         ],
+         "needles" : [
+            {
+               "error" : 1,
+               "name" : "live-grub-linux",
+               "json" : "neon/needles/live/live-grub-linux.json",
+               "area" : [
+                  {
+                     "w" : "211",
+                     "y" : 210,
+                     "h" : "30",
+                     "result" : "fail",
+                     "similarity" : 0,
+                     "x" : 43
+                  }
+               ]
+            }
+         ],
+         "result" : "unk",
+         "tags" : [
+            "live-grub-linux"
+         ],
+         "screenshot" : "install_calamares-4.png"
+      },
+      {
+         "tags" : [
+            "live-grub-linux"
+         ],
+         "screenshot" : "install_calamares-5.png",
+         "frametime" : [
+            "1.46",
+            "1.50"
+         ],
+         "needles" : [
+            {
+               "error" : 1,
+               "name" : "live-grub-linux",
+               "json" : "neon/needles/live/live-grub-linux.json",
+               "area" : [
+                  {
+                     "w" : "211",
+                     "y" : 178,
+                     "h" : "30",
+                     "result" : "fail",
+                     "similarity" : 0,
+                     "x" : 43
+                  }
+               ]
+            }
+         ],
+         "result" : "unk"
+      },
+      {
+         "json" : "neon/needles/live/live-grub-linux.json",
+         "frametime" : [
+            "1.58",
+            "1.62"
+         ],
+         "area" : [
+            {
+               "y" : 210,
+               "w" : "211",
+               "x" : 43,
+               "similarity" : 100,
+               "result" : "ok",
+               "h" : "30"
+            }
+         ],
+         "result" : "ok",
+         "needle" : "live-grub-linux",
+         "screenshot" : "install_calamares-6.png",
+         "properties" : [],
+         "tags" : [
+            "live-grub-linux"
+         ]
+      }
+   ],
+   "dents" : 0,
+   "result" : "canceled"
+}
