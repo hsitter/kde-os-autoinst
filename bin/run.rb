@@ -70,7 +70,8 @@ defaultvga = 'qxl'
 
 config = {
   BACKEND: 'qemu',
-  CDMODEL: 'virtio-scsi-pci',
+  CDMODEL: 'scsi-cd',
+  SCSICONTROLLER: 'virtio-scsi-pci',
   DESKTOP: 'kde',
   DISTRI: 'debian',
   PRJDIR: '/workspace',
@@ -91,7 +92,7 @@ config = {
   QEMUCPUS: cpus,
   QEMURAM: 2048,
   HDDSIZEGB_1: DISK_SIZE_GB, # G is appended by os-autoinst
-  UEFI_BIOS: '/usr/share/OVMF/OVMF_CODE.fd',
+  UEFI_PFLASH_CODE: '/usr/share/OVMF/OVMF_CODE.fd',
   UEFI: 1,
   QEMU_COMPRESS_QCOW2: true,
   TYPE: ENV.fetch('TYPE')
