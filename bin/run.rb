@@ -109,7 +109,7 @@ ENV.each { |k, v| config[k.to_sym] = v if k.start_with?('OPENQA_') }
 # There's also fancy builds at https://www.kraxel.org/repos/jenkins/edk2/
 # which contain more pertinent stuff.
 bionic_ovmf = File.expand_path("#{__dir__}/../OVMF/OVMF_CODE.fd")
-config[:UEFI_BIOS] = bionic_ovmf if File.exist?(bionic_ovmf)
+config[:UEFI_PFLASH_CODE] = bionic_ovmf if File.exist?(bionic_ovmf)
 
 # Switch to bios mode when requested.
 config.delete(:UEFI) if ENV['OPENQA_BIOS']
