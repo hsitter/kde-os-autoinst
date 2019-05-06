@@ -28,7 +28,8 @@
   "properties": [],
   "tags": [
     "live-desktop",
-    "live-desktop-userltsedition"
+    "live-desktop-userltsedition",
+    "ENV-TYPE-userltsedition"
   ]
 }
 

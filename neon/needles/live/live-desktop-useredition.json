@@ -29,7 +29,8 @@
   "tags": [
     "live-desktop",
     "live-desktop-user",
-    "live-desktop-useredition"
+    "live-desktop-useredition",
+    "ENV-TYPE-user",
+    "ENV-TYPE-testing"
   ]
 }
-
