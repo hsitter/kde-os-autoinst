@@ -48,6 +48,7 @@ module OSAutoInst
 
       next if basename.start_with?('result-') # skip full test sets
       next if basename.start_with?('test_order.json') # also suites
+
       define_method("test_needle_#{needle}") do
         json = JSON.parse(File.read(needle), symbolize_names: true)
         p DetailFactory.new(json).factorize
