@@ -35,13 +35,17 @@ module OSAutoInst
       FileUtils.rm_r(@tmpdir)
     end
 
-    def test_init
-      ResultSuite.new("#{datadir}/result-first_start.json")
-    end
-
     # factorize
     Dir.glob(File.join(@@datadir, '*')).each do |needle|
       basename = File.basename(needle)
+
+      if basename.start_with?('result-') # only full test sets
+        define_method("test_result_#{needle}") do
+          ResultSuite.new(needle)
+        end
+        next
+      end
+
       next if basename.start_with?('result-') # skip full test sets
       next if basename.start_with?('test_order.json') # also suites
       define_method("test_needle_#{needle}") do
