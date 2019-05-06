@@ -207,4 +207,7 @@ end
 # more of a bonus feature.
 system("#{__dir__}/slideshow.rb", 'wok/slide.html')
 
+system('apt', 'install', '-y', 'tree')
+system('tree wok')
+
 JUnit.from_openqa('wok/testresults')
