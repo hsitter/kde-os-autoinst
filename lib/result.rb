@@ -214,6 +214,7 @@ module OSAutoInst
     detail_attr :needles
     detail_attr :screenshot # screenshot of the assertion
     detail_attr :tags # tags searched for
+    detail_attr :error # for the live of me I don't know what this shit is
 
     def initialize(*)
       # Init to avoid problems with representing approximate blobs.
