@@ -23,6 +23,8 @@ require 'json'
 require 'jenkins_junit_builder'
 
 module OSAutoInst
+  class GenericDetailError < StandardError; end
+
   module DetailAttributes
     def detail_attributes
       @detail_attributes ||= []
@@ -125,6 +127,14 @@ module OSAutoInst
     optional_detail_attr :dent
 
     def initialize(*)
+      # os-autoinst may create result blobs which contain no worthwhile
+      # information. These blobs will match the Detail class directly. Detail
+      # however is not meant to be used directly as it cannot be represented
+      # in junit with any worthwhile information. Simply put a generic detail
+      # means nothing so it shouldn't be used. This error needs to be handled
+      # when factorizing details.
+      raise GenericDetailError if self.class == Detail
+
       @dent ||= false
       super
       init_result
@@ -370,6 +380,9 @@ module OSAutoInst
     def factorize
       find_klasses
       best_klass.new(data)
+    rescue GenericDetailError
+      warn "Encountered generic detail, skipping: #{data}}"
+      nil
     rescue NoMethodError => e
       warn "Failed to find class for #{data}"
       raise e
@@ -428,7 +441,8 @@ module OSAutoInst
                 else raise "Unknown result #{@result}"
                 end
       @details = data.delete(:details)
-      @details = @details.collect { |x| DetailFactory.new(x).factorize }
+      # also compact drop possible nil results (e.g. generic details)
+      @details = @details.collect { |x| DetailFactory.new(x).factorize }.compact
       chain_fail
       raise unless data.keys.empty?
     end

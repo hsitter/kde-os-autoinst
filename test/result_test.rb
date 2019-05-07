@@ -35,6 +35,11 @@ module OSAutoInst
       FileUtils.rm_r(@tmpdir)
     end
 
+    def test_generic_detail
+      s = ResultSuite.new(File.join(@@datadir, 'manual-generic_detail.json'))
+      assert_equal(s.details.size, 0)
+    end
+
     # factorize
     Dir.glob(File.join(@@datadir, '*')).each do |needle|
       basename = File.basename(needle)
@@ -48,10 +53,11 @@ module OSAutoInst
 
       next if basename.start_with?('result-') # skip full test sets
       next if basename.start_with?('test_order.json') # also suites
+      next if basename.start_with?('manual-') # manually tested
 
       define_method("test_needle_#{needle}") do
         json = JSON.parse(File.read(needle), symbolize_names: true)
-        p DetailFactory.new(json).factorize
+        DetailFactory.new(json).factorize
       end
     end
   end
