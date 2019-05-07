@@ -16,7 +16,7 @@ capabilities to give much higher virtualization performance. KVM is by default
 enabled on specific nodes provisioned by build.neon for os-autoinst runs.
 
 To mimic the setup used by build.neon you can simply docker contain your clone
-into a standard `ubuntu:16.04` and get the environment bootstrapped via
+into a standard `ubuntu:18.04` and get the environment bootstrapped via
 `bin/bootstrap_from_ubuntu.sh`.
 Note that when using docker you need to pass kvm around accordingly and the
 docker user needs write access to /dev/kvm (for example by adding it to the kvm
@@ -25,7 +25,7 @@ group).
 A simple bootstrap would look like this:
 
 ```
-docker run --device /dev/kvm -v `pwd`:/workspace -it ubuntu:16.04 bash
+docker run --device /dev/kvm -v `pwd`:/workspace -it ubuntu:18.04 bash
 cd /workspace
 TYPE=devedition-gitunstable bin/bootstrap_from_ubuntu.sh
 ```
