@@ -167,10 +167,10 @@ else
 
     FileUtils.rm_r('raid') if File.exist?('raid')
     FileUtils.mkpath('raid')
-    unless system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/1 raid/1 #{DISK_SIZE_GB}G")
+    unless system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/hd0 raid/hd0 #{DISK_SIZE_GB}G")
       raise "Failed to create overlay for #{existing_raid}"
     end
-    system('qemu-img info raid/1')
+    system('qemu-img info raid/hd0')
   end
   config[:QEMU_DISABLE_SNAPSHOTS] = true
   config[:MAKETESTSNAPSHOTS] = false
