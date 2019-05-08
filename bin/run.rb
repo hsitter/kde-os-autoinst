@@ -192,7 +192,7 @@ warn "Running from #{ISOTOVIDEO}"
 
 File.write('vars.json', JSON.generate(config))
 File.write('live_log', '')
-system({ 'QEMU_AUDIO_DRV' => 'none' }, 'ISOTOVIDEO', '-d') || raise
+isotovideo_exit = system({ 'QEMU_AUDIO_DRV' => 'none' }, 'ISOTOVIDEO', '-d')
 
 Dir.chdir('..')
 
@@ -208,3 +208,5 @@ end
 system("#{__dir__}/slideshow.rb", 'wok/slide.html')
 
 JUnit.from_openqa('wok/testresults')
+
+exit isotovideo_exit.to_i
