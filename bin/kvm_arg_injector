@@ -2,12 +2,10 @@
 
 require 'fileutils'
 
-args = ARGV.dup
-
 # Increase performance a bit by hugepaging for the VMs
-# hugepages = '/dev/hugepages'
-# args.unshift('-mem-path', hugepages) if File.exist?(hugepages)
-
+hugepages = '/dev/hugepages'
+args = ARGV.dup
+args.unshift('-mem-path', hugepages) if File.exist?(hugepages)
 args.unshift('/usr/bin/kvm')
 
 # os-autoinst uses ttyS0 to actually do serial interaction (kbd IO etc)
