@@ -192,7 +192,7 @@ warn "Running from #{ISOTOVIDEO}"
 
 File.write('vars.json', JSON.generate(config))
 File.write('live_log', '')
-system({ 'QEMU_AUDIO_DRV' => 'none' }, ISOTOVIDEO, '-d') #|| raise
+system({ 'QEMU_AUDIO_DRV' => 'none' }, 'ISOTOVIDEO', '-d') || raise
 
 Dir.chdir('..')
 
