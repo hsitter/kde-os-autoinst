@@ -29,6 +29,15 @@ runtime_deps = %w[qemu-kvm qemu kmod git ovmf cpu-checker]
 zsync_build_deps = %w[devscripts autotools-dev libcurl4-openssl-dev]
 deps = build_deps + runtime_deps + zsync_build_deps
 
+# bionic qemu crashes on networking with our unstable ISO due to various
+# unspecified bugs in the network stack. newer qemu's seem to have resolved this
+# so we'll use the qemu backport of openstack (qemu 3.1+)
+unless File.exist?('/etc/apt/sources.list.d/cloudarchive-stein.list')
+  system('apt install -y software-properties-common') || raise
+  system('add-apt-repository -m -y cloud-archive:stein') || raise
+  system('apt dist-upgrade -y') || raise
+end
+
 system("apt install --no-install-recommends -y #{deps.join(' ')}") || raise
 
 unless find_executable('zsync_curl')

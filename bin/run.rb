@@ -33,18 +33,6 @@ ISOTOVIDEO = if File.exist?('/opt/os-autoinst/isotovideo') &&
                File.expand_path('os-autoinst/isotovideo')
              end
 
-# bionic qemu crashes on networking with our unstable ISO. entirely unsure why
-out = `kvm --version`
-if $?.success? && !out.empty?
-  version = out.match(/(?<version>[\d\.]+)/)[:version]
-  if version&.start_with?('2.')
-    system('apt install -y software-properties-common') || raise
-    system('add-apt-repository -m -y cloud-archive:stein') || raise
-    system('apt dist-upgrade -y') || raise
-    system('kvm --version')
-  end
-end
-
 # FIXME: we really want 20G to not accidently risk out of disking the server
 #   if a test has a data leak. OTOH we need larger setups for some tests.
 #   might be worth investing into a solution that can dynamically upscale a
