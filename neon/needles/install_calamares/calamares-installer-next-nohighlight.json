@@ -1,12 +1,12 @@
 {
   "area": [
     {
-      "height": 41,
-      "match": 95,
       "type": "match",
+      "xpos": 828,
+      "ypos": 610,
       "width": 93,
-      "xpos": 829,
-      "ypos": 676
+      "height": 41,
+      "match": 95
     }
   ],
   "properties": [],
@@ -15,3 +15,4 @@
     "calamares-installer-next-nohighlight"
   ]
 }
+
