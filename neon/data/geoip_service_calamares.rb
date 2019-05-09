@@ -26,15 +26,24 @@ require 'yaml'
 
 server = WEBrick::HTTPServer.new(Port: 0)
 
-conf = '/etc/calamares/modules/locale.conf'
-abort "Couldn't find config #{conf}" unless File.exist?(conf)
-yaml = YAML.load_file(conf)
-yaml['geoipUrl'] = "http://localhost:#{server.config[:Port]}"
-# TODO: drop this after 2018-04-30 or so
-# Make sure the style is set, older ISOs might not have this which would give
-# divergent behavior.
-yaml['geoipStyle'] = 'json'
-File.write(conf, YAML.dump(yaml))
+# We may have multiple configs as we have multiple config sets for calamares.
+# While they should generally all use the same locale.conf there is nothing
+# preventing them from not doing it, so to not screw things up let's
+# search for all possible conf files.
+possible_confs = ['/etc/calamares/modules/locale.conf']
+possible_confs += Dir.glob('/calamares/**/locale.conf')
+confs = possible_confs.select { |x| File.exist?(x) }
+raise 'Could not find any locale.conf!' if confs.empty?
+
+confs.each do |conf|
+  yaml = YAML.load_file(conf)
+  yaml['geoipUrl'] = "http://localhost:#{server.config[:Port]}"
+  # TODO: drop this after 2018-04-30 or so
+  # Make sure the style is set, older ISOs might not have this which would give
+  # divergent behavior.
+  yaml['geoipStyle'] = 'json'
+  File.write(conf, YAML.dump(yaml))
+end
 
 server.mount_proc '/' do |_req, res|
   # Format as documented in calamares' locale.conf. This is a test double
