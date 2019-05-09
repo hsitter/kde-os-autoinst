@@ -1,15 +1,15 @@
 {
   "area": [
     {
-      "height": 62,
+      "height": 45,
       "match": 95,
       "type": "match",
       "width": 142,
-      "xpos": 5,
-      "ypos": 235
+      "xpos": 7,
+      "ypos": 262
     },
     {
-      "height": 479,
+      "height": 468,
       "match": 95,
       "type": "match",
       "width": 756,
@@ -20,6 +20,8 @@
   "properties": [],
   "tags": [
     "installer-show-new",
-    "installer-show"
+    "installer-show",
+    "ENV-SERIES-bionic"
   ]
 }
+

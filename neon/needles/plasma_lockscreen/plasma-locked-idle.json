@@ -12,9 +12,9 @@
       "height": 43,
       "match": 60,
       "type": "match",
-      "width": 89,
-      "xpos": 605,
-      "ypos": 146
+      "width": 42,
+      "xpos": 621,
+      "ypos": 150
     },
     {
       "height": 768,
@@ -39,7 +39,8 @@
     "plasma-locked",
     "ENV-TYPE-unstable",
     "ENV-TYPE-user",
-    "ENV-TYPE-testing"
+    "ENV-TYPE-testing",
+    "ENV-SERIES-bionic"
   ]
 }
 

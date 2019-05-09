@@ -22,6 +22,7 @@
     "installer-show-new-espanol",
     "installer-show-espanol",
     "installer-show",
-    "ENV-NONENGLISH"
+    "ENV-NONENGLISH",
+    "ENV-SERIES-bionic"
   ]
 }

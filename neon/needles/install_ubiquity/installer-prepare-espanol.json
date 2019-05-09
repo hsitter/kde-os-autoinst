@@ -14,7 +14,8 @@
     "installer-prepare-espanol",
     "installer-prepare",
     "ENV-NO-SECUREBOOT",
-    "ENV-NONENGLISH"
+    "ENV-NONENGLISH",
+    "ENV-SERIES-bionic"
   ]
 }
 

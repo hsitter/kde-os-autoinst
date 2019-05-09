@@ -1,12 +1,12 @@
 {
   "area": [
     {
-      "height": 64,
+      "height": 54,
       "match": 95,
       "type": "match",
-      "width": 107,
-      "xpos": 39,
-      "ypos": 201
+      "width": 144,
+      "xpos": 31,
+      "ypos": 247
     },
     {
       "height": 435,
@@ -19,6 +19,7 @@
   ],
   "properties": [],
   "tags": [
-    "oem-config-timezone"
+    "oem-config-timezone",
+    "ENV-SERIES-bionic"
   ]
 }

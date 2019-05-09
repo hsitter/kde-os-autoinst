@@ -1,18 +1,21 @@
 {
   "area": [
     {
-      "height": 561,
+      "height": 527,
       "match": 95,
       "type": "match",
-      "width": 914,
-      "xpos": 0,
-      "ypos": 0
+      "width": 906,
+      "xpos": 4,
+      "ypos": 32
     }
   ],
-  "properties": [],
+  "properties": [
+    "workaround"
+  ],
   "tags": [
     "installer-prepare",
-    "ENV-NO-SECUREBOOT"
+    "ENV-NO-SECUREBOOT",
+    "ENV-SERIES-bionic"
   ]
 }
 

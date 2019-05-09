@@ -29,6 +29,7 @@
   "tags": [
     "installer-disk-espanol",
     "installer-disk",
-    "ENV-NONENGLISH"
+    "ENV-NONENGLISH",
+    "ENV-SERIES-bionic"
   ]
 }

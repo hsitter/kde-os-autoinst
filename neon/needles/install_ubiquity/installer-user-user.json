@@ -11,6 +11,7 @@
   ],
   "properties": [],
   "tags": [
-    "installer-user-user"
+    "installer-user-user",
+    "ENV-SERIES-bionic"
   ]
 }

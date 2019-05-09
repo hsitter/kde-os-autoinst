@@ -5,14 +5,16 @@
       "match": 95,
       "type": "match",
       "width": 502,
-      "xpos": 260,
-      "ypos": 325
+      "xpos": 218,
+      "ypos": 204
     }
   ],
   "properties": [],
   "tags": [
     "installer-restart-espanol",
     "installer-restart",
-    "ENV-NONENGLISH"
+    "ENV-NONENGLISH",
+    "ENV-SERIES-bionic"
   ]
 }
+

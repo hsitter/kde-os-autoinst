@@ -11,6 +11,8 @@
   ],
   "properties": [],
   "tags": [
-    "installer-user-complete"
+    "installer-user-complete",
+    "ENV-SERIES-bionic"
   ]
 }
+

@@ -1,19 +1,20 @@
 {
   "area": [
     {
-      "height": 561,
+      "height": 527,
       "match": 95,
       "type": "match",
       "width": 763,
       "xpos": 151,
-      "ypos": 0
+      "ypos": 34
     }
   ],
   "properties": [],
   "tags": [
     "installer-prepare-secureboot",
     "installer-prepare",
-    "ENV-SECUREBOOT"
+    "ENV-SECUREBOOT",
+    "ENV-SERIES-bionic"
   ]
 }
 

@@ -1,24 +1,25 @@
 {
   "area": [
     {
-      "height": 251,
+      "height": 207,
       "match": 95,
       "type": "match",
       "width": 427,
-      "xpos": 39,
+      "xpos": 30,
       "ypos": 132
     },
     {
       "height": 479,
       "match": 95,
       "type": "match",
-      "width": 756,
-      "xpos": 188,
-      "ypos": 151
+      "width": 808,
+      "xpos": 183,
+      "ypos": 132
     }
   ],
   "properties": [],
   "tags": [
-    "oem-config-show"
+    "oem-config-show",
+    "ENV-SERIES-bionic"
   ]
 }

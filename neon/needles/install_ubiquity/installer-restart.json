@@ -5,12 +5,14 @@
       "match": 95,
       "type": "match",
       "width": 502,
-      "xpos": 260,
-      "ypos": 325
+      "xpos": 220,
+      "ypos": 208
     }
   ],
   "properties": [],
   "tags": [
-    "installer-restart"
+    "installer-restart",
+    "ENV-SERIES-bionic"
   ]
 }
+

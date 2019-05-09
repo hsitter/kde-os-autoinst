@@ -1,18 +1,19 @@
 {
   "area": [
     {
-      "height": 439,
+      "height": 433,
       "match": 75,
       "type": "match",
-      "width": 914,
-      "xpos": 0,
+      "width": 761,
+      "xpos": 153,
       "ypos": 31
     }
   ],
   "properties": [],
   "tags": [
     "installer-timezone-offline",
-    "installer-timezone"
+    "installer-timezone",
+    "ENV-SERIES-bionic"
   ]
 }
 

@@ -11,6 +11,7 @@
   ],
   "properties": [],
   "tags": [
-    "installer-timezone"
+    "installer-timezone",
+    "ENV-SERIES-bionic"
   ]
 }

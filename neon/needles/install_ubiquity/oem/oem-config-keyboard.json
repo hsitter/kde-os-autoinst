@@ -1,12 +1,12 @@
 {
   "area": [
     {
-      "height": 64,
+      "height": 48,
       "match": 95,
       "type": "match",
-      "width": 107,
-      "xpos": 38,
-      "ypos": 241
+      "width": 131,
+      "xpos": 39,
+      "ypos": 172
     },
     {
       "height": 435,
@@ -19,6 +19,7 @@
   ],
   "properties": [],
   "tags": [
-    "oem-config-keyboard"
+    "oem-config-keyboard",
+    "ENV-SERIES-bionic"
   ]
 }

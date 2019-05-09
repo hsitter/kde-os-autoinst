@@ -1,16 +1,18 @@
 {
   "area": [
     {
-      "type": "match",
-      "xpos": 541,
-      "ypos": 389,
-      "width": 90,
       "height": 31,
-      "match": 95
+      "match": 95,
+      "type": "match",
+      "width": 90,
+      "xpos": 493,
+      "ypos": 289
     }
   ],
   "properties": [],
   "tags": [
-    "installer-restart-now"
+    "installer-restart-now",
+    "ENV-SERIES-bionic"
   ]
 }
+

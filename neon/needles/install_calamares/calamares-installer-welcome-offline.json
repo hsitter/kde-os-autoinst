@@ -45,15 +45,16 @@
       "match": 95,
       "type": "match",
       "width": 468.79999999999995,
-      "xpos": 278.20000000000005,
-      "ypos": 268.79999999999995
+      "xpos": 279.20000000000005,
+      "ypos": 252.79999999999995
     }
   ],
   "properties": [],
   "tags": [
     "calamares-installer-welcome-offline",
     "calamares-installer-welcome",
-    "ENV-OFFLINE"
+    "ENV-OFFLINE",
+    "ENV-SERIES-bionic"
   ]
 }
 

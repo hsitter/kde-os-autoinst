@@ -13,6 +13,7 @@
   "tags": [
     "installer-user-complete-espanol",
     "installer-user-complete",
-    "ENV-NONENGLISH"
+    "ENV-NONENGLISH",
+    "ENV-SERIES-bionic"
   ]
 }

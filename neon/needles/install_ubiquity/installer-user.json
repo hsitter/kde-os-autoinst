@@ -1,7 +1,7 @@
 {
   "area": [
     {
-      "height": 434,
+      "height": 397,
       "match": 95,
       "type": "match",
       "width": 761,
@@ -11,6 +11,8 @@
   ],
   "properties": [],
   "tags": [
-    "installer-user"
+    "installer-user",
+    "ENV-SERIES-bionic"
   ]
 }
+

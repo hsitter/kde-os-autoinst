@@ -27,6 +27,7 @@
   ],
   "properties": [],
   "tags": [
-    "installer-disk"
+    "installer-disk",
+    "ENV-SERIES-bionic"
   ]
 }

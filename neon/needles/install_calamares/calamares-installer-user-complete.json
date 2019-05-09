@@ -11,6 +11,8 @@
   ],
   "properties": [],
   "tags": [
-    "calamares-installer-user-complete"
+    "calamares-installer-user-complete",
+    "ENV-SERIES-bionic"
   ]
 }
+

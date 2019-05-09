@@ -5,13 +5,14 @@
       "match": 95,
       "type": "match",
       "width": 758,
-      "xpos": 156,
-      "ypos": 0
+      "xpos": 151,
+      "ypos": 4
     }
   ],
   "properties": [],
   "tags": [
-    "oem-installer-user-complete"
+    "oem-installer-user-complete",
+    "ENV-SERIES-bionic"
   ]
 }
 

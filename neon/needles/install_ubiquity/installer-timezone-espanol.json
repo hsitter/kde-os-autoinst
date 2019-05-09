@@ -13,6 +13,7 @@
   "tags": [
     "installer-timezone-espanol",
     "installer-timezone",
-    "ENV-NONENGLISH"
+    "ENV-NONENGLISH",
+    "ENV-SERIES-bionic"
   ]
 }
