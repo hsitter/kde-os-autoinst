@@ -4,16 +4,16 @@
       "type": "match",
       "xpos": 416,
       "ypos": 526,
-      "width": 114,
+      "width": 108,
       "height": 33,
       "match": 70
     },
     {
       "type": "match",
-      "xpos": 671,
-      "ypos": 407,
+      "xpos": 670,
+      "ypos": 420,
       "width": 87,
-      "height": 108,
+      "height": 98,
       "match": 95
     },
     {
@@ -27,7 +27,10 @@
   ],
   "properties": [],
   "tags": [
-    "ksmserver-logout"
+    "ksmserver-logout",
+    "ENV-TYPE-userltsedition",
+    "ENV-TYPE-user",
+    "ENV-TYPE-testing"
   ]
 }
 
