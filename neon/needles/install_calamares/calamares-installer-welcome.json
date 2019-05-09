@@ -26,9 +26,9 @@
     },
     {
       "type": "match",
-      "xpos": 345,
-      "ypos": 514,
-      "width": 487,
+      "xpos": 287,
+      "ypos": 499,
+      "width": 185,
       "height": 56,
       "match": 95
     },
@@ -43,9 +43,9 @@
     {
       "type": "match",
       "xpos": 229,
-      "ypos": 292,
+      "ypos": 302,
       "width": 768,
-      "height": 221,
+      "height": 180,
       "match": 95
     }
   ],
