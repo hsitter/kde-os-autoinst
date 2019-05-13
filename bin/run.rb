@@ -69,6 +69,7 @@ cpus = (cpus / 2.0).ceil unless File.exist?('/tooling/is_scaling_node')
 defaultvga = 'qxl'
 
 config = {
+  ARCH: 'x86_64',
   BACKEND: 'qemu',
   CDMODEL: 'scsi-cd',
   SCSICONTROLLER: 'virtio-scsi-pci',
