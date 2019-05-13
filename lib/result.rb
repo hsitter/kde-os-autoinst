@@ -428,7 +428,9 @@ module OSAutoInst
           next
         end
         # Otherwise the detail is one more in the chain of unknown.
-        raise unless result == :unknown # assert
+        unless result == :unknown # assert
+          "Unexpected result type #{result}"
+        end
         running_array << detail
       end
     end
