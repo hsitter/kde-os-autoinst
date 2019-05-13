@@ -135,6 +135,12 @@ if ENV['INSTALLATION']
     config[:ISO_1] = secureboot
     config[:SECUREBOOT] = true
   end
+
+  # Snapshotting entails taking new overlays, which seems distinctly malfunctioning
+  # for UEFI. More importantly though we do not use snapshots and overlay
+  # the hd0 manually on post-installation tests. So, snapshots have no use for
+  # us.
+  config[:QEMU_DISABLE_SNAPSHOTS] = true
 else
   config[:BOOT_HDD_IMAGE] = true
   config[:KEEPHDDS] = true
@@ -168,10 +174,27 @@ else
 
     FileUtils.rm_r('raid') if File.exist?('raid')
     FileUtils.mkpath('raid')
+
     unless system("qemu-img create -f qcow2 -o backing_file=#{existing_raid}/hd0 raid/hd0 #{DISK_SIZE_GB}G")
       raise "Failed to create overlay for #{existing_raid}"
     end
+
     system('qemu-img info raid/hd0')
+
+    # pflash is tiny and actually already overlays in of themselves. Copy them
+    # as-is. It's simpler and given their small size not a concern.
+    FileUtils.cp(Dir.glob("#{existing_raid}/pflash*"), 'raid/', verbose: true)
+
+    FileUtils.cp("#{existing_raid}/qemu_state.json", 'raid/', verbose: true)
+
+    # Kick cd drive in the bucket. Otherwise we'd require an iso to run, which
+    # is not actually necessary or available for post-installation tests.
+    statefile = 'raid/qemu_state.json'
+    data = JSON.parse(File.read(statefile))
+    data['blockdev_conf']['drives'].reject! do |drive|
+      drive['id'].start_with?('cd') # drop CDs
+    end
+    File.write(statefile, JSON.generate(data))
   end
   config[:QEMU_DISABLE_SNAPSHOTS] = true
   config[:MAKETESTSNAPSHOTS] = false
@@ -209,5 +232,12 @@ end
 system("#{__dir__}/slideshow.rb", 'wok/slide.html')
 
 JUnit.from_openqa('wok/testresults')
+
+# Move the state file into the raid directory. This way it gets reliably
+# archived after installation (if applicable) and can the be picked up in
+# post-installation tests as seen above.
+# This is necessary because (newer) os-autoinst's will load the state
+# when running in keep_hdd mode instead of constructing a new device list.
+FileUtils.cp('wok/qemu_state.json', 'wok/raid/', verbose: true)
 
 exit(isotovideo_success ? 0 : 1)
