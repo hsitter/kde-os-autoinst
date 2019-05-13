@@ -131,11 +131,11 @@ sub run {
 
     assert_screen 'ubuntu-upgrade';
     # ... preparation happens ...
-    assert_and_click 'ubuntu-upgrade-start', button => 'left', timeout => 60 * 5;
+    assert_and_click 'ubuntu-upgrade-start', timeout => 60 * 5;
 
     # A config was changed by us to force the bionic upgrade to be enabled,
     # we should get a diff prompt.
-    assert_and_click 'ubuntu-upgrade-diff-2', button => 'left', timeout => 60 * 10;
+    assert_and_click 'ubuntu-upgrade-diff-2', timeout => 60 * 10;
     # (This has a super long time out because upgrading an all-packages
     #  install takes forever)
     # TODO: consider finding a better way to detect problems than such a long
