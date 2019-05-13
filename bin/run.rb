@@ -97,7 +97,8 @@ config = {
   UEFI_PFLASH_VARS: '/usr/share/OVMF/OVMF_VARS.fd',
   UEFI: 1,
   QEMU_COMPRESS_QCOW2: true,
-  TYPE: ENV.fetch('TYPE')
+  TYPE: ENV.fetch('TYPE'),
+  SCREENSHOTINTERVAL: '0.3'
 }
 
 ENV.each { |k, v| config[k.to_sym] = v if k.start_with?('OPENQA_') }
