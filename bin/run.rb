@@ -186,11 +186,11 @@ else
     # as-is. It's simpler and given their small size not a concern.
     FileUtils.cp(Dir.glob("#{existing_raid}/pflash*"), 'raid/', verbose: true)
 
-    FileUtils.cp("#{existing_raid}/qemu_state.json", 'raid/', verbose: true)
+    FileUtils.cp("#{existing_raid}/qemu_state.json", './', verbose: true)
 
     # Kick cd drive in the bucket. Otherwise we'd require an iso to run, which
     # is not actually necessary or available for post-installation tests.
-    statefile = 'raid/qemu_state.json'
+    statefile = 'qemu_state.json'
     data = JSON.parse(File.read(statefile))
     data['blockdev_conf']['drives'].reject! do |drive|
       drive['id'].start_with?('cd') # drop CDs
