@@ -13,14 +13,15 @@
       "xpos": 91,
       "ypos": 211,
       "width": 862,
-      "height": 505,
+      "height": 477,
       "match": 95
     }
   ],
   "properties": [],
   "tags": [
     "sddm",
-    "ENV-TYPE-unstable"
+    "ENV-TYPE-testing",
+    "ENV-TYPE-user"
   ]
 }
 
