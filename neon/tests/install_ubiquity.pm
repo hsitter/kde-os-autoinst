@@ -98,7 +98,7 @@ sub install {
         assert_screen "installer-disk-wipe-selected", 16;
         assert_and_click "installer-install-now";
     }
-    assert_and_click "installer-disk-confirm", 'left', 16;
+    assert_and_click "installer-disk-confirm", button => 'left', timeout => 16;
 
     # Timezone has 75% fuzzyness as timezone is geoip'd so its fairly divergent.
     # Also, starting here only the top section of the window gets matched as

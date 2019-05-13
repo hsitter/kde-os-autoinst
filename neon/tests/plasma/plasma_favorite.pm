@@ -35,7 +35,7 @@ sub run {
     assert_and_click 'kickoff-office';
 
     # Adds Okular in the favorites tab
-    assert_and_click 'kickoff-okular', 'right';
+    assert_and_click 'kickoff-okular', button => 'right';
     assert_and_click 'kickoff-add-to-favorite';
     assert_screen 'kickoff-favorite-okular', 60;
     send_key 'esc';
@@ -53,7 +53,7 @@ sub run {
     # Removes Okular from the favorites tab
     assert_and_click 'plasma-launcher';
     wait_still_screen;
-    assert_and_click 'kickoff-favorite-okular', 'right';
+    assert_and_click 'kickoff-favorite-okular', button => 'right';
     assert_and_click 'kickoff-remove-from-favorite';
     assert_screen ['kickoff-favorite-okular', 'kickoff-favorite'], 60;
     if (match_has_tag('kickoff-favorite-okular')) {
