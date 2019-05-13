@@ -141,7 +141,8 @@ module OSAutoInst
     end
 
     def init_result
-      results = { 'unk' => :unknown, 'ok' => :ok, 'fail' => :fail }
+      results = { 'unk' => :unknown, 'ok' => :ok, 'fail' => :fail,
+                  'softfail' => :softfail }
       @result = results.fetch(result) do
         result.is_a?(Hash)
         begin
@@ -210,11 +211,13 @@ module OSAutoInst
     # differently when converting to junit.
 
     def self.need?(data)
-      data[:result] && data[:result].is_a?(Hash)
+      (data[:result] && data[:result].is_a?(Hash)) ||
+        data[:result] == 'softfail'
     end
 
     def self.want?(data)
-      data[:result] && data[:result].is_a?(Hash)
+      (data[:result] && data[:result].is_a?(Hash)) ||
+        data[:result] == 'softfail'
     end
   end
 

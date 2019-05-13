@@ -36,6 +36,7 @@ class JUnit
       ok: JenkinsJunitBuilder::Case::RESULT_PASSED,
       fail: JenkinsJunitBuilder::Case::RESULT_FAILURE,
       unknown: JenkinsJunitBuilder::Case::RESULT_PASSED,
+      softfail: JenkinsJunitBuilder::Case::RESULT_PASSED,
       # It's actually unclear why canceled appears. Code suggests it's set when
       # the test runner gets TERM. Question is why it would I guess. In any
       # event we'll consider this a failure.
@@ -88,12 +89,19 @@ class JUnit
       # to give useful data.
       super
       self.name = detail.title
+      screenshot = ''
+      # In newer os-autoinst softfails may also simply have result:softfail
+      # instead of nesting another detail with screenshot. In that case
+      # we have nothing to add and can simply leave the empty string
+      unless detail.result.is_a?(Symbol)
+        screenshot = artifact_url(detail.result.screenshot)
+      end
       system_out << <<-STDOUT
 We recorded a soft failure, this isn't a failed assertion but rather
 indicates that something is (temporarily) wrong with the expecations.
 This event was programtically created, check the code of the test case.
 #{artifact_url(detail.text)}
-#{artifact_url(detail.result.screenshot)}
+#{screenshot}
 STDOUT
     end
 

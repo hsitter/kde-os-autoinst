@@ -677,7 +677,12 @@
                "similarity" : 100
             }
          ]
-      }
+      },
+    {
+"result": "softfail",
+"text": "first_start-119.txt",
+"title": "Soft Failed"
+}
    ],
    "result" : "ok",
    "dents" : 0
