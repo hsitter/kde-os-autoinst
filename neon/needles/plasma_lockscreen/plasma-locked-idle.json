@@ -10,9 +10,9 @@
     },
     {
       "type": "match",
-      "xpos": 621,
-      "ypos": 150,
-      "width": 42,
+      "xpos": 607,
+      "ypos": 164,
+      "width": 37,
       "height": 43,
       "match": 60
     },
