@@ -31,7 +31,7 @@ sub switch_to {
         send_key 'esc';
 
         # Starts the Alternative Menu
-        assert_and_click 'plasma-launcher', 'right';
+        assert_and_click 'plasma-launcher', button => 'right';
 
         # Selects the menu type.
         assert_and_click 'kickoff-alternatives';
@@ -63,10 +63,10 @@ sub run {
     assert_and_click 'plasma-launcher';
     assert_screen 'plasma-kicker';
     send_key 'esc';
-    
+
     # Starting a new session
     $self->logout;
-    
+
     # Back in the session
     $self->login;
     assert_screen 'folder-desktop';

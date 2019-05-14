@@ -145,7 +145,7 @@ sub run {
     if (match_has_tag('ubuntu-upgrade-error')) {
         die 'We got error while upgrading.';
     }
-    assert_and_click 'ubuntu-upgrade-remove', 'left';
+    assert_and_click 'ubuntu-upgrade-remove', button => 'left';
 
     assert_screen 'ubuntu-upgrade-restart', 60 * 5;
 
