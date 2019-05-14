@@ -77,7 +77,7 @@ sub run {
     assert_screen 'folder-desktop';
     assert_and_click 'plasma-launcher';
     assert_screen 'kickoff-popup';
-    wait_still_screen;
+    sleep 2;
     send_key 'esc';
     assert_screen 'folder-desktop';
 }

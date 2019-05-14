@@ -113,7 +113,7 @@ sub maybe_login {
     if (check_screen 'sddm', 16) {
         type_password $testapi::password;
         send_key 'ret';
-        wait_still_screen;
+        sleep 4;
     }
 }
 

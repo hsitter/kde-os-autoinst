@@ -104,12 +104,12 @@ sub run {
     type_password $testapi::password;
     send_key 'ret';
     # ugh, sddm has no way to get us back, start a new session?
-    wait_still_screen;
+    sleep 2;
     assert_and_click 'plasma-launcher', timeout => 60; # 60 seconds since we don't assert desktop
     assert_and_click 'kickoff-leave';
     assert_and_click 'kickoff-leave-logout';
     assert_and_click 'ksmserver-logout';
-    wait_still_screen;
+    sleep 2;
 
     # we are back in our regular session, unlock and be happy
     # done

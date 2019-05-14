@@ -27,7 +27,7 @@ sub run {
 
     # Starts the Application Launcher
     assert_and_click 'plasma-launcher';
-    wait_still_screen;
+    sleep(2);
 
     # Switches to the Application Tab
     assert_screen 'kickoff-favorite';
@@ -39,7 +39,7 @@ sub run {
     assert_and_click 'kickoff-add-to-favorite';
     assert_screen 'kickoff-favorite-okular', 60;
     send_key 'esc';
-    wait_still_screen;
+    sleep(2);
     assert_and_click 'plasma-launcher';
     send_key 'esc';
 
@@ -52,7 +52,7 @@ sub run {
 
     # Removes Okular from the favorites tab
     assert_and_click 'plasma-launcher';
-    wait_still_screen;
+    sleep(2);
     # Move the mouse far far away in an attempt to not hit
     # https://bugs.kde.org/show_bug.cgi?id=407517
     # which may also be a timing issue for us here as technically we shouldn't
