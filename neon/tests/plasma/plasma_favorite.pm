@@ -53,6 +53,11 @@ sub run {
     # Removes Okular from the favorites tab
     assert_and_click 'plasma-launcher';
     wait_still_screen;
+    # Move the mouse far far away in an attempt to not hit
+    # https://bugs.kde.org/show_bug.cgi?id=407517
+    # which may also be a timing issue for us here as technically we shouldn't
+    # be able to have the mouse already above the okular entry.
+    mouse_set(0, 0);
     assert_and_click 'kickoff-favorite-okular', button => 'right';
     assert_and_click 'kickoff-remove-from-favorite';
     assert_screen ['kickoff-favorite-okular', 'kickoff-favorite'], 60;
