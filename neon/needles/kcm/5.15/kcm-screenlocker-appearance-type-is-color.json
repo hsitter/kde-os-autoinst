@@ -1,0 +1,42 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 380,
+      "ypos": 314,
+      "width": 100,
+      "height": 20,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 415,
+      "ypos": 356,
+      "width": 64,
+      "height": 17,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 488,
+      "ypos": 346,
+      "width": 51,
+      "height": 34,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 496,
+      "ypos": 320,
+      "width": 87,
+      "height": 15,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kcm-screenlocker-appearance-type-is-color",
+    "ENV-TYPE-user"
+  ]
+}
+
