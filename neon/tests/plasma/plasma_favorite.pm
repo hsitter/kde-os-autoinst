@@ -65,7 +65,7 @@ sub assert_shimmy_and_click {
     mouse_set($x, $y);
     mouse_set($x-1, $y);
     mouse_set($x+1, $y);
-    sleep 1; # Give a chance ot receive the movement events
+    sleep 16; # Give a chance ot receive the movement events
 
     if ($args{dclick}) {
         mouse_dclick($args{button}, $args{clicktime});
