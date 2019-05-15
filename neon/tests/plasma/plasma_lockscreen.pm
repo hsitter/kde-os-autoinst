@@ -106,7 +106,7 @@ sub run {
     type_password $testapi::password;
     send_key 'ret';
     # ugh, sddm has no way to get us back, start a new session?
-    sleep 2;
+    sleep 16; # Make sure krunner is actually ready to log us out.
     $self->logout;
     sleep 2;
 
