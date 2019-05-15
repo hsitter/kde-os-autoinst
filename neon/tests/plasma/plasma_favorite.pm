@@ -64,7 +64,7 @@ sub assert_shimmy_and_click {
     bmwqemu::diag("clicking at $x/$y");
     mouse_set($x, $y);
     mouse_set($x-1, $y);
-    sleep 16; # Give a chance ot receive the movement events
+    # sleep 16; # Give a chance ot receive the movement events
     mouse_set($x+1, $y);
 
     if ($args{dclick}) {
@@ -114,11 +114,12 @@ sub run {
 
     # Removes Okular from the favorites tab
     assert_and_click 'plasma-launcher', mousehide=>0;
+    sleep 16;
 
     # NB: use a special fork of assert and click here. kickoffs event handling
     #   is weirdly off and doesn't correctly detect the active item unless
     #   we move the mouse around in the mousearea.
-    assert_shimmy_and_click 'kickoff-favorite-okular', button => 'right',
+    assert_and_click 'kickoff-favorite-okular', button => 'right',
                                                        timeout => 4, mousehide => 0;
     assert_and_click 'kickoff-remove-from-favorite', timeout => 4, mousehide => 0;
 
