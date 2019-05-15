@@ -1,19 +1,17 @@
 {
   "area": [
     {
-      "height": 94,
-      "match": 95,
       "type": "match",
+      "xpos": 460,
+      "ypos": 625,
       "width": 101,
-      "xpos": 456,
-      "ypos": 595
+      "height": 94,
+      "match": 95
     }
   ],
   "properties": [],
   "tags": [
-    "plasma-locked-switch-icon",
-    "ENV-TYPE-unstable",
-    "ENV-TYPE-user",
-    "ENV-TYPE-testing"
+    "plasma-locked-switch-icon"
   ]
 }
+
