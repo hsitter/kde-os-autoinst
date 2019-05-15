@@ -59,14 +59,8 @@ sub run {
     x11_start_program 'kcmshell5 screenlocker' ;
     assert_screen 'kcm-screenlocker';
     assert_and_click 'kcm-screenlocker-appearance';
-    if (!check_screen('kcm-screenlocker-appearance-type-is-color', 4)) {
-        # TODO: drop once all images have been rotated (~mid Sept 2018)
-        record_soft_failure 'Testing an old disk image without static lockscreen';
-        assert_screen 'kcm-screenlocker-appearance-type';
-        assert_and_click 'kcm-screenlocker-appearance-type';
-        assert_and_click 'kcm-screenlocker-appearance-type-color';
-    }
-    # Should the deafault ever become undesirable: #1d99f3 is the lovely color.
+    assert_screen 'kcm-screenlocker-appearance-type-is-color', 4;
+    # Should the default ever become undesirable: #1d99f3 is the lovely color.
     assert_and_click 'kcm-ok';
 
     lock_screen;
