@@ -12,7 +12,7 @@
   "properties": [],
   "tags": [
     "plasma-locked-switch-icon",
-    "ENV-TYPE-user",
-    "ENV-TYPE-testing"
+    "ENV-TYPE-testing",
+    "ENV-TYPE-user"
   ]
 }

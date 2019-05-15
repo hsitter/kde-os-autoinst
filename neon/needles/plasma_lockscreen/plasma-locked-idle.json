@@ -38,9 +38,7 @@
     "plasma-locked-idle",
     "plasma-locked",
     "ENV-TYPE-unstable",
-    "ENV-TYPE-user",
     "ENV-TYPE-testing",
     "ENV-SERIES-bionic"
   ]
 }
-

@@ -28,7 +28,7 @@
   "properties": [],
   "tags": [
     "plasma-locked",
-    "ENV-TYPE-user",
-    "ENV-TYPE-testing"
+    "ENV-TYPE-testing",
+    "ENV-TYPE-user"
   ]
 }

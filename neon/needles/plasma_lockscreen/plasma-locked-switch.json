@@ -29,8 +29,6 @@
   "tags": [
     "plasma-locked-switch",
     "ENV-TYPE-unstable",
-    "ENV-TYPE-user",
     "ENV-TYPE-testing"
   ]
 }
-

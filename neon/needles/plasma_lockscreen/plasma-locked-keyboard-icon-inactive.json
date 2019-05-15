@@ -14,8 +14,6 @@
     "plasma-locked-keyboard-icon-inactive",
     "plasma-locked-keyboard-icon",
     "ENV-TYPE-unstable",
-    "ENV-TYPE-user",
     "ENV-TYPE-testing"
   ]
 }
-

@@ -12,7 +12,7 @@
   "properties": [],
   "tags": [
     "plasma-locked-keyboard",
-    "ENV-TYPE-user",
-    "ENV-TYPE-testing"
+    "ENV-TYPE-testing",
+    "ENV-TYPE-user"
   ]
 }

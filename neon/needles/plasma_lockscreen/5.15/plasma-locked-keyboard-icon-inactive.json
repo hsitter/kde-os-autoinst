@@ -13,7 +13,7 @@
   "tags": [
     "plasma-locked-keyboard-icon-inactive",
     "plasma-locked-keyboard-icon",
-    "ENV-TYPE-user",
-    "ENV-TYPE-testing"
+    "ENV-TYPE-testing",
+    "ENV-TYPE-user"
   ]
 }
