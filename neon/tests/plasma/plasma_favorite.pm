@@ -21,6 +21,68 @@ use base "basetest_neon";
 use strict;
 use testapi;
 
+# Slightly changed copy of assert_and_click. Shimmy the mouse around a bit
+# before clicking. This is to work around a bug in kickoff's event handling.
+# Simply moving the mouse in lets kickoff only get an onEntered/onContainsMouse
+# slot call. It's unclear if this is a bug/change in Qt or kickoff not being
+# entirely reliable. Seeing as we have to deal with this in multiple versions
+# of plasma we need a workaround all the same.
+sub assert_shimmy_and_click {
+    my ($mustmatch, %args) = @_;
+    $args{timeout}   //= $bmwqemu::default_timeout;
+    $args{button}    //= 'left';
+    $args{dclick}    //= 0;
+    $args{mousehide} //= 0;
+
+    my $last_matched_needle = assert_screen($mustmatch, $args{timeout});
+    bmwqemu::log_call(mustmatch => $mustmatch, %args);
+
+    # determine click coordinates from the last area which has those explicitly specified
+    my $relevant_area;
+    my $relative_click_point;
+    for my $area (reverse @{$last_matched_needle->{area}}) {
+        next unless ($relative_click_point = $area->{click_point});
+
+        $relevant_area = $area;
+        last;
+    }
+
+    # use center of the last area if no area contains click coordinates
+    if (!$relevant_area) {
+        $relevant_area = $last_matched_needle->{area}->[-1];
+    }
+    if (!$relative_click_point || $relative_click_point eq 'center') {
+        $relative_click_point = {
+            xpos => $relevant_area->{w} / 2,
+            ypos => $relevant_area->{h} / 2,
+        };
+    }
+
+    # calculate absolute click position and click
+    my $x = int($relevant_area->{x} + $relative_click_point->{xpos});
+    my $y = int($relevant_area->{y} + $relative_click_point->{ypos});
+    bmwqemu::diag("clicking at $x/$y");
+    mouse_set($x, $y);
+    mouse_set($x-1, $y);
+    mouse_set($x+1, $y);
+    sleep 1; # Give a chance ot receive the movement events
+
+    if ($args{dclick}) {
+        mouse_dclick($args{button}, $args{clicktime});
+    }
+    else {
+        mouse_click($args{button}, $args{clicktime});
+    }
+
+    # move mouse back to where it was before we clicked, or to the 'hidden' position if it had never been
+    # positioned
+    # note: We can not move the mouse instantly. Otherwise we might end up in a click-and-drag situation.
+    sleep 1;
+    if ($args{mousehide}) {
+        return mouse_hide();
+    }
+}
+
 sub run {
     my ($self) = @_;
     assert_screen 'folder-desktop';
@@ -51,17 +113,16 @@ sub run {
     assert_screen 'folder-desktop', 60;
 
     # Removes Okular from the favorites tab
-    assert_and_click 'plasma-launcher';
-    sleep(2);
-    # Move the mouse far far away in an attempt to not hit
-    # https://bugs.kde.org/show_bug.cgi?id=407517
-    # which may also be a timing issue for us here as technically we shouldn't
-    # be able to have the mouse already above the okular entry.
-    mouse_set(0, 0);
-    assert_and_click 'kickoff-favorite-okular', button => 'right';
-    assert_and_click 'kickoff-remove-from-favorite';
-    assert_screen ['kickoff-favorite-okular', 'kickoff-favorite'], 60;
-    if (match_has_tag('kickoff-favorite-okular')) {
+    assert_and_click 'plasma-launcher', mousehide=>0;
+
+    # NB: use a special fork of assert and click here. kickoffs event handling
+    #   is weirdly off and doesn't correctly detect the active item unless
+    #   we move the mouse around in the mousearea.
+    assert_shimmy_and_click 'kickoff-favorite-okular', button => 'right',
+                                                       timeout => 4, mousehide => 0;
+    assert_and_click 'kickoff-remove-from-favorite', timeout => 4, mousehide => 0;
+
+    if (check_screen('kickoff-favorite-okular', timeout => 2)) {
         die 'Okular should not be visible on the favorite tab'
     }
 
