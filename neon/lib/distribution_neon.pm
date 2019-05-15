@@ -18,7 +18,7 @@ sub x11_start_program($$$) {
     mouse_hide(1);
     check_screen('desktop-runner', $timeout);
     type_string $program;
-    sleep 2;
+    sleep 8;
     send_key "ret";
 }
 
