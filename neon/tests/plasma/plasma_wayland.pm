@@ -30,7 +30,7 @@ sub run {
 
     $self->login;
 
-   assert_screen 'folder-desktop', 60;
+    assert_screen 'folder-desktop', 60;
 
 }
 
