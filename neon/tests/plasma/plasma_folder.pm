@@ -48,19 +48,7 @@ sub run {
         record_soft_failure "Screen had Plasma 5.12 icons but unstable should't have them!"
     }
 
-    assert_screen 'folder-desktop';
-    if (!check_screen('folder-desktop-color', 4)) {
-        # TODO: drop once all images have been rotated (~mid Sept 2018)
-        record_soft_failure 'Testing an old disk image without static wallpaper';
-        mouse_set 400, 300;
-        mouse_click 'right';
-        assert_and_click 'plasma-context-config-folder';
-        assert_and_click 'plasma-folder-config-background';
-        assert_and_click 'plasma-folder-config-background-color';
-        # Should the deafault ever become undesirable: #1d99f3 is the lovely color.
-        assert_and_click 'kcm-ok';
-    }
-    # Should now be lovely blue.
+    # Should have been set to lovely blue by the installation test already.
     assert_screen 'folder-desktop-color';
 }
 
