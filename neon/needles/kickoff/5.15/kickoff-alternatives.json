@@ -1,0 +1,18 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 25,
+      "ypos": 682,
+      "width": 120,
+      "height": 24,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "kickoff-alternatives",
+    "ENV-TYPE-user"
+  ]
+}
+
