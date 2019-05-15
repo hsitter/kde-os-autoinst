@@ -33,6 +33,8 @@ sub lock_screen {
 }
 
 sub run {
+    my ($self) = @_;
+
     # NB: do not go into any consoles after this, they show up in the user
     #   switch dialog!
     # Before we start the lock screen test make sure we aren't logged in on
@@ -105,10 +107,7 @@ sub run {
     send_key 'ret';
     # ugh, sddm has no way to get us back, start a new session?
     sleep 2;
-    assert_and_click 'plasma-launcher', timeout => 60; # 60 seconds since we don't assert desktop
-    assert_and_click 'kickoff-leave';
-    assert_and_click 'kickoff-leave-logout';
-    assert_and_click 'ksmserver-logout';
+    $self->logout;
     sleep 2;
 
     # we are back in our regular session, unlock and be happy
