@@ -1,0 +1,19 @@
+{
+  "area": [
+    {
+      "height": 34,
+      "match": 95,
+      "type": "match",
+      "width": 169,
+      "xpos": 0,
+      "ypos": 733
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "plasma-locked-keyboard-icon-active",
+    "plasma-locked-keyboard-icon",
+    "ENV-TYPE-user",
+    "ENV-TYPE-testing"
+  ]
+}

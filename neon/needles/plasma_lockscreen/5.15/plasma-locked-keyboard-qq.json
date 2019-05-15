@@ -1,0 +1,26 @@
+{
+  "area": [
+    {
+      "height": 43,
+      "match": 90,
+      "type": "match",
+      "width": 316,
+      "xpos": 352,
+      "ypos": 370
+    },
+    {
+      "height": 48,
+      "match": 90,
+      "type": "match",
+      "width": 51,
+      "xpos": 64,
+      "ypos": 466
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "plasma-locked-keyboard-qq",
+    "ENV-SERIES-bionic",
+    "ENV-TYPE-user"
+  ]
+}

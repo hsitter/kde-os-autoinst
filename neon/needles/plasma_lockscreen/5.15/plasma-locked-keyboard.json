@@ -1,0 +1,18 @@
+{
+  "area": [
+    {
+      "height": 165,
+      "match": 95,
+      "type": "match",
+      "width": 902,
+      "xpos": 49,
+      "ypos": 356
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "plasma-locked-keyboard",
+    "ENV-TYPE-user",
+    "ENV-TYPE-testing"
+  ]
+}
