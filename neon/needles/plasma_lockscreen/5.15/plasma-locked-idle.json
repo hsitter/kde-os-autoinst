@@ -1,0 +1,44 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 0,
+      "ypos": 0,
+      "width": 129,
+      "height": 768,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 611,
+      "ypos": 149,
+      "width": 37,
+      "height": 43,
+      "match": 60
+    },
+    {
+      "type": "match",
+      "xpos": 903,
+      "ypos": 0,
+      "width": 118,
+      "height": 768,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 0,
+      "ypos": 217,
+      "width": 1024,
+      "height": 547,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "plasma-locked-idle",
+    "plasma-locked",
+    "ENV-TYPE-user",
+    "ENV-TYPE-testing"
+  ]
+}
+
