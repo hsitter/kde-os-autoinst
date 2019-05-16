@@ -32,6 +32,16 @@ sub lock_screen {
     assert_screen('plasma-locked');
 }
 
+sub unidle {
+    mouse_set(1, 1);
+    mouse_hide;
+    # NB: do not use esc. Esc is a toggle key. If it is not idle anymore esc
+    #   will make it idle again!
+    send_key 'ctrl'; # make double sure it's unidled
+    send_key 'shift'; # make triple sure it's unidled
+    send_key 'f1'; # make quadruple sure it's unidled
+}
+
 sub run {
     my ($self) = @_;
 
@@ -72,13 +82,7 @@ sub run {
 
     lock_screen;
     assert_screen('plasma-locked-idle');
-    mouse_set(1, 1);
-    mouse_hide;
-    # NB: do not use esc. Esc is a toggle key. If it is not idle anymore esc
-    #   will make it idle again!
-    send_key 'ctrl'; # make double sure it's unidled
-    send_key 'shift'; # make triple sure it's unidled
-    send_key 'f1'; # make quadruple sure it's unidled
+    unidle;
 
     # virtual keyboard
     assert_and_click 'plasma-locked-keyboard-icon';
@@ -92,6 +96,7 @@ sub run {
     assert_and_click 'plasma-locked-keyboard-icon-active';
 
     assert_screen 'plasma-locked';
+    unidle; # make sure it's not idle
 
     # switch user
     assert_and_click 'plasma-locked-switch-icon';
