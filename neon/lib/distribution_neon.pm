@@ -88,9 +88,9 @@ sub script_sudo($$) {
     # !tty never are cached. e.g. on x11 you could have multiple konsoles but
     # since the sudo cache is per-shell we don't know if there is a cache.
     use Scalar::Util 'blessed';
-    my $class = blessed($self->{consoles}{$testapi::selected_console});
+    my $class = blessed($self->{consoles}{$testapi::current_console});
     my $is_tty = ($class =~ m/ttyConsole/);
-    my $last_auth = $self->{console_sudo_cache}{$testapi::selected_console};
+    my $last_auth = $self->{console_sudo_cache}{$testapi::current_console};
     my $need_auth = (!$is_tty || !$last_auth || (time() - $last_auth >= 4 * 60));
     # Debug for now. Can be removed when someone stumbles upon this again.
     print "sudo cache [tty: $is_tty, last_auth: $last_auth, need auth: $need_auth]:\n";
@@ -108,7 +108,7 @@ sub script_sudo($$) {
             testapi::type_password;
             testapi::send_key "ret";
 
-            $self->{console_sudo_cache}{$testapi::selected_console} = time();
+            $self->{console_sudo_cache}{$testapi::current_console} = time();
         }
     }
     if ($str) {

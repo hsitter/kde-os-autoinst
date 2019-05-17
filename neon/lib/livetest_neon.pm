@@ -97,7 +97,7 @@ sub online {
         return;
     }
 
-    my $previous_console = $testapi::selected_console;
+    my $previous_console = current_console;
     select_console 'log-console';
     assert_script_sudo 'nmcli networking on';
     select_console $previous_console;
