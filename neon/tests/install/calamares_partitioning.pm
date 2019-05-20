@@ -181,7 +181,6 @@ sub run {
         assert_and_click 'calamares-installer-disk-manual-create';
 
         assert_screen 'calamares-installer-disk-manual-create-dialog';
-        send_key 'tab'; # type
         send_key 'tab'; # fsystem
         send_key 'tab'; # encrypt?
         send_key 'tab'; # mountpoint
