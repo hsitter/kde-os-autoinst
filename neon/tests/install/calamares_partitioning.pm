@@ -175,7 +175,7 @@ sub run {
         assert_and_click 'calamares-installer-disk-manual';
         assert_and_click 'calamares-installer-next';
         assert_and_click 'calamares-installer-disk-manual-new-table';
-        assert_and_click 'calamares-installer-disk-manual-new-mbr-ok';
+        assert_and_click 'calamares-installer-disk-manual-new-gpt-ok';
         assert_screen 'calamares-installer-disk-manual-clean';
         assert_and_click 'calamares-installer-disk-manual-free-space';
         assert_and_click 'calamares-installer-disk-manual-create';

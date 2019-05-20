@@ -2,10 +2,10 @@
   "area": [
     {
       "type": "match",
-      "xpos": 317,
-      "ypos": 368,
+      "xpos": 316,
+      "ypos": 396,
       "width": 192,
-      "height": 19,
+      "height": 14,
       "match": 95
     },
     {
@@ -19,7 +19,7 @@
   ],
   "properties": [],
   "tags": [
-    "calamares-installer-disk-manual-new-mbr-ok"
+    "calamares-installer-disk-manual-new-gpt-ok"
   ]
 }
 
