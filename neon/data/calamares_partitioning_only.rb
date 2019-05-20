@@ -24,7 +24,7 @@ require 'yaml'
 
 puts "#{$0}: Disabling all clamares modules except for partitioning"
 
-file = '/etc/calamares/settings.conf'
+file = '/calamares/desktop/settings.conf'
 settings = YAML.load_file(file)
 exec_rule = settings['sequence'].find { |x| x.key?('exec') }
 exec_rule['exec'] = %w[partition]
