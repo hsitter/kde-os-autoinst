@@ -1,0 +1,34 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 343,
+      "ypos": 283,
+      "width": 281,
+      "height": 176,
+      "match": 65
+    },
+    {
+      "type": "match",
+      "xpos": 61,
+      "ypos": 440,
+      "width": 64,
+      "height": 26,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 267,
+      "ypos": 150,
+      "width": 113,
+      "height": 32,
+      "match": 65
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-show",
+    "calamares-installer-show2"
+  ]
+}
+
