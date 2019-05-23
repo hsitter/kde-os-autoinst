@@ -10,14 +10,6 @@
     },
     {
       "type": "match",
-      "xpos": 997,
-      "ypos": 738,
-      "width": 23,
-      "height": 23,
-      "match": 95
-    },
-    {
-      "type": "match",
       "xpos": 864,
       "ypos": 735,
       "width": 25,
