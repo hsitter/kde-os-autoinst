@@ -113,6 +113,8 @@ sub run {
 
         script_sudo 'calamares-update', 60;
         script_sudo 'apt install -y plasma-workspace-dbg', 120;
+        script_sudo 'echo "QML_DISABLE_OPTIMIZER=1" >> /etc/environment', 120;
+        script_sudo 'echo "QML_IMPORT_TRACE=1" >> /etc/environment', 120;
         assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
         assert_script_run 'ruby enable_qdebug.rb', 16;
         script_sudo 'systemctl restart sddm', 60;
