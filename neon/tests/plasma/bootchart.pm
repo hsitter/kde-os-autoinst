@@ -46,20 +46,61 @@ sub run {
         # And fix the name so the existing needle matches it.
         assert_script_sudo 'sed -i "s%Name=.*%Name=Plasma%g" /usr/share/xsessions/plasma.desktop';
 
-        script_sudo 'systemctl restart sddm.service'
+        script_run 'rm -rv ~/.local ~/.config ~/.cache ~/.gconf ~/.kde ~/.gnupg';
+
+        script_sudo 'reboot', 0;
+    }
+    reset_consoles;
+
+    $self->boot;
+    sleep(10);
+    assert_screen 'folder-desktop';
+    sleep(20); # Random wait in the hopes that the session fully started by the end.
+
+    select_console 'log-console';
+    {
+        my @svgs = split("\n", script_output('ls -1 /tmp/*.svg'));
+        foreach my $svg (@svgs) {
+            upload_logs $svg, log_name => 'first-login-cold';
+            assert_script_sudo 'rm ' . $svg;
+        }
+        script_sudo 'reboot', 0;
+    }
+    reset_consoles;
+
+    $self->boot;
+    sleep(10);
+    assert_screen 'folder-desktop';
+    sleep(20); # Random wait in the hopes that the session fully started by the end.
+
+    select_console 'log-console';
+    {
+        my @svgs = split("\n", script_output('ls -1 /tmp/*.svg'));
+        foreach my $svg (@svgs) {
+            upload_logs $svg, log_name => 'second-login-cold';
+            assert_script_sudo 'rm ' . $svg;
+        }
+        script_sudo 'systemctl restart sddm';
     }
     select_console 'x11';
 
-    $self->boot;
-
+    assert_screen('sddm');
+    sleep(10);
+    $self->login;
+    sleep(10);
     assert_screen 'folder-desktop';
-    sleep(30); # Random wait in the hopes that the session fully started by the end.
+    sleep(20); # Random wait in the hopes that the session fully started by the end.
 
     select_console 'log-console';
-    my @svgs = split("\n", script_output('ls -1 /tmp/*.svg'));
-    foreach my $svg (@svgs) {
-        upload_logs $svg;
+    {
+        my @svgs = split("\n", script_output('ls -1 /tmp/*.svg'));
+        foreach my $svg (@svgs) {
+            upload_logs $svg, log_name => 'third-login-warm';
+            assert_script_sudo 'rm ' . $svg;
+        }
+        script_sudo 'reboot', 0;
     }
+    select_console 'x11';
 }
 
 sub test_flags {
