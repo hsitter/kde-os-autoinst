@@ -1,0 +1,57 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 6,
+      "ypos": 219,
+      "width": 145,
+      "height": 395,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 42,
+      "ypos": 134,
+      "width": 104,
+      "height": 79,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 331,
+      "ypos": 220,
+      "width": 521,
+      "height": 37,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 287,
+      "ypos": 499,
+      "width": 185,
+      "height": 56,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 352,
+      "ypos": 270,
+      "width": 504,
+      "height": 12,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 229,
+      "ypos": 302,
+      "width": 768,
+      "height": 180,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-oem-welcome"
+  ]
+}
+

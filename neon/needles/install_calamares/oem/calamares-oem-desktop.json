@@ -21,14 +21,13 @@
       "xpos": 33,
       "ypos": 19,
       "width": 47,
-      "height": 30,
+      "height": 41,
       "match": 95
     }
   ],
   "properties": [],
   "tags": [
-    "oem-desktop",
-    "oem-prepare"
+    "calamares-oem-desktop"
   ]
 }
 

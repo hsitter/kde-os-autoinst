@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 484,
+      "ypos": 141,
+      "width": 259,
+      "height": 41,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 9,
+      "ypos": 397,
+      "width": 178,
+      "height": 24,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 215,
+      "ypos": 247,
+      "width": 279,
+      "height": 50,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-oem-oemid"
+  ]
+}
+

@@ -1,0 +1,33 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 427,
+      "ypos": 239,
+      "width": 167,
+      "height": 19,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 352,
+      "ypos": 244,
+      "width": 48,
+      "height": 76,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 482,
+      "ypos": 377,
+      "width": 92,
+      "height": 40,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-oem-prepare-question"
+  ]
+}
+

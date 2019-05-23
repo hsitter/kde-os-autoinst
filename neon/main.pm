@@ -136,13 +136,17 @@ if (testapi::get_var("INSTALLATION") && testapi::get_var('OPENQA_PARTITIONING'))
         autotest::loadtest('tests/install_ubiquity.pm');
     }
 } elsif (testapi::get_var("INSTALLATION")) {
-    my %test = (
-        'unstable' => "tests/install_calamares.pm",
-        '' => "tests/install_ubiquity.pm"
-    );
     if (testapi::get_var("INSTALLATION_OEM")) {
-        autotest::loadtest('tests/install/ubiquity_oem.pm');
+        my %test = (
+            'unstable' => "tests/install/calamares_oem.pm",
+            '' => "tests/install/ubiquity_oem.pm"
+        );
+        autotest::loadtest($test{testapi::get_var("TYPE")} || $test{''});
     } else {
+        my %test = (
+            'unstable' => "tests/install_calamares.pm",
+            '' => "tests/install_ubiquity.pm"
+        );
         autotest::loadtest($test{testapi::get_var("TYPE")} || $test{''});
     }
     autotest::loadtest('tests/install/first_start.pm');

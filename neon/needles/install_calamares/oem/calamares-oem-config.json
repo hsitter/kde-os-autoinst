@@ -1,0 +1,57 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 19,
+      "ypos": 239,
+      "width": 145,
+      "height": 395,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 41,
+      "ypos": 158,
+      "width": 104,
+      "height": 68,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 337,
+      "ypos": 232,
+      "width": 521,
+      "height": 37,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 284,
+      "ypos": 521,
+      "width": 185,
+      "height": 48,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 353,
+      "ypos": 286,
+      "width": 504,
+      "height": 12,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 229,
+      "ypos": 319,
+      "width": 768,
+      "height": 180,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-oem-config"
+  ]
+}
+
