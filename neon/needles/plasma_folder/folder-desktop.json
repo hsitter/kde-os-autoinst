@@ -1,28 +1,28 @@
 {
   "area": [
     {
-      "height": 34.5,
-      "match": 95,
       "type": "match",
-      "width": 305,
       "xpos": 0,
-      "ypos": 733
+      "ypos": 733,
+      "width": 305,
+      "height": 35,
+      "match": 95
     },
     {
-      "height": 31,
-      "match": 95,
       "type": "match",
-      "width": 29,
-      "xpos": 994,
-      "ypos": 736
+      "xpos": 997,
+      "ypos": 738,
+      "width": 23,
+      "height": 23,
+      "match": 95
     },
     {
-      "height": 33,
-      "match": 95,
       "type": "match",
-      "width": 28,
       "xpos": 864,
-      "ypos": 735
+      "ypos": 735,
+      "width": 25,
+      "height": 33,
+      "match": 95
     }
   ],
   "properties": [],
@@ -30,3 +30,4 @@
     "folder-desktop"
   ]
 }
+
