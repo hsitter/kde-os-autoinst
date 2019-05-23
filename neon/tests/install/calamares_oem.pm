@@ -207,6 +207,7 @@ sub post_fail_hook {
 
     # In case plasmashell crashed but drkonqi is still running.
     script_sudo 'killall -9 drkonqi';
+    sleep(30);
 
     upload_logs '/home/'.$testapi::username.'/.cache/xsession-errors', failok => 1;
     upload_logs '/home/'.$testapi::username.'/.cache/sddm/xsession-errors', failok => 1;
