@@ -112,7 +112,7 @@ sub run {
         script_sudo 'systemd-run ruby `pwd`/geoip_service_calamares.rb', 16;
 
         script_sudo 'calamares-update', 60;
-        script_sudo 'apt install -y plasma-workspace-dbgsym', 120;
+        script_sudo 'apt install -y plasma-workspace-dbg', 120;
         assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;
         assert_script_run 'ruby enable_qdebug.rb', 16;
         script_sudo 'systemctl restart sddm', 60;
