@@ -360,8 +360,9 @@ module OSAutoInst
       end
       need = who_needs_the_data
       return need if need
+
       approximation = weighted_by_attributes.fetch(0)
-      warn "No class needed so we'll approximat with #{approximation} - #{data}"
+      warn "No class needed so we'll approximate with #{approximation} - #{data}"
       approximation
     end
 
