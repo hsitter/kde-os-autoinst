@@ -124,8 +124,6 @@ sub run {
 
     assert_screen 'oem-desktop', 60 * 3;
 
-    sleep(60);
-
     # Switch into OEM mode.
     assert_and_click 'oem-prepare';
     assert_and_click 'calamares-oem-prepare-question';
