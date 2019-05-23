@@ -108,6 +108,9 @@ sub run {
         assert_script_run 'wget ' . data_url('geoip_service_calamares.rb'),  16;
         script_sudo 'systemd-run ruby `pwd`/geoip_service_calamares.rb', 16;
 
+        # prevent drkonqi from running
+        script_sudo 'rm -v /usr/lib/x86_64-linux-gnu/libexec/drkonqi';
+
         script_sudo 'calamares-update', 60;
         script_sudo 'apt install -y plasma-workspace-dbg', 120;
         script_sudo 'echo "QML_DISABLE_OPTIMIZER=1" >> /etc/environment', 120;
@@ -206,7 +209,7 @@ sub post_fail_hook {
     select_console 'log-console';
 
     # In case plasmashell crashed but drkonqi is still running.
-    script_sudo 'killall -9 drkonqi';
+    script_sudo 'killall -v -9 drkonqi';
     sleep(30);
 
     upload_logs '/home/'.$testapi::username.'/.cache/xsession-errors', failok => 1;
