@@ -43,11 +43,6 @@ sub cala_keyboard {
     assert_and_click "calamares-installer-next";
 }
 
-sub cala_summary {
-    assert_screen 'calamares-installer-summary-flexible', 16;
-    assert_and_click 'calamares-installer-install';
-}
-
 sub cala_show {
     assert_screen 'calamares-installer-show', 16;
 }
@@ -81,7 +76,7 @@ sub cala_user {
     type_string $password;
     # all fields filled (not matching hostname field)
     assert_screen 'calamares-installer-user-complete', 16;
-    assert_and_click 'calamares-installer-next';
+    assert_and_click 'calamares-installer-install';
 }
 
 sub run_partioning {
@@ -97,7 +92,6 @@ sub run_partioning {
     $code->();
 
     cala_user;
-    cala_summary;
     cala_show;
     cala_close;
 
