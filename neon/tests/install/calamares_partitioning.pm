@@ -196,7 +196,8 @@ sub upload_calamares_logs {
     # Even newer:
     upload_logs '/home/neon/.cache/calamares/session.log', failok => 1;
 
-    upload_logs '/tmp/sfdisk.log', failok => 1;
+    upload_logs '/tmp/sfdisk-stdout.log', failok => 1;
+    upload_logs '/tmp/sfdisk-stderr.log', failok => 1;
 }
 
 sub post_fail_hook {

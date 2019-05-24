@@ -37,10 +37,16 @@ File.write('/sbin/sfdisk', <<-EOF)
 
 set -ex
 
-echo "" >> /tmp/sfdisk.log
-echo "" >> /tmp/sfdisk.log
-echo "" >> /tmp/sfdisk.log
-echo "sfdisk $@" >> /tmp/sfdisk.log
-/sbin/sfdisk.orig "$@" 2>&1 | tee -a /tmp/sfdisk.log
+echo "" >> /tmp/sfdisk-stdout.log
+echo "" >> /tmp/sfdisk-stdout.log
+echo "" >> /tmp/sfdisk-stdout.log
+echo "sfdisk $@" >> /tmp/sfdisk-stdout.log
+
+echo "" >> /tmp/sfdisk-stderr.log
+echo "" >> /tmp/sfdisk-stderr.log
+echo "" >> /tmp/sfdisk-stderr.log
+echo "sfdisk $@" >> /tmp/sfdisk-stderr.log
+
+/sbin/sfdisk.orig "$@" > >(tee -a /tmp/sfdisk-stdout.log) 2> >(tee -a sfdisk-stderr.log >&2)
 EOF
 File.chmod(0o755, '/sbin/sfdisk')
