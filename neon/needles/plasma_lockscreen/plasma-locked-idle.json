@@ -10,11 +10,11 @@
     },
     {
       "type": "match",
-      "xpos": 607,
-      "ypos": 164,
-      "width": 37,
-      "height": 43,
-      "match": 60
+      "xpos": 602,
+      "ypos": 156,
+      "width": 42,
+      "height": 47,
+      "match": 55
     },
     {
       "type": "match",
@@ -42,3 +42,4 @@
     "ENV-SERIES-bionic"
   ]
 }
+
