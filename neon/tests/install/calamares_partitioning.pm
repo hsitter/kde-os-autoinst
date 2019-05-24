@@ -35,11 +35,6 @@ sub cala_setup_geoip {
 
 sub cala_welcome {
     assert_screen 'calamares-installer-welcome', 30;
-    # Sleep in an attempt to prevent a race condition when partioning a disk
-    # which had partitions already. This would result in obscure
-    # errors when partitioning saying that fdisk failed but not giving any
-    # worthwhile output.
-    sleep(8);
     assert_and_click 'calamares-installer-next';
 }
 
