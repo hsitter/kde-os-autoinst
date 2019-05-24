@@ -29,3 +29,18 @@ settings = YAML.load_file(file)
 exec_rule = settings['sequence'].find { |x| x.key?('exec') }
 exec_rule['exec'] = %w[partition]
 File.write(file, YAML.dump(settings))
+
+require 'fileutils'
+FileUtils.cp('/sbin/sfdisk', '/sbin/sfdisk.orig', verbose: true)
+File.write('/sbin/sfdisk', <<-EOF)
+#!/bin/sh
+
+set -ex
+
+echo "" >> /tmp/sfdisk.log
+echo "" >> /tmp/sfdisk.log
+echo "" >> /tmp/sfdisk.log
+echo "sfdisk $@" >> /tmp/sfdisk.log
+/sbin/sfdisk.orig "$@" 2>&1 | tee -a /tmp/sfdisk.log
+EOF
+File.chmod(0o755, '/sbin/sfdisk')
