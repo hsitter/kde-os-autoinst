@@ -35,13 +35,11 @@ sub cala_setup_geoip {
 
 sub cala_welcome {
     assert_screen 'calamares-installer-welcome', 30;
-    sleep(8);
     assert_and_click 'calamares-installer-next';
 }
 
 sub cala_keyboard {
     assert_screen "calamares-installer-keyboard", 16;
-    sleep(8);
     assert_and_click "calamares-installer-next";
 }
 
@@ -63,7 +61,6 @@ sub cala_timezone {
     #   cause quite a bit of slowdown and ubiquity's transition policy is
     #   fairly weird when moving away from the disk page.
     assert_screen 'calamares-installer-timezone', 60;
-    sleep(8);
     assert_and_click 'calamares-installer-next';
 }
 
@@ -79,7 +76,6 @@ sub cala_user {
     type_string $password;
     # all fields filled (not matching hostname field)
     assert_screen 'calamares-installer-user-complete', 16;
-    sleep(8);
     assert_and_click 'calamares-installer-install';
 }
 
@@ -125,7 +121,6 @@ sub run {
     run_partioning sub {
         assert_and_click 'calamares-installer-disk-erase';
         assert_screen 'calamares-installer-disk-erase-selected';
-        sleep(8);
         assert_and_click 'calamares-installer-next';
     };
 
@@ -134,7 +129,6 @@ sub run {
         assert_and_click 'calamares-installer-disk-replace';
         assert_and_click 'calamares-installer-disk-replace-select';
         assert_screen 'calamares-installer-disk-replace-selected';
-        sleep(8);
         assert_and_click 'calamares-installer-next';
     };
 
@@ -167,7 +161,6 @@ sub run {
         mouse_hide;
 
         assert_and_click 'calamares-installer-disk-alongside-selected';
-        sleep(8);
         assert_and_click 'calamares-installer-next';
     };
 
@@ -189,7 +182,6 @@ sub run {
         # click ok
         assert_and_click 'calamares-installer-disk-manual-create-dialog';
         assert_screen 'calamares-installer-disk-manual-new-ext4-root';
-        sleep(8);
         assert_and_click 'calamares-installer-next';
         assert_and_click 'calamares-installer-disk-manual-no-esp';
     };
