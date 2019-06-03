@@ -35,7 +35,7 @@ FileUtils.cp('/sbin/sfdisk', '/sbin/sfdisk.orig', verbose: true)
 File.write('/sbin/sfdisk', <<-EOF)
 #!/bin/sh
 
-set -ex
+set -e
 
 echo "" >> /tmp/sfdisk-stdout.log
 echo "" >> /tmp/sfdisk-stdout.log
