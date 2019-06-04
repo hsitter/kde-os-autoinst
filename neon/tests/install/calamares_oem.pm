@@ -157,7 +157,14 @@ sub run {
         # to the running instance under test.
         script_sudo 'systemctl restart calamares-sddm';
     }
-    # select_console 'x11';
+    # restart drops us back to the cala tty
+
+    # make sure to log out of oem user, we'll lose it after the oem config.
+    select_console 'log-console';
+    {
+        script_run 'logout', 0;
+    }
+    select_console 'x11';
 
     assert_screen 'calamares-oem-config';
     assert_and_click "calamares-installer-next";
