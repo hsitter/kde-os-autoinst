@@ -30,23 +30,15 @@ exec_rule = settings['sequence'].find { |x| x.key?('exec') }
 exec_rule['exec'] = %w[partition]
 File.write(file, YAML.dump(settings))
 
+# HACK!
+# FIXME: https://github.com/calamares/calamares/issues/1170
 require 'fileutils'
 FileUtils.cp('/sbin/sfdisk', '/sbin/sfdisk.orig', verbose: true)
 File.write('/sbin/sfdisk', <<-EOF)
 #!/bin/sh
 
-set -e
+udevadm settle --timeout=8
 
-echo "" >> /tmp/sfdisk-stdout.log
-echo "" >> /tmp/sfdisk-stdout.log
-echo "" >> /tmp/sfdisk-stdout.log
-echo "sfdisk $@" >> /tmp/sfdisk-stdout.log
-
-echo "" >> /tmp/sfdisk-stderr.log
-echo "" >> /tmp/sfdisk-stderr.log
-echo "" >> /tmp/sfdisk-stderr.log
-echo "sfdisk $@" >> /tmp/sfdisk-stderr.log
-
-/sbin/sfdisk.orig "$@" > >(tee -a /tmp/sfdisk-stdout.log) 2> >(tee -a sfdisk-stderr.log >&2)
+exec /sbin/sfdisk.orig "$@"
 EOF
 File.chmod(0o755, '/sbin/sfdisk')
