@@ -1,28 +1,26 @@
 {
   "area": [
     {
-      "height": 38,
-      "match": 95,
-      "type": "match",
-      "width": 1024,
-      "xpos": 0,
-      "ypos": 730
+      "type": "exclude",
+      "xpos": 169,
+      "ypos": 65,
+      "width": 628,
+      "height": 160,
+      "match": 95
     },
     {
-      "height": 477,
-      "match": 95,
       "type": "match",
-      "width": 862,
-      "xpos": 91,
-      "ypos": 211
+      "xpos": 0,
+      "ypos": 0,
+      "width": 1024,
+      "height": 768,
+      "match": 95
     }
   ],
   "properties": [],
   "tags": [
     "sddm-idle",
-    "sddm",
-    "ENV-TYPE-testing",
-    "ENV-TYPE-user"
+    "sddm"
   ]
 }
 

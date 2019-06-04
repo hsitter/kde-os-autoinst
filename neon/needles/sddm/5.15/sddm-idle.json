@@ -1,0 +1,28 @@
+{
+  "area": [
+    {
+      "height": 38,
+      "match": 95,
+      "type": "match",
+      "width": 1024,
+      "xpos": 0,
+      "ypos": 730
+    },
+    {
+      "height": 477,
+      "match": 95,
+      "type": "match",
+      "width": 862,
+      "xpos": 91,
+      "ypos": 211
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "sddm-idle",
+    "sddm",
+    "ENV-TYPE-testing",
+    "ENV-TYPE-user"
+  ]
+}
+

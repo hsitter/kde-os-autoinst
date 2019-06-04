@@ -19,7 +19,9 @@
   ],
   "properties": [],
   "tags": [
-    "sddm"
+    "sddm",
+    "ENV-TYPE-unstable",
+    "sddm-2"
   ]
 }
 
