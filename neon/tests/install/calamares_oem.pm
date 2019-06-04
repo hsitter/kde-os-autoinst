@@ -183,7 +183,21 @@ sub run {
 
     assert_screen 'calamares-installer-show';
 
-    assert_and_click 'calamares-oem-config-restart', 1200;
+    assert_screen 'calamares-oem-config-restart', 1200;
+
+    # Archive stuff so we can check what happened. Sometimes it can happen
+    # that the vt6 is broken for some reason.
+    select_console 'log-console';
+    {
+        script_run 'journalctl --no-pager -b 0 > /tmp/journal.txt';
+        upload_logs '/tmp/journal.txt', failok => 1;
+
+        assert_script_sudo 'tar cfJ /tmp/installer.tar.xz /var/log/installer';
+        upload_logs '/tmp/installer.tar.xz';
+    }
+    select_console 'x11';
+
+    assert_and_click 'calamares-oem-config-restart';
 
     # Set final installation data.
     # We do this before we expect sddm. If things fail at this point the oem
