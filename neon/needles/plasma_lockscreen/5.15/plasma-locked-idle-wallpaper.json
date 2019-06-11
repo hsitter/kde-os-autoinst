@@ -13,8 +13,9 @@
   "tags": [
     "plasma-locked-idle",
     "plasma-locked",
-    "ENV-TYPE-unstable",
-    "plasma-locked-idle-wallpaper"
+    "plasma-locked-idle-wallpaper",
+    "ENV-TYPE-user",
+    "ENV-type-testing"
   ]
 }
 
