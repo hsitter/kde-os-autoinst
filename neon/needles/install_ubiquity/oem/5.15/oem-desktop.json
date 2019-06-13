@@ -1,0 +1,34 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 0,
+      "ypos": 733,
+      "width": 250,
+      "height": 34,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 881,
+      "ypos": 734,
+      "width": 22,
+      "height": 31,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 33,
+      "ypos": 19,
+      "width": 47,
+      "height": 30,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "oem-desktop",
+    "oem-prepare"
+  ]
+}
+
