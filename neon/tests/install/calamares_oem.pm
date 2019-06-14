@@ -145,6 +145,8 @@ sub run {
     # OEM configuration.
     assert_screen 'calamares-oem-config', 60; # needs to reboot; can take a while.
 
+    sleep 8; # sleep a while to avoid a race condition on switching to VT (presumably)
+
     reset_consoles;
 
     # FIXME: should install a service and be done with it
