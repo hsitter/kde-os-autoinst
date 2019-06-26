@@ -1,12 +1,12 @@
 {
   "area": [
     {
-      "height": 562.2857142857142,
-      "match": 95,
       "type": "match",
-      "width": 971,
-      "xpos": 25,
-      "ypos": 103.71428571428572
+      "xpos": 2,
+      "ypos": 31,
+      "width": 586,
+      "height": 535,
+      "match": 95
     }
   ],
   "properties": [],
@@ -14,3 +14,4 @@
     "oem-config"
   ]
 }
+
