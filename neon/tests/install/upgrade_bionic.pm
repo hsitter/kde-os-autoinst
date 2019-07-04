@@ -245,9 +245,6 @@ sub run {
     $testapi::username = $user;
     $testapi::password = $password;
 
-    # Make sure the evdev driver is installed. We prefer evdev at this time
-    # instead of libinput since our KCMs aren't particularly awesome for
-    # libinput.
     select_console 'log-console';
     {
         # Cache sudo password & make sure the home is unmounted!
@@ -259,12 +256,10 @@ sub run {
         # Delete the encrypted user.
         assert_script_sudo "deluser $encrypt_user";
 
-        # Make sure the evdev driver is installed. We prefer evdev at this time
-        # instead of libinput since our KCMs aren't particularly awesome for
-        # libinput.
-        assert_script_run 'dpkg -s xserver-xorg-input-evdev';
+        # We previously forced evdev by default even on 18.04. Make sure this
+        # was transitioned away from. https://phabricator.kde.org/T10938
         validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
-                               sub { m/.+evdev.+/ };
+                                sub { m/.+libinput.+/ };
 
        # Also assert that the upgrade's preference file is no longer present
        # T9535
