@@ -37,8 +37,6 @@
   "tags": [
     "plasma-locked-idle",
     "plasma-locked",
-    "ENV-TYPE-unstable",
-    "ENV-TYPE-testing",
     "ENV-SERIES-bionic"
   ]
 }
