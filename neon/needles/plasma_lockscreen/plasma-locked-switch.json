@@ -27,8 +27,6 @@
   ],
   "properties": [],
   "tags": [
-    "plasma-locked-switch",
-    "ENV-TYPE-unstable",
-    "ENV-TYPE-testing"
+    "plasma-locked-switch"
   ]
 }

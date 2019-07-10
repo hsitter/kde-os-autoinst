@@ -11,8 +11,6 @@
   ],
   "properties": [],
   "tags": [
-    "plasma-locked-keyboard",
-    "ENV-TYPE-unstable",
-    "ENV-TYPE-testing"
+    "plasma-locked-keyboard"
   ]
 }
