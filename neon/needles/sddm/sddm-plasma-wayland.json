@@ -11,10 +11,6 @@
   ],
   "properties": [],
   "tags": [
-    "sddm-plasma-wayland",
-    "ENV-TYPE-unstable",
-    "ENV-TYPE-testing",
-    "ENV-TYPE-user"
+    "sddm-plasma-wayland"
   ]
 }
-

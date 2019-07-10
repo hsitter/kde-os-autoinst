@@ -11,8 +11,6 @@
   ],
   "properties": [],
   "tags": [
-    "sddm-choose-session",
-    "ENV-TYPE-unstable"
+    "sddm-choose-session"
   ]
 }
-

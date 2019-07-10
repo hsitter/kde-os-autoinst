@@ -23,10 +23,6 @@
     "sddm",
     "ENV-NONENGLISH",
     "sddm-es",
-    "ENV-TYPE-unstable",
-    "ENV-TYPE-testing",
-    "ENV-TYPE-user",
     "ENV-SERIES-bionic"
   ]
 }
-
