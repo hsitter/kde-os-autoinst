@@ -12,6 +12,9 @@ sub init() {
 
 sub x11_start_program($$$) {
     my ($self, $program, $timeout, $options) = @_;
+    # KRunner is dbus-invoked, this can take a while. Make sure we give it
+    # enough time.
+    $timeout //= 4;
     # enable valid option as default
     $options->{valid} //= 1;
     send_key "alt-f2";
