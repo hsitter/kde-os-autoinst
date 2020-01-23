@@ -1,0 +1,25 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 0,
+      "ypos": 730,
+      "width": 336,
+      "height": 38,
+      "match": 95
+    },
+    {
+      "type": "match",
+      "xpos": 91,
+      "ypos": 211,
+      "width": 862,
+      "height": 505,
+      "match": 95
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "sddm"
+  ]
+}
+
