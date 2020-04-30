@@ -97,6 +97,6 @@ end
 retry_it(times: 4, sleep: 1) do
   system('gpg2',
          '--keyserver', 'keyserver.ubuntu.com',
-         '--recv-key', GPG_KEY,) || raise
+         '--recv-key', GPG_KEY) || raise
 end
 system('gpg2', '--verify', 'neon.iso.sig') || raise
