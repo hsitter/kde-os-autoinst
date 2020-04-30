@@ -58,6 +58,12 @@ rescue LoadError
   DEFAULT_ISO_URL
 end
 
+def mangle_url(url)
+  return url if url.include?('files.kde.mirror.pangea.pub')
+
+  url.gsub('files.kde.org', 'files.kde.mirror.pangea.pub')
+end
+
 TYPE = ENV.fetch('TYPE')
 DEFAULT_ISO_URL = "http://files.kde.org/neon/images/#{TYPE}/current/neon-#{TYPE}-current.iso"
 ISO_URL = guess_iso_url
@@ -81,10 +87,8 @@ if ENV['NODE_NAME'] # probably jenkins use, download from mirror
   # entire ISO would.
   # TODO: with this in place we can also drop stashing and unstashing of
   #   ISOs from master.
-  system('wget', '-q', '-O', 'neon.iso',
-         ISO_URL.gsub('files.kde.org', 'files.kde.mirror.pangea.pub')) || raise
-  system('wget', '-q', '-O', 'neon.iso.sig',
-         SIG_URL.gsub('files.kde.org', 'files.kde.mirror.pangea.pub')) || raise
+  system('wget', '-q', '-O', 'neon.iso', mangle_url(ISO_URL)) || raise
+  system('wget', '-q', '-O', 'neon.iso.sig', mangle_url(SIG_URL)) || raise
 else # probably not
   system('zsync_curl', '-o', 'neon.iso', ZSYNC_URL) || raise
   system('wget', '-q', '-O', 'neon.iso.sig', SIG_URL) || raise
