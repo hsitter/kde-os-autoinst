@@ -38,9 +38,29 @@ rescue *errors => e
   retry
 end
 
+def guess_iso_url_from_tooling
+  require '/tooling/ci-tooling/lib/nci'
+  if ENV.fetch('OPENQA_SERIES') == NCI.future_series
+    if NCI.future_is_early
+      return "http://files.kde.mirror.pangea.pub/.preview/neon-#{TYPE}-current.iso"
+    end
+
+    "http://files.kde.org/neon/images/#{DIST}-preview/#{TYPE}/current/neon-#{TYPE}-current.iso"
+  end
+
+  DEFAULT_ISO_URL
+end
+
+def guess_iso_url
+  guess_iso_url_from_tooling
+rescue LoadError
+  warn "!!! Failed to load tooling's NCI module; using default ISO path !!!"
+  DEFAULT_ISO_URL
+end
 
 TYPE = ENV.fetch('TYPE')
-ISO_URL = "http://files.kde.org/neon/images/#{TYPE}/current/neon-#{TYPE}-current.iso".freeze
+DEFAULT_ISO_URL = "http://files.kde.org/neon/images/#{TYPE}/current/neon-#{TYPE}-current.iso"
+ISO_URL = guess_iso_url
 ZSYNC_URL = "#{ISO_URL}.zsync".freeze
 SIG_URL = "#{ISO_URL}.sig".freeze
 GPG_KEY = '348C 8651 2066 33FD 983A 8FC4 DEAC EA00 075E 1D76'.freeze
