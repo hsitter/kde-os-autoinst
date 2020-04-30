@@ -87,8 +87,8 @@ if ENV['NODE_NAME'] # probably jenkins use, download from mirror
   # entire ISO would.
   # TODO: with this in place we can also drop stashing and unstashing of
   #   ISOs from master.
-  system('wget', '-q', '-O', 'neon.iso', mangle_url(ISO_URL)) || raise
-  system('wget', '-q', '-O', 'neon.iso.sig', mangle_url(SIG_URL)) || raise
+  system('wget', '-O', 'neon.iso', mangle_url(ISO_URL)) || raise
+  system('wget', '-O', 'neon.iso.sig', mangle_url(SIG_URL)) || raise
 else # probably not
   system('zsync_curl', '-o', 'neon.iso', ZSYNC_URL) || raise
   system('wget', '-q', '-O', 'neon.iso.sig', SIG_URL) || raise
