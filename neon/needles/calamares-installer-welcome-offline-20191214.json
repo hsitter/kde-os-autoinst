@@ -1,0 +1,53 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "width": 145,
+      "height": 395,
+      "xpos": 22,
+      "ypos": 129
+    },
+    {
+      "width": 125,
+      "type": "match",
+      "xpos": 31,
+      "height": 64,
+      "ypos": 46
+    },
+    {
+      "ypos": 110,
+      "xpos": 273,
+      "height": 41,
+      "type": "match",
+      "width": 336
+    },
+    {
+      "type": "match",
+      "width": 129,
+      "height": 46,
+      "xpos": 282,
+      "ypos": 396
+    },
+    {
+      "xpos": 271,
+      "height": 16,
+      "ypos": 160,
+      "type": "match",
+      "width": 441
+    },
+    {
+      "type": "match",
+      "width": 469,
+      "xpos": 281,
+      "height": 31,
+      "ypos": 228
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-welcome-offline",
+    "calamares-installer-welcome",
+    "ENV-OFFLINE",
+    "ENV-SERIES-bionic"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 461,
+      "ypos": 194,
+      "height": 31,
+      "width": 286
+    },
+    {
+      "xpos": 541,
+      "type": "match",
+      "ypos": 320,
+      "width": 120,
+      "height": 50
+    },
+    {
+      "ypos": 274,
+      "type": "match",
+      "xpos": 298,
+      "height": 21,
+      "width": 179
+    },
+    {
+      "width": 219,
+      "height": 15,
+      "type": "match",
+      "xpos": 578,
+      "ypos": 258
+    },
+    {
+      "ypos": 503,
+      "type": "match",
+      "xpos": 928,
+      "width": 92,
+      "height": 45
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-restart",
+    "calamares-installer-restart-now"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "area": [
+    {
+      "ypos": 398,
+      "xpos": 199,
+      "type": "match",
+      "width": 812,
+      "height": 38
+    },
+    {
+      "height": 40,
+      "width": 818,
+      "type": "match",
+      "ypos": 439,
+      "xpos": 195
+    },
+    {
+      "width": 441,
+      "height": 297,
+      "xpos": 540,
+      "ypos": 54,
+      "type": "match"
+    }
+  ],
+  "properties": [
+    {
+      "name": "workaround",
+      "value": "comboboxes layout is broken so scaling is off"
+    }
+  ],
+  "tags": [
+    "calamares-installer-timezone"
+  ]
+}

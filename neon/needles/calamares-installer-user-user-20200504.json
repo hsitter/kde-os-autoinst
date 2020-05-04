@@ -1,0 +1,22 @@
+{
+  "area": [
+    {
+      "ypos": 315,
+      "height": 20,
+      "type": "match",
+      "width": 151,
+      "xpos": 196
+    },
+    {
+      "height": 270,
+      "type": "match",
+      "width": 234,
+      "xpos": 195,
+      "ypos": 36
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-user-user"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "area": [
+    {
+      "width": 43,
+      "height": 44,
+      "xpos": 342,
+      "ypos": 145,
+      "type": "match"
+    },
+    {
+      "xpos": 315,
+      "ypos": 265,
+      "width": 322,
+      "height": 22,
+      "type": "match"
+    },
+    {
+      "xpos": 201,
+      "ypos": 403,
+      "width": 117,
+      "height": 16,
+      "type": "match"
+    },
+    {
+      "xpos": 616,
+      "ypos": 334,
+      "width": 111,
+      "height": 14,
+      "type": "match"
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-keyboard"
+  ]
+}

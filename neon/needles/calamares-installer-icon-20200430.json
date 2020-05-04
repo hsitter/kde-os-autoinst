@@ -1,0 +1,15 @@
+{
+  "area": [
+    {
+      "width": 40,
+      "height": 48,
+      "xpos": 37,
+      "ypos": 15,
+      "type": "match"
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-icon"
+  ]
+}

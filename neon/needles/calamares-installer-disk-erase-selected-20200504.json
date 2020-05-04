@@ -1,0 +1,57 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "xpos": 198,
+      "ypos": 318,
+      "height": 59,
+      "width": 641
+    },
+    {
+      "xpos": 200,
+      "ypos": 398,
+      "type": "match",
+      "width": 276,
+      "height": 58
+    },
+    {
+      "height": 25,
+      "width": 114,
+      "type": "match",
+      "ypos": 457,
+      "xpos": 271
+    },
+    {
+      "xpos": 202,
+      "ypos": 34,
+      "type": "match",
+      "width": 364,
+      "height": 50
+    },
+    {
+      "type": "match",
+      "ypos": 42,
+      "xpos": 626,
+      "height": 39,
+      "width": 162
+    },
+    {
+      "ypos": 89,
+      "xpos": 200,
+      "type": "match",
+      "width": 671,
+      "height": 48
+    },
+    {
+      "xpos": 201,
+      "ypos": 145,
+      "width": 76,
+      "height": 54,
+      "type": "match"
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk-erase-selected"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "area": [
+    {
+      "xpos": 6,
+      "ypos": 128,
+      "type": "match",
+      "width": 145,
+      "height": 395
+    },
+    {
+      "type": "match",
+      "xpos": 42,
+      "ypos": 35,
+      "height": 79,
+      "width": 104
+    },
+    {
+      "type": "match",
+      "xpos": 272,
+      "ypos": 112,
+      "height": 37,
+      "width": 336
+    },
+    {
+      "ypos": 369,
+      "xpos": 287,
+      "type": "match",
+      "width": 185,
+      "height": 56
+    },
+    {
+      "xpos": 352,
+      "ypos": 164,
+      "type": "match",
+      "width": 504,
+      "height": 12
+    },
+    {
+      "type": "match",
+      "xpos": 195,
+      "ypos": 181,
+      "height": 180,
+      "width": 768
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-welcome"
+  ]
+}

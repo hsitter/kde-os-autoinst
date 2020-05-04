@@ -1,0 +1,36 @@
+{
+  "area": [
+    {
+      "ypos": 84,
+      "xpos": 199,
+      "type": "match",
+      "width": 625,
+      "height": 53
+    },
+    {
+      "xpos": 201,
+      "ypos": 141,
+      "width": 77,
+      "height": 174,
+      "type": "match"
+    },
+    {
+      "xpos": 240,
+      "ypos": 142,
+      "width": 253,
+      "height": 17,
+      "type": "match"
+    },
+    {
+      "xpos": 202,
+      "ypos": 390,
+      "width": 203,
+      "height": 61,
+      "type": "match"
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-disk"
+  ]
+}

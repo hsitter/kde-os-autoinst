@@ -1,0 +1,29 @@
+{
+  "area": [
+    {
+      "height": 33,
+      "width": 645,
+      "type": "match",
+      "xpos": 0,
+      "ypos": 735
+    },
+    {
+      "xpos": 807,
+      "ypos": 734,
+      "type": "match",
+      "width": 28,
+      "height": 33
+    },
+    {
+      "height": 725,
+      "width": 919,
+      "type": "match",
+      "ypos": 0,
+      "xpos": 105
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "live-desktop"
+  ]
+}

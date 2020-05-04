@@ -1,0 +1,15 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "width": 579,
+      "xpos": 195,
+      "height": 312,
+      "ypos": 39
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-oem-user-complete"
+  ]
+}

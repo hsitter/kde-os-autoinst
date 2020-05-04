@@ -1,0 +1,16 @@
+{
+  "area": [
+    {
+      "height": 41,
+      "width": 93,
+      "type": "match",
+      "xpos": 830,
+      "ypos": 495
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "calamares-installer-next",
+    "calamares-installer-next-nohighlight"
+  ]
+}
