@@ -219,7 +219,7 @@ sub bootloader {
         }
         # Set the kmsg target to ttyS1. We then also need to force plymouth as
         # it'd not do anything if console= is set.
-        type_string 'console=ttyS1 plymouth.force-splash plymouth.ignore-show-splash plymouth.ignore-serial-consoles ';
+        type_string 'console=ttyS1 plymouth.force-splash plymouth.ignore-serial-consoles ';
         send_key 'ctrl-x';
 
         send_key 'ret';
