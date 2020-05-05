@@ -282,7 +282,20 @@ sub boot {
 #   but conducts it, so it's somewhat different from a regular reboot in
 #   basetest. Muse on this a bit.
 sub live_reboot {
-    assert_screen "live-remove-medium", 60;
+    # On focal plymouth isn't working at all. From local testing I'd say because
+    # of the VNC+qxl combo openqa uses. Somehow nothing renders but I expect
+    # the theme is actually loaded and all something is just going very wrong
+    # and I have no clue what to do about it. Simply skip over remove medium
+    # if it doesn't appear within 16 seconds (on focal).
+    if (testapi::get_var('OPENQA_SERIES') eq 'focal') {
+        if (!check_screen("live-remove-medium", 16)) {
+            reset_consoles;
+            return;
+        }
+    }
+
+    assert_screen("live-remove-medium", 60);
+
     # The message actually comes up before input is read, make sure to send rets
     # until the system reboots or we've waited a bit of time. We'll then
     # continue and would fail on the first start test if the system in fact
