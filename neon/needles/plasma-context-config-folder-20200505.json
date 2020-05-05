@@ -1,0 +1,15 @@
+{
+  "area": [
+    {
+      "ypos": 665,
+      "width": 155,
+      "xpos": 402,
+      "height": 24,
+      "type": "match"
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "plasma-context-config-folder"
+  ]
+}
