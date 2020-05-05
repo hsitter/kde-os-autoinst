@@ -109,7 +109,7 @@ sub run {
 
     reset_consoles;
 
-    # Set instalation data.
+    # Set installation data.
     $testapi::username = $user;
     $testapi::password = $password;
 }
