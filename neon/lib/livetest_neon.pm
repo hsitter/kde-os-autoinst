@@ -217,6 +217,7 @@ sub bootloader {
             send_key 'left';
             send_key 'left';
         }
+        # FIXME: should use hvc0 with modern openqa!
         # Set the kmsg target to ttyS1. We then also need to force plymouth as
         # it'd not do anything if console= is set.
         type_string 'console=ttyS1 plymouth.force-splash plymouth.ignore-serial-consoles ';
