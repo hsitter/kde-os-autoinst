@@ -40,11 +40,6 @@ sub run {
     assert_script_run 'wget ' . data_url('early_first_start.rb'),  16;
     assert_script_sudo 'ruby early_first_start.rb', 60 * 5;
 
-    # We previously forced evdev by default even on 18.04. Make sure this
-    # was transitioned away from. https://phabricator.kde.org/T10938
-    validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
-                            sub { m/.+libinput.+/ };
-
     # Assert that we have no preinstalled pool lingering around on the installed
     # rootfs. preinstalled-pool comes from our livecd-rootfs-neon fork and
     # contains bootloaders for offline install. This should be removed before

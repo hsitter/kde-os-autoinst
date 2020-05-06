@@ -243,11 +243,6 @@ sub boot {
 
     select_console 'log-console';
     {
-        # We previously forced evdev by default even on 18.04. Make sure this
-        # was transitioned away from. https://phabricator.kde.org/T10938
-        validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
-                                sub { m/.+libinput.+/ };
-
         $self->_archive_iso_artifacts;
         $self->_secureboot;
         $self->_upgrade;
@@ -260,10 +255,6 @@ sub boot {
         # retained in the image.
         assert_script_run 'wget ' . data_url('setup_journald_ttyS1.rb'),  16;
         assert_script_sudo 'ruby setup_journald_ttyS1.rb', 60 * 5;
-
-        # See above about libinput.
-        validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
-                                sub { m/.+libinput.+/ };
 
         # TODO: maybe control via env var?
         # assert_script_run 'wget ' . data_url('enable_qdebug.rb'),  16;

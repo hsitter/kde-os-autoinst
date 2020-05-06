@@ -241,11 +241,6 @@ sub run {
         # Delete the encrypted user.
         assert_script_sudo "deluser $encrypt_user";
 
-        # We previously forced evdev by default even on 18.04. Make sure this
-        # was transitioned away from. https://phabricator.kde.org/T10938
-        validate_script_output 'grep -e "Using input driver" /var/log/Xorg.0.log',
-                                sub { m/.+libinput.+/ };
-
        # Also assert that the upgrade's preference file is no longer present
        # T9535
        assert_script_run '[ ! -e /etc/apt/preferences.d/98-xenial-overrides ]'
