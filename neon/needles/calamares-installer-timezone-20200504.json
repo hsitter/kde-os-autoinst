@@ -22,12 +22,7 @@
       "type": "match"
     }
   ],
-  "properties": [
-    {
-      "name": "workaround",
-      "value": "comboboxes layout is broken so scaling is off"
-    }
-  ],
+  "properties": [],
   "tags": [
     "calamares-installer-timezone"
   ]
