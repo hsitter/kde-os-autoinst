@@ -63,6 +63,10 @@ sub run {
         script_run 'logout', 0;
         reset_consoles;
 
+        # Make sure we aren't trying to switch too quickly. The VT switch
+        # might get lost if we do.
+        sleep 4;
+
         # Relogin by simply switching to the console again.
         select_console 'log-console';
         # Cache sudo password & make sure the home is unmounted!
