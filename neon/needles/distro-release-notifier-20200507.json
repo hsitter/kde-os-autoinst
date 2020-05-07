@@ -1,0 +1,50 @@
+{
+  "area": [
+    {
+      "ypos": 738,
+      "type": "match",
+      "height": 22,
+      "width": 21,
+      "xpos": 742
+    },
+    {
+      "type": "match",
+      "height": 28,
+      "width": 146,
+      "xpos": 655,
+      "ypos": 610
+    },
+    {
+      "width": 43,
+      "xpos": 937,
+      "type": "match",
+      "height": 45,
+      "ypos": 611
+    },
+    {
+      "width": 84,
+      "xpos": 656,
+      "type": "match",
+      "height": 15,
+      "ypos": 640
+    },
+    {
+      "ypos": 657,
+      "type": "match",
+      "height": 36,
+      "width": 64,
+      "xpos": 916
+    },
+    {
+      "ypos": 737,
+      "type": "match",
+      "height": 26,
+      "width": 23,
+      "xpos": 739
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "distro-release-notifier"
+  ]
+}
