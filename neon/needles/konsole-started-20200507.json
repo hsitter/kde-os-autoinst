@@ -1,0 +1,30 @@
+{
+  "area": [
+    {
+      "type": "match",
+      "height": 23,
+      "xpos": 329,
+      "width": 75,
+      "ypos": 4
+    },
+    {
+      "ypos": 62,
+      "width": 20,
+      "xpos": 281,
+      "height": 19,
+      "type": "match"
+    },
+    {
+      "ypos": 32,
+      "width": 562,
+      "xpos": 0,
+      "height": 24,
+      "type": "match"
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "konsole",
+    "konsole-started"
+  ]
+}
