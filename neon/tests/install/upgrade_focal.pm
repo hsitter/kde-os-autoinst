@@ -207,7 +207,7 @@ sub run {
 
     # Wait a bit before switching back. Since x11 doesn't assert a screen we
     # could be switching too quickly and end up on the wrong VT.
-    sleep 2;
+    sleep 4;
 
     # Log into encrypted user next.
     $testapi::username = $encrypt_user;
